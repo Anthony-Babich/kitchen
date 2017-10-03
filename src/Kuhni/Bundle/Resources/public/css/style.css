@@ -101,7 +101,7 @@ body {
 header.masthead {
   text-align: center;
   color: white;
-  background: url("/web/bundles/kuhni/img/header-bg.jpg") no-repeat scroll center center;
+  background: url("/src/Kuhni/Bundle/Resources/public/imgurces/public/img/header-bg.jpg") no-repeat scroll center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -349,7 +349,7 @@ header.masthead {
 
 section#ordercall {
   padding: 30px 0 0 0;
-  background: #193153 url("/web/bundles/kuhni/img/map-image.png") no-repeat center;
+  background: #193153 url("/src/Kuhni/Bundle/Resources/public/imgurces/public/img/map-image.png") no-repeat center;
 }
   section#ordercall .section-heading {
     color: white; }
@@ -396,7 +396,7 @@ section#ordercall {
   	margin-bottom: 20px;  }
 
 section#contact {
-  background: #193153 url("/web/bundles/kuhni/img/map-image.png") no-repeat center;
+  background: #193153 url("/src/Kuhni/Bundle/Resources/public/imgurces/public/img/map-image.png") no-repeat center;
 }
   section#contact .section-heading {
     color: white; }
@@ -561,7 +561,7 @@ ul.social-buttons {
 /* ======================= end agency ====================== */
 
 .testimonial {
-  background: rgba(0, 0, 0, 0) url('/web/bundles/kuhni/img/retailer.jpg') no-repeat center;
+  background: rgba(0, 0, 0, 0) url('/src/Kuhni/Bundle/Resources/public/imgurces/public/img/retailer.jpg') no-repeat center;
   background-size: cover;bottom: 0;left: 0;padding: 70px 0;right: 0;width: 100%;}
 .testimonial_inner { width: 800px; margin: 0 auto; max-width: 100% }
 .testimonial .textcol { color: #fff; padding: 0 }

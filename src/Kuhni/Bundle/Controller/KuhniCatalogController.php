@@ -9,16 +9,16 @@ class KuhniCatalogController extends Controller
     public function indexAction()
     {
         $resultStyle = $this->result('KuhniStyle');
-        $imageStyle = $this->imagePath($resultStyle);
+        $imageStyle = $this->imagePath($resultStyle, 'style');
 
         $resultColor = $this->result('KuhniColor');
-        $imageColor = $this->imagePath($resultColor);
+        $imageColor = $this->imagePath($resultColor, 'color');
 
         $resultConfig = $this->result('KuhniConfig');
-        $imageConfig = $this->imagePath($resultConfig);
+        $imageConfig = $this->imagePath($resultConfig, 'config');
 
         $resultMaterial = $this->result('KuhniMaterial');
-        $imageMaterial = $this->imagePath($resultMaterial);
+        $imageMaterial = $this->imagePath($resultMaterial, 'material');
 
         return $this->render('kuhni/index.html.twig', array(
             'style' => $resultStyle,
@@ -44,10 +44,10 @@ class KuhniCatalogController extends Controller
      * @param $result
      * @return array|string
      */
-    private function imagePath($result){
+    private function imagePath($result, $path){
         if (!empty($result)){
             foreach ($result as $item) {
-                $image[] = 'upload/catalog/' . $item->getImageName();
+                $image[] = 'upload/kuhni/' . $path . '/' . $item->getImageName();
             }
             return $image;
         }else{
