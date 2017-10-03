@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% block navigation %}
+        {% include 'kuhni/navigation.html.twig' %}
+    {% endblock %}
+    {% block header %}
+        {% include 'header.html.twig' %}
+    {% endblock %}
+    {% block content %}
+        {% include 'kuhni/section-style.html.twig' %}
+        {% include 'kuhni/section-material.html.twig' %}
+        {% include 'kuhni/section-config.html.twig' %}
+        {% include 'kuhni/section-color.html.twig' %}
+    {% endblock %}
+    {% block footer %}{% endblock %}
+{% endblock %}

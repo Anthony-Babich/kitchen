@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% block navigation %}
+        {% include 'homepage/navigation.html.twig' %}
+    {% endblock %}
+    {% block header %}
+        {% include 'header.html.twig' %}
+    {% endblock %}
+    {% block content %}
+        {% include 'homepage/section-ordercall.html.twig' %}
+        {% include 'homepage/section-images_section.html.twig' %}
+        {% include 'homepage/section-catalog_home.html.twig' %}
+        {% include 'homepage/section-about.html.twig' %}
+        {% include 'homepage/section-services.html.twig' %}
+        {% include 'homepage/section-team.html.twig' %}
+        {% include 'homepage/section-clients.html.twig' %}
+        {% include 'homepage/section-testimonial.html.twig' %}
+        {% include 'homepage/section-contact.html.twig' %}
+    {% endblock %}
+{% endblock %}

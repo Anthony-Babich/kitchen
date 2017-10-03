@@ -1,0 +1,3 @@
+kuhni:
+    resource: "@KuhniBundle/Resources/config/routing.yml"
+    prefix:   /
