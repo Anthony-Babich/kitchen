@@ -1,4 +1,3 @@
-<!-- Кухни по материалу -->
 <div id="podbor-material"></div>
 <section class="bg-light" id="portfolio">
     <div class="container-fluid">
@@ -9,135 +8,54 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3 col-sm-6 portfolio-item">
-                <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
+            {% for material in material %}
+                {% if loop.index0 < 4 %}
+                    <div class="col-md-3 col-sm-6 portfolio-item">
+                        <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="{{ asset( imageMaterial[loop.index0] ) }}" alt="{{ material.keywords }}" title="{{ material.title }}">
+                        </div>
+                        <div class="portfolio-caption">
+                            <h4>Кухни из массива</h4>
+                            <p class="text-muted">Всегда в тренде</p>
                         </div>
                     </div>
-                    <img class="img-fluid" src="../img/catalog/thumbnails/kitchenmat-massiv.jpg" alt="">
-                </div>
-                <div class="portfolio-caption">
-                    <h4>Кухни из массива</h4>
-                    <p class="text-muted">Всегда в тренде</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 portfolio-item">
-                <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="../img/catalog/thumbnails/kitchenmat-plastic.jpg" alt="">
-                </div>
-                <div class="portfolio-caption">
-                    <h4>Кухни из пластика</h4>
-                    <p class="text-muted">Всегда в тренде</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 portfolio-item">
-                <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="../img/catalog/thumbnails/kitchenmat-mdf.jpg" alt="">
-                </div>
-                <div class="portfolio-caption">
-                    <h4>Кухни из МДФ</h4>
-                    <p class="text-muted">Всегда в тренде</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 portfolio-item">
-                <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="../img/catalog/thumbnails/kitchenmat-glass.jpg" alt="">
-                </div>
-                <div class="portfolio-caption">
-                    <h4>Кухни из стекла</h4>
-                    <p class="text-muted">Всегда в тренде</p>
-                </div>
-            </div>
-
+                {% endif %}
+            {% endfor %}
         </div>
-
 
         <div id="collapse-kitchenmat" class="collapse">
             <div class="row">
-                <div class="col-md-3 col-sm-6 portfolio-item">
-                    <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
+                {% for material in material %}
+                    {% if loop.index0 >= 4 %}
+                        <div class="col-md-3 col-sm-6 portfolio-item">
+                            <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content">
+                                        <i class="fa fa-plus fa-3x"></i>
+                                    </div>
+                                </div>
+                                <img class="img-fluid" src="{{ asset( imageMaterial[loop.index0] ) }}" alt="{{ material.keywords }}" title="{{ material.title }}">
+                            </div>
+                            <div class="portfolio-caption">
+                                <h4>{{ material.title }}</h4>
+                                <p class="text-muted">Всегда в тренде</p>
                             </div>
                         </div>
-                        <img class="img-fluid" src="../img/catalog/thumbnails/kitchenmat-acryl.jpg" alt="">
-                    </div>
-                    <div class="portfolio-caption">
-                        <h4>Акриловые кухни</h4>
-                        <p class="text-muted">Всегда в тренде</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6 portfolio-item">
-                    <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="../img/catalog/thumbnails/kitchenmat-shpon.jpg" alt="">
-                    </div>
-                    <div class="portfolio-caption">
-                        <h4>Кухни из шпона</h4>
-                        <p class="text-muted">Всегда в тренде</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6 portfolio-item">
-                    <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="../img/catalog/thumbnails/kitchenmat-dsp.jpg" alt="">
-                    </div>
-                    <div class="portfolio-caption">
-                        <h4>Кухни из ДСП</h4>
-                        <p class="text-muted">Всегда в тренде</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6 portfolio-item">
-                    <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="../img/catalog/thumbnails/kitchenmat-kombi.jpg" alt="">
-                    </div>
-                    <div class="portfolio-caption">
-                        <h4>Комбинированные</h4>
-                        <p class="text-muted">Всегда в тренде</p>
-                    </div>
-                </div>
-
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
 
-        <div class="text-center"><a data-toggle="collapse" data-target="#collapse-kitchenmat">Показать/скрыть еще (4) конфигурации</a></div>
+        {% if countMaterial > 0 %}
+            <div class="text-center">
+                <a data-toggle="collapse" data-target="#collapse-kitchenmat">Показать/скрыть еще ({{ countMaterial }}) конфигурации</a>
+            </div>
+        {% endif %}
 
     </div>
 </section>

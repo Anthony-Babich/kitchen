@@ -9,25 +9,32 @@ class KuhniCatalogController extends Controller
     public function indexAction()
     {
         $resultStyle = $this->result('KuhniStyle');
+        $countStyle = count($resultStyle)-4;
         $imageStyle = $this->imagePath($resultStyle, 'style');
 
         $resultColor = $this->result('KuhniColor');
-        $imageColor = $this->imagePath($resultColor, 'color');
 
         $resultConfig = $this->result('KuhniConfig');
+        $countConfig = count($resultConfig)-4;
         $imageConfig = $this->imagePath($resultConfig, 'config');
 
         $resultMaterial = $this->result('KuhniMaterial');
+        $countMaterial = count($resultMaterial)-4;
         $imageMaterial = $this->imagePath($resultMaterial, 'material');
 
         return $this->render('kuhni/index.html.twig', array(
             'style' => $resultStyle,
-            'color' => $resultColor,
-            'config' => $resultConfig,
-            'material' => $resultMaterial,
+            'countStyle' => $countStyle,
             'imageStyle' => $imageStyle,
-            'imageColor' => $imageColor,
+
+            'color' => $resultColor,
+
+            'config' => $resultConfig,
+            'countConfig' => $countConfig,
             'imageConfig' => $imageConfig,
+
+            'material' => $resultMaterial,
+            'countMaterial' => $countMaterial,
             'imageMaterial' => $imageMaterial,
         ));
     }

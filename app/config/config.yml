@@ -80,12 +80,6 @@ vich_uploader:
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
-        kuhni_color:
-            uri_prefix:         /upload/kuhni/color
-            upload_destination: %kernel.root_dir%/../web/upload/kuhni/color
-            inject_on_load:     false
-            delete_on_update:   true
-            delete_on_remove:   true
         kuhni_material:
             uri_prefix:         /upload/kuhni/material
             upload_destination: %kernel.root_dir%/../web/upload/kuhni/material

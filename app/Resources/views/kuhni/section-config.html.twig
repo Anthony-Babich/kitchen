@@ -8,120 +8,54 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3 col-sm-6 portfolio-item">
-                <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
+            {% for config in config %}
+                {% if loop.index0 < 4 %}
+                    <div class="col-md-3 col-sm-6 portfolio-item">
+                        <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="{{ asset( imageConfig[loop.index0] ) }}" alt="{{ config.keywords }}" title="{{ config.title }}">
+                        </div>
+                        <div class="portfolio-caption">
+                            <h4>{{ config.title }}</h4>
+                            <p class="text-muted">Всегда в тренде</p>
                         </div>
                     </div>
-                    <img class="img-fluid" src="../img/catalog/thumbnails/kitchentype_line.svg" alt="">
-                </div>
-                <div class="portfolio-caption">
-                    <h4>Прямые кухни</h4>
-                    <p class="text-muted">Всегда в тренде</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 portfolio-item">
-                <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="../img/catalog/thumbnails/kitchentype_degree.svg" alt="">
-                </div>
-                <div class="portfolio-caption">
-                    <h4>Угловые кухни</h4>
-                    <p class="text-muted">Всегда в тренде</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 portfolio-item">
-                <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="../img/catalog/thumbnails/kitchentype_pobraznye.svg" alt="">
-                </div>
-                <div class="portfolio-caption">
-                    <h4>П образные кухни</h4>
-                    <p class="text-muted">Всегда в тренде</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 portfolio-item">
-                <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="../img/catalog/thumbnails/kitchentype_sostrovom.svg" alt="">
-                </div>
-                <div class="portfolio-caption">
-                    <h4>Кухни с островом</h4>
-                    <p class="text-muted">Всегда в тренде</p>
-                </div>
-            </div>
-
+                {% endif %}
+            {% endfor %}
         </div>
-
 
         <div id="collapse-kitchentype" class="collapse">
             <div class="row">
-                <div class="col-md-3 col-sm-6 portfolio-item">
-                    <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
+                {% for config in config %}
+                    {% if loop.index0 >= 4 %}
+                        <div class="col-md-3 col-sm-6 portfolio-item">
+                            <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content">
+                                        <i class="fa fa-plus fa-3x"></i>
+                                    </div>
+                                </div>
+                                <img class="img-fluid" src="{{ asset( imageConfig[loop.index0] ) }}" alt="{{ config.keywords }}" title="{{ config.title }}">
+                            </div>
+                            <div class="portfolio-caption">
+                                <h4>{{ config.title }}</h4>
+                                <p class="text-muted">Всегда в тренде</p>
                             </div>
                         </div>
-                        <img class="img-fluid" src="../img/catalog/thumbnails/kitchentype_small.svg" alt="">
-                    </div>
-                    <div class="portfolio-caption">
-                        <h4>Малогабаритные кухни</h4>
-                        <p class="text-muted">Всегда в тренде</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6 portfolio-item">
-                    <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="../img/catalog/thumbnails/kitchentype_gostinaya.svg" alt="">
-                    </div>
-                    <div class="portfolio-caption">
-                        <h4>Кухня гостиная</h4>
-                        <p class="text-muted">Всегда в тренде</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6 portfolio-item">
-                    <div class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="../img/catalog/thumbnails/kitchentype_stolovaya.svg" alt="">
-                    </div>
-                    <div class="portfolio-caption">
-                        <h4>Кухня столовая</h4>
-                        <p class="text-muted">Всегда в тренде</p>
-                    </div>
-                </div>
-
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
 
-        <div class="text-center"><a data-toggle="collapse" data-target="#collapse-kitchentype">Показать/скрыть еще (3) конфигурации</a></div>
+        {% if countConfig > 0 %}
+            <div class="text-center">
+                <a data-toggle="collapse" data-target="#collapse-kitchentype">Показать/скрыть еще ({{ countConfig }}) конфигурации</a>
+            </div>
+        {% endif %}
 
     </div>
 </section>

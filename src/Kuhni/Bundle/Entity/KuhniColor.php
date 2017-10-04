@@ -3,8 +3,6 @@
 namespace Kuhni\Bundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * KuhniColor
@@ -45,115 +43,31 @@ class KuhniColor
     private $mainDescription;
 
     /**
-     * @return \DateTime
+     * @return string
      */
-    public function getUpdated(): \DateTime
+    public function getColor(): string
     {
-        return $this->updated;
+        return $this->color;
     }
 
     /**
-     * @param \DateTime $updated
+     * @param string $color
      * @return KuhniColor
      */
-    public function setUpdated(\DateTime $updated)
+    public function setColor(string $color)
     {
-        $this->updated = $updated;
+        $this->color = $color;
         return $this;
     }
 
+
     /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     *
-     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName", size="imageSize")
-     *
-     * @var File
-     */
-    private $imageFile;
-    /**
-     * @ORM\Column(type="string", length=255)
-     *
      * @var string
-     */
-    private $imageName;
-    /**
-     * @ORM\Column(type="integer")
      *
-     * @var integer
+     * @ORM\Column(name="color", type="string", length=255)
      */
-    private $imageSize;
-    /**
-     * @ORM\Column(type="datetime")
-     *
-     * @var \DateTime
-     */
-    private $updated;
+    private $color;
 
-    /**
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-     *
-     * @return KuhniColor
-     */
-    public function setImageFile(File $image = null)
-    {
-        $this->imageFile = $image;
-
-        if ($image) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updated = new \DateTimeImmutable();
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return File|null
-     */
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param string $imageName
-     *
-     * @return KuhniColor
-     */
-    public function setImageName($imageName)
-    {
-        $this->imageName = $imageName;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getImageName()
-    {
-        return $this->imageName;
-    }
-
-    /**
-     * @param integer $imageSize
-     *
-     * @return KuhniColor
-     */
-    public function setImageSize($imageSize)
-    {
-        $this->imageSize = $imageSize;
-
-        return $this;
-    }
-
-    /**
-     * @return integer|null
-     */
-    public function getImageSize()
-    {
-        return $this->imageSize;
-    }
 
     /**
      * Get id

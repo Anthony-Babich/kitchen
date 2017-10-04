@@ -51,9 +51,11 @@
             </div>
         </div>
 
-        <div class="text-center">
-            <a data-toggle="collapse" data-target="#collapse-kitchenstyle">Показать/скрыть еще (6) стилей</a>
-        </div>
+        {% if countConfig > 0 %}
+            <div class="text-center">
+                <a data-toggle="collapse" data-target="#collapse-kitchenstyle">Показать/скрыть еще ({{ countStyle }}) стилей</a>
+            </div>
+        {% endif %}
 
     </div>
 </section>
