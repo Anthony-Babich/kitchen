@@ -1,0 +1,64 @@
+<section id="product" style="margin-right: 20px;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-8 text-center">
+                <div class="product-images">
+                    {% for image in images %}
+                        <img src="{{ asset(image) }}" class="slide-product-img">
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-4" id="description">
+                <div class="title">
+                    <h3 class="text-left">{{ kitchen.title }}</h3>
+                </div>
+                <div class="description">
+                    <p>{{ kitchen.description }}</p>
+                </div>
+                <div class="price">
+                    <ul class="nav text-center">
+                        <li class="nav-item">
+                            <p class="head">ЦЕНА СО СКИДКОЙ</p>
+                            <p class="active">от {{ kitchen.price }} руб</p>
+                        </li>
+                        <li class="nav-item">
+                            <p class="head active">СКИДКА</p>
+                            <p class="procent active">{{ kitchen.discount }}%</p>
+                            <a href="#">Смотреть акцию <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <p class="head">ЦЕНА</p>
+                            <p><s>{{ price }} руб</s></p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="static-description">
+                    {% if kitchen.fixedPrice %}
+                        <p>*Цена указана за 1 метр погонный кухни</p>
+                    {% else %}
+                        <p>*Цену и наличие уточняйте</p>
+                    {% endif %}
+                </div>
+                <div>
+                    <button class="btn btn-xl">Бесплатный дизайн-проект кухни</button>
+                </div>
+                <div class="static-icons">
+                    <ul class="nav text-center">
+                        <li class="nav-item">
+                            <p><img src="{{ asset('/web/bundles/kuhni/img/productiontime.png') }}" alt="Срок изготовления"></p>
+                            <p class="desc">Срок изготовления от 15 дней</p>
+                        </li>
+                        <li class="nav-item">
+                            <p><img src="{{ asset('/web/bundles/kuhni/img/guarantee.png') }}" alt="Гарантии"></p>
+                            <p class="desc">2 года гарантии на кухню</p>
+                        </li>
+                        <li class="nav-item">
+                            <p><img src="{{ asset('/web/bundles/kuhni/img/delivery.png') }}" alt="Бесплатная доставка"></p>
+                            <p class="desc">Бесплатная доставка по Москве и Московской области</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

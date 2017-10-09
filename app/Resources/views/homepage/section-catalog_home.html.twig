@@ -11,7 +11,7 @@
         <div class="half fl">
             {% for catalog in catalog %}
                 {% if loop.first %}
-                    <a href="{{ path('kuhni-catalog') }}" class="item big">
+                    <a href="{{ path('kuhni_list') }}" class="item big">
                     <span class="pos">
                         <span class="first-name">{{ catalog.name }}</span>
                         <span class="first-style">{{ catalog.title }}</span>
@@ -24,7 +24,7 @@
         <div class="half fr">
             {% for catalog in catalog %}
                 {% if not loop.first %}
-                    <a href="catalog/stoly/" class="item small">
+                    <a href="#" class="item small">
                         <span class="pos">
                             <span class="name">{{ catalog.name }}</span>
                             <span class="style">{{ catalog.title }}</span>

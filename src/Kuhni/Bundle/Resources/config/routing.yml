@@ -1,6 +1,6 @@
 homepage:
     path:     /
     defaults: { _controller: KuhniBundle:Homepage:index }
-kuhni-catalog:
-    path:     /kuhni-catalog
-    defaults: { _controller: KuhniBundle:KuhniCatalog:index }
+get:
+    resource: "@KuhniBundle/Controller/KuhniCatalogController.php"
+    type:     annotation

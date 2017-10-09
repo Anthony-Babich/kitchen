@@ -31,6 +31,58 @@ class KuhniMaterial
     private $title;
 
     /**
+     * @var KuhniMassive
+     *
+     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\KuhniMassive", cascade={"persist"})
+     * @ORM\JoinColumn(name="id_massive", referencedColumnName="id")
+     */
+    private $massive;
+
+    /**
+     * @return KuhniMassive
+     */
+    public function getMassive(): KuhniMassive
+    {
+        return $this->massive;
+    }
+
+    /**
+     * @param KuhniMassive $massive
+     * @return KuhniMaterial
+     */
+    public function setMassive(KuhniMassive $massive)
+    {
+        $this->massive = $massive;
+        return $this;
+    }
+
+    /**
+     * @var KuhniMdf
+     *
+     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\KuhniMdf", cascade={"persist"})
+     * @ORM\JoinColumn(name="id_mdf", referencedColumnName="id")
+     */
+    private $mdf;
+
+    /**
+     * @return KuhniMdf
+     */
+    public function getMdf(): KuhniMdf
+    {
+        return $this->mdf;
+    }
+
+    /**
+     * @param KuhniMdf $mdf
+     * @return KuhniMaterial
+     */
+    public function setMdf(KuhniMdf $mdf)
+    {
+        $this->mdf = $mdf;
+        return $this;
+    }
+
+    /**
      * @var string
      *
      * @ORM\Column(name="keywords", type="string", length=255)

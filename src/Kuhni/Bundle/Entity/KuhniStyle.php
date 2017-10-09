@@ -33,6 +33,30 @@ class KuhniStyle
     /**
      * @var string
      *
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
+
+    /**
+     * @return string
+     */
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     * @return KuhniStyle
+     */
+    public function setSlug(string $slug)
+    {
+        $this->slug = $slug;
+        return $this;
+    }
+    /**
+     * @var string
+     *
      * @ORM\Column(name="keywords", type="string", length=255)
      */
     private $keywords;

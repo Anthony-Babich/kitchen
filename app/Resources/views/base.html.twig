@@ -15,6 +15,7 @@
 
     {% block stylesheets %}
 
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link href="{{ asset('bundles/kuhni/css/bootstrap.css') }}" rel="stylesheet" type="text/css">
 
         <link href="{{ asset('bundles/kuhni/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
@@ -30,6 +31,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/style.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/responsive.css') }}">
 
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/main.css') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
     {% endblock %}
@@ -56,11 +58,29 @@
         <script src="{{ asset('bundles/kuhni/js/contact_me.js') }}"></script>
 
         <script src="{{ asset('bundles/kuhni/js/agency.js') }}"></script>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 
         <script src="{{ asset('bundles/kuhni/slick/slick.js') }}" type="text/javascript" charset="utf-8"></script>
 
         <script type="text/javascript">
             $(document).ready(function(){
+                $('ul.tabs li').click(function(){
+                    var tab_id = $(this).attr('data-tab');
+
+                    $('ul.tabs li').removeClass('current');
+                    $('.tab-content').removeClass('current');
+
+                    $(this).addClass('current');
+                    $("#"+tab_id).addClass('current');
+                })
+                $('.product-images').slick({
+                    dots: true,
+                    infinite: true,
+                    speed: 500,
+                    fade: true,
+                    arrows: true,
+                    cssEase: 'linear',
+                });
                 $('.featured_links_banner').slick({
                     slidesToShow: 1,
                     slidesToScroll: 1,
@@ -106,8 +126,6 @@
                         }
                     ]
                 });
-
-
                 $('.testimonial_inner').slick({
                     slidesToShow: 1,
                     slidesToScroll: 1,
@@ -116,7 +134,6 @@
                     dots: false,
                     asNavFor: '.slider-nav-thumbnails',
                 });
-
                 $('.slider-nav-thumbnails').slick({
                     slidesToShow: 5,
                     slidesToScroll: 1,
@@ -125,14 +142,8 @@
                     arrows: false,
                     focusOnSelect: true,
                 });
-
-                // Remove active class from all thumbnail slides
                 $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
-
-                // Set active class to first thumbnail slides
                 $('.slider-nav-thumbnails .slick-slide').eq(0).addClass('slick-active');
-
-                // On before slide change match active thumbnail to current slide
                 $('.testimonial_inner').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
                     var mySlideNumber = nextSlide;
                     $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
@@ -140,7 +151,6 @@
                 });
             });
         </script>
-
     {% endblock %}
 </body>
 </html>

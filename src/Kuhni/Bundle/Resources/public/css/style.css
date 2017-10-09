@@ -81,16 +81,12 @@ img::-moz-selection {
   color: #fed136;
   font-size: 60%; }
 
-
-
 header.masthead {
   text-align: center;
   color: white;
-  background: url("/web/bundles/kuhni/img/header-bg.jpg") no-repeat scroll center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; }
+  -o-background-size: cover; }
 header.masthead .intro-text {
   padding-top: 150px;
   padding-bottom: 100px; }
@@ -163,8 +159,6 @@ header.masthead .intro-text .intro-heading {
 
 #portfolio * {
   z-index: 2; }
-
-
 
 .portfolio-modal .modal-dialog {
   max-width: none;
@@ -313,8 +307,6 @@ header.masthead .intro-text .intro-heading {
 .timeline .timeline-body > p {
   margin-bottom: 0; }
 
-
-
 .team-member {
   margin-bottom: 50px;
   text-align: center; }
@@ -328,7 +320,6 @@ header.masthead .intro-text .intro-heading {
   text-transform: none; }
 .team-member p {
   margin-top: 0; }
-
 
 section#ordercall {
   padding: 30px 0 0 0;
@@ -456,8 +447,6 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 .text-primary {
   color: #fed136 !important; }
 
-
-
 .btn-primary {
   font-weight: 700;
   color: white;
@@ -551,9 +540,7 @@ fieldset[disabled] .btn-xl:hover {
 .testimonial .textcol .title {     font-family: 'Open+Sans', Arial, sans-serif;  font-size: 30px; padding: 0 0 10px }
 .testimonial .textcol p {     font-family: 'Open+Sans', Arial, sans-serif;  font-size: 20px }
 
-
 /* ====================== */
-
 
 .images_section h2, .images_section h4 { color: #000; margin: 0; text-align: center; }
 .images_section { padding: 50px 0 0; position: relative; width: 100%; }
@@ -610,13 +597,6 @@ fieldset[disabled] .btn-xl:hover {
 
 .kitchen-catalog h1, h2, h3 {text-align: center;}
 
-
-
-
-
-
-
-
 .clear {
   clear: both;
 }
@@ -631,9 +611,7 @@ fieldset[disabled] .btn-xl:hover {
 
 .setka .item{display: block;position: relative;margin-bottom: 10px;overflow: hidden;color: black;}
 
-
 .setka .item::after{/*background: url(/tpl/css/../img/photo_bottom_gradient.png) 0px 0px repeat-x;content: ' ';*/display: block;position: absolute;bottom: 0;left:0;width: 100%;height: 193px;z-index: 2;}
-
 
 .setka .item .bg{display: block;width: 100%;position: relative;z-index: 1;}
 .setka .item:hover .bg{opacity: 0.6;}
@@ -665,32 +643,8 @@ fieldset[disabled] .btn-xl:hover {
 .setka .last_line .item:last-child{margin-right: 0;}
 .setka .last_line.col3 .item:nth-last-child(4){margin-right: 0;}
 
-
 .setka .last_line.col2 .item{
   width: calc(50% - 5px);
   margin-right: 10px;
 }
 .setka .last_line.col2 .item:nth-last-child(1){margin-right: 0;}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
