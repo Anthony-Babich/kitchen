@@ -115,12 +115,12 @@ class KuhniCatalogController extends Controller
     }
 
     /**
-     * @Route("/{slugStyle}/{nameproduct}/", name="kuhni_product")
+     * @Route("/{slug}/{nameproduct}/", name="kuhni_product")
      * @Method({"GET", "POST"})
-     * @param $slugStyle, $nameproduct
+     * @param $slug, $nameproduct
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function productAction($slugStyle, $nameproduct)
+    public function productStyleAction($slug, $nameproduct)
     {
         $result = $this->getDoctrine()->getManager()
             ->getRepository('KuhniBundle:Kuhni')
@@ -158,7 +158,7 @@ class KuhniCatalogController extends Controller
             'kitchen' => $result,
             'price' => $price,
             'images' => $image,
-            'slugStyle' => $slugStyle,
+            'slug' => $slug,
             'fasades' => $fasades,
             'imageFasades' => $imageFasades,
             'material' => $material,
