@@ -18,19 +18,19 @@ class KuhniCatalogController extends Controller
      */
     public function indexAction()
     {
+        $resultMaterial = $this->result('KuhniMaterial');
+        $countMaterial = count($resultMaterial)-4;
+        $imageMaterial = $this->imagePath($resultMaterial, 'material');
+
+        $resultColor = $this->result('KuhniColor');
+
         $resultStyle = $this->result('KuhniStyle');
         $countStyle = count($resultStyle)-4;
         $imageStyle = $this->imagePath($resultStyle, 'style');
 
-        $resultColor = $this->result('KuhniColor');
-
         $resultConfig = $this->result('KuhniConfig');
         $countConfig = count($resultConfig)-4;
         $imageConfig = $this->imagePath($resultConfig, 'config');
-
-        $resultMaterial = $this->result('KuhniMaterial');
-        $countMaterial = count($resultMaterial)-4;
-        $imageMaterial = $this->imagePath($resultMaterial, 'material');
 
         return $this->render('kuhni/index.html.twig', array(
             'style' => $resultStyle,
@@ -49,12 +49,25 @@ class KuhniCatalogController extends Controller
         ));
     }
 
+    /**
+     * @param string $db
+     * @return mixed
+     */
     private function result(string $db){
         $db = 'KuhniBundle:'.$db;
         $qb = $this->getDoctrine()->getManager()->getRepository($db)
             ->createQueryBuilder('n');
-        $qb->select('n')->orderBy('n.id');
-        return $qb->getQuery()->getResult();
+        $qb->select('DISTINCT n.title');
+        $titles = $qb->getQuery()->getResult();
+
+        foreach ($titles as $title) {
+            $result[] = $this->getDoctrine()->getManager()
+                ->getRepository($db)
+                ->findOneBy(array('title' => $title['title']));
+        }
+        if (!empty($result)){
+            return $result;
+        }
     }
 
     /**
@@ -97,20 +110,21 @@ class KuhniCatalogController extends Controller
         return $this->render('kuhni/kuhniStyle/index.html.twig', array(
             'kitchens' => $result,
             'image' => $image,
+            'slug' => $slug
         ));
     }
 
     /**
-     * @Route("/{slug}/", name="kuhni_product")
+     * @Route("/{slugStyle}/{nameproduct}/", name="kuhni_product")
      * @Method({"GET", "POST"})
-     * @param $slug
+     * @param $slugStyle, $nameproduct
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showProductAction($slug)
+    public function productAction($slugStyle, $nameproduct)
     {
         $result = $this->getDoctrine()->getManager()
             ->getRepository('KuhniBundle:Kuhni')
-            ->findOneBy(array('slug' => $slug));
+            ->findOneBy(array('slug' => $nameproduct));
         $id = $result->getId();
 
         $images = $this->getDoctrine()->getManager()
@@ -121,10 +135,33 @@ class KuhniCatalogController extends Controller
 
         $price = ($result->getPrice() * $result->getDiscount()) / 100 + $result->getPrice();
 
+        //search all fasades
+
+        //SELECT * FROM `fasad_color` where fasad_color.id_kuhni_material = 3;
+        $qb = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:FasadColor')
+            ->createQueryBuilder('n');
+        $qb->select('n')
+            ->where('n.idKuhniMaterial = :id')
+            ->setParameter('id', $result->getIdKuhniMaterial());
+        $fasades = $qb->getQuery()->getResult();
+
+        $qb = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:KuhniMaterial')
+            ->createQueryBuilder('n');
+        $qb->select('n')
+            ->where('n.id = :id')
+            ->setParameter('id', $result->getIdKuhniMaterial());
+        $material = $qb->getQuery()->getResult();
+
+        $imageFasades = $this->imagePath($fasades, 'config');
+
         return $this->render('product/index.html.twig', array(
             'kitchen' => $result,
             'price' => $price,
             'images' => $image,
+            'slugStyle' => $slugStyle,
+            'fasades' => $fasades,
+            'imageFasades' => $imageFasades,
+            'material' => $material,
         ));
     }
 }

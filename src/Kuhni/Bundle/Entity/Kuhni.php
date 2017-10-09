@@ -24,29 +24,53 @@ class Kuhni
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="razmer", type="string")
+     */
+    private $razmer;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nameFasad", type="string")
+     */
+    private $nameFasad;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="matFasad", type="string")
+     */
+    private $matFasad;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="stoleshnica", type="string")
+     */
+    private $stoleshnica;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="korpus", type="string")
+     */
+    private $korpus;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="furnitura", type="string")
+     */
+    private $furnitura;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="fixedPrice", type="boolean")
      */
     private $fixedPrice;
-
-    /**
-     * @return bool
-     */
-    public function isFixedPrice(): bool
-    {
-        return $this->fixedPrice;
-    }
-
-    /**
-     * @param bool $fixedPrice
-     * @return Kuhni
-     */
-    public function setFixedPrice(bool $fixedPrice)
-    {
-        $this->fixedPrice = $fixedPrice;
-        return $this;
-    }
 
     /**
      * @var KuhniStyle
@@ -79,25 +103,6 @@ class Kuhni
      * @ORM\JoinColumn(name="id_kuhni_color", referencedColumnName="id")
      */
     private $idKuhniColor;
-
-    /**
-     * @return \DateTime
-     */
-    public function getUpdated(): \DateTime
-    {
-        return $this->updated;
-    }
-
-    /**
-     * @param \DateTime $updated
-     * @return Kuhni
-     */
-    public function setUpdated(\DateTime $updated)
-    {
-        $this->updated = $updated;
-        return $this;
-    }
-
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
@@ -124,6 +129,153 @@ class Kuhni
      * @var \DateTime
      */
     private $updated;
+
+    /**
+     * @var Catalog
+     *
+     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\Catalog", cascade={"persist"})
+     * @ORM\JoinColumn(name="id_catalog", referencedColumnName="id")
+     */
+    private $idCatalog;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="price", type="integer")
+     */
+    private $price;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="likes", type="integer")
+     */
+    private $likes;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="count_projects", type="integer")
+     */
+    private $count_projects;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="discount", type="integer")
+     */
+    private $discount;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="keywords", type="string", length=255)
+     */
+    private $keywords;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="main_description", type="string", length=255)
+     */
+    private $mainDescription;
+
+    /**
+     * @return int
+     */
+    public function getLikes(): int
+    {
+        return $this->likes;
+    }
+
+    /**
+     * @param int $likes
+     */
+    public function setLikes(int $likes)
+    {
+        $this->likes = $likes;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCountProjects(): int
+    {
+        return $this->count_projects;
+    }
+
+    /**
+     * @param int $count_projects
+     */
+    public function setCountProjects(int $count_projects)
+    {
+        $this->count_projects = $count_projects;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFixedPrice(): bool
+    {
+        return $this->fixedPrice;
+    }
+
+    /**
+     * @param bool $fixedPrice
+     * @return Kuhni
+     */
+    public function setFixedPrice(bool $fixedPrice)
+    {
+        $this->fixedPrice = $fixedPrice;
+        return $this;
+    }
+
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdated(): \DateTime
+    {
+        return $this->updated;
+    }
+
+    /**
+     * @param \DateTime $updated
+     * @return Kuhni
+     */
+    public function setUpdated(\DateTime $updated)
+    {
+        $this->updated = $updated;
+        return $this;
+    }
 
     /**
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
@@ -264,14 +416,6 @@ class Kuhni
     }
 
     /**
-     * @var Catalog
-     *
-     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\Catalog", cascade={"persist"})
-     * @ORM\JoinColumn(name="id_catalog", referencedColumnName="id")
-     */
-    private $idCatalog;
-
-    /**
      * @return Catalog
      */
     public function getIdCatalog(): Catalog
@@ -327,34 +471,6 @@ class Kuhni
     }
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="price", type="integer")
-     */
-    private $price;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="discount", type="integer")
-     */
-    private $discount;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="slug", type="string", length=255)
-     */
-    private $slug;
-
-    /**
      * @return string
      */
     public function getSlug(): string
@@ -371,35 +487,6 @@ class Kuhni
         $this->slug = $slug;
         return $this;
     }
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="title", type="string", length=255)
-     */
-    private $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="string", length=255)
-     */
-    private $description;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="keywords", type="string", length=255)
-     */
-    private $keywords;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="main_description", type="string", length=255)
-     */
-    private $mainDescription;
-
 
     /**
      * Get id
@@ -530,6 +617,115 @@ class Kuhni
     {
         return $this->mainDescription;
     }
+
+    /**
+     * @return string
+     */
+    public function getRazmer(): string
+    {
+        return $this->razmer;
+    }
+
+    /**
+     * @param string $razmer
+     * @return Kuhni
+     */
+    public function setRazmer(string $razmer)
+    {
+        $this->razmer = $razmer;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameFasad(): string
+    {
+        return $this->nameFasad;
+    }
+
+    /**
+     * @param string $nameFasad
+     * @return Kuhni
+     */
+    public function setNameFasad(string $nameFasad)
+    {
+        $this->nameFasad = $nameFasad;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMatFasad(): string
+    {
+        return $this->matFasad;
+    }
+
+    /**
+     * @param string $matFasad
+     * @return Kuhni
+     */
+    public function setMatFasad(string $matFasad)
+    {
+        $this->matFasad = $matFasad;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStoleshnica(): string
+    {
+        return $this->stoleshnica;
+    }
+
+    /**
+     * @param string $stoleshnica
+     * @return Kuhni
+     */
+    public function setStoleshnica(string $stoleshnica)
+    {
+        $this->stoleshnica = $stoleshnica;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getKorpus(): string
+    {
+        return $this->korpus;
+    }
+
+    /**
+     * @param string $korpus
+     * @return Kuhni
+     */
+    public function setKorpus(string $korpus)
+    {
+        $this->korpus = $korpus;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFurnitura(): string
+    {
+        return $this->furnitura;
+    }
+
+    /**
+     * @param string $furnitura
+     * @return Kuhni
+     */
+    public function setFurnitura(string $furnitura)
+    {
+        $this->furnitura = $furnitura;
+        return $this;
+    }
+
 
     /**
      * @return string

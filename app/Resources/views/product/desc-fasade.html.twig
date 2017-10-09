@@ -22,27 +22,27 @@
                     <tbody>
                         <tr>
                             <th>Размер</th>
-                            <td>280х160см</td>
+                            <td>{{ kitchen.razmer }}</td>
                         </tr>
                         <tr>
                             <th>Название фасада</th>
-                            <td>Акрил Како, Акрил Винил</td>
+                            <td>{{ kitchen.nameFasad }}</td>
                         </tr>
                         <tr>
                             <th>Материал фасада</th>
-                            <td>Акрил</td>
+                            <td>{{ kitchen.matFasad }}</td>
                         </tr>
                         <tr>
                             <th>Столешница</th>
-                            <td>Бежевый гранит 38мм</td>
+                            <td>{{ kitchen.stoleshnica }}</td>
                         </tr>
                         <tr>
                             <th>Корпус</th>
-                            <td>ЛДСП Негро 18мм</td>
+                            <td>{{ kitchen.korpus }}</td>
                         </tr>
                         <tr>
                             <th>Фурнитура</th>
-                            <td>Hettich, Blum, FGV</td>
+                            <td>{{ kitchen.furnitura }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -52,14 +52,13 @@
                     <div class="title">
                         Возможные варианты цветового исполнения фасадов
                         <span>
-                            кухни из акрила
+                            {{ material[0].title }}
                         </span>
                     </div>
                     <div class="images-fasad">
-                        <img src="img/logos/1.png" alt="1" title="1">
-                        <img src="img/logos/2.png" alt="2" title="2">
-                        <img src="img/logos/3.png" alt="3" title="3">
-                        <img src="img/logos/4.png" alt="4" title="4">
+                        {% for fasad in fasades %}
+                            <img src="{{ asset(imageFasades[loop.index0]) }}" alt="{{ fasad.alt }}" title="{{ fasad.title }}">
+                        {% endfor %}
                     </div>
                 </div>
             </div>

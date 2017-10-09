@@ -3,9 +3,17 @@
 namespace Kuhni\Bundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class HomepageController extends Controller
 {
+    private $session;
+    public function __construct()
+    {
+        $this->session = new Session();
+        $this->session->set('likeKuhniProduct', 0);
+    }
+
     public function indexAction()
     {
         //Создаем построитель запросов Doctrine
