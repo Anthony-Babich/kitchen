@@ -7,13 +7,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
+ * @Method({"GET", "POST"})
  * @Route("/kuhni")
  */
 class KuhniCatalogController extends Controller
 {
     /**
      * @Route("/", name="kuhni_list")
-     * @Method({"GET", "POST"})
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
@@ -90,33 +90,7 @@ class KuhniCatalogController extends Controller
     }
 
     /**
-     * @Route("/{slug}/", name="kuhni_style")
-     * @Method({"GET", "POST"})
-     * @param $slug
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function showStyleAction($slug)
-    {
-        $entity = $this->getDoctrine()->getManager()
-            ->getRepository('KuhniBundle:KuhniStyle')
-            ->findOneBy(array('slug' => $slug));
-        $id = $entity->getId();
-        $result = $this->getDoctrine()->getManager()
-            ->getRepository('KuhniBundle:Kuhni')
-            ->findByIdKuhniStyle($id);
-
-        $image = $this->imagePath($result, 'kitchens');
-
-        return $this->render('kuhni/kuhniStyle/index.html.twig', array(
-            'kitchens' => $result,
-            'image' => $image,
-            'slug' => $slug
-        ));
-    }
-
-    /**
      * @Route("/{slug}/{nameproduct}/", name="kuhni_product")
-     * @Method({"GET", "POST"})
      * @param $slug, $nameproduct
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -164,4 +138,64 @@ class KuhniCatalogController extends Controller
             'material' => $material,
         ));
     }
+
+    /**
+     * @Route("/{slug}/", name="kuhni_parameters")
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function styleAction($slug)
+    {
+        $result = $this->searchParametr($slug);
+
+        $image = $this->imagePath($result, 'kitchens');
+
+        return $this->render('kuhni/kuhniStyle/index.html.twig', array(
+            'kitchens' => $result,
+            'image' => $image,
+            'slug' => $slug
+        ));
+    }
+
+    private function searchParametr(string $slug){
+        $entity = $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:KuhniStyle')
+            ->findOneBy(array('slug' => $slug));
+        if (empty($entity)){
+            $entity = $this->getDoctrine()->getManager()
+                ->getRepository('KuhniBundle:KuhniConfig')
+                ->findOneBy(array('slug' => $slug));
+            if (empty($entity)){
+                $entity = $this->getDoctrine()->getManager()
+                    ->getRepository('KuhniBundle:KuhniMaterial')
+                    ->findOneBy(array('slug' => $slug));
+                if (empty($entity)){
+                    $entity = $this->getDoctrine()->getManager()
+                        ->getRepository('KuhniBundle:KuhniColor')
+                        ->findOneBy(array('slug' => $slug));
+                    $id = $entity->getId();
+                    $result = $this->getDoctrine()->getManager()
+                        ->getRepository('KuhniBundle:Kuhni')
+                        ->findByIdKuhniColor($id);
+                }else{
+                    $id = $entity->getId();
+                    $result = $this->getDoctrine()->getManager()
+                        ->getRepository('KuhniBundle:Kuhni')
+                        ->findByIdKuhniMaterial($id);
+                }
+            }else{
+                $id = $entity->getId();
+                $result = $this->getDoctrine()->getManager()
+                    ->getRepository('KuhniBundle:Kuhni')
+                    ->findByIdKuhniConfig($id);
+            }
+        }else{
+            $id = $entity->getId();
+            $result = $this->getDoctrine()->getManager()
+                ->getRepository('KuhniBundle:Kuhni')
+                ->findByIdKuhniStyle($id);
+        }
+        return $result;
+    }
+
 }

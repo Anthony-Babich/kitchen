@@ -11,7 +11,7 @@
             {% for kitchen in kitchens %}
                 <div class="col-md-3 col-sm-6 portfolio-item">
                     <div class="portfolio-link">
-                        <a href="{{ path('kuhni_product', {'slugStyle' : slug, 'nameproduct' : kitchen.slug}) }}">
+                        <a href="{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : kitchen.slug}) }}">
                             <img class="img-fluid" src="{{ asset( image[loop.index0] ) }}" alt="{{ kitchen.keywords }}" title="{{ kitchen.title }}">
                         </a>
                     </div>
