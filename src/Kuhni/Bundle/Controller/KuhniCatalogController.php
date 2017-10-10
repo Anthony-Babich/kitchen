@@ -128,6 +128,18 @@ class KuhniCatalogController extends Controller
 
         $imageFasades = $this->imagePath($fasades, 'config');
 
+        //Данные для модельного окна с каталогом товаров
+        $qb = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:Catalog')
+            ->createQueryBuilder('n');
+        $qb->select('n')->orderBy('n.id');
+        $resultCatalog = $qb->getQuery()->getResult();
+
+        if (!empty($resultCatalog)){
+            foreach ($resultCatalog as $item) {
+                $imageCatalog[] = 'upload/catalog/' . $item->getImageName();
+            }
+        }
+
         return $this->render('product/index.html.twig', array(
             'kitchen' => $result,
             'price' => $price,
@@ -136,6 +148,8 @@ class KuhniCatalogController extends Controller
             'fasades' => $fasades,
             'imageFasades' => $imageFasades,
             'material' => $material,
+            'catalog' => $resultCatalog,
+            'imageCatalog' => $imageCatalog,
         ));
     }
 
@@ -144,20 +158,8 @@ class KuhniCatalogController extends Controller
      * @param $slug
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function styleAction($slug)
+    public function allParametersAction($slug)
     {
-        $result = $this->searchParametr($slug);
-
-        $image = $this->imagePath($result, 'kitchens');
-
-        return $this->render('kuhni/kuhniStyle/index.html.twig', array(
-            'kitchens' => $result,
-            'image' => $image,
-            'slug' => $slug
-        ));
-    }
-
-    private function searchParametr(string $slug){
         $entity = $this->getDoctrine()->getManager()
             ->getRepository('KuhniBundle:KuhniStyle')
             ->findOneBy(array('slug' => $slug));
@@ -173,29 +175,39 @@ class KuhniCatalogController extends Controller
                     $entity = $this->getDoctrine()->getManager()
                         ->getRepository('KuhniBundle:KuhniColor')
                         ->findOneBy(array('slug' => $slug));
+                    $rend = 'Color';
                     $id = $entity->getId();
                     $result = $this->getDoctrine()->getManager()
                         ->getRepository('KuhniBundle:Kuhni')
                         ->findByIdKuhniColor($id);
                 }else{
+                    $rend = 'Material';
                     $id = $entity->getId();
                     $result = $this->getDoctrine()->getManager()
                         ->getRepository('KuhniBundle:Kuhni')
                         ->findByIdKuhniMaterial($id);
                 }
             }else{
+                $rend = 'Config';
                 $id = $entity->getId();
                 $result = $this->getDoctrine()->getManager()
                     ->getRepository('KuhniBundle:Kuhni')
                     ->findByIdKuhniConfig($id);
             }
         }else{
+            $rend = 'Style';
             $id = $entity->getId();
             $result = $this->getDoctrine()->getManager()
                 ->getRepository('KuhniBundle:Kuhni')
                 ->findByIdKuhniStyle($id);
         }
-        return $result;
-    }
 
+        $image = $this->imagePath($result, 'kitchens');
+
+        return $this->render('kuhni/kuhni'.$rend.'/index.html.twig', array(
+            'kitchens' => $result,
+            'image' => $image,
+            'slug' => $slug,
+        ));
+    }
 }
