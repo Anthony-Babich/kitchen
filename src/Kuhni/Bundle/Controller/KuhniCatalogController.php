@@ -94,7 +94,7 @@ class KuhniCatalogController extends Controller
      * @param $slug, $nameproduct
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function productStyleAction($slug, $nameproduct)
+    public function productAction($slug, $nameproduct)
     {
         $result = $this->getDoctrine()->getManager()
             ->getRepository('KuhniBundle:Kuhni')
@@ -106,8 +106,6 @@ class KuhniCatalogController extends Controller
             ->findByKuhniId($id);
 
         $image = $this->imagePath($images, 'kitchens');
-
-        $price = ($result->getPrice() * $result->getDiscount()) / 100 + $result->getPrice();
 
         //search all fasades
 
@@ -130,7 +128,6 @@ class KuhniCatalogController extends Controller
 
         return $this->render('product/index.html.twig', array(
             'kitchen' => $result,
-            'price' => $price,
             'images' => $image,
             'slug' => $slug,
             'fasades' => $fasades,
@@ -144,14 +141,16 @@ class KuhniCatalogController extends Controller
      * @param $slug
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function styleAction($slug)
+    public function parametersAction($slug)
     {
         $result = $this->searchParametr($slug);
 
         $image = $this->imagePath($result, 'kitchens');
 
-        return $this->render('kuhni/kuhniStyle/index.html.twig', array(
+        $countretult = ceil(count($result)/10);
+        return $this->render('kuhni/kuhniParameters/index.html.twig', array(
             'kitchens' => $result,
+            'countKitchens' => $countretult,
             'image' => $image,
             'slug' => $slug
         ));

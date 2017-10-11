@@ -147,7 +147,9 @@ header.masthead .intro-text .intro-heading {
   margin: 0 auto;
   padding: 25px;
   text-align: center;
-  background-color: white; }
+  border: 1px solid #868e96}
+#portfolio .portfolio-item .portfolio-caption:hover {
+  cursor: pointer;}
 #portfolio .portfolio-item .portfolio-caption h4 {
   margin: 0;
   text-transform: none; }

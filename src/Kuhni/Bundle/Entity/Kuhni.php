@@ -148,6 +148,13 @@ class Kuhni
     /**
      * @var integer
      *
+     * @ORM\Column(name="noDiscountPrice", type="integer")
+     */
+    private $noDiscountPrice;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="likes", type="integer")
      */
     private $likes;
@@ -207,6 +214,24 @@ class Kuhni
      * @ORM\Column(name="main_description", type="string", length=255)
      */
     private $mainDescription;
+
+    /**
+     * @return int
+     */
+    public function getNoDiscountPrice(): int
+    {
+        return $this->noDiscountPrice;
+    }
+
+    /**
+     * @param int $noDiscountPrice
+     * @return Kuhni
+     */
+    public function setNoDiscountPrice(int $noDiscountPrice)
+    {
+        $this->noDiscountPrice = $noDiscountPrice;
+        return $this;
+    }
 
     /**
      * @return int
