@@ -167,7 +167,7 @@
 .newsletter .invite { max-width: 100% }
 .ue-banner { height: 500px }
 .retailer_inner .slick-track .slick-slide { max-width: 20% }
-.close_btn_container { background: rgba(0, 0, 0, 0) none repeat scroll 0 0; left: 0px; margin-left: 0px; position: fixed; text-align: right; width: 99%; z-index: 99999; }
+.close_btn_container { background: rgba(0, 0, 0, 0) none repeat scroll 0 0; left: 0; margin-left: 0; position: fixed; text-align: right; width: 99%; z-index: 99999; }
 }
 @media all and (min-width:1254px) {
 .effects_section .products_all { min-height: 280px }
@@ -229,7 +229,7 @@
 .newsletter input { margin-bottom: 10px }
 .newsletter .invite { margin: 0 auto }
 .image-wrap { height: 62px }
-.featured_links .cols { height: auto; min-height: auto }
+.featured_links .cols { height: auto; }
 }
 @media all and (max-width:938px) {
 .effects_section { background-size: 100% auto; padding: 65px 0 0; width: 380px }
@@ -282,11 +282,11 @@
 .featured_links_banner .learn_more { margin-top: 8px }
 .featured_links_banner p { padding-top: 7px }
 .banner.ue-banner .wonderboom-banner .banner_conent { bottom: 15% }
-.banner.ue-banner .wonderboom-banner .banner_logo img { padding: 0px 10px; }
+.banner.ue-banner .wonderboom-banner .banner_logo img { padding: 0 10px; }
 .banner.ue-banner .wonderboom-banner .inner_content { margin-bottom: 25px; }
 .banner.ue-banner .wonderboom-banner .span1 { font-size: 45px; }
 .banner.ue-banner .wonderboom-banner .span2 { font-size: 35px; }
-.banner.ue-banner .wonderboom-banner { padding: 0px; }
+.banner.ue-banner .wonderboom-banner { padding: 0; }
 .banner_conent { max-width: 100% }
 .banner.ue-banner { background-position: right center !important; height: 300px; }
 .art_banner_text .span1, .art_banner_text .span2, .art_banner_text .span3 { padding: 0 10px }
@@ -322,7 +322,7 @@ body { padding-top: 46px!important }
 .effects_section .party .textcol { margin: 5px -24px 0 0; padding: 5px 23px 5px 20px; min-height: 60px }
 #compare button.close { border-radius: 0 5px 0 0; margin: 0!important }
 .products_all { padding: 20px 10px; }
-.featured_links_banner .content { padding: 0px 15px }
+.featured_links_banner .content { padding: 0 15px }
 .featured_links_banner p { width: 628px }
 }
 @media all and (max-width:667px) {
@@ -346,7 +346,7 @@ body { padding-top: 46px!important }
 .advanced, .waterproof, .party, .sound { text-align: center; }
 .effects_section .imagecol, .effects_section .imagecol2 { display: inline-block; float: none; margin: 0 auto; }
 .effects_section .textcol p, .effects_section .textcol2 p { display: none }
-.effects_section .textcol, .effects_section .textcol2, .effects_section .party .textcol { clear: both; display: block; float: none; margin: 5px 0 0; min-height: auto; padding: 2px 5px; width: 95px; word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+.effects_section .textcol, .effects_section .textcol2, .effects_section .party .textcol { clear: both; display: block; float: none; margin: 5px 0 0; padding: 2px 5px; width: 95px; word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
 }
 @media all and (max-width:600px) {
 section .images_section:first-child { display: block; width: 100% }
@@ -364,13 +364,13 @@ section .images_section:first-child { display: block; width: 100% }
 .it-it .banner_conent h2, .it-it .banner_conent h3, .ko-kr .banner_conent h2, .ko-kr .banner_conent h3 { font-size: 20px; line-height: 20px }
 .featured_links_banner .content { padding: 15px }
 .banner.ue-banner .wonderboom-banner { background-position: right center !important; }
-.banner.ue-banner .wonderboom-banner .banner_conent { width: 100%; max-width: inherit; left: 0px; }
+.banner.ue-banner .wonderboom-banner .banner_conent { width: 100%; max-width: inherit; left: 0; }
 .banner.ue-banner .wonderboom-banner .banner_conent_inner { margin-bottom: 20px; }
 .banner.ue-banner .wonderboom-banner .span1 { font-size: 55px; }
 .banner.ue-banner .wonderboom-banner .span2 { font-size: 40px; }
 .banner_conent_inner { float: none }
 .banner_conent { max-width: 100%; width: 100%; }
-.banner.ue-banner .wonderboom-banner .banner_logo img { padding: 0px; }
+.banner.ue-banner .wonderboom-banner .banner_logo img { padding: 0; }
 .featured_links_banner .mob_banner { display: block; width: 100%;}
 .featured_links_banner img { display: none;}
 .featured_links_banner p { width: 425px; }
@@ -401,7 +401,7 @@ section .images_section:first-child { display: block; width: 100% }
 .banner_conent .btn-wrap .buy_btn:last-of-type { font-size: 14px; height: 35px; line-height: 35px; margin-left: 5px; padding: 0 10px; margin-top: 0 }
 .features .buy_btn { font-size: 11px; padding: 0 14px; height: 37px; line-height: 37px; margin-bottom: 10px }
 .featured_links_banner .learn_more { margin-top: 10px }
-#tab-38 .effects_section .textcol { margin: 5px 0px 0px; }
+#tab-38 .effects_section .textcol { margin: 5px 0 0; }
 .featured_links_banner .sub_title { font-size: 44px; line-height: 44px; }
 .featured_links_banner .title { font-size: 55px; line-height: 55px; }
 .featured_links_banner p { font-size: 17px; }
@@ -420,7 +420,7 @@ section .images_section:first-child { display: block; width: 100% }
 .party, .sound { left: 15px }
 .images_section .sub-head div { font-size: 10px; padding: 5px 10px }
 .banner_conent .btn-wrap .buy_btn:last-of-type { font-size: 12px; height: 30px; line-height: 30px; margin-left: 5px; padding: 0 10px; margin-top: 0 }
-.featured_links_banner .content { width: 100%; height: 100%; padding: 20px 15px; margin: 0px; left: 0px; }
+.featured_links_banner .content { width: 100%; height: 100%; padding: 20px 15px; margin: 0; left: 0; }
 .banner.ue-banner .wonderboom-banner .banner_logo img { width: 280px; }
 .banner.ue-banner .wonderboom-banner .span1 { font-size: 40px; }
 .banner.ue-banner .wonderboom-banner .span2 { font-size: 25px; }
