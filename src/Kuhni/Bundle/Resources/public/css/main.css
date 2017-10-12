@@ -111,10 +111,7 @@ header.masthead.all {
     margin-right: 5px; }
 
 #calc {
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-top: 0;
-  margin-bottom: 30px;
+  margin: 0 15px 30px;
   padding: 0; }
   #calc .row .vkladka {
     border: 1px solid black;
@@ -135,19 +132,15 @@ header.masthead.all {
     border-left: none; }
 
 #more-prod {
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-top: 0;
-  margin-bottom: 30px;
+  margin: 0 15px 30px;
   padding: 0; }
   #more-prod #see-more .left-desc {
     width: 50%; }
     #more-prod #see-more .left-desc p {
-      padding: 0;
       margin: 0;
       font-size: 14px;
       color: #7f7f7f;
-      padding-right: 15px; }
+      padding: 0 15px 0 0; }
     #more-prod #see-more .left-desc .title {
       text-transform: uppercase;
       color: #193153; }
@@ -161,11 +154,11 @@ header.masthead.all {
 span {
   padding: 0; }
 
-#all-products .setka {
+#all-products {
   line-height: 1.15;
   padding: 0; }
-  #all-products .setka .like {
-    background-color: none;
+  #all-products a .like {
+    background-color: unset;
     width: 80px;
     height: 50px;
     font-size: 16px;
@@ -175,7 +168,7 @@ span {
     position: absolute;
     z-index: 99;
     color: red; }
-  #all-products .setka .phone {
+  #all-products a .phone {
     background-color: rgba(228, 228, 228, 0.79);
     width: 50px;
     height: 50px;
@@ -185,11 +178,10 @@ span {
     padding: 7px;
     position: absolute;
     z-index: 10; }
-  #all-products .setka .pos-bot-r.desc {
+  #all-products a .pos-bot-r.desc {
     color: #3f3f3f;
     line-height: 1;
-    padding: 0;
-    padding-top: 12px;
+    padding: 12px 0 0;
     height: 50px;
     width: 50px;
     position: absolute;
@@ -197,9 +189,9 @@ span {
     z-index: 10;
     background-color: yellow;
     font-size: 12px; }
-    #all-products .setka .pos-bot-r.desc .title {
+    #all-products a .pos-bot-r.desc .title {
       font-size: 18px; }
-  #all-products .setka .pos-bot-l {
+  #all-products a .pos-bot-l {
     color: #3f3f3f;
     position: absolute;
     width: 100%;
@@ -210,47 +202,54 @@ span {
     padding-bottom: 0;
     padding-right: 5px;
     background-color: rgba(228, 228, 228, 0.7); }
-    #all-products .setka .pos-bot-l div {
+    #all-products a .pos-bot-l div {
       margin-top: 10px;
       margin-left: 10px; }
-    #all-products .setka .pos-bot-l .last-price .through {
+    #all-products a .pos-bot-l .last-price .through {
       text-decoration: line-through; }
-    #all-products .setka .pos-bot-l .now-price {
+    #all-products a .pos-bot-l .now-price {
       color: red; }
-  #all-products .setka .item.big .phone {
-    bottom: 60px; }
-  #all-products .setka .item.big .pos-bot-r.desc {
-    bottom: 0; }
-  #all-products .setka .item.big .pos-bot-l {
-    width: 90%; }
-    #all-products .setka .item.big .pos-bot-l ul.nav > .left {
-      width: 60%; }
-    #all-products .setka .item.big .pos-bot-l ul.nav > .right {
-      width: 40%; }
-    #all-products .setka .item.big .pos-bot-l .first-name {
-      font-size: 17px; }
-    #all-products .setka .item.big .pos-bot-l .first-desc {
-      color: #7f7f7f;
-      font-size: 12px; }
-    #all-products .setka .item.big .pos-bot-l .last-price {
-      font-size: 14px; }
-    #all-products .setka .item.big .pos-bot-l .now-price {
-      font-size: 20px; }
-  #all-products .setka .item.small .pos-bot-l {
-    width: 100%; }
-    #all-products .setka .item.small .pos-bot-l ul.nav > .left {
-      width: 50%; }
-    #all-products .setka .item.small .pos-bot-l ul.nav > .right {
-      width: 50%; }
-    #all-products .setka .item.small .pos-bot-l .first-name {
-      font-size: 14px; }
-    #all-products .setka .item.small .pos-bot-l .last-price {
-      font-size: 13px; }
-    #all-products .setka .item.small .pos-bot-l .now-price {
-      font-size: 16px; }
-  #all-products .setka .item.small .phone {
-    top: 60px; }
-  #all-products .setka .item.small .pos-bot-r.desc {
-    top: 0; }
+  #all-products .big-col {
+    padding: 0;
+    margin-bottom: 10px; }
+    #all-products .big-col .phone {
+      bottom: 78px; }
+    #all-products .big-col .pos-bot-r.desc {
+      bottom: 0; }
+    #all-products .big-col .pos-bot-l {
+      width: 90%; }
+      #all-products .big-col .pos-bot-l ul.nav > .left {
+        width: 60%; }
+      #all-products .big-col .pos-bot-l ul.nav > .right {
+        width: 40%; }
+      #all-products .big-col .pos-bot-l .first-name {
+        font-size: 17px; }
+      #all-products .big-col .pos-bot-l .first-desc {
+        color: #7f7f7f;
+        font-size: 12px; }
+      #all-products .big-col .pos-bot-l .last-price {
+        font-size: 14px; }
+      #all-products .big-col .pos-bot-l .now-price {
+        font-size: 20px; }
+  #all-products .small-col {
+    padding: 0;
+    flex: 0 0 calc(50% - 10px); }
+    #all-products .small-col .pos-bot-l {
+      width: 100%; }
+      #all-products .small-col .pos-bot-l ul.nav > .left {
+        width: 50%; }
+      #all-products .small-col .pos-bot-l ul.nav > .right {
+        width: 50%; }
+      #all-products .small-col .pos-bot-l .first-name {
+        font-size: 14px; }
+      #all-products .small-col .pos-bot-l .last-price {
+        font-size: 13px; }
+      #all-products .small-col .pos-bot-l .now-price {
+        font-size: 16px; }
+    #all-products .small-col .phone {
+      top: 0;
+      right: 60px; }
+    #all-products .small-col .pos-bot-r.desc {
+      top: 0; }
 
 /*# sourceMappingURL=main.css.map */

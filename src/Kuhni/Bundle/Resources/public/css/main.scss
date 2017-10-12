@@ -149,10 +149,7 @@ header.masthead.all{
 	}
 }
 #calc{
-	margin-left: 15px; 
-	margin-right: 15px; 
-	margin-top: 0;
-	margin-bottom: 30px;
+	margin: 0 15px 30px;
 	padding: 0;
 	.row{
 		.vkladka{
@@ -180,20 +177,16 @@ header.masthead.all{
 	}  
 }
 #more-prod{
-	margin-left: 15px; 
-	margin-right: 15px; 
-	margin-top: 0;
-	margin-bottom: 30px;
+	margin: 0 15px 30px;
 	padding: 0;
 	#see-more{
 		.left-desc{
 			width: 50%; 
 			p{
-				padding: 0;
-				margin: 0;  
+				margin: 0;
 				font-size: 14px; 
 				color: #7f7f7f;
-				padding-right: 15px; 
+				padding: 0 15px 0 0;
 			}
 			.title{
 				text-transform: uppercase ;
@@ -210,15 +203,13 @@ header.masthead.all{
 		}
 	}
 }
-span{
-	padding: 0;
-}
+span{padding: 0;}
 #all-products{
-	.setka{
-		line-height: 1.15;
-		padding: 0;
+	line-height: 1.15;
+	padding: 0;
+	a{
 		.like{
-			background-color: none;
+			background-color: unset;
 			width: 80px;
 			height: 50px;
 			font-size: 16px;
@@ -243,8 +234,7 @@ span{
 		.pos-bot-r.desc {
 			color: #3f3f3f;
 			line-height: 1;
-			padding: 0;
-			padding-top: 12px;
+			padding: 12px 0 0;
 			height: 50px;
 			width: 50px;
 			position: absolute;
@@ -280,61 +270,66 @@ span{
 				color: red;
 			}
 		}
-		.item.big{
-			.phone{
-				bottom: 60px;
+	}
+	.big-col{
+		padding: 0;
+		margin-bottom: 10px;
+		.phone{
+			bottom: 78px;
+		}
+		.pos-bot-r.desc {
+			bottom: 0;
+		}
+		.pos-bot-l {
+			width: 90%;
+			ul.nav>.left{
+				width: 60%;
 			}
-			.pos-bot-r.desc {
-				bottom: 0;
+			ul.nav>.right{
+				width: 40%;
 			}
-			.pos-bot-l {
-				width: 90%;
-				ul.nav>.left{
-					width: 60%;
-				}
-				ul.nav>.right{
-					width: 40%;
-				}
-				.first-name{
-					font-size: 17px;
-				}
-				.first-desc{
-					color: #7f7f7f;
-					font-size: 12px;
-				}
-				.last-price{
-					font-size: 14px;
-				}
-				.now-price{
-					font-size: 20px;
-				}
+			.first-name{
+				font-size: 17px;
+			}
+			.first-desc{
+				color: #7f7f7f;
+				font-size: 12px;
+			}
+			.last-price{
+				font-size: 14px;
+			}
+			.now-price{
+				font-size: 20px;
 			}
 		}
-		.item.small{
-			.pos-bot-l {
-				ul.nav>.left{
-					width: 50%;
-				}
-				ul.nav>.right{
-					width: 50%;
-				}
-				width: 100%;
-				.first-name{
-					font-size: 14px;
-				}
-				.last-price{
-					font-size: 13px;
-				}
-				.now-price{
-					font-size: 16px;
-				}
-			}
-			.phone{
-				top: 60px;
-			}
-			.pos-bot-r.desc {
-				top: 0;
-			}
-		}	
 	}
-}
+	.small-col{
+		padding: 0;
+		flex: 0 0 calc(50% - 10px);
+		.pos-bot-l {
+			ul.nav>.left{
+				width: 50%;
+			}
+			ul.nav>.right{
+				width: 50%;
+			}
+			width: 100%;
+			.first-name{
+				font-size: 14px;
+			}
+			.last-price{
+				font-size: 13px;
+			}
+			.now-price{
+				font-size: 16px;
+			}
+		}
+		.phone{
+			top: 0;
+			right: 60px;
+		}
+		.pos-bot-r.desc {
+			top: 0;
+		}
+	}
+}	
