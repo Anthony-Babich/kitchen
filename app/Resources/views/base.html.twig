@@ -60,15 +60,8 @@
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 
         <script src="{{ asset('bundles/kuhni/slick/slick.js') }}" type="text/javascript" charset="utf-8"></script>
-        <script type='text/javascript' src="{{ asset('bundles/kuhni/js/jquery.appear.js') }}"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-                $(function() {
-                    $(document.body).on('appear', '.list-item', function(e, $affected) {
-                        $(this).addClass("appeared");
-                    });
-                    $('.list-item').appear({force_process: true});
-                });
                 $('ul.tabs li').click(function(){
                     var tab_id = $(this).attr('data-tab');
 
