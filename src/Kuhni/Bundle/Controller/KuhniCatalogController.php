@@ -96,6 +96,17 @@ class KuhniCatalogController extends Controller
      */
     public function productAction($slug, $nameproduct)
     {
+        //получение каталога товаров
+        $resultCatalog = $this->getCatalogresult();
+
+        if (!empty($resultCatalog)){
+            foreach ($resultCatalog as $item) {
+                $imageCatalog[] = 'upload/catalog/' . $item->getImageName();
+            }
+        }else{
+            $imageCatalog[] = 'none';
+        }
+
         $result = $this->getDoctrine()->getManager()
             ->getRepository('KuhniBundle:Kuhni')
             ->findOneBy(array('slug' => $nameproduct));
@@ -124,7 +135,7 @@ class KuhniCatalogController extends Controller
             ->setParameter('id', $result->getIdKuhniMaterial());
         $material = $qb->getQuery()->getResult();
 
-        $imageFasades = $this->imagePath($fasades, 'config');
+        $imageFasades = $this->imagePath($fasades, 'fasad');
 
         return $this->render('product/index.html.twig', array(
             'kitchen' => $result,
@@ -133,6 +144,8 @@ class KuhniCatalogController extends Controller
             'fasades' => $fasades,
             'imageFasades' => $imageFasades,
             'material' => $material,
+            'catalog' => $resultCatalog,
+            'imageCatalog' => $imageCatalog,
         ));
     }
 
@@ -143,6 +156,17 @@ class KuhniCatalogController extends Controller
      */
     public function parametersAction($slug)
     {
+        //получение каталога товаров
+        $resultCatalog = $this->getCatalogresult();
+
+        if (!empty($resultCatalog)){
+            foreach ($resultCatalog as $item) {
+                $imageCatalog[] = 'upload/catalog/' . $item->getImageName();
+            }
+        }else{
+            $imageCatalog = 'none';
+        }
+
         $result = $this->searchParametr($slug);
 
         $image = $this->imagePath($result, 'kitchens');
@@ -152,7 +176,9 @@ class KuhniCatalogController extends Controller
             'kitchens' => $result,
             'countKitchens' => $countretult,
             'image' => $image,
-            'slug' => $slug
+            'slug' => $slug,
+            'catalog' => $resultCatalog,
+            'imageCatalog' => $imageCatalog,
         ));
     }
 
@@ -197,4 +223,10 @@ class KuhniCatalogController extends Controller
         return $result;
     }
 
+    private function getCatalogresult(){
+        $qb = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:Catalog')
+            ->createQueryBuilder('n');
+        $qb->select('n')->orderBy('n.id');
+        return $qb->getQuery()->getResult();
+    }
 }

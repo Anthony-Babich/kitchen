@@ -14,5 +14,7 @@
         {#{% include 'product/calc.html.twig' %}
         {% include 'product/more-prod.html.twig' %}#}
     {% endblock %}
-    {% block footer %}{% endblock %}
+    {% block footer %}
+        {% include 'modal.html.twig' %}
+    {% endblock %}
 {% endblock %}

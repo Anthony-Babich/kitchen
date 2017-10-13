@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     {% block navigation %}
-        {% include 'kuhni/navigation.html.twig' %}
+        {% include 'product/navigation.html.twig' %}
     {% endblock %}
     {% block header %}
         {% include 'header.html.twig' %}
@@ -10,5 +10,7 @@
     {% block content %}
         {% include 'kuhni/kuhniParameters/products.html.twig' %}
     {% endblock %}
-    {% block footer %}{% endblock %}
+    {% block footer %}
+        {% include 'modal.html.twig' %}
+    {% endblock %}
 {% endblock %}

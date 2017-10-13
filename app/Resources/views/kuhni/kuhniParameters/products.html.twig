@@ -97,7 +97,7 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-6 small-col full-screen">
                             {% for kitchen in kitchens %}
-                                {% if loop.index0 < indexSmall + indexBig + 2 and loop.index0 >= indexBig + indexSmall %}
+                                {% if loop.index0 <= indexSmall + indexBig + 2 and loop.index0 > indexBig + indexSmall %}
                                     <div class="col-12 big-col">
                                         <a href="{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : kitchen.slug}) }}">
                                             <img class="slide-product-img" src="{{ asset( image[loop.index0] ) }}" alt="{{ kitchen.keywords }}" title="{{ kitchen.title }}">

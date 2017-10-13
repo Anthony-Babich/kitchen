@@ -1,62 +1,72 @@
-<section id="product" style="margin-right: 20px;">
+<section id="product">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-8 text-center">
+            <div class="col-md-12 col-xl-8 text-center">
                 <div class="product-images">
                     {% for image in images %}
+                        {% if not loop.first %}
                         <img src="{{ asset(image) }}" class="slide-product-img">
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-4" id="description">
-                <div class="title">
-                    <h3 class="text-left">{{ kitchen.title }}</h3>
+            <div class="col-md-12 col-xl-4" id="description">
+                <div class="row title">
+                    <div class="col-12">
+                        <h3 class="text-left">{{ kitchen.title }}</h3>
+                    </div>
                 </div>
-                <div class="description">
-                    <p>{{ kitchen.description }}</p>
+                <div class="row description">
+                    <div class="col-12">
+                        <p>{{ kitchen.description }}</p>
+                    </div>
                 </div>
-                <div class="price">
-                    <ul class="nav text-center">
-                        <li class="nav-item">
-                            <p class="head">ЦЕНА СО СКИДКОЙ</p>
-                            <p class="active">от {{ kitchen.price }} руб</p>
-                        </li>
-                        <li class="nav-item">
-                            <p class="head active">СКИДКА</p>
-                            <p class="procent active">{{ kitchen.discount }}%</p>
-                            <a href="#">Смотреть акцию <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <p class="head">ЦЕНА</p>
-                            <p><s>{{ kitchen.noDiscountPrice }} руб</s></p>
-                        </li>
-                    </ul>
+                <div class="row">
+                    <div class="col-4 price text-center">
+                        <p class="head">ЦЕНА СО СКИДКОЙ</p>
+                        <p class="active">от {{ kitchen.price }} руб</p>
+                    </div>
+                    <div class="col-4 price text-center">
+                        <p class="head active">СКИДКА</p>
+                        <div class="procent active">
+                            <span>{{ kitchen.discount }}%</span>
+                        </div>
+                        <a href="#">Смотреть акцию <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="col-4 price text-center">
+                        <p class="head">ЦЕНА</p>
+                        <p><s>{{ kitchen.noDiscountPrice }} руб</s></p>
+                    </div>
                 </div>
-                <div class="static-description">
-                    {% if kitchen.fixedPrice %}
-                        <p>*Цена указана за 1 метр погонный кухни</p>
-                    {% else %}
-                        <p>*Цену и наличие уточняйте</p>
-                    {% endif %}
+                <div class="row">
+                    <div class="col-12 text-left">
+                        <div class="static-description">
+                            {% if kitchen.fixedPrice %}
+                                <p>*Цена указана за 1 метр погонный кухни</p>
+                            {% else %}
+                                <p>*Цену и наличие уточняйте</p>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <button class="btn btn-xl">Бесплатный дизайн-проект кухни</button>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button class="btn btn-xl">Бесплатный дизайн-проект кухни</button>
+                    </div>
                 </div>
-                <div class="static-icons">
-                    <ul class="nav text-center">
-                        <li class="nav-item">
-                            <p><img src="{{ asset('/web/bundles/kuhni/img/productiontime.png') }}" alt="Срок изготовления"></p>
-                            <p class="desc">Срок изготовления от 15 дней</p>
-                        </li>
-                        <li class="nav-item">
-                            <p><img src="{{ asset('/web/bundles/kuhni/img/guarantee.png') }}" alt="Гарантии"></p>
-                            <p class="desc">2 года гарантии на кухню</p>
-                        </li>
-                        <li class="nav-item">
-                            <p><img src="{{ asset('/web/bundles/kuhni/img/delivery.png') }}" alt="Бесплатная доставка"></p>
-                            <p class="desc">Бесплатная доставка по Москве и Московской области</p>
-                        </li>
-                    </ul>
+                <div class="row text-center static-icons">
+                    <div class="col-4">
+                        <p><img src="{{ asset('/web/bundles/kuhni/img/productiontime.png') }}" alt="Срок изготовления"></p>
+                        <p class="desc">Срок изготовления от 15 дней</p>
+                    </div>
+                    <div class="col-4">
+                        <p><img src="{{ asset('/web/bundles/kuhni/img/guarantee.png') }}" alt="Гарантии"></p>
+                        <p class="desc">2 года гарантии на кухню</p>
+                    </div>
+                    <div class="col-4">
+                        <p><img src="{{ asset('/web/bundles/kuhni/img/delivery.png') }}" alt="Бесплатная доставка"></p>
+                        <p class="desc">Бесплатная доставка по Москве и Московской области</p>
+                    </div>
                 </div>
             </div>
         </div>
