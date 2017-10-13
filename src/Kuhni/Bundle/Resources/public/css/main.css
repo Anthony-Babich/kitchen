@@ -30,7 +30,8 @@ header.masthead.all {
   color: #7f7f7f;
   padding-top: 0;
   padding-bottom: 30px;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  margin-right: 20px; }
   #product h3 {
     font-size: 22px; }
   #product .slick-prev:before, #product .slick-next:before {
@@ -45,29 +46,29 @@ header.masthead.all {
   #product #description .title {
     color: #3a3e4a; }
   #product #description .price p {
-    margin-bottom: 0;
-    font-size: 20px;
+    line-height: 1.15em;
+    vertical-align: middle;
+    margin-bottom: 10px;
+    font-size: 17px;
     padding-left: 20px;
     padding-right: 20px; }
-  #product #description .price p.active {
+  #product #description .price .active {
     color: red; }
-  #product #description .price p.head {
+  #product #description .price .head {
     text-transform: uppercase;
-    font-size: 12px; }
-  #product #description .price p.procent {
-    background-color: #fee3e1; }
+    font-size: 14px; }
+  #product #description .price .procent.active {
+    font-size: 30px; }
+    #product #description .price .procent.active span {
+      background-color: #fee3e1;
+      padding: 5px 15px 5px 15px; }
   #product #description .price a {
     color: #193153;
-    font-size: 12px; }
+    font-size: 14px; }
   #product .static-description {
     font-size: 12px; }
-  #product .static-icons ul {
-    margin-top: 20px;
-    width: 100%; }
-    #product .static-icons ul li {
-      margin-left: 10px;
-      font-size: 10px;
-      width: 30%; }
+  #product .static-icons {
+    margin-top: 20px; }
 
 #desc-fasade {
   padding-top: 0;
