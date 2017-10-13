@@ -625,7 +625,7 @@ fieldset[disabled] .btn-xl:hover {
 .setka .item .pos .style{font-style: italic;}
 .setka .item .pos .first-style{font-style: italic;}
 
-.setka .small{float: left;width: calc(50% - 5px); }
+.setka .small{float: left;width: calc(50% - 5px); margin-bottom: 10px;}
 
 .setka .half .small:first-child{margin-right: 10px;}
 .setka .half .small:last-child{margin-left: 10px;}
