@@ -16,7 +16,7 @@
                     {% for kitchen in kitchens %}
                         {% if loop.index0 == indexBig %}
                             <a href="{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : kitchen.slug}) }}">
-                                <img class="slide-product-img" src="{{ asset( image[loop.index0] ) }}" alt="{{ kitchen.keywords }}" title="{{ kitchen.title }}">
+                                <img class="slide-product-img big" src="{{ asset( image[loop.index0] ) }}" alt="{{ kitchen.keywords }}" title="{{ kitchen.title }}">
                                 <span class="pos-bot-l">
                                     <ul class="nav">
                                         <li class="left">
@@ -55,9 +55,9 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-                <div class="col-md-12 col-xl-6">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-xl-6">
                     <div class="row">
-                        <div class="col-sm-12 col-md-6 small-col" style="margin-left: 10px">
+                        <div class="col-xs-12 col-sm-12 col-md-6 small-col no-margin-left full-screen">
                             {% for kitchen in kitchens %}
                                 {% if loop.index0 <= indexSmall + indexBig and loop.index0 > indexBig %}
                                     <div class="col-12 big-col">
@@ -95,7 +95,7 @@
                                 {% endif %}
                             {% endfor %}
                         </div>
-                        <div class="col-sm-12 col-md-6 small-col" style="margin-left: 10px">
+                        <div class="col-xs-12 col-sm-12 col-md-6 small-col full-screen">
                             {% for kitchen in kitchens %}
                                 {% if loop.index0 < indexSmall + indexBig + 2 and loop.index0 >= indexBig + indexSmall %}
                                     <div class="col-12 big-col">
@@ -141,7 +141,7 @@
             <div class="row">
                 <div class="col-md-12 col-xl-6">
                     <div class="row">
-                        <div class="col-sm-12 col-md-6 small-col" style="margin-left: 0">
+                        <div class="col-sm-12 col-md-6 small-col first-small-col full-screen">
                             {% for kitchen in kitchens %}
                                 {% if loop.index0 > indexBig + indexSmall + 2 and loop.index0 <= indexBig + indexSmall + 4 %}
                                     <div class="col-12 big-col">
@@ -179,7 +179,7 @@
                                 {% endif %}
                             {% endfor %}
                         </div>
-                        <div class="col-sm-12 col-md-6 small-col" style="margin-left: 10px">
+                        <div class="col-sm-12 col-md-6 small-col full-screen">
                             {% for kitchen in kitchens %}
                                 {% if loop.index0 > indexSmall + indexBig + 4 and loop.index0 <= indexBig + indexSmall + 6 %}
                                     <div class="col-12 big-col">
@@ -219,52 +219,48 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 col-xl-6">
-                    <div class="row">
-                        <div class="col-12 big-col">
-                            {% for kitchen in kitchens %}
-                                {% if loop.index0 == indexBig + indexSmall + 7 %}
-                                    <a href="{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : kitchen.slug}) }}">
-                                        <img class="slide-product-img" src="{{ asset( image[loop.index0] ) }}" alt="{{ kitchen.keywords }}" title="{{ kitchen.title }}">
-                                        <span class="pos-bot-l">
-                                            <ul class="nav">
-                                                <li class="left">
-                                                    <div class="text-left">
-                                                        <span class="first-name"><b>{{ kitchen.title }}</b><br/></span>
-                                                        <span class="first-desc">
-                                                            {% if kitchen.fixedPrice %}
-                                                                *Цена указана за 1 метр погонный кухни
-                                                            {% else %}
-                                                                *Цену и наличие уточняйте
-                                                            {% endif %}
-                                                        </span>
-                                                    </div>
-                                                </li>
-                                                <li class="right">
-                                                    <div class="text-right right">
-                                                        <span class="text-right last-price">старая цена
-                                                            <span class="through">{{ kitchen.noDiscountPrice }}</span><br/>
-                                                        </span>
-                                                        <span class="text-right now-price">сейчас от {{ kitchen.price }}</span>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </span>
-                                        <span class="pos-bot-r desc text-center">
-                                            <span class="title"><b>{{ kitchen.discount }}%</b></span>
-                                            <span>скидка</span>
-                                        </span>
-                                        <span class="phone text-center">
-                                            <i class="fa fa-phone"></i>
-                                        </span>
-                                        <span class="like">
-                                            <i class="fa fa-heart"></i> {{ kitchen.likes }}
-                                        </span>
-                                    </a>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                    </div>
+                <div class="col-xl-6 col-md-12 big-col">
+                    {% for kitchen in kitchens %}
+                        {% if loop.index0 == indexBig + indexSmall + 7 %}
+                            <a href="{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : kitchen.slug}) }}" class="big-a-10">
+                                <img class="slide-product-img big" src="{{ asset( image[loop.index0] ) }}" alt="{{ kitchen.keywords }}" title="{{ kitchen.title }}">
+                                <span class="pos-bot-l">
+                                    <ul class="nav">
+                                        <li class="left">
+                                            <div class="text-left">
+                                                <span class="first-name"><b>{{ kitchen.title }}</b><br/></span>
+                                                <span class="first-desc">
+                                                    {% if kitchen.fixedPrice %}
+                                                        *Цена указана за 1 метр погонный кухни
+                                                    {% else %}
+                                                        *Цену и наличие уточняйте
+                                                    {% endif %}
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="right">
+                                            <div class="text-right right">
+                                                <span class="text-right last-price">старая цена
+                                                    <span class="through">{{ kitchen.noDiscountPrice }}</span><br/>
+                                                </span>
+                                                <span class="text-right now-price">сейчас от {{ kitchen.price }}</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </span>
+                                <span class="pos-bot-r desc text-center">
+                                    <span class="title"><b>{{ kitchen.discount }}%</b></span>
+                                    <span>скидка</span>
+                                </span>
+                                <span class="phone text-center">
+                                    <i class="fa fa-phone"></i>
+                                </span>
+                                <span class="like">
+                                    <i class="fa fa-heart"></i> {{ kitchen.likes }}
+                                </span>
+                            </a>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
