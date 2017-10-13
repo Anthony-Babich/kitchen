@@ -7,13 +7,13 @@ use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * FasadColor
+ * FasadType
  * @Vich\Uploadable
  *
- * @ORM\Table(name="fasad_color")
- * @ORM\Entity(repositoryClass="Kuhni\Bundle\Repository\FasadColorRepository")
+ * @ORM\Table(name="fasad_type")
+ * @ORM\Entity(repositoryClass="Kuhni\Bundle\Repository\FasadTypeRepository")
  */
-class FasadColor
+class FasadType
 {
     /**
      * @var int
@@ -34,7 +34,7 @@ class FasadColor
 
     /**
      * @param \DateTime $updated
-     * @return FasadColor
+     * @return FasadType
      */
     public function setUpdated(\DateTime $updated)
     {
@@ -72,7 +72,7 @@ class FasadColor
     /**
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
      *
-     * @return FasadColor
+     * @return FasadType
      */
     public function setImageFile(File $image = null)
     {
@@ -98,7 +98,7 @@ class FasadColor
     /**
      * @param string $imageName
      *
-     * @return FasadColor
+     * @return FasadType
      */
     public function setImageName($imageName)
     {
@@ -118,7 +118,7 @@ class FasadColor
     /**
      * @param integer $imageSize
      *
-     * @return FasadColor
+     * @return FasadType
      */
     public function setImageSize($imageSize)
     {
@@ -153,7 +153,7 @@ class FasadColor
 
     /**
      * @param KuhniMaterial $idKuhniMaterial
-     * @return FasadColor
+     * @return FasadType
      */
     public function setIdKuhniMaterial(KuhniMaterial $idKuhniMaterial)
     {
@@ -199,7 +199,7 @@ class FasadColor
      *
      * @param string $name
      *
-     * @return FasadColor
+     * @return FasadType
      */
     public function setName($name)
     {
@@ -223,7 +223,7 @@ class FasadColor
      *
      * @param string $title
      *
-     * @return FasadColor
+     * @return FasadType
      */
     public function setTitle($title)
     {
@@ -247,7 +247,7 @@ class FasadColor
      *
      * @param string $alt
      *
-     * @return FasadColor
+     * @return FasadType
      */
     public function setAlt($alt)
     {

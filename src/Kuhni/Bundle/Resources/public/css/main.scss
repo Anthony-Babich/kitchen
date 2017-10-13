@@ -62,7 +62,7 @@ header.masthead.all{
 				line-height: 1.15em;
 				vertical-align: middle;
 				margin-bottom: 10px;
-				font-size: 17px;
+				font-size: 13px;
 				padding-left: 20px;
 				padding-right: 20px;  
 			}
@@ -91,6 +91,10 @@ header.masthead.all{
 	}
 	.static-icons{
 		margin-top: 20px;
+	}
+	.btn-xl {
+		font-size: 1rem;
+		padding: 20px 20px;
 	}
 }
 #desc-fasade{
@@ -203,6 +207,22 @@ header.masthead.all{
 	}
 }
 span{padding: 0;}
+.list-item {
+	-webkit-transition: all 400ms ease;
+	-moz-transition: all 400ms ease;
+	-o-transition: all 400ms ease;
+	transition: all 400ms ease;
+	-webkit-transform: translate3d(0px, 100px, 0) rotateX(-30deg) scale(1.25, 1.25);
+	-moz-transform: translate3d(0px, 100px, 0) rotateX(-30deg) scale(1.25, 1.25);
+	transform: translate3d(0px, 100px, 0) rotateX(-30deg) scale(1.25, 1.25);
+	opacity: 0;
+}
+.list-item.appeared{
+	-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0) scale(1, 1);
+	-moz-transform: translate3d(0px, 0px, 0px) rotateX(0) scale(1, 1);
+	transform: translate3d(0px, 0px, 0px) rotateX(0) scale(1, 1);
+	opacity: 1;
+}
 #all-products{
 	line-height: 1.15;
 	padding: 150px 0 0 0;
@@ -364,6 +384,18 @@ span{padding: 0;}
 	}
 }
 @media (max-width: 1200px) {
+	#product{
+		#description{
+			.price{
+				p{
+					font-size: 20px;
+				}
+			}
+		}
+		.product-images{
+			margin-left: 40px;
+		}
+	}
 	#all-products{
 		.no-margin-left{
 			margin-left: 0;

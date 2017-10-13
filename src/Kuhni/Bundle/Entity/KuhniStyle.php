@@ -8,6 +8,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * KuhniStyle
+ * @Vich\Uploadable
  *
  * @ORM\Table(name="kuhni_style")
  * @ORM\Entity(repositoryClass="Kuhni\Bundle\Repository\KuhniStyleRepository")
@@ -36,6 +37,52 @@ class KuhniStyle
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="keywords", type="string", length=255)
+     */
+    private $keywords;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="main_description", type="string", length=255)
+     */
+    private $mainDescription;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="kuhni_style", fileNameProperty="imageName", size="imageSize")
+     *
+     * @var File
+     */
+    private $imageFile;
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName;
+    /**
+     * @ORM\Column(type="integer")
+     *
+     * @var integer
+     */
+    private $imageSize;
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updated;
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     *
+     * @return KuhniStyle
+     */
 
     /**
      * @return string
@@ -54,20 +101,6 @@ class KuhniStyle
         $this->slug = $slug;
         return $this;
     }
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="keywords", type="string", length=255)
-     */
-    private $keywords;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="main_description", type="string", length=255)
-     */
-    private $mainDescription;
-
 
     /**
      * Get id
@@ -169,39 +202,7 @@ class KuhniStyle
         return $this;
     }
 
-    /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     *
-     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName", size="imageSize")
-     *
-     * @var File
-     */
-    private $imageFile;
-    /**
-     * @ORM\Column(type="string", length=255)
-     *
-     * @var string
-     */
-    private $imageName;
-    /**
-     * @ORM\Column(type="integer")
-     *
-     * @var integer
-     */
-    private $imageSize;
-    /**
-     * @ORM\Column(type="datetime")
-     *
-     * @var \DateTime
-     */
-    private $updated;
-
-    /**
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-     *
-     * @return KuhniStyle
-     */
-    public function setImageFile(File $image = null)
+     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
 

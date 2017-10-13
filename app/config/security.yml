@@ -14,17 +14,17 @@ security:
 
     firewalls:
         admin:
-            pattern:  /admin(.*)
-            context:  user
-            form_login:
+              pattern:  /(.*)
+              context:  user
+              form_login:
                 provider:  fos_userbundle
                 login_path:  /admin/login
                 use_forward:  false
                 check_path:  /admin/login_check
                 failure_path:  null
-            logout:
+              logout:
                 path:  /admin/logout
-            anonymous:  true
+              anonymous:  ~
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
