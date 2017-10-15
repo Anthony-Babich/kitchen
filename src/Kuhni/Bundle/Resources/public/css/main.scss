@@ -35,7 +35,8 @@ header.masthead.all{
 	color: #7f7f7f;
 	padding-top: 0; 
 	padding-bottom: 30px; 
-	margin-bottom: 0; 
+	margin-bottom: 0;
+	margin-right: 20px;
 	h3{
 		font-size: 22px; 
 	}
@@ -58,24 +59,30 @@ header.masthead.all{
 		}
 		.price{
 			p{
-				margin-bottom: 0;  
-				font-size: 20px;
+				line-height: 1.15em;
+				vertical-align: middle;
+				margin-bottom: 10px;
+				font-size: 13px;
 				padding-left: 20px;
 				padding-right: 20px;  
 			}
-			p.active{
+			.active{
 				color: red;
 			}
-			p.head{
+			.head{
 				text-transform: uppercase;
-				font-size: 12px; 
+				font-size: 14px;
 			}
-			p.procent{
-				background-color: #fee3e1; 
+			.procent.active{
+				span{
+					background-color: #fee3e1;
+					padding: 5px 15px 5px 15px;
+				}
+				font-size: 30px;
 			}
 			a{
 				color: #193153;
-				font-size: 12px; 
+				font-size: 14px;
 			}
 		}
 	}
@@ -83,15 +90,11 @@ header.masthead.all{
 		font-size: 12px; 
 	}
 	.static-icons{
-		ul{
-			margin-top: 20px; 
-			width: 100%; 
-			li{
-				margin-left: 10px; 
-				font-size: 10px; 
-				width: 30%; 
-			}
-		}
+		margin-top: 20px;
+	}
+	.btn-xl {
+		font-size: 1rem;
+		padding: 20px 20px;
 	}
 }
 #desc-fasade{
@@ -149,10 +152,7 @@ header.masthead.all{
 	}
 }
 #calc{
-	margin-left: 15px; 
-	margin-right: 15px; 
-	margin-top: 0;
-	margin-bottom: 30px;
+	margin: 0 15px 30px;
 	padding: 0;
 	.row{
 		.vkladka{
@@ -180,20 +180,16 @@ header.masthead.all{
 	}  
 }
 #more-prod{
-	margin-left: 15px; 
-	margin-right: 15px; 
-	margin-top: 0;
-	margin-bottom: 30px;
+	margin: 0 15px 30px;
 	padding: 0;
 	#see-more{
 		.left-desc{
 			width: 50%; 
 			p{
-				padding: 0;
-				margin: 0;  
+				margin: 0;
 				font-size: 14px; 
 				color: #7f7f7f;
-				padding-right: 15px; 
+				padding: 0 15px 0 0;
 			}
 			.title{
 				text-transform: uppercase ;
@@ -206,6 +202,255 @@ header.masthead.all{
 				max-width: 100px; 
 				max-height: 100px; 
 				vertical-align: middle;
+			}
+		}
+	}
+}
+span{padding: 0;}
+#all-products{
+	line-height: 1.15;
+	padding: 150px 0 0 0;
+	a{
+		.like{
+			background-color: unset;
+			width: 80px;
+			height: 50px;
+			font-size: 16px;
+			left: 10px;
+			top: 20px;
+			padding: 7px;
+			position: absolute;
+			z-index: 99;
+			color: red;
+		}
+		.phone{
+			background-color: rgba(228, 228, 228, 0.79);
+			width: 50px;
+			height: 50px;
+			font-size: 35px;
+			color: #000;
+			right: 0;
+			padding: 7px;
+			position: absolute;
+			z-index: 10;
+		}
+		.pos-bot-r.desc {
+			color: #3f3f3f;
+			line-height: 1;
+			padding: 12px 0 0;
+			height: 50px;
+			width: 50px;
+			position: absolute;
+			right:  0;
+			z-index: 10;
+			background-color: yellow;
+			font-size: 12px;
+			.title{
+				font-size: 18px;
+			}
+		}
+		.pos-bot-l {
+			color: #3f3f3f;
+			div{
+				margin-top: 10px;
+				margin-left: 10px;
+			}
+			position: absolute;
+			width: 100%;
+			bottom: 0;
+			left: 0;
+			z-index: 10;
+			height: 50px;
+			padding-bottom: 0;
+			padding-right: 5px;
+			background-color: rgba(228, 228, 228, 0.7);
+			.last-price{
+				.through{
+					text-decoration: line-through;
+				}
+			}
+			.now-price{
+				color: red;
+			}
+		}
+	}
+	.big-col{
+		padding: 0;
+		margin-bottom: 10px;
+		.phone{
+			bottom: 78px;
+		}
+		.pos-bot-r.desc {
+			bottom: 0;
+		}
+		.pos-bot-l {
+			width: 90%;
+			ul.nav>.left{
+				width: 60%;
+			}
+			ul.nav>.right{
+				width: 40%;
+			}
+			.first-name{
+				font-size: 17px;
+			}
+			.first-desc{
+				color: #7f7f7f;
+				font-size: 12px;
+			}
+			.last-price{
+				font-size: 14px;
+			}
+			.now-price{
+				font-size: 20px;
+			}
+		}
+	}
+	.small-col{
+		padding: 0;
+		flex: 0 0 calc(50% - 10px);
+		margin-left: 10px;
+		.pos-bot-l {
+			ul.nav>.left{
+				width: 50%;
+			}
+			ul.nav>.right{
+				width: 50%;
+			}
+			width: 100%;
+			.first-name{
+				font-size: 14px;
+			}
+			.last-price{
+				font-size: 13px;
+			}
+			.now-price{
+				font-size: 16px;
+			}
+		}
+		.phone{
+			top: 60px;
+			right: 0;
+		}
+		.pos-bot-r.desc {
+			top: 0;
+		}
+	}
+	.first-small-col{
+		margin-left: 0;
+	}
+	.marginleft10{
+		margin-left: 10px;
+	}
+	.row{
+		margin-right: -25px;
+	}
+	.slide-product-img.big{
+		height: 500px;
+	}
+	.slide-product-img{
+		height: 245px;
+	}
+	.big-a-10{
+		margin-left: 10px;
+		.pos-bot-l {
+			margin-left: 10px;
+		}
+		.phone{
+			right: -10px;
+		}
+		.pos-bot-r.desc {
+			right: -10px;
+		}
+		.like{
+			margin-left: 10px;
+		}
+	}
+}
+@media (max-width: 1200px) {
+	#product{
+		#description{
+			.price{
+				p{
+					font-size: 20px;
+				}
+			}
+		}
+		.product-images{
+			margin-left: 40px;
+		}
+	}
+	#all-products{
+		.no-margin-left{
+			margin-left: 0;
+		}
+		.marginleft10{
+			margin-left: 0;
+		}
+		.slide-product-img{
+			height: 350px;
+		}
+		.big{
+			height: 450px;
+		}
+		.big-a-10{
+			margin-left: 0;
+			.pos-bot-l {
+				margin-left: 0;
+			}
+			.phone{
+				right: 0;
+			}
+			.pos-bot-r.desc {
+				right: 0;
+			}
+			.like{
+				margin-left: 0;
+			}
+		}
+	}
+}
+@media (max-width: 767px) {
+	#all-products{
+		.row {
+			margin-right: -15px;
+		}
+		.slide-product-img.big{
+			height: 350px;
+		}
+		.small-col.full-screen{
+			flex: 0 0 100%;
+			margin-left: 0;
+		}
+	}
+}
+@media (max-width: 539px) {
+	#all-products{
+		.big-col{
+			.pos-bot-l {
+				width: 100%;
+				ul.nav>.left{
+					width: 50%;
+				}
+				ul.nav>.right{
+					width: 50%;
+				}
+				.first-desc{
+					display: none;
+				}
+				.last-price{
+					font-size: 13px;
+				}
+				.now-price{
+					font-size: 16px;
+				}
+			}
+			.phone{
+				top: 60px;
+				right: 0;
+			}
+			.pos-bot-r.desc {
+				top: 0;
 			}
 		}
 	}

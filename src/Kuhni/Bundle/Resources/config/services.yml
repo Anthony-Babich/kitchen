@@ -1,4 +1,12 @@
 services:
-#    kuhni.example:
-#        class: Kuhni\Bundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+  app.admin.orderitems:
+    class: Kuhni\Bundle\Admin\KuhniStyleAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Кухни", label: "Стили кухонь" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\KuhniStyle
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true

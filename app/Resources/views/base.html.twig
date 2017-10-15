@@ -60,7 +60,6 @@
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 
         <script src="{{ asset('bundles/kuhni/slick/slick.js') }}" type="text/javascript" charset="utf-8"></script>
-
         <script type="text/javascript">
             $(document).ready(function(){
                 $('ul.tabs li').click(function(){
@@ -71,7 +70,7 @@
 
                     $(this).addClass('current');
                     $("#"+tab_id).addClass('current');
-                })
+                });
                 $('.product-images').slick({
                     dots: true,
                     infinite: true,

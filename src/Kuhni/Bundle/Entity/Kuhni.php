@@ -8,6 +8,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Kuhni
+ * @Vich\Uploadable
  *
  * @ORM\Table(name="kuhni")
  * @ORM\Entity(repositoryClass="Kuhni\Bundle\Repository\KuhniRepository")
@@ -106,7 +107,7 @@ class Kuhni
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="kuhni", fileNameProperty="imageName", size="imageSize")
      *
      * @var File
      */
@@ -144,6 +145,13 @@ class Kuhni
      * @ORM\Column(name="price", type="integer")
      */
     private $price;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="noDiscountPrice", type="integer")
+     */
+    private $noDiscountPrice;
 
     /**
      * @var integer
@@ -207,6 +215,24 @@ class Kuhni
      * @ORM\Column(name="main_description", type="string", length=255)
      */
     private $mainDescription;
+
+    /**
+     * @return int
+     */
+    public function getNoDiscountPrice(): int
+    {
+        return $this->noDiscountPrice;
+    }
+
+    /**
+     * @param int $noDiscountPrice
+     * @return Kuhni
+     */
+    public function setNoDiscountPrice(int $noDiscountPrice)
+    {
+        $this->noDiscountPrice = $noDiscountPrice;
+        return $this;
+    }
 
     /**
      * @return int
@@ -735,4 +761,3 @@ class Kuhni
         return strval($this->id);
     }
 }
-

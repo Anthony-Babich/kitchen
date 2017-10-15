@@ -8,6 +8,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * KuhniConfig
+ * @Vich\Uploadable
  *
  * @ORM\Table(name="kuhni_config")
  * @ORM\Entity(repositoryClass="Kuhni\Bundle\Repository\KuhniConfigRepository")
@@ -54,7 +55,7 @@ class KuhniConfig
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="kuhni_config", fileNameProperty="imageName", size="imageSize")
      *
      * @var File
      */

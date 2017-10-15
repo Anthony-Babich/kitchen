@@ -8,6 +8,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * KuhniMaterial
+ * @Vich\Uploadable
  *
  * @ORM\Table(name="kuhni_material")
  * @ORM\Entity(repositoryClass="Kuhni\Bundle\Repository\KuhniMaterialRepository")
@@ -106,7 +107,7 @@ class KuhniMaterial
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="kuhni_material", fileNameProperty="imageName", size="imageSize")
      *
      * @var File
      */
