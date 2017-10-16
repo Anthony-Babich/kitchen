@@ -24,7 +24,7 @@
         <div class="half fr">
             {% for catalog in catalog %}
                 {% if not loop.first %}
-                    <a href="#" class="item small">
+                    <a href="{{ path('kuhni_list') }}" class="item small">
                         <span class="pos">
                             <span class="name">{{ catalog.name }}</span>
                             <span class="style">{{ catalog.title }}</span>

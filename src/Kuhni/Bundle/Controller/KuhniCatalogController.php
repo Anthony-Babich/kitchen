@@ -168,14 +168,150 @@ class KuhniCatalogController extends Controller
 
             $result = $this->searchParametr($slug, $limit, $offset);
 
-            foreach ($result as $item) {
-                $image[] = 'upload/kuhni/kitchens/' . $item['imageName'];
+            if (!empty($result)){
+
+                foreach ($result as $item) {
+                    $image[] = 'upload/kuhni/kitchens/' . $item['imageName'];
+                }
+
+                $strResult = "<div class='container'><div class='row'><div class='col-xl-6 col-md-12 big-col'>";
+
+                for ($i = 0; $i < count($result); $i++){
+                    if ($i == 0){
+                        $strResult .= "<a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
+
+                        $strResult .= "<img class='slide-product-img big' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
+
+                        $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/></span>";
+                        $strResult .= "<span class='first-desc'>";
+                        if ($result[$i]['fixedPrice']){
+                            $strResult .= "*Цена указана за 1 метр погонный кухни";
+                        }else{
+                            $strResult .= "*Цену и наличие уточняйте";
+                        }
+                        $strResult .= "</span></div></li><li class='right'><div class='text-right right'><span class='text-right last-price'>старая цена";
+                        $strResult .= "<span class='through'>{$result[$i]['noDiscountPrice']}</span><br/></span><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span>";
+                        $strResult .= "</div></li></ul></span>";
+                        $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
+                        $strResult .= "<span class='phone text-center'><i class='fa fa-phone'></i></span>";
+                        $strResult .= "<span class='like'><i class='fa fa-heart'></i> {$result[$i]['likes']}</span>";
+                        $strResult .= "</a>";
+                    }
+                }
+                $strResult .= "</div>";
+
+                $strResult .= "<div class='col-xs-12 col-sm-12 col-md-12 col-xl-6'><div class='row'><div class='col-xs-12 col-sm-12 col-md-6 small-col no-margin-left full-screen'>";
+
+                for ($i = 0; $i < count($result); $i++){
+                    if (($i <= 2)&&($i > 0)){
+                        $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
+
+                        $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
+
+                        $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/></span>";
+                        $strResult .= "</div></li><li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
+                        $strResult .= "<span class='text-right last-price'>старая цена<span class='through'>{$result[$i]['noDiscountPrice']}</span></span>";
+                        $strResult .= "</div></li></ul></span>";
+
+                        $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
+                        $strResult .= "<span class='phone text-center'><i class='fa fa-phone'></i></span>";
+                        $strResult .= "<span class='like'><i class='fa fa-heart'></i> {$result[$i]['likes']}</span>";
+                        $strResult .= "</a></div>";
+                    }
+                }
+                $strResult .= "</div><div class='col-xs-12 col-sm-12 col-md-6 small-col full-screen'>";
+
+                for ($i = 0; $i < count($result); $i++){
+                    if (($i <= 4)&&($i > 2)){
+                        $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
+
+                        $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
+
+                        $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/></span>";
+                        $strResult .= "</div></li><li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
+                        $strResult .= "<span class='text-right last-price'>старая цена<span class='through'>{$result[$i]['noDiscountPrice']}</span></span>";
+                        $strResult .= "</div></li></ul></span>";
+
+                        $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
+                        $strResult .= "<span class='phone text-center'><i class='fa fa-phone'></i></span>";
+                        $strResult .= "<span class='like'><i class='fa fa-heart'></i> {$result[$i]['likes']}</span>";
+                        $strResult .= "</a></div>";
+                    }
+                }
+                $strResult .= "</div></div></div></div></div>";
+
+                $strResult .= "<div class='container'><div class='row'><div class='col-md-12 col-xl-6'>";
+                $strResult .= "<div class='row'><div class='col-sm-12 col-md-6 small-col first-small-col full-screen'>";
+
+                for ($i = 0; $i < count($result); $i++){
+                    if (($i <= 6)&&($i > 4)){
+                        $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
+
+                        $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
+
+                        $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/></span>";
+                        $strResult .= "</div></li><li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
+                        $strResult .= "<span class='text-right last-price'>старая цена<span class='through'>{$result[$i]['noDiscountPrice']}</span></span>";
+                        $strResult .= "</div></li></ul></span>";
+
+                        $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
+                        $strResult .= "<span class='phone text-center'><i class='fa fa-phone'></i></span>";
+                        $strResult .= "<span class='like'><i class='fa fa-heart'></i> {$result[$i]['likes']}</span>";
+                        $strResult .= "</a></div>";
+                    }
+                }
+                $strResult .= "</div><div class='col-sm-12 col-md-6 small-col full-screen'>";
+
+                for ($i = 0; $i < count($result); $i++){
+                    if (($i <= 8)&&($i > 6)){
+                        $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
+
+                        $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
+
+                        $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/></span>";
+                        $strResult .= "</div></li><li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
+                        $strResult .= "<span class='text-right last-price'>старая цена<span class='through'>{$result[$i]['noDiscountPrice']}</span></span>";
+                        $strResult .= "</div></li></ul></span>";
+
+                        $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
+                        $strResult .= "<span class='phone text-center'><i class='fa fa-phone'></i></span>";
+                        $strResult .= "<span class='like'><i class='fa fa-heart'></i> {$result[$i]['likes']}</span>";
+                        $strResult .= "</a></div>";
+                    }
+                }
+                $strResult .= "</div></div></div>";
+
+                $strResult .= "<div class='col-xl-6 col-md-12 big-col'>";
+
+                for ($i = 0; $i < count($result); $i++){
+                    if ($i == 9){
+                        $strResult .= "<a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}' class='big-a-10'>";
+
+                        $strResult .= "<img class='slide-product-img big' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
+
+                        $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/></span>";
+                        $strResult .= "<span class='first-desc'>";
+                        if ($result[$i]['fixedPrice']){
+                            $strResult .= "*Цена указана за 1 метр погонный кухни";
+                        }else{
+                            $strResult .= "*Цену и наличие уточняйте";
+                        }
+                        $strResult .= "</span></div></li><li class='right'><div class='text-right right'><span class='text-right last-price'>старая цена";
+                        $strResult .= "<span class='through'>{$result[$i]['noDiscountPrice']}</span><br/></span><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span>";
+                        $strResult .= "</div></li></ul></span>";
+                        $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
+                        $strResult .= "<span class='phone text-center'><i class='fa fa-phone'></i></span>";
+                        $strResult .= "<span class='like'><i class='fa fa-heart'></i> {$result[$i]['likes']}</span>";
+                        $strResult .= "</a>";
+                    }
+                }
+                $strResult .= "</div></div></div>";
+
+            }else{
+                $strResult = "noMoreProduct";
             }
 
-            return $this->render('kuhni/kuhniParameters/more-product.html.twig', array(
-                'kitchens' => $result,
-                'image' => $image,
-            ));
+            return new Response($strResult);
         }else{
             //получение каталога товаров
             $resultCatalog = $this->getCatalogresult();
@@ -194,10 +330,8 @@ class KuhniCatalogController extends Controller
                 $image[] = 'upload/kuhni/kitchens/' . $item['imageName'];
             }
 
-            $countretult = ceil(count($result)/10);
             return $this->render('kuhni/kuhniParameters/index.html.twig', array(
                 'kitchens' => $result,
-                'countKitchens' => $countretult,
                 'image' => $image,
                 'slug' => $slug,
                 'catalog' => $resultCatalog,
