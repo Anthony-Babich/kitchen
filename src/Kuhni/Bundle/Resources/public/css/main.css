@@ -1,3 +1,7 @@
+#wo-breadcrumbs {
+  display: inline-flex;
+  width: 100%; }
+
 header.masthead.all {
   height: 250px; }
 
