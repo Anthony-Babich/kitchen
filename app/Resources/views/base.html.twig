@@ -62,6 +62,7 @@
         <script src="{{ asset('bundles/kuhni/slick/slick.js') }}" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
             $(document).ready(function(){
+                $('.separator').html(' <i class="fa fa-angle-double-right" aria-hidden="true"></i> ');
                 $('ul.tabs li').click(function(){
                     var tab_id = $(this).attr('data-tab');
 

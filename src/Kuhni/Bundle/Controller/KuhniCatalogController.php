@@ -2,10 +2,10 @@
 
 namespace Kuhni\Bundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
  * @Method({"GET", "POST"})
@@ -32,6 +32,12 @@ class KuhniCatalogController extends Controller
         $resultConfig = $this->result('KuhniConfig');
         $countConfig = count($resultConfig)-4;
         $imageConfig = $this->imagePath($resultConfig, 'config');
+
+        //Хлебные крошки
+        $breadcrumbs = $this->get('white_october_breadcrumbs');
+        // Simple example
+        $breadcrumbs->addItem("Главная", $this->get("router")->generate("homepage"));
+        $breadcrumbs->addItem("Кухни");
 
         return $this->render('kuhni/index.html.twig', array(
             'style' => $resultStyle,
@@ -99,7 +105,6 @@ class KuhniCatalogController extends Controller
     {
         //получение каталога товаров
         $resultCatalog = $this->getCatalogresult();
-
         if (!empty($resultCatalog)){
             foreach ($resultCatalog as $item) {
                 $imageCatalog[] = 'upload/catalog/' . $item->getImageName();
@@ -112,22 +117,28 @@ class KuhniCatalogController extends Controller
             ->getRepository('KuhniBundle:Kuhni')
             ->findOneBy(array('slug' => $nameproduct));
         $id = $result->getId();
-
         $images = $this->getDoctrine()->getManager()
             ->getRepository('KuhniBundle:KuhniImages')
             ->findByKuhniId($id);
-
         $image = $this->imagePath($images, 'kitchens');
 
         //search all fasades
-
         //SELECT * FROM `fasad_color` where fasad_color.id_kuhni_material = 3;
         $qb = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:FasadColor')
             ->createQueryBuilder('n');
         $qb->select('n')
             ->where('n.idKuhniMaterial = :id')
             ->setParameter('id', $result->getIdKuhniMaterial());
-        $fasades = $qb->getQuery()->getResult();
+        $fasadesColor = $qb->getQuery()->getResult();
+        $imageFasadesColor = $this->imagePath($fasadesColor, 'fasad');
+
+        $qb = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:FasadType')
+            ->createQueryBuilder('n');
+        $qb->select('n')
+            ->where('n.idKuhniMaterial = :id')
+            ->setParameter('id', $result->getIdKuhniMaterial());
+        $fasadesType = $qb->getQuery()->getResult();
+        $imageFasadesType = $this->imagePath($fasadesType, 'fasad');
 
         $qb = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:KuhniMaterial')
             ->createQueryBuilder('n');
@@ -136,14 +147,22 @@ class KuhniCatalogController extends Controller
             ->setParameter('id', $result->getIdKuhniMaterial());
         $material = $qb->getQuery()->getResult();
 
-        $imageFasades = $this->imagePath($fasades, 'fasad');
+        //Хлебные крошки
+        $breadcrumbs = $this->get('white_october_breadcrumbs');
+        // Simple example
+        $breadcrumbs->addItem("Главная", $this->get("router")->generate("homepage"));
+        $breadcrumbs->addItem("Кухни", $this->get("router")->generate("kuhni_list"));
+        $breadcrumbs->addItem("{$this->getNameBreadParam($slug)}", $this->get("router")->generate('kuhni_parameters', ['slug' => $slug]));
+        $breadcrumbs->addItem("{$result->getTitle()}");
 
         return $this->render('product/index.html.twig', array(
             'kitchen' => $result,
             'images' => $image,
             'slug' => $slug,
-            'fasades' => $fasades,
-            'imageFasades' => $imageFasades,
+            'fasadesColor' => $fasadesColor,
+            'imageFasadesColor' => $imageFasadesColor,
+            'fasadesType' => $fasadesType,
+            'imageFasadesType' => $imageFasadesType,
             'material' => $material,
             'catalog' => $resultCatalog,
             'imageCatalog' => $imageCatalog,
@@ -330,6 +349,12 @@ class KuhniCatalogController extends Controller
                 $image[] = 'upload/kuhni/kitchens/' . $item['imageName'];
             }
 
+            //Хлебные крошки
+            $breadcrumbs = $this->get('white_october_breadcrumbs');
+            $breadcrumbs->addItem("Главная", $this->get("router")->generate("homepage"));
+            $breadcrumbs->addItem("Кухни", $this->get("router")->generate("kuhni_list"));
+            $breadcrumbs->addItem("{$this->getNameBreadParam($slug)}");
+
             return $this->render('kuhni/kuhniParameters/index.html.twig', array(
                 'kitchens' => $result,
                 'image' => $image,
@@ -419,10 +444,32 @@ class KuhniCatalogController extends Controller
         return $result;
     }
 
-    private function getCatalogresult(){
+    private function getCatalogResult(){
         $qb = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:Catalog')
             ->createQueryBuilder('n');
         $qb->select('n')->orderBy('n.id');
         return $qb->getQuery()->getResult();
+    }
+
+    private function getNameBreadParam(string $slug){
+        $entity = $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:KuhniStyle')
+            ->findOneBy(array('slug' => $slug));
+        if (empty($entity)) {
+            $entity = $this->getDoctrine()->getManager()
+                ->getRepository('KuhniBundle:KuhniConfig')
+                ->findOneBy(array('slug' => $slug));
+            if (empty($entity)) {
+                $entity = $this->getDoctrine()->getManager()
+                    ->getRepository('KuhniBundle:KuhniMaterial')
+                    ->findBy(array('slug' => $slug));
+                if (empty($entity)) {
+                    $entity = $this->getDoctrine()->getManager()
+                        ->getRepository('KuhniBundle:KuhniColor')
+                        ->findOneBy(array('slug' => $slug));
+                }
+            }
+        }
+        return $entity->getTitle();
     }
 }

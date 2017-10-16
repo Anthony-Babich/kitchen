@@ -56,8 +56,19 @@
                         </span>
                     </div>
                     <div class="images-fasad">
-                        {% for fasad in fasades %}
-                            <img src="{{ asset(imageFasades[loop.index0]) }}" alt="{{ fasad.alt }}" title="{{ fasad.title }}">
+                        {% for fasad in fasadesColor %}
+                            <img src="{{ asset(imageFasadesColor[loop.index0]) }}" alt="{{ fasad.alt }}" title="{{ fasad.title }}">
+                        {% endfor %}
+                    </div>
+                    <div class="title">
+                        Возможные варианты цветового исполнения фасадов
+                        <span>
+                            {{ material[0].title }}
+                        </span>
+                    </div>
+                    <div class="images-fasad">
+                        {% for fasad in fasadesType %}
+                            <img src="{{ asset(imageFasadesType[loop.index0]) }}" alt="{{ fasad.alt }}" title="{{ fasad.title }}">
                         {% endfor %}
                     </div>
                 </div>
