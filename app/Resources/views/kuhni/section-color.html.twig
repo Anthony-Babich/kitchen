@@ -8,15 +8,14 @@
         </div>
         <div class="row">
             {% for color in color %}
-            <div class="col-xs-4 col-sm-3 col-md-2 col-lg-2 portfolio-item">
-                <a href="{{ path('kuhni_parameters', {'slug' : color.slug}) }}">
-                    <div class="portfolio-caption" style="background-color: {{ color.color }};">
-                        <p class="text-muted">{{ color.title }}</p>
-                    </div>
-                </a>
-            </div>
+                <div class="col-xs-4 col-sm-3 col-md-2 col-lg-2 portfolio-item">
+                    <a href="{{ path('kuhni_parameters', {'slug' : color.slug}) }}">
+                        <div class="portfolio-caption" style="background-color: {{ color.color }};">
+                            <p class="text-muted">{{ color.title }}</p>
+                        </div>
+                    </a>
+                </div>
             {% endfor %}
         </div>
-
     </div>
 </section>

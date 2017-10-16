@@ -5,6 +5,7 @@ namespace Kuhni\Bundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Method({"GET", "POST"})
@@ -151,38 +152,61 @@ class KuhniCatalogController extends Controller
 
     /**
      * @Route("/{slug}/", name="kuhni_parameters")
-     * @param $slug
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param string $slug
+     * @return Response
      */
-    public function parametersAction($slug)
+    public function parametersAction(string $slug)
     {
-        //получение каталога товаров
-        $resultCatalog = $this->getCatalogresult();
-
-        if (!empty($resultCatalog)){
-            foreach ($resultCatalog as $item) {
-                $imageCatalog[] = 'upload/catalog/' . $item->getImageName();
-            }
+        if (!is_null($this->getRequest()->get('offset'))){
+            $offset = $this->getRequest()->get('offset');
+            $limit = $offset + 10;
         }else{
-            $imageCatalog = 'none';
+            $offset = 0;
+            $limit = $offset + 10;
         }
+        if (($offset <> 0)&&($limit <> 10)){
 
-        $result = $this->searchParametr($slug);
+            $result = $this->searchParametr($slug, $limit, $offset);
 
-        $image = $this->imagePath($result, 'kitchens');
+            foreach ($result as $item) {
+                $image[] = 'upload/kuhni/kitchens/' . $item['imageName'];
+            }
 
-        $countretult = ceil(count($result)/10);
-        return $this->render('kuhni/kuhniParameters/index.html.twig', array(
-            'kitchens' => $result,
-            'countKitchens' => $countretult,
-            'image' => $image,
-            'slug' => $slug,
-            'catalog' => $resultCatalog,
-            'imageCatalog' => $imageCatalog,
-        ));
+            return $this->render('kuhni/kuhniParameters/more-product.html.twig', array(
+                'kitchens' => $result,
+                'image' => $image,
+            ));
+        }else{
+            //получение каталога товаров
+            $resultCatalog = $this->getCatalogresult();
+
+            if (!empty($resultCatalog)){
+                foreach ($resultCatalog as $item) {
+                    $imageCatalog[] = 'upload/catalog/' . $item->getImageName();
+                }
+            }else{
+                $imageCatalog = 'none';
+            }
+
+            $result = $this->searchParametr($slug);
+
+            foreach ($result as $item) {
+                $image[] = 'upload/kuhni/kitchens/' . $item['imageName'];
+            }
+
+            $countretult = ceil(count($result)/10);
+            return $this->render('kuhni/kuhniParameters/index.html.twig', array(
+                'kitchens' => $result,
+                'countKitchens' => $countretult,
+                'image' => $image,
+                'slug' => $slug,
+                'catalog' => $resultCatalog,
+                'imageCatalog' => $imageCatalog,
+            ));
+        }
     }
 
-    private function searchParametr(string $slug){
+    private function searchParametr(string $slug, $offset = 0, $limit = 10){
         $entity = $this->getDoctrine()->getManager()
             ->getRepository('KuhniBundle:KuhniStyle')
             ->findOneBy(array('slug' => $slug));
@@ -201,7 +225,15 @@ class KuhniCatalogController extends Controller
                     $id = $entity->getId();
                     $result = $this->getDoctrine()->getManager()
                         ->getRepository('KuhniBundle:Kuhni')
-                        ->findByIdKuhniColor($id);
+                        ->createQueryBuilder('n')
+                        ->select('n')
+                        ->where('n.idKuhniColor = :id')
+                        ->orderBy('n.id', 'ASC')
+                        ->setParameter('id', $id)
+                        ->getQuery()
+                        ->setFirstResult($offset)
+                        ->setMaxResults($limit)
+                        ->getArrayResult();
                 }else{
                     if (is_array($entity)){
                         foreach ($entity as $item){
@@ -212,19 +244,43 @@ class KuhniCatalogController extends Controller
                     }
                     $result = $this->getDoctrine()->getManager()
                         ->getRepository('KuhniBundle:Kuhni')
-                        ->findByIdKuhniMaterial($id);
+                        ->createQueryBuilder('n')
+                        ->select('n')
+                        ->where('n.idKuhniMaterial IN (:id)')
+                        ->orderBy('n.id', 'ASC')
+                        ->setParameters(array('id' => $id))
+                        ->getQuery()
+                        ->setFirstResult($offset)
+                        ->setMaxResults($limit)
+                        ->getArrayResult();
                 }
             }else{
                 $id = $entity->getId();
                 $result = $this->getDoctrine()->getManager()
                     ->getRepository('KuhniBundle:Kuhni')
-                    ->findByIdKuhniConfig($id);
+                    ->createQueryBuilder('n')
+                    ->select('n')
+                    ->where('n.idKuhniConfig = :id')
+                    ->orderBy('n.id', 'ASC')
+                    ->setParameter('id', $id)
+                    ->getQuery()
+                    ->setFirstResult($offset)
+                    ->setMaxResults($limit)
+                    ->getArrayResult();
             }
         }else{
             $id = $entity->getId();
             $result = $this->getDoctrine()->getManager()
                 ->getRepository('KuhniBundle:Kuhni')
-                ->findByIdKuhniStyle($id);
+                ->createQueryBuilder('n')
+                ->select('n')
+                ->where('n.idKuhniStyle = :id')
+                ->orderBy('n.id', 'ASC')
+                ->setParameter('id', $id)
+                ->getQuery()
+                ->setFirstResult($offset)
+                ->setMaxResults($limit)
+                ->getArrayResult();
         }
         return $result;
     }

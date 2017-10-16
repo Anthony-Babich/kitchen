@@ -1,0 +1,59 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        /* Переменная-флаг для отслеживания того, происходит ли в данный момент ajax-запрос.
+        В самом начале даем ей значение false, т.е. запрос не в процессе выполнения */
+        var inProgress = false;
+        /* С какой статьи надо делать выборку из базы при ajax-запросе */
+        var startFrom = 11;
+        var slug = '{{ slug }}';
+        /* Используйте вариант $('#more').click(function() для того, чтобы дать пользователю возможность
+        управлять процессом, кликая по кнопке "Дальше" под блоком статей (см. файл index.php) */
+        $(window).scroll(function() {
+            /* Если высота окна + высота прокрутки больше или равны высоте всего документа
+            и ajax-запрос в настоящий момент не выполняется, то запускаем ajax-запрос */
+            if($(window).scrollTop() + $(window).height() >= $(document).height() - 200 && !inProgress) {
+                $.ajax({
+                    /* адрес файла-обработчика запроса */
+                    url: "{{ path('kuhni_parameters', {'slug' : slug}) }}",
+                    dataType: 'json',
+                    /* метод отправки данных */
+                    method: 'POST',
+                    /* данные, которые мы передаем в файл-обработчик */
+                    data: {"offset" : startFrom, "slug" : slug},
+                    /* что нужно сделать до отправки запрса */
+                    beforeSend: function() {
+                        /* меняем значение флага на true, т.е. запрос сейчас в процессе выполнения */
+                        inProgress = true;}
+                    /* что нужно сделать по факту выполнения запроса */
+                }).done(function(){
+                    /*kitchen = JSON.parse(JSON.stringify(data['result']));
+                    image = JSON.parse(JSON.stringify(data['image']));*/
+                    /* Если массив не пуст (т.е. статьи там есть) */
+                    /*if ((kitchen.length > 0)&&(image.length > 0)) {
+                        $.each( kitchen, function( index, value ) {
+                            $("#container-with-products").append(
+                                '<div class="container>"<div class="row"><div class="col-xl-6 col-md-12 big-col">'
+                                +'<a href="{#{{ path("kuhni_product", {"slug" : slug, "nameproduct" : "kitchen[index][slug]" }) }}#}">'
+                                /!*+'<img class="slide-product-img big" src="{#{{ asset( image[loop.index0] ) }}" alt="{{ kitchen.keywords }}" title="{{ kitchen.title }}">'
+                                    +'<span class="pos-bot-l"><ul class="nav"><li class="left"><div class="text-left"><span class="first-name"><b>{{ kitchen.title }}</b><br/></span>'
+                                    +'<span class="first-desc">{% if kitchen.fixedPrice %}*Цена указана за 1 метр погонный кухни{% else %}*Цену и наличие уточняйте{% endif %}</span>'
+                                    +'</div></li><li class="right"><div class="text-right right"><span class="text-right last-price">старая цена<span class="through">{{ kitchen.noDiscountPrice }}</span><br/>'
+                                    +'</span><span class="text-right now-price">сейчас от {{ kitchen.price }}</span></div></li></ul></span><span class="pos-bot-r desc text-center">'
+                                    +'<span class="title"><b>{{ kitchen.discount }}%</b></span><span>скидка</span></span><span class="phone text-center">'
+                                    +'<i class="fa fa-phone"></i></span><span class="like"><i class="fa fa-heart"></i> {{ kitchen.likes }}#}</span>'*!/
+                                +'</a></div></div></div>'
+                            );
+                        });
+                        /!* По факту окончания запроса снова меняем значение флага на false *!/
+                        // Увеличиваем на 10 порядковый номер статьи, с которой надо начинать выборку из базы*/
+                    //}
+                    $("#container-with-products").append(
+                        {% include 'kuhni/kuhniParameters/more-product.html.twig' %}
+                    );
+                    inProgress = false;
+                    startFrom += 10;
+                });
+                }
+        });
+    });
+</script>
