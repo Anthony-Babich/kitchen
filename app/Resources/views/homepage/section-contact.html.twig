@@ -8,35 +8,29 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <form id="contactForm" name="sentMessage" novalidate>
+                {{ form_start(form, { 'action': path('callback'), 'method': 'POST', 'attr': {'class': 'ajaxForm'} }) }}
+                {{ form_errors(form) }}
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-6">
                             <div class="form-group">
-                                <input class="form-control" id="name" type="text" placeholder="Ваше Имя *" required data-validation-required-message="Укажите ваше Имя.">
-                                <p class="help-block text-danger"></p>
+                                {{ form_row(form.name) }}
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="email" type="email" placeholder="Ваш Email">
-                                <p class="help-block text-danger"></p>
+                                {{ form_row(form.email) }}
                             </div>
+                            {{ form_row(form.phone) }}
+                        </div>
+                        <div class="col-6">
                             <div class="form-group">
-                                <input class="form-control" id="phone" type="tel" placeholder="Ваш Телефон *" required data-validation-required-message="Укажите ваш телефон для связи.">
-                                <p class="help-block text-danger"></p>
+                                {{ form_row(form.message) }}
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <textarea class="form-control" id="message" placeholder="Ваше Сообщение *" required data-validation-required-message="Напишите ваше сообщение."></textarea>
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
                         <div class="col-lg-12 text-center">
-                            <div id="success"></div>
-                            <button class="btn btn-xl" type="submit">Отправить Сообщение</button>
+                            <button type="submit" class="btn btn-xl">Отправить сообщение</button>
                         </div>
                     </div>
-                </form>
+                    {{form_rest(form)}}
+                {{ form_end(form) }}
             </div>
         </div>
     </div>

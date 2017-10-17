@@ -462,7 +462,7 @@ class KuhniCatalogController extends Controller
             if (empty($entity)) {
                 $entity = $this->getDoctrine()->getManager()
                     ->getRepository('KuhniBundle:KuhniMaterial')
-                    ->findBy(array('slug' => $slug));
+                    ->findOneBy(array('slug' => $slug));
                 if (empty($entity)) {
                     $entity = $this->getDoctrine()->getManager()
                         ->getRepository('KuhniBundle:KuhniColor')

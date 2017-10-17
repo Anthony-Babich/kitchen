@@ -4,3 +4,8 @@ homepage:
 get:
     resource: "@KuhniBundle/Controller/KuhniCatalogController.php"
     type:     annotation
+callback:
+    path:  /callback
+    defaults: { _controller: "KuhniBundle:CallBack:index" }
+    requirements:
+        methods:  GET|POST
