@@ -3,11 +3,12 @@
 namespace Kuhni\Bundle\Controller;
 
 use Kuhni\Bundle\Entity\CallBack;
+use Kuhni\Bundle\Entity\RequestCall;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CallBackController extends Controller
+class RequestCallController extends Controller
 {
     public function indexAction(Request $request){
         //geoIP
@@ -19,9 +20,7 @@ class CallBackController extends Controller
 
         $form = $request->get('form');
         $name = htmlspecialchars($form['name']);
-        $email = htmlspecialchars($form['email']);
         $phone = htmlspecialchars($form['phone']);
-        $message = htmlspecialchars($form['message']);
 
         $phoneUtil = \libphonenumber\PhoneNumberUtil::getInstance();
         $phoneNumber = new \libphonenumber\PhoneNumber();
@@ -29,12 +28,10 @@ class CallBackController extends Controller
 
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
 
-        $call = new CallBack();
+        $call = new RequestCall();
         $call->setUrl((string) $_SERVER['HTTP_REFERER']);
-        $call->setEmail($email);
         $call->setName($name);
         $call->setGeoIP($geo_info);
-        $call->setMessage($message);
         $call->setPhone($phoneNumber);
         $entityManager->persist($call);
         $entityManager->flush();

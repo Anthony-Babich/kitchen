@@ -9,3 +9,8 @@ callback:
     defaults: { _controller: "KuhniBundle:CallBack:index" }
     requirements:
         methods:  GET|POST
+requestcall:
+    path:  /requestcall
+    defaults: { _controller: "KuhniBundle:RequestCall:index" }
+    requirements:
+        methods:  GET|POST
