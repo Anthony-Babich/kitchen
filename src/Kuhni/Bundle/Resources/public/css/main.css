@@ -121,6 +121,10 @@ header.masthead.all {
 #calc {
   margin: 0 15px 30px;
   padding: 0; }
+  #calc button {
+    border: none;
+    background-color: unset;
+    margin: 30px; }
   #calc .row .vkladka {
     border: 1px solid black;
     border-left: none;
@@ -165,27 +169,6 @@ span {
 #all-products {
   line-height: 1.15;
   padding: 150px 0 0 0; }
-  #all-products a .like {
-    background-color: unset;
-    width: 80px;
-    height: 50px;
-    font-size: 16px;
-    left: 10px;
-    top: 20px;
-    padding: 7px;
-    position: absolute;
-    z-index: 99;
-    color: red; }
-  #all-products a .phone {
-    background-color: rgba(228, 228, 228, 0.79);
-    width: 50px;
-    height: 50px;
-    font-size: 35px;
-    color: #000;
-    right: 0;
-    padding: 7px;
-    position: absolute;
-    z-index: 10; }
   #all-products a .pos-bot-r.desc {
     color: #3f3f3f;
     line-height: 1;
@@ -255,11 +238,33 @@ span {
         font-size: 13px; }
       #all-products .small-col .pos-bot-l .now-price {
         font-size: 16px; }
-    #all-products .small-col .phone {
+    #all-products .small-col button.phone {
       top: 60px;
       right: 0; }
     #all-products .small-col .pos-bot-r.desc {
       top: 0; }
+  #all-products .phone {
+    background-color: rgba(228, 228, 228, 0.79);
+    width: 50px;
+    height: 50px;
+    font-size: 35px;
+    color: #000;
+    right: 0;
+    padding: 7px;
+    position: absolute;
+    z-index: 10; }
+  #all-products .like {
+    background-color: rgba(228, 228, 228, 0);
+    width: 80px;
+    height: 50px;
+    font-size: 16px;
+    left: 10px;
+    top: 20px;
+    padding: 7px;
+    position: absolute;
+    z-index: 99;
+    color: red;
+    border: none; }
   #all-products .first-small-col {
     margin-left: 0; }
   #all-products .marginleft10 {
@@ -280,6 +285,10 @@ span {
       right: -10px; }
     #all-products .big-a-10 .like {
       margin-left: 10px; }
+
+.modal-body {
+  background: #193153 url(/web/bundles/kuhni/img/map-image.png) no-repeat center;
+  margin: 15px; }
 
 @media (max-width: 1200px) {
   #product #description .price p {

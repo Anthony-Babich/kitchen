@@ -23,10 +23,6 @@ class CallBackController extends Controller
         $phone = htmlspecialchars($form['phone']);
         $message = htmlspecialchars($form['message']);
 
-        $phoneUtil = \libphonenumber\PhoneNumberUtil::getInstance();
-        $phoneNumber = new \libphonenumber\PhoneNumber();
-        $phoneUtil->format($phoneNumber->setNationalNumber($phone), \libphonenumber\PhoneNumberFormat::NATIONAL);
-
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
 
         $call = new CallBack();
@@ -35,7 +31,7 @@ class CallBackController extends Controller
         $call->setName($name);
         $call->setGeoIP($geo_info);
         $call->setMessage($message);
-        $call->setPhone($phoneNumber);
+        $call->setPhone($phone);
         $entityManager->persist($call);
         $entityManager->flush();
 

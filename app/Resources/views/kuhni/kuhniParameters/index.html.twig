@@ -10,10 +10,16 @@
     {% block content %}
         {% include 'kroshki.html.twig' %}
         {% include 'kuhni/kuhniParameters/products.html.twig' %}
+        {% include 'product/calc.html.twig' %}
+        {% include 'product/more-prod.html.twig' %}
     {% endblock %}
-    {% block footer %}
-        {% include 'modal.html.twig' %}
-    {% endblock %}
+{% endblock %}
+{% block modal %}
+    {% include 'modal.html.twig' %}
+    {% include 'modal-zayavkaRazmer.html.twig' %}
+    {% include 'modal-costproject.html.twig' %}
+    {% include 'modal-designerAtHome.html.twig' %}
+    {% include 'modal-requestcall.html.twig' %}
 {% endblock %}
 {% block ajax %}
     {% include 'kuhni/kuhniParameters/ajax-more-product.html.twig' %}

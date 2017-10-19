@@ -25,24 +25,6 @@ class FasadColor
     private $id;
 
     /**
-     * @return \DateTime
-     */
-    public function getUpdated(): \DateTime
-    {
-        return $this->updated;
-    }
-
-    /**
-     * @param \DateTime $updated
-     * @return FasadColor
-     */
-    public function setUpdated(\DateTime $updated)
-    {
-        $this->updated = $updated;
-        return $this;
-    }
-
-    /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
      * @Vich\UploadableField(mapping="kuhni_fasad", fileNameProperty="imageName", size="imageSize")
@@ -70,97 +52,12 @@ class FasadColor
     private $updated;
 
     /**
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-     *
-     * @return FasadColor
-     */
-    public function setImageFile(File $image = null)
-    {
-        $this->imageFile = $image;
-
-        if ($image) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updated = new \DateTimeImmutable();
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return File|null
-     */
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param string $imageName
-     *
-     * @return FasadColor
-     */
-    public function setImageName($imageName)
-    {
-        $this->imageName = $imageName;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getImageName()
-    {
-        return $this->imageName;
-    }
-
-    /**
-     * @param integer $imageSize
-     *
-     * @return FasadColor
-     */
-    public function setImageSize($imageSize)
-    {
-        $this->imageSize = $imageSize;
-
-        return $this;
-    }
-
-    /**
-     * @return integer|null
-     */
-    public function getImageSize()
-    {
-        return $this->imageSize;
-    }
-
-    /**
      * @var KuhniMaterial
      *
      * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\KuhniMaterial", cascade={"persist"})
      * @ORM\JoinColumn(name="id_kuhni_material", referencedColumnName="id")
      */
     private $idKuhniMaterial;
-
-    /**
-     * @return KuhniMaterial
-     */
-    public function getIdKuhniMaterial(): KuhniMaterial
-    {
-        return $this->idKuhniMaterial;
-    }
-
-    /**
-     * @param KuhniMaterial $idKuhniMaterial
-     * @return FasadColor
-     */
-    public function setIdKuhniMaterial(KuhniMaterial $idKuhniMaterial)
-    {
-        $this->idKuhniMaterial = $idKuhniMaterial;
-
-        return $this;
-    }
 
     /**
      * @var string
@@ -264,6 +161,109 @@ class FasadColor
     public function getAlt()
     {
         return $this->alt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdated(): \DateTime
+    {
+        return $this->updated;
+    }
+
+    /**
+     * @param \DateTime $updated
+     * @return FasadColor
+     */
+    public function setUpdated(\DateTime $updated)
+    {
+        $this->updated = $updated;
+        return $this;
+    }
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     *
+     * @return FasadColor
+     */
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updated = new \DateTimeImmutable();
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param string $imageName
+     *
+     * @return FasadColor
+     */
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
+
+    /**
+     * @param integer $imageSize
+     *
+     * @return FasadColor
+     */
+    public function setImageSize($imageSize)
+    {
+        $this->imageSize = $imageSize;
+
+        return $this;
+    }
+
+    /**
+     * @return integer|null
+     */
+    public function getImageSize()
+    {
+        return $this->imageSize;
+    }
+
+    /**
+     * @return KuhniMaterial
+     */
+    public function getIdKuhniMaterial(): KuhniMaterial
+    {
+        return $this->idKuhniMaterial;
+    }
+
+    /**
+     * @param KuhniMaterial $idKuhniMaterial
+     * @return FasadColor
+     */
+    public function setIdKuhniMaterial(KuhniMaterial $idKuhniMaterial)
+    {
+        $this->idKuhniMaterial = $idKuhniMaterial;
+
+        return $this;
     }
 
     /**

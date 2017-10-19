@@ -1,0 +1,37 @@
+<div class="modal fade" id="freedesignproject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLabel">Заявка на бесплатный дизайн-проект</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{ form_start(formFreeProject, { "action": path("freeproject"), "method": "POST", "attr": {"class": "ajaxForm", "id": "freeProjectForm"} }) }}
+                {{ form_errors(formFreeProject) }}
+                    <div class="form-group">
+                        {{ form_row(formFreeProject.name) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(formFreeProject.phone) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(formFreeProject.email) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(formFreeProject.message) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(formFreeProject.imageFile) }}
+                    </div>
+                {{ form_rest(formFreeProject)}}
+                {{ form_end(formFreeProject) }}
+            </div>
+            <div class="row text-center"><div class="col-12">Прочитал и согласен с <a href="#">политикой конфиденциальности</a></div></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-xl">Отправить заявку</button>
+            </div>
+        </div>
+    </div>
+</div>

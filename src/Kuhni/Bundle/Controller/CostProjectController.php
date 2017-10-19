@@ -2,12 +2,12 @@
 
 namespace Kuhni\Bundle\Controller;
 
-use Kuhni\Bundle\Entity\RequestCall;
+use Kuhni\Bundle\Entity\CostProject;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class RequestCallController extends Controller
+class CostProjectController extends Controller
 {
     public function indexAction(Request $request){
         //geoIP
@@ -19,15 +19,19 @@ class RequestCallController extends Controller
 
         $form = $request->get('form');
         $name = htmlspecialchars($form['name']);
+        $email = htmlspecialchars($form['email']);
         $phone = htmlspecialchars($form['phone']);
+        $message = htmlspecialchars($form['message']);
 
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
 
-        $call = new RequestCall();
-        $call->setUrl((string) $_SERVER['HTTP_REFERER']);
-        $call->setName($name);
-        $call->setGeoIP($geo_info);
+        $call = new CostProject();
         $call->setPhone($phone);
+        $call->setMessage($message);
+        $call->setUrl($_SERVER['HTTP_REFERER']);
+        $call->setName($name);
+        $call->setEmail($email);
+        $call->setGeoIP($geo_info);
         $entityManager->persist($call);
         $entityManager->flush();
 

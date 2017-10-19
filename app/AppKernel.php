@@ -29,7 +29,6 @@ class AppKernel extends Kernel
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
 
             new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
-            new Misd\PhoneNumberBundle\MisdPhoneNumberBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

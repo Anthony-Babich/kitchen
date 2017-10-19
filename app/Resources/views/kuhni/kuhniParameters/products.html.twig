@@ -6,7 +6,7 @@
                     {% if loop.index0 == 0 %}
                         <a href="{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : kitchen.slug}) }}">
                             <img class="slide-product-img big" src="{{ asset( image[loop.index0] ) }}" alt="{{ kitchen.keywords }}" title="{{ kitchen.title }}">
-                            <span class="pos-bot-l">
+                            <span class="pos-bot-l" {% if kitchen.discount == 0 %}style="width: 100%;" {% endif %}>
                                 <ul class="nav">
                                     <li class="left">
                                         <div class="text-left">
@@ -30,17 +30,19 @@
                                     </li>
                                 </ul>
                             </span>
-                            <span class="pos-bot-r desc text-center">
+                            {% if kitchen.discount != 0 %}
+                                <span class="pos-bot-r desc text-center">
                                     <span class="title"><b>{{ kitchen.discount }}%</b></span>
                                     <span>скидка</span>
-                            </span>
-                            <span class="phone text-center">
-                                    <i class="fa fa-phone"></i>
-                            </span>
-                            <span class="like">
-                                <i class="fa fa-heart"></i> {{ kitchen.likes }}
-                            </span>
+                                </span>
+                            {% endif %}
                         </a>
+                        <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
+                            <i class="fa fa-phone"></i>
+                        </button>
+                        <button type="button" class="like text-center">
+                            <i class="fa fa-heart"></i> {{ kitchen.likes }}
+                        </button>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -69,17 +71,19 @@
                                                 </li>
                                             </ul>
                                         </span>
-                                        <span class="pos-bot-r desc text-center">
-                                            <span class="title"><b>{{ kitchen.discount }}%</b></span>
-                                            <span>скидка</span>
-                                        </span>
-                                        <span class="phone text-center">
-                                            <i class="fa fa-phone"></i>
-                                        </span>
-                                        <span class="like">
-                                            <i class="fa fa-heart"></i> {{ kitchen.likes }}
-                                        </span>
+                                        {% if kitchen.discount != 0 %}
+                                            <span class="pos-bot-r desc text-center">
+                                                <span class="title"><b>{{ kitchen.discount }}%</b></span>
+                                                <span>скидка</span>
+                                            </span>
+                                        {% endif %}
                                     </a>
+                                    <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
+                                        <i class="fa fa-phone"></i>
+                                    </button>
+                                    <button type="button" class="like text-center">
+                                        <i class="fa fa-heart"></i> {{ kitchen.likes }}
+                                    </button>
                                 </div>
                             {% endif %}
                         {% endfor %}
@@ -107,17 +111,19 @@
                                                 </li>
                                             </ul>
                                         </span>
-                                        <span class="pos-bot-r desc text-center">
-                                            <span class="title"><b>{{ kitchen.discount }}%</b></span>
-                                            <span>скидка</span>
-                                        </span>
-                                        <span class="phone text-center">
-                                            <i class="fa fa-phone"></i>
-                                        </span>
-                                        <span class="like">
-                                            <i class="fa fa-heart"></i> {{ kitchen.likes }}
-                                        </span>
+                                        {% if kitchen.discount != 0 %}
+                                            <span class="pos-bot-r desc text-center">
+                                                <span class="title"><b>{{ kitchen.discount }}%</b></span>
+                                                <span>скидка</span>
+                                            </span>
+                                        {% endif %}
                                     </a>
+                                    <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
+                                        <i class="fa fa-phone"></i>
+                                    </button>
+                                    <button type="button" class="like text-center">
+                                        <i class="fa fa-heart"></i> {{ kitchen.likes }}
+                                    </button>
                                 </div>
                             {% endif %}
                         {% endfor %}
@@ -139,33 +145,35 @@
                                     <a href="{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : kitchen.slug}) }}">
                                         <img class="slide-product-img" src="{{ asset( image[loop.index0] ) }}" alt="{{ kitchen.keywords }}" title="{{ kitchen.title }}">
                                         <span class="pos-bot-l">
-                                        <ul class="nav">
-                                            <li class="left">
-                                                <div class="text-left">
-                                                    <span class="first-name"><b>{{ kitchen.title }}</b></span>
-                                                </div>
-                                            </li>
-                                            <li class="right">
-                                                <div class="text-right right">
-                                                    <span class="text-right now-price">сейчас от {{ kitchen.price }}</span><br/>
-                                                    <span class="text-right last-price">старая цена
-                                                        <span class="through">{{ kitchen.noDiscountPrice }}</span>
-                                                    </span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </span>
-                                        <span class="pos-bot-r desc text-center">
-                                        <span class="title"><b>{{ kitchen.discount }}%</b></span>
-                                        <span>скидка</span>
-                                    </span>
-                                        <span class="phone text-center">
-                                        <i class="fa fa-phone"></i>
-                                    </span>
-                                        <span class="like">
-                                        <i class="fa fa-heart"></i> {{ kitchen.likes }}
-                                    </span>
+                                            <ul class="nav">
+                                                <li class="left">
+                                                    <div class="text-left">
+                                                        <span class="first-name"><b>{{ kitchen.title }}</b></span>
+                                                    </div>
+                                                </li>
+                                                <li class="right">
+                                                    <div class="text-right right">
+                                                        <span class="text-right now-price">сейчас от {{ kitchen.price }}</span><br/>
+                                                        <span class="text-right last-price">старая цена
+                                                            <span class="through">{{ kitchen.noDiscountPrice }}</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </span>
+                                        {% if kitchen.discount != 0 %}
+                                            <span class="pos-bot-r desc text-center">
+                                                <span class="title"><b>{{ kitchen.discount }}%</b></span>
+                                                <span>скидка</span>
+                                            </span>
+                                        {% endif %}
                                     </a>
+                                    <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
+                                        <i class="fa fa-phone"></i>
+                                    </button>
+                                    <button type="button" class="like text-center">
+                                        <i class="fa fa-heart"></i> {{ kitchen.likes }}
+                                    </button>
                                 </div>
                             {% endif %}
                         {% endfor %}
@@ -177,33 +185,35 @@
                                     <a href="{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : kitchen.slug}) }}">
                                         <img class="slide-product-img" src="{{ asset( image[loop.index0] ) }}" alt="{{ kitchen.keywords }}" title="{{ kitchen.title }}">
                                         <span class="pos-bot-l">
-                                        <ul class="nav">
-                                            <li class="left">
-                                                <div class="text-left">
-                                                    <span class="first-name"><b>{{ kitchen.title }}</b><br/></span>
-                                                </div>
-                                            </li>
-                                            <li class="right">
-                                                <div class="text-right right">
-                                                    <span class="text-right now-price">сейчас от {{ kitchen.price }}</span><br/>
-                                                    <span class="text-right last-price">старая цена
-                                                        <span class="through">{{ kitchen.noDiscountPrice }}</span>
-                                                    </span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </span>
-                                        <span class="pos-bot-r desc text-center">
-                                        <span class="title"><b>{{ kitchen.discount }}%</b></span>
-                                        <span>скидка</span>
-                                    </span>
-                                        <span class="phone text-center">
-                                        <i class="fa fa-phone"></i>
-                                    </span>
-                                        <span class="like">
-                                        <i class="fa fa-heart"></i> {{ kitchen.likes }}
-                                    </span>
+                                            <ul class="nav">
+                                                <li class="left">
+                                                    <div class="text-left">
+                                                        <span class="first-name"><b>{{ kitchen.title }}</b><br/></span>
+                                                    </div>
+                                                </li>
+                                                <li class="right">
+                                                    <div class="text-right right">
+                                                        <span class="text-right now-price">сейчас от {{ kitchen.price }}</span><br/>
+                                                        <span class="text-right last-price">старая цена
+                                                            <span class="through">{{ kitchen.noDiscountPrice }}</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </span>
+                                        {% if kitchen.discount != 0 %}
+                                            <span class="pos-bot-r desc text-center">
+                                                <span class="title"><b>{{ kitchen.discount }}%</b></span>
+                                                <span>скидка</span>
+                                            </span>
+                                        {% endif %}
                                     </a>
+                                    <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
+                                        <i class="fa fa-phone"></i>
+                                    </button>
+                                    <button type="button" class="like text-center">
+                                        <i class="fa fa-heart"></i> {{ kitchen.likes }}
+                                    </button>
                                 </div>
                             {% endif %}
                         {% endfor %}
@@ -215,41 +225,43 @@
                     {% if loop.index0 == 9 %}
                         <a href="{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : kitchen.slug}) }}" class="big-a-10">
                             <img class="slide-product-img big" src="{{ asset( image[loop.index0] ) }}" alt="{{ kitchen.keywords }}" title="{{ kitchen.title }}">
-                            <span class="pos-bot-l">
-                            <ul class="nav">
-                                <li class="left">
-                                    <div class="text-left">
-                                        <span class="first-name"><b>{{ kitchen.title }}</b><br/></span>
-                                        <span class="first-desc">
-                                            {% if kitchen.fixedPrice %}
-                                                *Цена указана за 1 метр погонный кухни
-                                            {% else %}
-                                                *Цену и наличие уточняйте
-                                            {% endif %}
-                                        </span>
-                                    </div>
-                                </li>
-                                <li class="right">
-                                    <div class="text-right right">
-                                        <span class="text-right last-price">старая цена
-                                            <span class="through">{{ kitchen.noDiscountPrice }}</span><br/>
-                                        </span>
-                                        <span class="text-right now-price">сейчас от {{ kitchen.price }}</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </span>
-                            <span class="pos-bot-r desc text-center">
-                            <span class="title"><b>{{ kitchen.discount }}%</b></span>
-                            <span>скидка</span>
-                        </span>
-                            <span class="phone text-center">
-                            <i class="fa fa-phone"></i>
-                        </span>
-                            <span class="like">
-                            <i class="fa fa-heart"></i> {{ kitchen.likes }}
-                        </span>
+                            <span class="pos-bot-l" {% if kitchen.discount == 0 %}style="width: 100%;" {% endif %}>
+                                <ul class="nav">
+                                    <li class="left">
+                                        <div class="text-left">
+                                            <span class="first-name"><b>{{ kitchen.title }}</b><br/></span>
+                                            <span class="first-desc">
+                                                {% if kitchen.fixedPrice %}
+                                                    *Цена указана за 1 метр погонный кухни
+                                                {% else %}
+                                                    *Цену и наличие уточняйте
+                                                {% endif %}
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li class="right">
+                                        <div class="text-right right">
+                                            <span class="text-right last-price">старая цена
+                                                <span class="through">{{ kitchen.noDiscountPrice }}</span><br/>
+                                            </span>
+                                            <span class="text-right now-price">сейчас от {{ kitchen.price }}</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </span>
+                            {% if kitchen.discount != 0 %}
+                                <span class="pos-bot-r desc text-center">
+                                    <span class="title"><b>{{ kitchen.discount }}%</b></span>
+                                    <span>скидка</span>
+                                </span>
+                            {% endif %}
                         </a>
+                        <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
+                            <i class="fa fa-phone"></i>
+                        </button>
+                        <button type="button" class="like text-center">
+                            <i class="fa fa-heart"></i> {{ kitchen.likes }}
+                        </button>
                     {% endif %}
                 {% endfor %}
             </div>

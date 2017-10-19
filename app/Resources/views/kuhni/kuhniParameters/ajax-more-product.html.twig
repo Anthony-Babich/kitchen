@@ -24,9 +24,6 @@
                 }).done(function(result){
                     if (result.length > 0){
                         if (result === 'noMoreProduct'){
-                            $("#container-with-products").append(
-                                "<div class='container'><div class='row text-center'><div class='col-12'><button class='btn btn-xl'>Товаров, для данной категории, больше нет</button></div></div></div>"
-                            );
                             noMore = true;
                         }else{
                             $("#container-with-products").append(

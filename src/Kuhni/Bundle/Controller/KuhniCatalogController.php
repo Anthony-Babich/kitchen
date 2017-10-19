@@ -2,13 +2,20 @@
 
 namespace Kuhni\Bundle\Controller;
 
+use Kuhni\Bundle\Entity\CostProject;
+use Kuhni\Bundle\Entity\DesignerAtHome;
+use Kuhni\Bundle\Entity\freeDesignProject;
+use Kuhni\Bundle\Entity\RequestCall;
+use Kuhni\Bundle\Entity\ZayavkaRazmer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Routing\Annotation\Route;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 /**
- * @Method({"GET", "POST"})
  * @Route("/kuhni")
  */
 class KuhniCatalogController extends Controller
@@ -53,6 +60,9 @@ class KuhniCatalogController extends Controller
             'material' => $resultMaterial,
             'countMaterial' => $countMaterial,
             'imageMaterial' => $imageMaterial,
+
+            'formRequestCall' => $this->getRequestCallForm(),
+            'formRequestCallModal' => $this->getRequestCallForm(),
         ));
     }
 
@@ -62,10 +72,11 @@ class KuhniCatalogController extends Controller
      */
     private function result(string $db){
         $db = 'KuhniBundle:'.$db;
-        $qb = $this->getDoctrine()->getManager()->getRepository($db)
-            ->createQueryBuilder('n');
-        $qb->select('DISTINCT n.title');
-        $titles = $qb->getQuery()->getResult();
+        $titles = $this->getDoctrine()->getManager()->getRepository($db)
+            ->createQueryBuilder('n')
+            ->select('DISTINCT n.title')
+            ->getQuery()
+            ->getResult();
 
         foreach ($titles as $title) {
             $result[] = $this->getDoctrine()->getManager()
@@ -124,32 +135,33 @@ class KuhniCatalogController extends Controller
 
         //search all fasades
         //SELECT * FROM `fasad_color` where fasad_color.id_kuhni_material = 3;
-        $qb = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:FasadColor')
-            ->createQueryBuilder('n');
-        $qb->select('n')
+        $fasadesColor = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:FasadColor')
+            ->createQueryBuilder('n')
+            ->select('n')
             ->where('n.idKuhniMaterial = :id')
-            ->setParameter('id', $result->getIdKuhniMaterial());
-        $fasadesColor = $qb->getQuery()->getResult();
+            ->setParameter('id', $result->getIdKuhniMaterial())
+            ->getQuery()
+            ->getResult();
         $imageFasadesColor = $this->imagePath($fasadesColor, 'fasad');
 
-        $qb = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:FasadType')
-            ->createQueryBuilder('n');
-        $qb->select('n')
+        $fasadesType = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:FasadType')
+            ->createQueryBuilder('n')
+            ->select('n')
             ->where('n.idKuhniMaterial = :id')
-            ->setParameter('id', $result->getIdKuhniMaterial());
-        $fasadesType = $qb->getQuery()->getResult();
+            ->setParameter('id', $result->getIdKuhniMaterial())
+            ->getQuery()
+            ->getResult();
         $imageFasadesType = $this->imagePath($fasadesType, 'fasad');
 
-        $qb = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:KuhniMaterial')
-            ->createQueryBuilder('n');
-        $qb->select('n')
+        $material = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:KuhniMaterial')
+            ->createQueryBuilder('n')
+            ->select('n')
             ->where('n.id = :id')
-            ->setParameter('id', $result->getIdKuhniMaterial());
-        $material = $qb->getQuery()->getResult();
+            ->setParameter('id', $result->getIdKuhniMaterial())
+            ->getQuery()->getResult();
 
         //Хлебные крошки
         $breadcrumbs = $this->get('white_october_breadcrumbs');
-        // Simple example
         $breadcrumbs->addItem("Главная", $this->get("router")->generate("homepage"));
         $breadcrumbs->addItem("Кухни", $this->get("router")->generate("kuhni_list"));
         $breadcrumbs->addItem("{$this->getNameBreadParam($slug)}", $this->get("router")->generate('kuhni_parameters', ['slug' => $slug]));
@@ -166,6 +178,14 @@ class KuhniCatalogController extends Controller
             'material' => $material,
             'catalog' => $resultCatalog,
             'imageCatalog' => $imageCatalog,
+
+            //FORMS
+            'formRequestCall' => $this->getRequestCallForm(),
+            'formRequestCallModal' => $this->getRequestCallForm(),
+            'formFreeProject' => $this->getFreeProjectForm(),
+            'formZayavkaRazmer' => $this->getZayavkaRazmer(),
+            'formDesignerAtHome' => $this->getDesignerAtHome(),
+            'formCostProject' => $this->getCostProject(),
         ));
     }
 
@@ -200,8 +220,11 @@ class KuhniCatalogController extends Controller
                         $strResult .= "<a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
 
                         $strResult .= "<img class='slide-product-img big' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
-
-                        $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/></span>";
+                        $strResult .= "<span class='pos-bot-l'";
+                        if ($result[$i]['discount'] == 0){
+                            $strResult .= 'style="width:100%;"';
+                        }
+                        $strResult .= "><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/></span>";
                         $strResult .= "<span class='first-desc'>";
                         if ($result[$i]['fixedPrice']){
                             $strResult .= "*Цена указана за 1 метр погонный кухни";
@@ -212,9 +235,9 @@ class KuhniCatalogController extends Controller
                         $strResult .= "<span class='through'>{$result[$i]['noDiscountPrice']}</span><br/></span><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span>";
                         $strResult .= "</div></li></ul></span>";
                         $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
-                        $strResult .= "<span class='phone text-center'><i class='fa fa-phone'></i></span>";
-                        $strResult .= "<span class='like'><i class='fa fa-heart'></i> {$result[$i]['likes']}</span>";
                         $strResult .= "</a>";
+                        $strResult .= "<button type='button' class='phone text-center' data-toggle=\"modal\" data-target=\"#requestcall\"><i class='fa fa-phone'></i></button>";
+                        $strResult .= "<button type='button' class='like text-center'><i class='fa fa-heart'></i> {$result[$i]['likes']}</button>";
                     }
                 }
                 $strResult .= "</div>";
@@ -308,7 +331,11 @@ class KuhniCatalogController extends Controller
 
                         $strResult .= "<img class='slide-product-img big' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
 
-                        $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/></span>";
+                        $strResult .= "<span class='pos-bot-l'";
+                        if ($result[$i]['discount'] == 0){
+                            $strResult .= 'style="width:100%;"';
+                        }
+                        $strResult .= "><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/></span>";
                         $strResult .= "<span class='first-desc'>";
                         if ($result[$i]['fixedPrice']){
                             $strResult .= "*Цена указана за 1 метр погонный кухни";
@@ -361,6 +388,13 @@ class KuhniCatalogController extends Controller
                 'slug' => $slug,
                 'catalog' => $resultCatalog,
                 'imageCatalog' => $imageCatalog,
+
+                'formRequestCall' => $this->getRequestCallForm(),
+                'formRequestCallModal' => $this->getRequestCallForm(),
+                'formZayavkaRazmer' => $this->getZayavkaRazmer(),
+                'formDesignerAtHome' => $this->getDesignerAtHome(),
+                'formCostProject' => $this->getCostProject(),
+                'formFreeProject' => $this->getCostProject(),
             ));
         }
     }
@@ -445,10 +479,12 @@ class KuhniCatalogController extends Controller
     }
 
     private function getCatalogResult(){
-        $qb = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:Catalog')
-            ->createQueryBuilder('n');
-        $qb->select('n')->orderBy('n.id');
-        return $qb->getQuery()->getResult();
+        return $this->getDoctrine()->getManager()->getRepository('KuhniBundle:Catalog')
+            ->createQueryBuilder('n')
+            ->select('n')
+            ->orderBy('n.id')
+            ->getQuery()
+            ->getResult();
     }
 
     private function getNameBreadParam(string $slug){
@@ -471,5 +507,174 @@ class KuhniCatalogController extends Controller
             }
         }
         return $entity->getTitle();
+    }
+
+    private function getRequestCallForm()
+    {
+        $requestCall = new RequestCall();
+
+        $formRequestCall = $this->createFormBuilder($requestCall)
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'class' => 'form-control'
+                ],
+                'label' => false
+            ))
+            ->add('phone', NumberType::class, array(
+                'attr' => [
+                    'class' => 'form-control',
+                    'type' => 'tel',
+                ],
+                'label' => false,
+            ))
+            ->getForm()->createView();
+
+        return $formRequestCall;
+    }
+
+    private function getFreeProjectForm()
+    {
+        $freeProject = new freeDesignProject();
+
+        $formFreeProject = $this->createFormBuilder($freeProject)
+            ->add('name', TextType::class, array('attr' => [
+                'placeholder' => 'ВАШЕ ИМЯ *',
+                'class' => 'form-control'],
+                'label' => false
+            ))
+            ->add('phone', NumberType::class, array(
+                'attr' => [
+                    'class' => 'form-control',
+                    'type' => 'tel',
+                ],
+                'label' => false,
+            ))
+            ->add('email', EmailType::class, array(
+                'attr' => [
+                    'placeholder' => 'Ваш EMAIL',
+                    'class' => 'form-control',
+                    'required' => false,
+                ],
+                'label' => false,
+            ))
+            ->add('message', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ СООБЩЕНИЕ *',
+                    'class' => 'form-control',
+                ],
+                'label' => false,
+            ))
+            ->add('imageFile', VichImageType::class, array(
+                'required'      => false,
+                'allow_delete'  => true,
+                'download_link' => false,
+                'label'         => false,
+            ))
+            ->getForm()->createView();
+
+        return $formFreeProject;
+    }
+
+    private function getZayavkaRazmer()
+    {
+        $ZayavkaRazmer = new ZayavkaRazmer();
+
+        $formZayavkaRazmer = $this->createFormBuilder($ZayavkaRazmer)
+            ->add('name', TextType::class, array('attr' => [
+                'placeholder' => 'ВАШЕ ИМЯ *',
+                'class' => 'form-control'],
+                'label' => false
+            ))
+            ->add('phone', NumberType::class, array(
+                'attr' => [
+                    'class' => 'form-control',
+                    'type' => 'tel',
+                ],
+                'label' => false,
+            ))
+            ->add('message', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ СООБЩЕНИЕ *',
+                    'class' => 'form-control',
+                ],
+                'label' => false,
+            ))
+            ->getForm()->createView();
+
+        return $formZayavkaRazmer;
+    }
+
+    private function getDesignerAtHome()
+    {
+        $DesignerAtHome = new DesignerAtHome();
+
+        $formDesignerAtHome = $this->createFormBuilder($DesignerAtHome)
+            ->add('name', TextType::class, array('attr' => [
+                'placeholder' => 'ВАШЕ ИМЯ *',
+                'class' => 'form-control'],
+                'label' => false
+            ))
+            ->add('phone', NumberType::class, array(
+                'attr' => [
+                    'class' => 'form-control',
+                    'type' => 'tel',
+                ],
+                'label' => false,
+            ))
+            ->add('message', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ СООБЩЕНИЕ *',
+                    'class' => 'form-control',
+                    'required' => false,
+                ],
+                'label' => false,
+            ))
+            ->getForm()->createView();
+
+        return $formDesignerAtHome;
+    }
+
+    private function getCostProject()
+    {
+        $costProject = new CostProject();
+
+        $formCostProject = $this->createFormBuilder($costProject)
+            ->add('name', TextType::class, array('attr' => [
+                'placeholder' => 'ВАШЕ ИМЯ *',
+                'class' => 'form-control'],
+                'label' => false
+            ))
+            ->add('phone', NumberType::class, array(
+                'attr' => [
+                    'class' => 'form-control',
+                    'type' => 'tel',
+                ],
+                'label' => false,
+            ))
+            ->add('email', EmailType::class, array(
+                'attr' => [
+                    'placeholder' => 'Ваш EMAIL',
+                    'class' => 'form-control',
+                    'required' => false,
+                ],
+                'label' => false,
+            ))
+            ->add('message', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ СООБЩЕНИЕ *',
+                    'class' => 'form-control',
+                ],
+                'label' => false,
+            ))
+            ->add('imageFile', VichImageType::class, array(
+                'required'      => false,
+                'allow_delete'  => true,
+                'download_link' => false,
+                'label'         => false,
+            ))
+            ->getForm()->createView();
+
+        return $formCostProject;
     }
 }

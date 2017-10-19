@@ -2,12 +2,12 @@
 
 namespace Kuhni\Bundle\Controller;
 
-use Kuhni\Bundle\Entity\RequestCall;
+use Kuhni\Bundle\Entity\freeDesignProject;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class RequestCallController extends Controller
+class freeDesignProjectController extends Controller
 {
     public function indexAction(Request $request){
         //geoIP
@@ -19,14 +19,18 @@ class RequestCallController extends Controller
 
         $form = $request->get('form');
         $name = htmlspecialchars($form['name']);
+        $email = htmlspecialchars($form['email']);
         $phone = htmlspecialchars($form['phone']);
+        $message = htmlspecialchars($form['message']);
 
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
 
-        $call = new RequestCall();
+        $call = new freeDesignProject();
         $call->setUrl((string) $_SERVER['HTTP_REFERER']);
+        $call->setEmail($email);
         $call->setName($name);
         $call->setGeoIP($geo_info);
+        $call->setMessage($message);
         $call->setPhone($phone);
         $entityManager->persist($call);
         $entityManager->flush();

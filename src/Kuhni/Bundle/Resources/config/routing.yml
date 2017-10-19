@@ -4,6 +4,8 @@ homepage:
 get:
     resource: "@KuhniBundle/Controller/KuhniCatalogController.php"
     type:     annotation
+    requirements:
+        methods:  GET|POST
 callback:
     path:  /callback
     defaults: { _controller: "KuhniBundle:CallBack:index" }
@@ -12,5 +14,25 @@ callback:
 requestcall:
     path:  /requestcall
     defaults: { _controller: "KuhniBundle:RequestCall:index" }
+    requirements:
+        methods:  GET|POST
+freeproject:
+    path:  /freeproject
+    defaults: { _controller: "KuhniBundle:freeDesignProject:index" }
+    requirements:
+        methods:  GET|POST
+zayavkarazmer:
+    path:  /zayavkarazmer
+    defaults: { _controller: "KuhniBundle:zayavkaRazmer:index" }
+    requirements:
+        methods:  GET|POST
+costproject:
+    path:  /costproject
+    defaults: { _controller: "KuhniBundle:CostProject:index" }
+    requirements:
+        methods:  GET|POST
+designerathome:
+    path:  /designerathome
+    defaults: { _controller: "KuhniBundle:DesignerAtHome:index" }
     requirements:
         methods:  GET|POST

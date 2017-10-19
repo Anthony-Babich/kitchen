@@ -156,6 +156,11 @@ header.masthead.all{
 	}
 }
 #calc{
+	button{
+		border: none;
+		background-color: unset;
+		margin: 30px;
+	}
 	margin: 0 15px 30px;
 	padding: 0;
 	.row{
@@ -215,29 +220,6 @@ span{padding: 0;}
 	line-height: 1.15;
 	padding: 150px 0 0 0;
 	a{
-		.like{
-			background-color: unset;
-			width: 80px;
-			height: 50px;
-			font-size: 16px;
-			left: 10px;
-			top: 20px;
-			padding: 7px;
-			position: absolute;
-			z-index: 99;
-			color: red;
-		}
-		.phone{
-			background-color: rgba(228, 228, 228, 0.79);
-			width: 50px;
-			height: 50px;
-			font-size: 35px;
-			color: #000;
-			right: 0;
-			padding: 7px;
-			position: absolute;
-			z-index: 10;
-		}
 		.pos-bot-r.desc {
 			color: #3f3f3f;
 			line-height: 1;
@@ -332,13 +314,37 @@ span{padding: 0;}
 				font-size: 16px;
 			}
 		}
-		.phone{
+		button.phone{
 			top: 60px;
 			right: 0;
 		}
 		.pos-bot-r.desc {
 			top: 0;
 		}
+	}
+	.phone{
+		background-color: rgba(228, 228, 228, 0.79);
+		width: 50px;
+		height: 50px;
+		font-size: 35px;
+		color: #000;
+		right: 0;
+		padding: 7px;
+		position: absolute;
+		z-index: 10;
+	}
+	.like{
+		background-color: rgba(228, 228, 228, 0);
+		width: 80px;
+		height: 50px;
+		font-size: 16px;
+		left: 10px;
+		top: 20px;
+		padding: 7px;
+		position: absolute;
+		z-index: 99;
+		color: red;
+		border: none;
 	}
 	.first-small-col{
 		margin-left: 0;
@@ -370,6 +376,10 @@ span{padding: 0;}
 			margin-left: 10px;
 		}
 	}
+}
+.modal-body{
+	background: #193153 url(/web/bundles/kuhni/img/map-image.png) no-repeat center;
+	margin: 15px;
 }
 @media (max-width: 1200px) {
 	#product{

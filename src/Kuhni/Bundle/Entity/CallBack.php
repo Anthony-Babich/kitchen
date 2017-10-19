@@ -47,7 +47,7 @@ class CallBack
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="phone_number", length=255)
+     * @ORM\Column(name="phone", type="string", length=255)
      */
     private $phone;
 

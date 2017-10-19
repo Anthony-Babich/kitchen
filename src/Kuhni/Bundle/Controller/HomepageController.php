@@ -3,15 +3,17 @@
 namespace Kuhni\Bundle\Controller;
 
 use Kuhni\Bundle\Entity\CallBack;
+use Kuhni\Bundle\Entity\CostProject;
+use Kuhni\Bundle\Entity\DesignerAtHome;
+use Kuhni\Bundle\Entity\freeDesignProject;
 use Kuhni\Bundle\Entity\RequestCall;
-use libphonenumber\PhoneNumberFormat;
-use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class HomepageController extends Controller
 {
@@ -25,12 +27,12 @@ class HomepageController extends Controller
     public function indexAction()
     {
         //Создаем построитель запросов Doctrine
-        $qb = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:Catalog')
-            ->createQueryBuilder('n');
-        //Добавляем к запросу left join c сущностью "Категория"
-        //при выводе в списке названия категории нового запроса не будет
-        $qb->select('n')->orderBy('n.id');
-        $result = $qb->getQuery()->getResult();
+        $result = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:Catalog')
+            ->createQueryBuilder('n')
+            ->select('n')
+            ->orderBy('n.id')
+            ->getQuery()
+            ->getResult();
 
         if (!empty($result)){
             foreach ($result as $item) {
@@ -38,12 +40,97 @@ class HomepageController extends Controller
             }
         }
 
+        if (!empty($image)){
+            return $this->render('homepage/index.html.twig', array(
+                'catalog' => $result,
+                'image' => $image,
+                'formRequestCallModal' => $this->getRequestCallForm(),
+                'formRequestCall' => $this->getRequestCallForm(),
+                'formCostProject' => $this->getCostProject(),
+                'formFreeProject' => $this->getFreeProjectForm(),
+                'form' => $this->getCallBackForm(),
+            ));
+        }
+    }
+
+    private function getFreeProjectForm()
+    {
+        $freeProject = new freeDesignProject();
+
+        $formFreeProject = $this->createFormBuilder($freeProject)
+            ->add('name', TextType::class, array('attr' => [
+                'placeholder' => 'ВАШЕ ИМЯ *',
+                'data-validation-required-message' => 'Укажите ваше Имя.',
+                'class' => 'form-control'],
+                'label' => false
+            ))
+            ->add('phone', NumberType::class, array(
+                'attr' => [
+                    'id' => '123',
+                    'data-validation-required-message' => 'Укажите ваш телефон для связи.',
+                    'class' => 'form-control',
+                    'type' => 'tel',
+                ],
+                'label' => false,
+            ))
+            ->add('email', EmailType::class, array(
+                'attr' => [
+                    'placeholder' => 'Ваш EMAIL *',
+                    'class' => 'form-control'
+                ],
+                'label' => false,
+            ))
+            ->add('imageFile', VichImageType::class, array(
+                'required'      => false,
+                'allow_delete'  => true,
+                'download_link' => false,
+                'label'         => false,
+            ))
+            ->add('message', TextareaType::class, array(
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Ваше Сообщение *',
+                    'class' => 'form-control'
+                ]
+            ))
+            ->getForm()->createView();
+
+        return $formFreeProject;
+    }
+
+    private function getRequestCallForm()
+    {
+        $requestcall = new RequestCall();
+
+        $formRequestCall = $this->createFormBuilder($requestcall)
+            ->add('name', TextType::class, array('attr' => [
+                'placeholder' => 'ВАШЕ ИМЯ *',
+                'data-validation-required-message' => 'Укажите ваше Имя.',
+                'class' => 'form-control'],
+                'label' => false
+            ))
+            ->add('phone', NumberType::class, array(
+                'attr' => [
+                    'id' => '123',
+                    'data-validation-required-message' => 'Укажите ваш телефон для связи.',
+                    'class' => 'form-control',
+                    'type' => 'tel',
+                ],
+                'label' => false,
+            ))
+            ->getForm()->createView();
+
+        return $formRequestCall;
+    }
+
+    private function getCallBackForm()
+    {
         $callback = new CallBack();
 
         $form = $this->createFormBuilder($callback)
             ->add('name', TextType::class, array('attr' => ['placeholder' => 'ВАШЕ ИМЯ *', 'class' => 'form-control'], 'label' => false))
             ->add('email', EmailType::class, array('label' => false, 'attr' => ['placeholder' => 'Ваш EMAIL *', 'class' => 'form-control']))
-            ->add('phone', PhoneNumberType::class, array(
+            ->add('phone', NumberType::class, array(
                 'attr' => [
                     'placeholder' => 'ВАШ ТЕЛЕФОН *',
                     'class' => 'form-control',
@@ -58,35 +145,51 @@ class HomepageController extends Controller
                     'class' => 'form-control'
                 ]
             ))
-            ->getForm();
+            ->getForm()->createView();
 
-        $requestcall = new RequestCall();
+        return $form;
+    }
 
-        $formRequestCall = $this->createFormBuilder($requestcall)
+    private function getCostProject()
+    {
+        $costProject = new CostProject();
+
+        $formCostProject = $this->createFormBuilder($costProject)
             ->add('name', TextType::class, array('attr' => [
                 'placeholder' => 'ВАШЕ ИМЯ *',
-                'data-validation-required-message' => 'Укажите ваше Имя.',
                 'class' => 'form-control'],
                 'label' => false
             ))
-            ->add('phone', PhoneNumberType::class, array(
+            ->add('phone', NumberType::class, array(
                 'attr' => [
-                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
-                    'data-validation-required-message' => 'Укажите ваш телефон для связи.',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
                 'label' => false,
             ))
-            ->getForm();
+            ->add('email', EmailType::class, array(
+                'attr' => [
+                    'placeholder' => 'Ваш EMAIL',
+                    'class' => 'form-control',
+                    'required' => false,
+                ],
+                'label' => false,
+            ))
+            ->add('message', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ СООБЩЕНИЕ *',
+                    'class' => 'form-control',
+                ],
+                'label' => false,
+            ))
+            ->add('imageFile', VichImageType::class, array(
+                'required'      => false,
+                'allow_delete'  => true,
+                'download_link' => false,
+                'label'         => false,
+            ))
+            ->getForm()->createView();
 
-        if (!empty($image)){
-            return $this->render('homepage/index.html.twig', array(
-                'form' => $form->createView(),
-                'formRequestCall' => $formRequestCall->createView(),
-                'catalog' => $result,
-                'image' => $image,
-            ));
-        }
+        return $formCostProject;
     }
 }
