@@ -84,7 +84,7 @@ class freeDesignProject
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="kuhni_config", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="kuhni_zakazy_freedesign", fileNameProperty="imageName", size="imageSize")
      *
      * @var File
      */

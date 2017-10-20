@@ -4,11 +4,16 @@ namespace Kuhni\Bundle\Controller;
 
 use Kuhni\Bundle\Entity\CostProject;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class CostProjectController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function indexAction(Request $request){
         //geoIP
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -17,15 +22,30 @@ class CostProjectController extends Controller
             $geo_info = $query['country'].', '.$query['city'].', '.$query['isp'].', '.$query['query'];
         } else { $geo_info = "Не удалось определить координаты посетителя"; }
 
-        $form = $request->get('form');
-        $name = htmlspecialchars($form['name']);
-        $email = htmlspecialchars($form['email']);
-        $phone = htmlspecialchars($form['phone']);
-        $message = htmlspecialchars($form['message']);
+        $name = htmlspecialchars($request->get('0'));
+        $phone = htmlspecialchars($request->get('1'));
+        $email = htmlspecialchars($request->get('2'));
+        $message = htmlspecialchars($request->get('3'));
 
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
 
         $call = new CostProject();
+
+        if (!empty($_FILES)){
+            $formFile = $_FILES['files'];
+            $nameImage = htmlspecialchars($formFile['name']);
+            $sizeImage = htmlspecialchars($formFile['size']);
+            $fileImage = htmlspecialchars($formFile['tmp_name']);
+            $errorImage = htmlspecialchars($formFile['error']);
+            $typeImage = htmlspecialchars($formFile['type']);
+
+            $fileThumbnail = new UploadedFile($fileImage, $nameImage, $typeImage, $sizeImage, $errorImage, true);
+            $call->setImageFile($fileThumbnail);
+        }else{
+            $call->setImageName('');
+            $call->setImageSize(0);
+        }
+
         $call->setPhone($phone);
         $call->setMessage($message);
         $call->setUrl($_SERVER['HTTP_REFERER']);
@@ -35,7 +55,6 @@ class CostProjectController extends Controller
         $entityManager->persist($call);
         $entityManager->flush();
 
-        $response = json_encode(array('success' => 'success'));
-        return new Response($response);
+        return new Response(json_encode(array('success' => 'success')));
     }
 }

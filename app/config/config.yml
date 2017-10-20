@@ -124,3 +124,16 @@ vich_uploader:
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
+
+        kuhni_zakazy_cost_project:
+            uri_prefix:         /web/upload/zakazy/costproject
+            upload_destination: %kernel.root_dir%/../web/upload/zakazy/costproject
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+        kuhni_zakazy_freedesign:
+            uri_prefix:         /web/upload/zakazy/freedesign
+            upload_destination: %kernel.root_dir%/../web/upload/zakazy/freedesign
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true

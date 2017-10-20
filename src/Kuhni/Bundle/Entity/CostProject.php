@@ -42,7 +42,7 @@ class CostProject
     /**
      * @var int
      *
-     * @ORM\Column(name="phone", type="integer")
+     * @ORM\Column(name="phone", type="string")
      */
     private $phone;
 
@@ -77,7 +77,7 @@ class CostProject
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="kuhni_fasad", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="kuhni_zakazy_cost_project", fileNameProperty="imageName", size="imageSize")
      *
      * @var File
      */
@@ -138,7 +138,7 @@ class CostProject
     /**
      * Set phone
      *
-     * @param integer $phone
+     * @param string $phone
      *
      * @return CostProject
      */
@@ -152,7 +152,7 @@ class CostProject
     /**
      * Get phone
      *
-     * @return int
+     * @return string
      */
     public function getPhone()
     {
