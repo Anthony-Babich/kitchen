@@ -4,34 +4,56 @@ namespace Kuhni\Bundle\Controller;
 
 use Kuhni\Bundle\Entity\freeDesignProject;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class freeDesignProjectController extends Controller
 {
-    public function indexAction(Request $request){
+    public function indexAction(Request $request)
+    {
         //geoIP
         $ip = $_SERVER['REMOTE_ADDR'];
-        $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
-        if($query && $query['status'] == 'success') {
-            $geo_info = $query['country'].', '.$query['city'].', '.$query['isp'].', '.$query['query'];
-        } else { $geo_info = "Не удалось определить координаты посетителя"; }
+        $query = @unserialize(file_get_contents('http://ip-api.com/php/' . $ip));
+        if ($query && $query['status'] == 'success') {
+            $geo_info = $query['country'] . ', ' . $query['city'] . ', ' . $query['isp'] . ', ' . $query['query'];
+        } else {
+            $geo_info = "Не удалось определить координаты посетителя";
+        }
 
-        $form = $request->get('form');
-        $name = htmlspecialchars($form['name']);
-        $email = htmlspecialchars($form['email']);
-        $phone = htmlspecialchars($form['phone']);
-        $message = htmlspecialchars($form['message']);
+        $name = htmlspecialchars($request->get('0'));
+        $phone = htmlspecialchars($request->get('1'));
+        $email = htmlspecialchars($request->get('2'));
+        $message = htmlspecialchars($request->get('3'));
 
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
-
         $call = new freeDesignProject();
-        $call->setUrl((string) $_SERVER['HTTP_REFERER']);
-        $call->setEmail($email);
-        $call->setName($name);
-        $call->setGeoIP($geo_info);
-        $call->setMessage($message);
+
+        if (!empty($_FILES)) {
+            $formFile = $_FILES['files'];
+            $nameImage = htmlspecialchars($formFile['name']);
+            $sizeImage = htmlspecialchars($formFile['size']);
+            $fileImage = htmlspecialchars($formFile['tmp_name']);
+            $errorImage = htmlspecialchars($formFile['error']);
+            $typeImage = htmlspecialchars($formFile['type']);
+
+            $fileThumbnail = new UploadedFile($fileImage, $nameImage, $typeImage, $sizeImage, $errorImage, true);
+            $call->setImageFile($fileThumbnail);
+        } else {
+            $call->setImageName('');
+            $call->setImageSize(0);
+        }
+
+        if(isset($_SERVER['HTTP_REFERER'])){
+            $call->setUrl($_SERVER['HTTP_REFERER']);
+        }else{
+            $call->setUrl('none');
+        }
         $call->setPhone($phone);
+        $call->setMessage($message);
+        $call->setName($name);
+        $call->setEmail($email);
+        $call->setGeoIP($geo_info);
         $entityManager->persist($call);
         $entityManager->flush();
 

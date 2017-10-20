@@ -46,9 +46,13 @@ class CostProjectController extends Controller
             $call->setImageSize(0);
         }
 
+        if(isset($_SERVER['HTTP_REFERER'])){
+            $call->setUrl($_SERVER['HTTP_REFERER']);
+        }else{
+            $call->setUrl('none');
+        }
         $call->setPhone($phone);
         $call->setMessage($message);
-        $call->setUrl($_SERVER['HTTP_REFERER']);
         $call->setName($name);
         $call->setEmail($email);
         $call->setGeoIP($geo_info);
