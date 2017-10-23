@@ -1,21 +1,22 @@
 //возможно будет файл
-$('body').on('submit', '.ajaxFormWithFile', function (e) {
+$('form.ajaxFormWithFile').submit(function (e) {
     e.preventDefault();
     $('form button').attr("disabled","disabled");
-    var formData = new FormData($(this));
-    var $input = $("form#ZayavkaRazmer").find("#form_imageFile_file");
+    /*var $input = $("form#ZayavkaRazmer").find("#form_imageFile_file");
     var $form = $(this);
     $inputs = $form.find('input');
     formData.append('files', $input.prop('files')[0]);
     for(i = 0; i < $inputs.length; i++){
         formData.append(i, $inputs[i].value);
-    }
+    }*/
+    var formData = new FormData($(this)[0]);
+    //formData.append('files', $(this).find('input').prop('files'));
+//formData.append('file', $);
     $.ajax({
         type: $(this).attr('method'),
         url: $(this).attr('action'),
         data: formData,
         processData: false,
-        cache: false,
         contentType: false
     }).done(function (data, status) {
         $('form').trigger('reset');
@@ -25,10 +26,16 @@ $('body').on('submit', '.ajaxFormWithFile', function (e) {
                     '<strong>Спасибо!</strong> Ваше сообщение отправлено.' +
                 '</div>'
             );
+        }else if (status = 'noData'){
+            $('form button').before(
+                '<div class="alert alert-error" role="alert">' +
+                    '<strong>Заполните все поля!</strong>' +
+                '</div>'
+            );
         }else{
             $('form button').before(
                 '<div class="alert alert-error" role="alert">' +
-                    '<strong>Что-то пошло не так!</strong>' +
+                '<strong>Что-то пошло не так!</strong>' +
                 '</div>'
             );
         }
@@ -45,9 +52,9 @@ $('body').on('submit', '.ajaxFormWithFile', function (e) {
         }
         $('form button').removeAttr("disabled","disabled");
     });
-})
+});
 //обыное сообщение
-.on('submit', '.ajaxForm', function (e) {
+$('body').on('submit', '.ajaxForm', function (e) {
     e.preventDefault();
     $('form button').attr("disabled","disabled");
     $.ajax({

@@ -21,25 +21,30 @@ class freeDesignProjectController extends Controller
             $geo_info = "Не удалось определить координаты посетителя";
         }
 
-        $name = htmlspecialchars($request->get('0'));
-        $phone = htmlspecialchars($request->get('1'));
-        $email = htmlspecialchars($request->get('2'));
-        $message = htmlspecialchars($request->get('3'));
+        $form = $request->get('form');
+        if ((isset($form['name']))&&(isset($form['phone']))){
+            $name = htmlspecialchars($form['name']);
+            $phone = htmlspecialchars($form['phone']);
+            $email = htmlspecialchars($form['email']);
+            $message = htmlspecialchars($form['message']);
+        }else{
+            return new Response(json_encode(array('success' => 'noData')));
+        }
 
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
         $call = new freeDesignProject();
 
-        if (!empty($_FILES)) {
-            $formFile = $_FILES['files'];
-            $nameImage = htmlspecialchars($formFile['name']);
-            $sizeImage = htmlspecialchars($formFile['size']);
-            $fileImage = htmlspecialchars($formFile['tmp_name']);
-            $errorImage = htmlspecialchars($formFile['error']);
-            $typeImage = htmlspecialchars($formFile['type']);
+        if (!empty($_FILES)){
+            $formFile = $_FILES['form'];
+            $nameImage = htmlspecialchars($formFile['name']['imageFile']['file']);
+            $sizeImage = htmlspecialchars($formFile['size']['imageFile']['file']);
+            $fileImage = htmlspecialchars($formFile['tmp_name']['imageFile']['file']);
+            $errorImage = htmlspecialchars($formFile['error']['imageFile']['file']);
+            $typeImage = htmlspecialchars($formFile['type']['imageFile']['file']);
 
             $fileThumbnail = new UploadedFile($fileImage, $nameImage, $typeImage, $sizeImage, $errorImage, true);
             $call->setImageFile($fileThumbnail);
-        } else {
+        }else{
             $call->setImageName('');
             $call->setImageSize(0);
         }
