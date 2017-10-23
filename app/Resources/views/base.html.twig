@@ -3,9 +3,12 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1" />
     <meta name="author" content="zovik.moscow">
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
     <title>
         {% block title %}
@@ -32,9 +35,58 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/responsive.css') }}">
 
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/main.css') }}">
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
     {% endblock %}
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script type="text/javascript">
+        ymaps.ready(function () {
+            ymaps.modules.require(['Map', 'Placemark'])
+                .spread(
+                    function (Map, Placemark) {
+                        var myMap = new Map("map", {
+                            center: [55.72, 37.64],
+                            zoom: 5
+                        });
+                        BalloonContentLayout = ymaps.templateLayoutFactory.createClass(
+                            '<div style="margin: 10px;">' +
+                            '<b>123456</b><br />' +
+                            '<i id="count"></i> ' +
+                            '<button id="counter-button"> +1 </button>' +
+                            '</div>', {
+                                // Переопределяем функцию build, чтобы при создании макета начинать
+                                // слушать событие click на кнопке-счетчике.
+                                build: function () {
+                                    // Сначала вызываем метод build родительского класса.
+                                    BalloonContentLayout.superclass.build.call(this);
+                                    // А затем выполняем дополнительные действия.
+                                    $('#counter-button').bind('click', this.onCounterClick);
+                                    $('#count').html('123');
+                                }
+                            });
+                        myMap.geoObjects.add(
+                            new ymaps.Placemark([55.76, 37.59], {}, {
+                                balloonContentLayout: BalloonContentLayout,
+                                balloonPanelMaxMapArea: 0,
+                                iconLayout: 'default#image',
+                                iconImageHref: '../bundles/kuhni/img/marker.svg',
+                                iconImageSize: [30, 42],
+                                iconImageOffset: [-3, -42]
+                            })
+                        );
+                        myMap.geoObjects.add(
+                            new ymaps.Placemark([55.76, 37.56], {}, {
+                                balloonContentLayout: BalloonContentLayout,
+                                balloonPanelMaxMapArea: 0,
+                                iconLayout: 'default#image',
+                                iconImageHref: '../bundles/kuhni/img/marker.svg',
+                                iconImageSize: [30, 42],
+                                iconImageOffset: [-3, -42]
+                            })
+                        );
+                    }
+                );
+        });
+    </script>
 </head>
 
 <body id="page-top" data-spy="scroll">
@@ -95,6 +147,9 @@
             });
         </script>
         <script src="{{ asset('bundles/kuhni/js/slick-slider.js') }}"></script>
+
+{#AIzaSyBInPWfGaGIa2YCrjw6iAJTXWGyfGsFVFk#}
+
     {% endblock %}
     {% block ajax %}
         <script src="{{ asset('bundles/kuhni/js/ajax.js') }}"></script>

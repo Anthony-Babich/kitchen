@@ -2,16 +2,7 @@
 $('form.ajaxFormWithFile').submit(function (e) {
     e.preventDefault();
     $('form button').attr("disabled","disabled");
-    /*var $input = $("form#ZayavkaRazmer").find("#form_imageFile_file");
-    var $form = $(this);
-    $inputs = $form.find('input');
-    formData.append('files', $input.prop('files')[0]);
-    for(i = 0; i < $inputs.length; i++){
-        formData.append(i, $inputs[i].value);
-    }*/
     var formData = new FormData($(this)[0]);
-    //formData.append('files', $(this).find('input').prop('files'));
-//formData.append('file', $);
     $.ajax({
         type: $(this).attr('method'),
         url: $(this).attr('action'),
