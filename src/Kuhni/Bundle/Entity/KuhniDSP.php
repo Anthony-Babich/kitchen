@@ -5,12 +5,12 @@ namespace Kuhni\Bundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * KuhniMdf
+ * KuhniDSP
  *
- * @ORM\Table(name="kuhni_mdf")
- * @ORM\Entity(repositoryClass="Kuhni\Bundle\Repository\KuhniMdfRepository")
+ * @ORM\Table(name="kuhni_dsp")
+ * @ORM\Entity(repositoryClass="Kuhni\Bundle\Repository\KuhniDSPRepository")
  */
-class KuhniMdf
+class KuhniDSP
 {
     /**
      * @var int
@@ -42,7 +42,7 @@ class KuhniMdf
      * Set title
      *
      * @param string $title
-     * @return KuhniMdf
+     * @return KuhniDSP
      */
     public function setTitle($title)
     {

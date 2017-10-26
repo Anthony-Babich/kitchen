@@ -5,7 +5,7 @@ namespace Kuhni\Bundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * KuhniConfig
+ * KuhniMassive
  *
  * @ORM\Table(name="kuhni_massive")
  * @ORM\Entity(repositoryClass="Kuhni\Bundle\Repository\KuhniMassiveRepository")

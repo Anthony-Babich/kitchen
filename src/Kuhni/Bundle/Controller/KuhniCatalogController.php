@@ -402,11 +402,11 @@ class KuhniCatalogController extends Controller
     private function searchParametr(string $slug, $offset = 0, $limit = 10){
         $entity = $this->getDoctrine()->getManager()
             ->getRepository('KuhniBundle:KuhniStyle')
-            ->findOneBy(array('slug' => $slug));
+            ->findBy(array('slug' => $slug));
         if (empty($entity)){
             $entity = $this->getDoctrine()->getManager()
                 ->getRepository('KuhniBundle:KuhniConfig')
-                ->findOneBy(array('slug' => $slug));
+                ->findBy(array('slug' => $slug));
             if (empty($entity)){
                 $entity = $this->getDoctrine()->getManager()
                     ->getRepository('KuhniBundle:KuhniMaterial')
@@ -414,15 +414,21 @@ class KuhniCatalogController extends Controller
                 if (empty($entity)){
                     $entity = $this->getDoctrine()->getManager()
                         ->getRepository('KuhniBundle:KuhniColor')
-                        ->findOneBy(array('slug' => $slug));
-                    $id = $entity->getId();
+                        ->findBy(array('slug' => $slug));
+                    if (is_array($entity)){
+                        foreach ($entity as $item){
+                            $id[] = $item->getId();
+                        }
+                    }else{
+                        $id[] = $entity->getId();
+                    }
                     $result = $this->getDoctrine()->getManager()
                         ->getRepository('KuhniBundle:Kuhni')
                         ->createQueryBuilder('n')
                         ->select('n')
                         ->where('n.idKuhniColor = :id')
                         ->orderBy('n.id', 'ASC')
-                        ->setParameter('id', $id)
+                        ->setParameters(array('id' => $id))
                         ->getQuery()
                         ->setFirstResult($offset)
                         ->setMaxResults($limit)
@@ -448,28 +454,40 @@ class KuhniCatalogController extends Controller
                         ->getArrayResult();
                 }
             }else{
-                $id = $entity->getId();
+                if (is_array($entity)){
+                    foreach ($entity as $item){
+                        $id[] = $item->getId();
+                    }
+                }else{
+                    $id[] = $entity->getId();
+                }
                 $result = $this->getDoctrine()->getManager()
                     ->getRepository('KuhniBundle:Kuhni')
                     ->createQueryBuilder('n')
                     ->select('n')
-                    ->where('n.idKuhniConfig = :id')
+                    ->where('n.idKuhniConfig IN (:id)')
                     ->orderBy('n.id', 'ASC')
-                    ->setParameter('id', $id)
+                    ->setParameters(array('id' => $id))
                     ->getQuery()
                     ->setFirstResult($offset)
                     ->setMaxResults($limit)
                     ->getArrayResult();
             }
         }else{
-            $id = $entity->getId();
+            if (is_array($entity)){
+                foreach ($entity as $item){
+                    $id[] = $item->getId();
+                }
+            }else{
+                $id[] = $entity->getId();
+            }
             $result = $this->getDoctrine()->getManager()
                 ->getRepository('KuhniBundle:Kuhni')
                 ->createQueryBuilder('n')
                 ->select('n')
-                ->where('n.idKuhniStyle = :id')
+                ->where('n.idKuhniStyle IN (:id)')
                 ->orderBy('n.id', 'ASC')
-                ->setParameter('id', $id)
+                ->setParameters(array('id' => $id))
                 ->getQuery()
                 ->setFirstResult($offset)
                 ->setMaxResults($limit)

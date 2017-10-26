@@ -3,6 +3,7 @@
 namespace Kuhni\Bundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Kuhni\Bundle\Admin\KuhniMaterialAdmin;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
@@ -46,6 +47,46 @@ class KuhniMaterial
      * @ORM\JoinColumn(name="id_mdf", referencedColumnName="id")
      */
     private $idMdf;
+
+    /**
+     * @var KuhniPlastic
+     *
+     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\KuhniPlastic", cascade={"persist"})
+     * @ORM\JoinColumn(name="id_plastic", referencedColumnName="id")
+     */
+    private $idPlastic;
+
+    /**
+     * @var KuhniGlass
+     *
+     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\KuhniGlass", cascade={"persist"})
+     * @ORM\JoinColumn(name="id_glass", referencedColumnName="id")
+     */
+    private $idGlass;
+
+    /**
+     * @var KuhniAcryl
+     *
+     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\KuhniAcryl", cascade={"persist"})
+     * @ORM\JoinColumn(name="id_acryl", referencedColumnName="id")
+     */
+    private $idAcryl;
+
+    /**
+     * @var KuhniShpon
+     *
+     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\KuhniShpon", cascade={"persist"})
+     * @ORM\JoinColumn(name="id_shpon", referencedColumnName="id")
+     */
+    private $idShpon;
+
+    /**
+     * @var KuhniDSP
+     *
+     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\KuhniDSP", cascade={"persist"})
+     * @ORM\JoinColumn(name="id_dsp", referencedColumnName="id")
+     */
+    private $idDSP;
 
     /**
      * @var string
@@ -98,7 +139,7 @@ class KuhniMaterial
     /**
      * @return string
      */
-    public function getSlug(): string
+    public function getSlug()
     {
         return $this->slug;
     }
@@ -312,6 +353,97 @@ class KuhniMaterial
     public function getImageSize()
     {
         return $this->imageSize;
+    }
+
+
+    /**
+     * @return KuhniPlastic
+     */
+    public function getIdPlastic()
+    {
+        return $this->idPlastic;
+    }
+
+    /**
+     * @param KuhniPlastic $idPlastic
+     * @return KuhniMaterial
+     */
+    public function setIdPlastic(KuhniPlastic $idPlastic)
+    {
+        $this->idPlastic = $idPlastic;
+        return $this;
+    }
+
+    /**
+     * @return KuhniGlass
+     */
+    public function getIdGlass()
+    {
+        return $this->idGlass;
+    }
+
+    /**
+     * @param KuhniGlass $idGlass
+     * @return KuhniMaterial
+     */
+    public function setIdGlass(KuhniGlass $idGlass)
+    {
+        $this->idGlass = $idGlass;
+        return $this;
+    }
+
+    /**
+     * @return KuhniAcryl
+     */
+    public function getIdAcryl()
+    {
+        return $this->idAcryl;
+    }
+
+    /**
+     * @param KuhniAcryl $idAcryl
+     * @return KuhniMaterial
+     */
+    public function setIdAcryl(KuhniAcryl $idAcryl)
+    {
+        $this->idAcryl = $idAcryl;
+        return $this;
+    }
+
+    /**
+     * @return KuhniShpon
+     */
+    public function getIdShpon()
+    {
+        return $this->idShpon;
+    }
+
+    /**
+     * @param KuhniShpon $idShpon
+     * @return KuhniMaterial
+     */
+    public function setIdShpon(KuhniShpon $idShpon)
+    {
+        $this->idShpon = $idShpon;
+        return $this;
+    }
+
+    /**
+     * @return KuhniDSP
+     */
+    public function getIdDSP()
+    {
+        return $this->idDSP;
+    }
+
+    /**
+     * @param KuhniDSP $idDSP
+     * @return KuhniMaterial
+     */
+    public function setIdDSP(KuhniDSP $idDSP)
+    {
+        $this->idDSP = $idDSP;
+        return $this;
     }
 
     /**
