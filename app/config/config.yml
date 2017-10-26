@@ -7,7 +7,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-
+    security.acl.permission.map.class: Sonata\AdminBundle\Security\Acl\Permission\AdminPermissionMap
 framework:
     translator: ~
     secret: '%secret%'
@@ -67,10 +67,19 @@ sonata_block:
 
 sonata_admin:
     show_mosaic_button: false
+    security:
+        handler: sonata.admin.security.handler.acl
+        information:
+            GUEST:    [VIEW, LIST]
+            ADMIN:    [MASTER]
+        admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT, OPERATOR, MASTER]
+
 
 sonata_user:
     manager_type: orm
-
+    admin:
+        user:
+            class: Kuhni\Bundle\Admin\UserAdmin
 fos_user:
     db_driver:  orm
     firewall_name:  main

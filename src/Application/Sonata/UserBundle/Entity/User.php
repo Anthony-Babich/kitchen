@@ -3,6 +3,7 @@
 namespace Application\Sonata\UserBundle\Entity;
 
 use Sonata\UserBundle\Entity\BaseUser as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
 
 class User extends BaseUser
 {
@@ -74,7 +75,7 @@ class User extends BaseUser
     /**
      * @return string
      */
-    public function getLongitude(): string
+    public function getLongitude()
     {
         return $this->longitude;
     }
@@ -90,7 +91,7 @@ class User extends BaseUser
     /**
      * @return string
      */
-    public function getLatitude(): string
+    public function getLatitude()
     {
         return $this->latitude;
     }
@@ -106,7 +107,7 @@ class User extends BaseUser
     /**
      * @return string
      */
-    public function getAddress(): string
+    public function getAddress()
     {
         return $this->address;
     }
@@ -122,7 +123,7 @@ class User extends BaseUser
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription()
     {
         return $this->description;
     }
@@ -138,7 +139,7 @@ class User extends BaseUser
     /**
      * @return string
      */
-    public function getTitle(): string
+    public function getTitle()
     {
         return $this->title;
     }
@@ -154,7 +155,7 @@ class User extends BaseUser
     /**
      * @return string
      */
-    public function getWorkingHours(): string
+    public function getWorkingHours()
     {
         return $this->workingHours;
     }
