@@ -8,9 +8,8 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Vich\UploaderBundle\Form\Type\VichImageType;
 
-class KuhniStyleAdmin extends AbstractAdmin
+class KuhniColorAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -21,28 +20,29 @@ class KuhniStyleAdmin extends AbstractAdmin
             ->add('mainDescription', TextType::class, array(
                 'label' => 'Описание'
             ))
+            ->add('color', TextType::class, array(
+                'label' => 'Цвет'
+            ))
             ->add('keywords', TextType::class, array(
                 'label' => 'Ключевые слова'
             ))
-            ->add('slug', TextType::class)
-            ->add('imageFile', VichImageType::class, array(
-                'required'      => false,
-                'allow_delete'  => true,
-                'download_link' => false,
-            ));
+            ->add('slug', TextType::class);
     }
     // Fields to be shown on filter forms
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
             ->add('title', null, array(
-                'label' => 'Название',
+                'label' => 'Название'
             ))
             ->add('mainDescription', null, array(
-                'label' => 'Описание',
+                'label' => 'Описание'
+            ))
+            ->add('color', null, array(
+                'label' => 'Цвет'
             ))
             ->add('keywords', null, array(
-                'label' => 'Ключевые слова',
+                'label' => 'Ключевые слова'
             ));
     }
     // Fields to be shown on lists
@@ -50,16 +50,16 @@ class KuhniStyleAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('title', null, array(
-                'label' => 'Название',
+                'label' => 'Название'
             ))
             ->add('mainDescription', null, array(
-                'label' => 'Описание',
+                'label' => 'Описание'
+            ))
+            ->add('color', null, array(
+                'label' => 'Цвет'
             ))
             ->add('keywords', null, array(
-                'label' => 'Ключевые слова',
-            ))
-            ->add('imageName', null, array(
-                'label' => 'Картинка',
+                'label' => 'Ключевые слова'
             ))
             ->add('slug')
             ->add('_action', 'actions', array(
@@ -74,16 +74,16 @@ class KuhniStyleAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('title', null, array(
-                'label' => 'Название',
+                'label' => 'Название'
             ))
             ->add('mainDescription', null, array(
-                'label' => 'Описание',
+                'label' => 'Описание'
+            ))
+            ->add('color', null, array(
+                'label' => 'Цвет'
             ))
             ->add('keywords', null, array(
-                'label' => 'Ключевые слова',
-            ))
-            ->add('imageName', null, array(
-                'label' => 'Картинка',
+                'label' => 'Ключевые слова'
             ))
             ->add('slug');
     }

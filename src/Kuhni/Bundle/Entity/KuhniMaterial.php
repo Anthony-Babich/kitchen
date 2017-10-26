@@ -37,25 +37,7 @@ class KuhniMaterial
      * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\KuhniMassive", cascade={"persist"})
      * @ORM\JoinColumn(name="id_massive", referencedColumnName="id")
      */
-    private $massive;
-
-    /**
-     * @return KuhniMassive
-     */
-    public function getMassive(): KuhniMassive
-    {
-        return $this->massive;
-    }
-
-    /**
-     * @param KuhniMassive $massive
-     * @return KuhniMaterial
-     */
-    public function setMassive(KuhniMassive $massive)
-    {
-        $this->massive = $massive;
-        return $this;
-    }
+    private $idMassive;
 
     /**
      * @var KuhniMdf
@@ -63,25 +45,7 @@ class KuhniMaterial
      * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\KuhniMdf", cascade={"persist"})
      * @ORM\JoinColumn(name="id_mdf", referencedColumnName="id")
      */
-    private $mdf;
-
-    /**
-     * @return KuhniMdf
-     */
-    public function getMdf(): KuhniMdf
-    {
-        return $this->mdf;
-    }
-
-    /**
-     * @param KuhniMdf $mdf
-     * @return KuhniMaterial
-     */
-    public function setMdf(KuhniMdf $mdf)
-    {
-        $this->mdf = $mdf;
-        return $this;
-    }
+    private $idMdf;
 
     /**
      * @var string
@@ -150,6 +114,24 @@ class KuhniMaterial
     }
 
     /**
+     * @return KuhniMdf
+     */
+    public function getIdMdf()
+    {
+        return $this->idMdf;
+    }
+
+    /**
+     * @param KuhniMdf $idMdf
+     * @return KuhniMaterial
+     */
+    public function setIdMdf(KuhniMdf $idMdf)
+    {
+        $this->idMdf = $idMdf;
+        return $this;
+    }
+
+    /**
      * Get id
      *
      * @return int
@@ -181,6 +163,24 @@ class KuhniMaterial
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * @return KuhniMassive
+     */
+    public function getIdMassive()
+    {
+        return $this->idMassive;
+    }
+
+    /**
+     * @param KuhniMassive $idMassive
+     * @return KuhniMaterial
+     */
+    public function setIdMassive(KuhniMassive $idMassive)
+    {
+        $this->idMassive = $idMassive;
+        return $this;
     }
 
     /**

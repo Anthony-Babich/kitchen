@@ -140,16 +140,16 @@ class Kuhni
     private $idCatalog;
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="price", type="integer")
+     * @ORM\Column(name="price", type="float")
      */
     private $price;
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="noDiscountPrice", type="integer")
+     * @ORM\Column(name="noDiscountPrice", type="float")
      */
     private $noDiscountPrice;
 
@@ -165,12 +165,12 @@ class Kuhni
      *
      * @ORM\Column(name="count_projects", type="integer")
      */
-    private $count_projects;
+    private $countProjects;
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="discount", type="integer")
+     * @ORM\Column(name="discount", type="float")
      */
     private $discount;
 
@@ -217,18 +217,18 @@ class Kuhni
     private $mainDescription;
 
     /**
-     * @return int
+     * @return float
      */
-    public function getNoDiscountPrice(): int
+    public function getNoDiscountPrice(): float
     {
         return $this->noDiscountPrice;
     }
 
     /**
-     * @param int $noDiscountPrice
+     * @param float $noDiscountPrice
      * @return Kuhni
      */
-    public function setNoDiscountPrice(int $noDiscountPrice)
+    public function setNoDiscountPrice(float $noDiscountPrice)
     {
         $this->noDiscountPrice = $noDiscountPrice;
         return $this;
@@ -255,15 +255,15 @@ class Kuhni
      */
     public function getCountProjects(): int
     {
-        return $this->count_projects;
+        return $this->countProjects;
     }
 
     /**
-     * @param int $count_projects
+     * @param int $countProjects
      */
-    public function setCountProjects(int $count_projects)
+    public function setCountProjects(int $countProjects)
     {
-        $this->count_projects = $count_projects;
+        $this->countProjects = $countProjects;
     }
 
     /**
@@ -283,7 +283,6 @@ class Kuhni
         $this->fixedPrice = $fixedPrice;
         return $this;
     }
-
 
     /**
      * @return \DateTime
@@ -461,36 +460,36 @@ class Kuhni
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getPrice(): int
+    public function getPrice(): float
     {
         return $this->price;
     }
 
     /**
-     * @param int $price
+     * @param float $price
      * @return Kuhni
      */
-    public function setPrice(int $price)
+    public function setPrice(float $price)
     {
         $this->price = $price;
         return $this;
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getDiscount(): int
+    public function getDiscount(): float
     {
         return $this->discount;
     }
 
     /**
-     * @param int $discount
+     * @param float $discount
      * @return Kuhni
      */
-    public function setDiscount(int $discount)
+    public function setDiscount(float $discount)
     {
         $this->discount = $discount;
         return $this;
@@ -751,7 +750,6 @@ class Kuhni
         $this->furnitura = $furnitura;
         return $this;
     }
-
 
     /**
      * @return string

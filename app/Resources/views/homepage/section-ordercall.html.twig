@@ -1,11 +1,11 @@
 <section id="ordercall">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6 text-center">
+            <div class="col-12 text-center">
                 <h2 class="section-heading">Закажите обратный звонок</h2>
                 <h3 class="section-subheading text-muted">Это бесплатно. Наш дизайнер свяжется с Вами в ближайшее время.</h3>
             </div>
-            <div class="col-lg-6">
+            <div class="col-12">
                 {{ form_start(formRequestCall, { 'action': path('requestcall'), 'method': 'POST', 'attr': {'class': 'ajaxForm', 'id': 'requestCallForm'} }) }}
                     {{ form_errors(formRequestCall) }}
                         <div class="form-row">
@@ -15,8 +15,6 @@
                             <div class="col form-group">
                                 {{ form_row(formRequestCall.phone) }}
                             </div>
-                        </div>
-                        <div class="form-row text-center">
                             <div class="col form-group">
                                 <button type="submit" class="btn btn-xl" style="width: 350px">Заказать</button>
                             </div>

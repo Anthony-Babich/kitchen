@@ -8,9 +8,10 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
-class KuhniStyleAdmin extends AbstractAdmin
+class KuhniMaterialAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -20,6 +21,16 @@ class KuhniStyleAdmin extends AbstractAdmin
             ))
             ->add('mainDescription', TextType::class, array(
                 'label' => 'Описание'
+            ))
+            ->add('idMassive', EntityType::class, array(
+                'class' => 'KuhniBundle:KuhniMassive',
+                'property' => 'title',
+                'label' => 'Массив'
+            ))
+            ->add('idMdf', EntityType::class, array(
+                'class' => 'KuhniBundle:KuhniMdf',
+                'property' => 'title',
+                'label' => 'МДФ'
             ))
             ->add('keywords', TextType::class, array(
                 'label' => 'Ключевые слова'
@@ -36,13 +47,25 @@ class KuhniStyleAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('title', null, array(
-                'label' => 'Название',
+                'label'    => 'Название'
             ))
             ->add('mainDescription', null, array(
-                'label' => 'Описание',
+                'label'    => 'Описание'
+            ))
+            ->add('idMassive', null, array(
+                'label'    => 'Массив'
+            ), 'entity', array(
+                'class'    => 'KuhniBundle:KuhniMassive',
+                'property' => 'title',
+            ))
+            ->add('idMdf', null, array(
+                'label'    => 'МДФ'
+            ), 'entity', array(
+                'class'    => 'KuhniBundle:KuhniMdf',
+                'property' => 'title',
             ))
             ->add('keywords', null, array(
-                'label' => 'Ключевые слова',
+                'label'    => 'Ключевые слова'
             ));
     }
     // Fields to be shown on lists
@@ -50,18 +73,23 @@ class KuhniStyleAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('title', null, array(
-                'label' => 'Название',
+                'label'    => 'Название'
             ))
             ->add('mainDescription', null, array(
-                'label' => 'Описание',
+                'label'    => 'Описание'
+            ))
+            ->add('idMassive.title',  null, array(
+                'label' => 'Массив',
+            ))
+            ->add('idMdf.title', null, array(
+                'label'    => 'МДФ',
             ))
             ->add('keywords', null, array(
-                'label' => 'Ключевые слова',
+                'label'    => 'Ключевые слова'
             ))
             ->add('imageName', null, array(
                 'label' => 'Картинка',
             ))
-            ->add('slug')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -79,12 +107,14 @@ class KuhniStyleAdmin extends AbstractAdmin
             ->add('mainDescription', null, array(
                 'label' => 'Описание',
             ))
+            ->add('idMassive.title', null, array(
+                'label' => 'Массив',
+            ))
+            ->add('idMdf.title', null, array(
+                'label' => 'МДФ',
+            ))
             ->add('keywords', null, array(
                 'label' => 'Ключевые слова',
-            ))
-            ->add('imageName', null, array(
-                'label' => 'Картинка',
-            ))
-            ->add('slug');
+            ));
     }
 }

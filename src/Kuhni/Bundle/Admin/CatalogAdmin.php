@@ -10,21 +10,26 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
-class KuhniStyleAdmin extends AbstractAdmin
+class CatalogAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title', TextType::class, array(
+            ->add('name', TextType::class, array(
                 'label' => 'Название'
             ))
-            ->add('mainDescription', TextType::class, array(
+            ->add('title', TextType::class, array(
+                'label' => 'Заглавие'
+            ))
+            ->add('description', TextType::class, array(
                 'label' => 'Описание'
             ))
             ->add('keywords', TextType::class, array(
                 'label' => 'Ключевые слова'
             ))
-            ->add('slug', TextType::class)
+            ->add('alt', TextType::class, array(
+                'label' => 'Описание картинки'
+            ))
             ->add('imageFile', VichImageType::class, array(
                 'required'      => false,
                 'allow_delete'  => true,
@@ -35,33 +40,41 @@ class KuhniStyleAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('title', null, array(
-                'label' => 'Название',
+            ->add('name', null , array(
+                'label' => 'Название'
             ))
-            ->add('mainDescription', null, array(
-                'label' => 'Описание',
+            ->add('title', null, array(
+                'label' => 'Заглавие'
+            ))
+            ->add('description', null, array(
+                'label' => 'Описание'
             ))
             ->add('keywords', null, array(
-                'label' => 'Ключевые слова',
+                'label' => 'Ключевые слова'
             ));
     }
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('title', null, array(
-                'label' => 'Название',
+            ->add('name', null, array(
+                'label' => 'Название'
             ))
-            ->add('mainDescription', null, array(
-                'label' => 'Описание',
+            ->add('title', null, array(
+                'label' => 'Заглавие'
+            ))
+            ->add('description', null, array(
+                'label' => 'Описание'
             ))
             ->add('keywords', null, array(
-                'label' => 'Ключевые слова',
+                'label' => 'Ключевые слова'
+            ))
+            ->add('alt', null, array(
+                'label' => 'Описание картинки'
             ))
             ->add('imageName', null, array(
-                'label' => 'Картинка',
+                'label' => 'Картинка'
             ))
-            ->add('slug')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -73,18 +86,23 @@ class KuhniStyleAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('title', null, array(
-                'label' => 'Название',
+            ->add('name', null, array(
+                'label' => 'Название'
             ))
-            ->add('mainDescription', null, array(
-                'label' => 'Описание',
+            ->add('title', null, array(
+                'label' => 'Заглавие'
+            ))
+            ->add('description', null, array(
+                'label' => 'Описание'
             ))
             ->add('keywords', null, array(
-                'label' => 'Ключевые слова',
+                'label' => 'Ключевые слова'
+            ))
+            ->add('alt', null, array(
+                'label' => 'Описание картинки'
             ))
             ->add('imageName', null, array(
-                'label' => 'Картинка',
-            ))
-            ->add('slug');
+                'label' => 'Картинка'
+            ));
     }
 }

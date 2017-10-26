@@ -1,11 +1,191 @@
 services:
-  app.admin.orderitems:
+#         Каталог
+  app.admin.catalog:
+    class: Kuhni\Bundle\Admin\CatalogAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Каталог", label: "Каталог" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\Catalog
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.kuhni:
+    class: Kuhni\Bundle\Admin\KuhniAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Каталог", label: "Кухни" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\Kuhni
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+#         Кухни
+  app.admin.kuhni.style:
     class: Kuhni\Bundle\Admin\KuhniStyleAdmin
     tags:
       - { name: sonata.admin, manager_type: orm, group: "Кухни", label: "Стили кухонь" }
     arguments:
       - ~
       - Kuhni\Bundle\Entity\KuhniStyle
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.kuhni.color:
+    class: Kuhni\Bundle\Admin\KuhniColorAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Кухни", label: "Цвета кухонь" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\KuhniColor
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.kuhni.massive:
+    class: Kuhni\Bundle\Admin\KuhniMassiveAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Кухни", label: "Виды массивов" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\KuhniMassive
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.kuhni.mdf:
+    class: Kuhni\Bundle\Admin\KuhniMdfAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Кухни", label: "Виды МДФ" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\KuhniMdf
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.kuhni.material:
+    class: Kuhni\Bundle\Admin\KuhniMaterialAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Кухни", label: "Материалы" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\KuhniMaterial
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.kuhni.config:
+    class: Kuhni\Bundle\Admin\KuhniConfigAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Кухни", label: "Конфигурация кухонь" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\KuhniConfig
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.kuhni.images:
+    class: Kuhni\Bundle\Admin\KuhniImagesAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Кухни", label: "Картинки кухонь" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\KuhniImages
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+#         Фасады
+  app.admin.fasades.type:
+    class: Kuhni\Bundle\Admin\FasadTypeAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Фасады", label: "Типы фасадов" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\FasadType
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.fasades.color:
+    class: Kuhni\Bundle\Admin\FasadColorAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Фасады", label: "Цвета фасадов" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\FasadColor
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+#         Заказы
+  app.admin.order.callback:
+    class: Kuhni\Bundle\Admin\CallBackAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Заказы", label: "Обратный звонок" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\CallBack
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.order.designerAtHome:
+    class: Kuhni\Bundle\Admin\DesignerAtHomeAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Заказы", label: "Дизайнер на дом" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\DesignerAtHome
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.order.requestCall:
+    class: Kuhni\Bundle\Admin\RequestCallAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Заказы", label: "Заказы на звонок" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\RequestCall
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.order.zayavkaRazmer:
+    class: Kuhni\Bundle\Admin\ZayavkaRazmerAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Заказы", label: "Расчет размеров" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\ZayavkaRazmer
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.order.freeDesignProject:
+    class: Kuhni\Bundle\Admin\FreeDesignProjectAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Заказы", label: "Бесплатный дизайн проекта" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\freeDesignProject
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.order.costProject:
+    class: Kuhni\Bundle\Admin\CostProjectAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Заказы", label: "Расчет стоимости проекта" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\CostProject
       - ~
     calls:
       - [ setTranslationDomain, [Kuhni\Bundle]]

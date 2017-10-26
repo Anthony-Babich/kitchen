@@ -6,26 +6,32 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
-class KuhniStyleAdmin extends AbstractAdmin
+class FasadTypeAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('title', TextType::class, array(
+                'label' => 'Заглавие'
+            ))
+            ->add('name', TextType::class, array(
                 'label' => 'Название'
             ))
-            ->add('mainDescription', TextType::class, array(
+            ->add('alt', TextType::class, array(
                 'label' => 'Описание'
             ))
-            ->add('keywords', TextType::class, array(
-                'label' => 'Ключевые слова'
+            ->add('idKuhniMaterial', EntityType::class, array(
+                'label' => 'Название материала кухни',
+                'class' => 'KuhniBundle:KuhniMaterial',
+                'property' => 'title',
             ))
-            ->add('slug', TextType::class)
             ->add('imageFile', VichImageType::class, array(
+                'label'         => 'Картинка',
                 'required'      => false,
                 'allow_delete'  => true,
                 'download_link' => false,
@@ -35,14 +41,14 @@ class KuhniStyleAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('title', null, array(
+            ->add('name', null, array(
                 'label' => 'Название',
             ))
-            ->add('mainDescription', null, array(
-                'label' => 'Описание',
-            ))
-            ->add('keywords', null, array(
-                'label' => 'Ключевые слова',
+            ->add('idKuhniMaterial', null, array(
+                'label'    => 'Название материала кухни'
+            ), 'entity', array(
+                'class'    => 'KuhniBundle:KuhniMaterial',
+                'property' => 'title',
             ));
     }
     // Fields to be shown on lists
@@ -50,18 +56,17 @@ class KuhniStyleAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('title', null, array(
-                'label' => 'Название',
+                'label' => 'Заглавие'
             ))
-            ->add('mainDescription', null, array(
-                'label' => 'Описание',
+            ->add('name', null, array(
+                'label' => 'Название'
             ))
-            ->add('keywords', null, array(
-                'label' => 'Ключевые слова',
+            ->add('alt', null, array(
+                'label' => 'Описание'
             ))
-            ->add('imageName', null, array(
-                'label' => 'Картинка',
+            ->add('idKuhniMaterial.title', null, array(
+                'label' => 'Название материала кухни',
             ))
-            ->add('slug')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -74,17 +79,16 @@ class KuhniStyleAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('title', null, array(
-                'label' => 'Название',
+                'label' => 'Заглавие'
             ))
-            ->add('mainDescription', null, array(
-                'label' => 'Описание',
+            ->add('name', null, array(
+                'label' => 'Название'
             ))
-            ->add('keywords', null, array(
-                'label' => 'Ключевые слова',
+            ->add('alt', null, array(
+                'label' => 'Описание'
             ))
-            ->add('imageName', null, array(
-                'label' => 'Картинка',
-            ))
-            ->add('slug');
+            ->add('idKuhniMaterial.title', null, array(
+                'label' => 'Название материала кухни',
+            ));
     }
 }

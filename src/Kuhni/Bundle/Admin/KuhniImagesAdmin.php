@@ -8,23 +8,19 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
-class KuhniStyleAdmin extends AbstractAdmin
+class KuhniImagesAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title', TextType::class, array(
-                'label' => 'Название'
+            ->add('kuhniId.title', EntityType::class, array(
+                'class' => 'KuhniBundle:Kuhni',
+                'property' => 'title',
+                'label' => 'Название кухни'
             ))
-            ->add('mainDescription', TextType::class, array(
-                'label' => 'Описание'
-            ))
-            ->add('keywords', TextType::class, array(
-                'label' => 'Ключевые слова'
-            ))
-            ->add('slug', TextType::class)
             ->add('imageFile', VichImageType::class, array(
                 'required'      => false,
                 'allow_delete'  => true,
@@ -35,33 +31,23 @@ class KuhniStyleAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('title', null, array(
-                'label' => 'Название',
-            ))
-            ->add('mainDescription', null, array(
-                'label' => 'Описание',
-            ))
-            ->add('keywords', null, array(
-                'label' => 'Ключевые слова',
+            ->add('kuhniId.title', null, array(
+                'label'    => 'Название кухни'
+            ), 'entity', array(
+                'class'    => 'KuhniBundle:KuhniMassive',
+                'property' => 'title',
             ));
     }
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('title', null, array(
-                'label' => 'Название',
-            ))
-            ->add('mainDescription', null, array(
-                'label' => 'Описание',
-            ))
-            ->add('keywords', null, array(
-                'label' => 'Ключевые слова',
+            ->add('kuhniId.title',  null, array(
+                'label' => 'Название кухни',
             ))
             ->add('imageName', null, array(
                 'label' => 'Картинка',
             ))
-            ->add('slug')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -73,18 +59,11 @@ class KuhniStyleAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('title', null, array(
-                'label' => 'Название',
-            ))
-            ->add('mainDescription', null, array(
-                'label' => 'Описание',
-            ))
-            ->add('keywords', null, array(
-                'label' => 'Ключевые слова',
+            ->add('kuhniId.title', null, array(
+                'label' => 'Название кухни',
             ))
             ->add('imageName', null, array(
                 'label' => 'Картинка',
-            ))
-            ->add('slug');
+            ));
     }
 }

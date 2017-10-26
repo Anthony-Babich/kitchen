@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
-class KuhniStyleAdmin extends AbstractAdmin
+class KuhniConfigAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -36,13 +36,16 @@ class KuhniStyleAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('title', null, array(
-                'label' => 'Название',
+                'label' => 'Название'
             ))
             ->add('mainDescription', null, array(
-                'label' => 'Описание',
+                'label' => 'Описание'
             ))
             ->add('keywords', null, array(
-                'label' => 'Ключевые слова',
+                'label' => 'Ключевые слова'
+            ))
+            ->add('imageName', null, array(
+                'label' => 'Картинка',
             ));
     }
     // Fields to be shown on lists
@@ -50,13 +53,13 @@ class KuhniStyleAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('title', null, array(
-                'label' => 'Название',
+                'label' => 'Название'
             ))
             ->add('mainDescription', null, array(
-                'label' => 'Описание',
+                'label' => 'Описание'
             ))
             ->add('keywords', null, array(
-                'label' => 'Ключевые слова',
+                'label' => 'Ключевые слова'
             ))
             ->add('imageName', null, array(
                 'label' => 'Картинка',
@@ -74,13 +77,13 @@ class KuhniStyleAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('title', null, array(
-                'label' => 'Название',
+                'label' => 'Название'
             ))
             ->add('mainDescription', null, array(
-                'label' => 'Описание',
+                'label' => 'Описание'
             ))
             ->add('keywords', null, array(
-                'label' => 'Ключевые слова',
+                'label' => 'Ключевые слова'
             ))
             ->add('imageName', null, array(
                 'label' => 'Картинка',

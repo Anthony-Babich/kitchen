@@ -65,6 +65,9 @@ sonata_block:
         sonata.user.block.account: # used to display menu option (login option)
         sonata.block.service.text: # used to if you plan to use Sonata user routes
 
+sonata_admin:
+    show_mosaic_button: false
+
 sonata_user:
     manager_type: orm
 
@@ -78,7 +81,6 @@ fos_user:
     group:
         group_class:  Application\Sonata\UserBundle\Entity\Group
         group_manager: sonata.user.orm.group_manager
-
     service:
         user_manager: sonata.user.orm.user_manager
 

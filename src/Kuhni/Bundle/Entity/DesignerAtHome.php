@@ -37,9 +37,9 @@ class DesignerAtHome
     private $name;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="phone", type="integer")
+     * @ORM\Column(name="phone", type="string", length=255)
      */
     private $phone;
 
@@ -109,7 +109,7 @@ class DesignerAtHome
     /**
      * Set phone
      *
-     * @param integer $phone
+     * @param string $phone
      *
      * @return DesignerAtHome
      */
@@ -123,7 +123,7 @@ class DesignerAtHome
     /**
      * Get phone
      *
-     * @return int
+     * @return string
      */
     public function getPhone()
     {
