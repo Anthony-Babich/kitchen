@@ -68,7 +68,7 @@
                                 balloonContentLayout: BalloonContentLayout,
                                 balloonPanelMaxMapArea: 0,
                                 iconLayout: 'default#image',
-                                iconImageHref: '../bundles/kuhni/img/marker.svg',
+                                iconImageHref: '../bundles/kuhni/img/map-marker.svg',
                                 iconImageSize: [30, 42],
                                 iconImageOffset: [-3, -42]
                             })
@@ -78,9 +78,9 @@
                                 balloonContentLayout: BalloonContentLayout,
                                 balloonPanelMaxMapArea: 0,
                                 iconLayout: 'default#image',
-                                iconImageHref: '../bundles/kuhni/img/marker.svg',
-                                iconImageSize: [30, 42],
-                                iconImageOffset: [-3, -42]
+                                iconImageHref: '../bundles/kuhni/img/map-marker.svg',
+                                iconImageOffset: [-3, -42],
+                                iconImageSize: [30, 42]
                             })
                         );
                     }
@@ -117,8 +117,88 @@
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 
         <script src="{{ asset('bundles/kuhni/slick/slick.js') }}" type="text/javascript" charset="utf-8"></script>
+
         <script type="text/javascript">
+            $(document).ready(function () {
+                $('.nav-tabs > li a[title]').tooltip();
+                $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+                    var $target = $(e.target);
+                    if ($target.parent().hasClass('disabled')) {
+                        return false;
+                    }
+                });
+
+                $(".next-step").click(function (e) {
+
+                    var $active = $('.wizard .nav-tabs li.active');
+                    $active.next().removeClass('disabled');
+                    nextTab($active);
+
+                });
+                $(".prev-step").click(function (e) {
+
+                    var $active = $('.wizard .nav-tabs li.active');
+                    prevTab($active);
+
+                });
+            });
+            function nextTab(elem) {
+                $(elem).next().find('a[data-toggle="tab"]').click();
+            }
+            function prevTab(elem) {
+                $(elem).prev().find('a[data-toggle="tab"]').click();
+            }
+        </script>
+        <script type="text/javascript">
+
             $(document).ready(function(){
+                //Пошаговая форма
+                $('.nav-tabs > li a[title]').tooltip();
+                $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+                    var $target = $(e.target);
+                    if ($target.parent().hasClass('disabled')) {
+                        return false;
+                    }
+                });
+                $(".next-step").click(function (e) {
+                    var $active = $('.wizard .nav-tabs li.active');
+                    $active.next().removeClass('disabled');
+                    nextTab($active);
+                });
+                $(".prev-step").click(function (e) {
+                    var $active = $('.wizard .nav-tabs li.active');
+                    prevTab($active);
+                });
+                function nextTab(elem) {
+                    $(elem).next().find('a[data-toggle="tab"]').click();
+                }
+                function prevTab(elem) {
+                    $(elem).prev().find('a[data-toggle="tab"]').click();
+                }
+                //Add Inactive Class To All Accordion Headers
+                $('.accordion-header').toggleClass('inactive-header');
+
+                //Set The Accordion Content Width
+                var contentwidth = $('.accordion-header').width();
+                $('.accordion-content').css({});
+
+                //Open The First Accordion Section When Page Loads
+                $('.accordion-header').first().toggleClass('active-header').toggleClass('inactive-header');
+                $('.accordion-content').first().slideDown().toggleClass('open-content');
+
+                // The Accordion Effect
+                $('.accordion-header').click(function () {
+                    if($(this).is('.inactive-header')) {
+                        $('.active-header').toggleClass('active-header').toggleClass('inactive-header').next().slideToggle().toggleClass('open-content');
+                        $(this).toggleClass('active-header').toggleClass('inactive-header');
+                        $(this).next().slideToggle().toggleClass('open-content');
+                    }
+
+                    else {
+                        $(this).toggleClass('active-header').toggleClass('inactive-header');
+                        $(this).next().slideToggle().toggleClass('open-content');
+                    }
+                });
                 $('.separator').html(' <i class="fa fa-angle-double-right" aria-hidden="true"></i> ');
                 $('ul.tabs li').click(function(){
                     var tab_id = $(this).attr('data-tab');
@@ -143,13 +223,10 @@
                 if(!device.tablet() && !device.mobile()){
                     $('.navbar-nav').find('.nav-item').last().html('<a class="nav-link" href="#requestcall" data-toggle="modal"><i class="mutted-item">Позвонить<br></i>+7 (987) 522-55-22</a>');
                     $('#requestcall').on('show');
-                };
+                }
             });
         </script>
         <script src="{{ asset('bundles/kuhni/js/slick-slider.js') }}"></script>
-
-{#AIzaSyBInPWfGaGIa2YCrjw6iAJTXWGyfGsFVFk#}
-
     {% endblock %}
     {% block ajax %}
         <script src="{{ asset('bundles/kuhni/js/ajax.js') }}"></script>

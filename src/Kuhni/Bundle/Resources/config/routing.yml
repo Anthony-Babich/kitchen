@@ -36,3 +36,8 @@ designerathome:
     defaults: { _controller: "KuhniBundle:DesignerAtHome:index" }
     requirements:
         methods:  GET|POST
+freedesignshag:
+    path:  /freedesignshag
+    defaults: { _controller: "KuhniBundle:DesignProjectShag:index" }
+    requirements:
+        methods:  GET|POST

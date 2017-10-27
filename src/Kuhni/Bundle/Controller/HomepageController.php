@@ -5,6 +5,7 @@ namespace Kuhni\Bundle\Controller;
 use Kuhni\Bundle\Entity\CallBack;
 use Kuhni\Bundle\Entity\CostProject;
 use Kuhni\Bundle\Entity\DesignerAtHome;
+use Kuhni\Bundle\Entity\DesignProjectShag;
 use Kuhni\Bundle\Entity\freeDesignProject;
 use Kuhni\Bundle\Entity\RequestCall;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -47,17 +48,17 @@ class HomepageController extends Controller
                 'formRequestCallModal' => $this->getRequestCallForm(),
                 'formRequestCall' => $this->getRequestCallForm(),
                 'formCostProject' => $this->getCostProject(),
-                'formFreeProject' => $this->getFreeProjectForm(),
+                'formFreeDesignShag' => $this->getFreeDesignShagForm(),
                 'form' => $this->getCallBackForm(),
             ));
         }
     }
 
-    private function getFreeProjectForm()
+    private function getFreeDesignShagForm()
     {
-        $freeProject = new freeDesignProject();
+        $FreeDesignShag = new DesignProjectShag();
 
-        $formFreeProject = $this->createFormBuilder($freeProject)
+        $formFreeDesignShag = $this->createFormBuilder($FreeDesignShag)
             ->add('name', TextType::class, array('attr' => [
                 'placeholder' => 'ВАШЕ ИМЯ *',
                 'data-validation-required-message' => 'Укажите ваше Имя.',
@@ -80,22 +81,9 @@ class HomepageController extends Controller
                 ],
                 'label' => false,
             ))
-            ->add('imageFile', VichImageType::class, array(
-                'required'      => false,
-                'allow_delete'  => true,
-                'download_link' => false,
-                'label'         => false,
-            ))
-            ->add('message', TextareaType::class, array(
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Ваше Сообщение *',
-                    'class' => 'form-control'
-                ]
-            ))
             ->getForm()->createView();
 
-        return $formFreeProject;
+        return $formFreeDesignShag;
     }
 
     private function getRequestCallForm()

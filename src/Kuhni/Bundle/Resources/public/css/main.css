@@ -1,3 +1,7 @@
+section {
+  padding-bottom: 0;
+  padding-top: 100px; }
+
 #wo-breadcrumbs {
   display: inline-flex;
   width: 100%; }
@@ -123,29 +127,81 @@ div#map {
     margin-right: 5px; }
 
 #calc {
-  margin: 0 15px 30px;
-  padding: 0; }
+  margin: 0 15px 30px; }
   #calc button {
     border: none;
     background-color: unset;
-    margin: 30px; }
-  #calc .row .vkladka {
-    border: 1px solid black;
-    border-left: none;
+    margin: 30px;
     color: #7f7f7f;
-    font-size: 14px; }
-    #calc .row .vkladka p {
-      padding-top: 30px;
-      padding-bottom: 30px;
-      margin-bottom: 0; }
-      #calc .row .vkladka p i {
-        color: black;
-        font-size: 18px;
-        padding-right: 10px; }
+    font-size: 16px; }
+    #calc button i {
+      color: black;
+      font-size: 18px;
+      padding-right: 10px; }
+  #calc .row .vkladka {
+    border: 1px solid #7f7f7f;
+    border-left: none; }
   #calc .row :last-child {
     border-right: none; }
   #calc .row :first-child {
     border-left: none; }
+
+#article h3 {
+  font-family: 'Open+Sans Bold', Helvetica Neue, 'Arial', sans-serif;
+  color: black;
+  font-size: 30px; }
+#article p {
+  font-family: 'Open+Sans', Helvetica Neue, 'Arial', sans-serif;
+  color: black;
+  font-size: 12px; }
+
+section#reviews {
+  line-height: 1em; }
+  section#reviews h3 {
+    font-family: 'Open+Sans Bold', Helvetica Neue, 'Arial', sans-serif;
+    color: black;
+    font-size: 30px; }
+  section#reviews p {
+    font-family: 'Open+Sans Italic', 'Arial', sans-serif;
+    color: #7f7f7f;
+    font-size: 16px;
+    text-transform: none;
+    margin-bottom: 50px; }
+    section#reviews p a {
+      text-decoration: underline;
+      color: #7f7f7f; }
+  section#reviews ul {
+    text-decoration: none;
+    font-family: 'Open+Sans Italic', Helvetica Neue, 'Arial', sans-serif;
+    color: #7f7f7f;
+    font-size: 16px; }
+    section#reviews ul li.name {
+      color: black;
+      font-size: 16px;
+      font-family: 'Open+Sans Regular', Helvetica Neue, 'Arial', sans-serif; }
+    section#reviews ul li.date {
+      padding-top: 5px;
+      font-size: 12px;
+      color: black;
+      font-family: 'Open+Sans Light', Helvetica Neue, 'Arial', sans-serif; }
+  section#reviews p#star {
+    margin-bottom: 0; }
+    section#reviews p#star i {
+      color: #ffce21; }
+  section#reviews p#geo {
+    font-family: 'Open+Sans Light', Helvetica Neue, 'Arial', sans-serif;
+    font-size: 13px;
+    color: #7f7f7f; }
+    section#reviews p#geo span {
+      text-decoration: underline; }
+  section#reviews p#info {
+    font-family: 'Open+Sans Light', Helvetica Neue, 'Arial', sans-serif;
+    font-size: 12px;
+    border-bottom: 6px solid #193153;
+    color: #7f7f7f;
+    padding-bottom: 10px; }
+    section#reviews p#info span.more-info {
+      text-decoration: underline; }
 
 #more-prod {
   margin: 0 15px 30px;
@@ -294,6 +350,30 @@ span {
   background: #193153 url(/web/bundles/kuhni/img/map-image.png) no-repeat center;
   margin: 15px; }
 
+section#services {
+  line-height: 1.15em;
+  color: #7f7f7f;
+  font-size: 12px; }
+  section#services h4.service-heading {
+    font-size: 12px;
+    font-family: 'Open+Sans Bold', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  section#services p {
+    line-height: 1.15em;
+    font-family: 'Open+Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  section#services li {
+    list-style: none; }
+  section#services ul {
+    padding-left: 0; }
+  section#services ul li:before {
+    content: '-';
+    position: relative;
+    left: -5px; }
+
+section#freedesignshag {
+  padding-top: 20px;
+  color: white;
+  background: #193153 url("/web/bundles/kuhni/img/map-image.png") no-repeat center; }
+
 @media (max-width: 1200px) {
   #product #description .price p {
     font-size: 20px; }
@@ -326,6 +406,10 @@ span {
   #all-products .small-col.full-screen {
     flex: 0 0 100%;
     margin-left: 0; } }
+@media (max-width: 575px) {
+  #calc .row .vkladka {
+    border: 1px solid #7f7f7f;
+    border-top: none; } }
 @media (max-width: 539px) {
   #all-products .big-col .pos-bot-l {
     width: 100%; }
