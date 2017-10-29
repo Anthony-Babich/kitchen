@@ -373,6 +373,48 @@ section#freedesignshag {
   padding-top: 20px;
   color: white;
   background: #193153 url("/web/bundles/kuhni/img/map-image.png") no-repeat center; }
+  section#freedesignshag h3 {
+    font-family: 'Open+Sans Bold', Arial, sans-serif;
+    font-size: 30px; }
+  section#freedesignshag h5 {
+    font-family: 'Open+Sans Italic', Arial, sans-serif;
+    font-size: 15px;
+    font-style: italic;
+    color: #d7d7d7;
+    margin-bottom: 25px; }
+  section#freedesignshag button {
+    margin-top: 30px;
+    margin-bottom: 30px; }
+  section#freedesignshag label {
+    text-transform: uppercase;
+    vertical-align: middle;
+    color: black;
+    font-size: 16px;
+    background-color: #FFF; }
+    section#freedesignshag label p {
+      margin-top: 5px;
+      margin-bottom: 5px; }
+    section#freedesignshag label img {
+      width: 100%;
+      height: 200px; }
+    section#freedesignshag label input {
+      display: none; }
+    section#freedesignshag label span.check-circle {
+      line-height: 200px; }
+      section#freedesignshag label span.check-circle i {
+        display: none; }
+    section#freedesignshag label input[type="radio"]:checked + .check-circle {
+      opacity: 0.7; }
+    section#freedesignshag label input[type="radio"]:checked + span.check-circle:before {
+      content: "\f058";
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: inherit;
+      color: yellow;
+      font-size: 40px;
+      position: absolute;
+      left: 46%; }
 
 @media (max-width: 1200px) {
   #product #description .price p {

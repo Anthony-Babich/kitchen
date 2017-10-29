@@ -1,227 +1,168 @@
-<div id="scrollGFD" class="container">
-    <div class="row">
-        <h1 align="center">Получите дизайн-проект БЕСПЛАТНО:</h1>
-        <section>
-            <div class="wizard">
-                <div class="wizard-inner hidden-lg hidden-xs hidden-sm hidden-md">
-                    <div class="connecting-line"></div>
-                    <ul class="nav nav-tabs" role="tablist">
-
-                        <li role="presentation" class="active">
-                            <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="ШАГ 1: Сперва выберите стиль кухни.">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-picture"></i>
-                            </span>
-                            </a>
-                        </li>
-
-                        <li role="presentation" class="disabled">
-                            <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="ШАГ 2: Укажите интересующую вас форму кухни">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-pencil"></i>
-                            </span>
-                            </a>
-                        </li>
-                        <li role="presentation" class="disabled">
-                            <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="ШАГ 3: Укажите ваши контакты">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-user"></i>
-                            </span>
-                            </a>
-                        </li>
-
-                        <li role="presentation" class="disabled">
-                            <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Мы свяжемся с вами в кратчайшие сроки!">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-ok"></i>
-                            </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <form id="myFormGetFreeDesign" role="form" method="post" action="SendDataGFD.php">
+<section id="freedesignshag">
+    <div class="container">
+        <div class="row">
+            <ul class="nav nav-tabs fade" role="tablist">
+                <li role="presentation" class="nav-item">
+                    <a href="#step1" class="nav-link active" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1" data-original-title="ШАГ 1: Сперва выберите стиль кухни."></a>
+                </li>
+                <li role="presentation" class="nav-item">
+                    <a href="#step2" class="nav-link " data-toggle="tab" aria-controls="step2" role="tab" title="Step 2" data-original-title="ШАГ 2: Укажите интересующую вас форму кухни"></a>
+                </li>
+                <li role="presentation" class="nav-item">
+                    <a href="#step3" class="nav-link " data-toggle="tab" aria-controls="step3" role="tab" title="Step 3" data-original-title="ШАГ 3: Укажите ваши контакты"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <h3>ЗАКАЖИТЕ БЕСПЛАТНЫЙ ДИЗАЙН-ПРОЕКТ</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <form id="myFormGetFreeDesign" role="form" method="post" action="">
                     <div class="tab-content">
                         <div class="tab-pane active" role="tabpanel" id="step1">
-                            <div class="step1">
-                                <h2>Сделайте выбор! Определитесь со стилем кухни:</h2>
-
-                                <div class="row">
-                                    <h5>Обращайте внимание только на стиль. Цвета выбираются непосредственно с дизайнером по образцам.</h5>
-                                    <div class="radio-btn__elements">
-                                        <label>
-                                            <input name="kitchen-style" type="radio" value="Классический" checked="">
-                                            <span class="radio-btn__element-wrapper">
-                              <span class="radio-btn__element">
-                                <span class="radio-btn__element-title">
-                                  Классика
-                                  <span class="radio-btn__element-checkbox"></span>
-                                </span>
-                                <span class="radio-btn__element-content">
-                                  <img src="img/wizard/wizard-gfd-classic.jpg">
-                                </span>
-                              </span>
-                            </span>
-                                        </label>
-
-                                        <label>
-                                            <input name="kitchen-style" type="radio" value="Модерн">
-                                            <span class="radio-btn__element-wrapper">
-                              <span class="radio-btn__element">
-                                <span class="radio-btn__element-title">
-                                  Модерн
-                                  <span class="radio-btn__element-checkbox"></span>
-                                </span>
-                                <span class="radio-btn__element-content">
-                                  <img src="img/wizard/wizard-gfd-modern.jpg">
-                                </span>
-                              </span>
-                            </span>
-                                        </label>
-                                        <label>
-                                            <input name="kitchen-style" type="radio" value="Кантри">
-                                            <span class="radio-btn__element-wrapper">
-                              <span class="radio-btn__element">
-                                <span class="radio-btn__element-title">
-                                  Кантри
-                                  <span class="radio-btn__element-checkbox"></span>
-                                </span>
-                                <span class="radio-btn__element-content">
-                                  <img src="img/wizard/wizard-gfd-kantri.jpg">
-                                </span>
-                              </span>
-                            </span>
-                                        </label>
-
-                                        <label>
-                                            <input name="kitchen-style" type="radio" value="Клиент не определился">
-                                            <span class="radio-btn__element-wrapper">
-                              <span class="radio-btn__element unknown">
-                                <span class="radio-btn__element-title">
-                                  Пока не знаю
-                                  <span class="radio-btn__element-checkbox"></span>
-                                </span>
-                                <span class="radio-btn__element-content">
-                                  <img src="img/wizard/wizard-gfd-unknown.jpg">
-                                </span>
-                              </span>
-                            </span>
-                                        </label>
-
-                                    </div>
-
+                            <h5 class="text-center">ШАГ 1 - Определите интересующий вас стиль кухни</h5>
+                            <div class="row text-center">
+                                <div class="col-12 col-sm-6 col-lg-3">
+                                    <label>
+                                        <input name="kitchen-style" type="radio" value="Классические">
+                                        <span class="check-circle">
+                                            <img src="{{ asset('/web/upload/kuhni/style/kitchenstyle-klassicheskie.jpg')}}">
+                                        </span>
+                                        <p>Классические</p>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-6 col-lg-3">
+                                    <label>
+                                        <input name="kitchen-style" type="radio" value="kantri">
+                                        <span class="check-circle">
+                                            <img src="{{ asset('/web/upload/kuhni/style/kitchenstyle-kantri.jpg')}}">
+                                        </span>
+                                        <p>Кантри</p>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-6 col-lg-3">
+                                    <label>
+                                        <input name="kitchen-style" type="radio" value="modern">
+                                        <span class="check-circle">
+                                            <img src="{{ asset('/web/upload/kuhni/style/kitchenstyle-modern.jpg')}}">
+                                        </span>
+                                        <p>Модерн</p>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-6 col-lg-3">
+                                    <label>
+                                        <input name="kitchen-style" type="radio" value="ХЗ">
+                                        <span class="check-circle">
+                                            <img src="{{ asset('/web/upload/kuhni/style/kitchenstyle-retro.jpg')}}">
+                                        </span>
+                                        <p>Пока не знаю</p>
+                                    </label>
                                 </div>
                             </div>
-                            <ul class="list-inline text-center">
-                                <li><button type="button" class="custom-button next-step"><span>Продолжить</span></button></li>
-                            </ul>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <ul class="list-inline pull-xs-right">
+                                        <li class="list-inline-item">
+                                            <button type="button" class="btn btn-xl next-step">Далее</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-
-
                         <div class="tab-pane" role="tabpanel" id="step2">
                             <div class="step2">
-                                <h2>Выберите форму кухни:</h2>
-                                <div class="row">
-                                    <h5>Укажите желаемую форму кухонного гарнитура. Если затрудняетесь с выбором - наши дизайнеры вам в этом помогут.</h5>
-                                    <div class="radio-btn__elements">
+                                <h5 class="text-center">ШАГ 2 — Укажите желаемую форму кухонного гарнитура</h5>
+                                <div class="row text-center">
+                                    <div class="col-12 col-sm-6 col-lg-3">
                                         <label>
-                                            <input name="kitchen-type" type="radio" value="Прямая" checked="">
-                                            <span class="radio-btn__element-wrapper">
-                              <span class="radio-btn__element">
-                                <span class="radio-btn__element-title">
-                                  Прямая
-                                  <span class="radio-btn__element-checkbox"></span>
-                                </span>
-                                <span class="radio-btn__element-content">
-                                  <img src="img/wizard/wizard-gfd-t.png">
-                                </span>
-                              </span>
-                            </span>
+                                            <input name="kitchen-config" type="radio" value="kitchentype_pobraznye">
+                                            <span class="check-circle">
+                                                <img src="{{ asset('/web/upload/kuhni/config/kitchentype_pobraznye.svg')}}">
+                                            </span>
+                                            <p>П образная</p>
                                         </label>
-
-                                        <label>
-                                            <input name="kitchen-type" type="radio" value="Угловая">
-                                            <span class="radio-btn__element-wrapper">
-                              <span class="radio-btn__element">
-                                <span class="radio-btn__element-title">
-                                  Угловая
-                                  <span class="radio-btn__element-checkbox"></span>
-                                </span>
-                                <span class="radio-btn__element-content">
-                                  <img src="img/wizard/wizard-gfd-ugl.png">
-                                </span>
-                              </span>
-                            </span>
-                                        </label>
-                                        <label>
-                                            <input name="kitchen-type" type="radio" value="П-образная">
-                                            <span class="radio-btn__element-wrapper">
-                              <span class="radio-btn__element">
-                                <span class="radio-btn__element-title">
-                                  П-образная
-                                  <span class="radio-btn__element-checkbox"></span>
-                                </span>
-                                <span class="radio-btn__element-content">
-                                  <img src="img/wizard/wizard-gfd-p.png">
-                                </span>
-                              </span>
-                            </span>
-                                        </label>
-
-                                        <label>
-                                            <input name="kitchen-type" type="radio" value="Клиент не определился">
-                                            <span class="radio-btn__element-wrapper">
-                              <span class="radio-btn__element unknown">
-                                <span class="radio-btn__element-title">
-                                  Пока не знаю
-                                  <span class="radio-btn__element-checkbox"></span>
-                                </span>
-                                <span class="radio-btn__element-content">
-                                  <img src="img/wizard/wizard-gfd-unknownform.png">
-                                </span>
-                              </span>
-                            </span>
-                                        </label>
-
                                     </div>
-
+                                    <div class="col-12 col-sm-6 col-lg-3">
+                                        <label>
+                                            <input name="kitchen-config" type="radio" value="kitchentype_gostinaya">
+                                            <span class="check-circle">
+                                                <img src="{{ asset('/web/upload/kuhni/config/kitchentype_gostinaya.svg')}}">
+                                            </span>
+                                            <p>Гостиная</p>
+                                        </label>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-lg-3">
+                                        <label>
+                                            <input name="kitchen-config" type="radio" value="kitchentype_stolovaya">
+                                            <span class="check-circle">
+                                                <img src="{{ asset('/web/upload/kuhni/config/kitchentype_stolovaya.svg')}}">
+                                            </span>
+                                            <p>Столовая</p>
+                                        </label>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-lg-3">
+                                        <label>
+                                            <input name="kitchen-config" type="radio" value="kitchentype_small">
+                                            <span class="check-circle">
+                                                <img src="{{ asset('/web/upload/kuhni/config/kitchentype_small.svg')}}">
+                                            </span>
+                                            <p>Пока не знаю</p>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                            <ul class="list-inline text-center">
-                                <li><button type="button" class="custom-button-back prev-step"><span>Назад</span></button></li>
-                                <li><button type="button" class="custom-button next-step"><span>Продолжить</span></button></li>
-                            </ul>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <ul class="list-inline pull-xs-right">
+                                        <li class="list-inline-item">
+                                            <button type="button" class="btn btn-xl prev-step ">
+                                                Назад
+                                            </button>
+                                            <button type="button" class="btn btn-xl next-step">
+                                                Далее
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-
                         <div class="tab-pane" role="tabpanel" id="step3">
                             <div class="step3">
-                                <H2>Укажите ваши контакты:</H2>
+                                <h5 class="text-center">ШАГ 3 — Укажите желаемую форму кухонного гарнитура</h5>
                                 <div class="row">
-                                    <H5>Возможно у нас появятся вопросы, для более точного расчета стоимости.</H5>
                                     <div class="center-input">
-
                                         <div class="form-group">
                                             <input class="form-control input-lg fcrp" name="name" data-required="true" type="text" placeholder="ИМЯ">
                                         </div>
-
                                         <div class="form-group">
                                             <input class="form-control input-lg fcrp" name="phone2" maxlength="15" data-required="true" type="text" placeholder="ТЕЛЕФОН"><br>
-                                            <p class="privacy-politycs"><input type="checkbox" name="privacy-politycs" data-required="true" value="согласен с политикой конфиденциальности" checked> Прочитал и согласен с <br><a target="_blank" href="privacy.php">политикой конфиденциальности</a></p>
+                                            <p class="privacy-politycs"><input type="checkbox" name="privacy-politycs" data-required="true" value="согласен с политикой конфиденциальности" checked=""> Прочитал и согласен с <br><a target="_blank" href="http://kitchens/web/app_dev.php/privacy.php">политикой конфиденциальности</a></p>
                                         </div>
                                     </div>
                                     <div id="result5" class="text-center"></div>
                                 </div>
                             </div>
-                            <ul class="list-inline text-center">
-                                <li><button type="button" class="custom-button-back prev-step"><span>Назад</span></button></li>
-                                <input name="orderName" type="hidden" value="Получить дизайн-проект бесплатно"/>
-                                <li><button id="waitGFD" type="submit" class="custom-button next-step"><span>Отправить</span></button></li>
-                            </ul>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <ul class="list-inline pull-xs-right">
+                                        <li class="list-inline-item">
+                                            <button type="button" class="btn btn-xl prev-step ">
+                                                Назад
+                                            </button>
+                                            <button type="submit" class="btn btn-xl next-step">
+                                                Отправить
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <div class="clearfix"></div>
                     </div>
                 </form>
             </div>
-        </section>
+        </div>
     </div>
-</div>
+</section>

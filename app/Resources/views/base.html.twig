@@ -117,88 +117,26 @@
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 
         <script src="{{ asset('bundles/kuhni/slick/slick.js') }}" type="text/javascript" charset="utf-8"></script>
-
         <script type="text/javascript">
-            $(document).ready(function () {
-                $('.nav-tabs > li a[title]').tooltip();
-                $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-                    var $target = $(e.target);
-                    if ($target.parent().hasClass('disabled')) {
-                        return false;
-                    }
-                });
-
-                $(".next-step").click(function (e) {
-
-                    var $active = $('.wizard .nav-tabs li.active');
-                    $active.next().removeClass('disabled');
-                    nextTab($active);
-
-                });
-                $(".prev-step").click(function (e) {
-
-                    var $active = $('.wizard .nav-tabs li.active');
-                    prevTab($active);
-
-                });
-            });
-            function nextTab(elem) {
-                $(elem).next().find('a[data-toggle="tab"]').click();
-            }
-            function prevTab(elem) {
-                $(elem).prev().find('a[data-toggle="tab"]').click();
-            }
-        </script>
-        <script type="text/javascript">
-
             $(document).ready(function(){
                 //Пошаговая форма
-                $('.nav-tabs > li a[title]').tooltip();
-                $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+                $('#freedesignshag .nav-tabs > li a[title]').tooltip();
+                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
                     var $target = $(e.target);
                     if ($target.parent().hasClass('disabled')) {
                         return false;
                     }
                 });
                 $(".next-step").click(function (e) {
-                    var $active = $('.wizard .nav-tabs li.active');
-                    $active.next().removeClass('disabled');
+                    var $active = $('#freedesignshag .nav-tabs li>a.active');
+                    $active.parent().next().removeClass('disabled');
                     nextTab($active);
                 });
                 $(".prev-step").click(function (e) {
-                    var $active = $('.wizard .nav-tabs li.active');
+                    var $active = $('#freedesignshag .nav-tabs li>a.active');
                     prevTab($active);
                 });
-                function nextTab(elem) {
-                    $(elem).next().find('a[data-toggle="tab"]').click();
-                }
-                function prevTab(elem) {
-                    $(elem).prev().find('a[data-toggle="tab"]').click();
-                }
-                //Add Inactive Class To All Accordion Headers
-                $('.accordion-header').toggleClass('inactive-header');
-
-                //Set The Accordion Content Width
-                var contentwidth = $('.accordion-header').width();
-                $('.accordion-content').css({});
-
-                //Open The First Accordion Section When Page Loads
-                $('.accordion-header').first().toggleClass('active-header').toggleClass('inactive-header');
-                $('.accordion-content').first().slideDown().toggleClass('open-content');
-
-                // The Accordion Effect
-                $('.accordion-header').click(function () {
-                    if($(this).is('.inactive-header')) {
-                        $('.active-header').toggleClass('active-header').toggleClass('inactive-header').next().slideToggle().toggleClass('open-content');
-                        $(this).toggleClass('active-header').toggleClass('inactive-header');
-                        $(this).next().slideToggle().toggleClass('open-content');
-                    }
-
-                    else {
-                        $(this).toggleClass('active-header').toggleClass('inactive-header');
-                        $(this).next().slideToggle().toggleClass('open-content');
-                    }
-                });
+                // Конец пошаговой формы
                 $('.separator').html(' <i class="fa fa-angle-double-right" aria-hidden="true"></i> ');
                 $('ul.tabs li').click(function(){
                     var tab_id = $(this).attr('data-tab');
@@ -225,6 +163,12 @@
                     $('#requestcall').on('show');
                 }
             });
+            function nextTab(elem) {
+                $(elem).parent().next().find('a[data-toggle="tab"]').click();
+            }
+            function prevTab(elem) {
+                $(elem).parent().prev().find('a[data-toggle="tab"]').click();
+            }
         </script>
         <script src="{{ asset('bundles/kuhni/js/slick-slider.js') }}"></script>
     {% endblock %}
