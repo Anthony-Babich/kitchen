@@ -10,13 +10,28 @@
             {{ form_start(formRequestCallModal, { 'action': path('requestcall'), 'method': 'POST', 'attr': {'class': 'ajaxForm', 'id': 'requestCallForm'} }) }}
             {{ form_errors(formRequestCallModal) }}
                 <div class="modal-body">
-                    <div class="form-group">
-                        {{ form_row(formRequestCallModal.name) }}
+                    <div class="row">
+                        <div class="col-12 form-group">
+                            {{ form_row(formRequestCallModal.name) }}
+                        </div>
                     </div>
-                    <div class="form-group">
-                        {{ form_row(formRequestCallModal.phone) }}
+                    <div class="row">
+                        <div class="col-12 form-group">
+                            {{ form_row(formRequestCallModal.phone) }}
+                        </div>
                     </div>
-                    <div class="col form-group">Прочитал и согласен с <a href="#">политикой конфиденциальности</a></div>
+                    <div class="row">
+                        <div class="col-12 form-group">
+                            {{ form_row(formRequestCallModal.idSalon) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div class="form-group">
+                                <input type="checkbox" name="privacy-politycs" data-required="true" value="согласен с политикой конфиденциальности"> Прочитал и согласен с <a target="_blank" href="http://kitchens/web/app_dev.php/privacy.php">политикой конфиденциальности</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer text-center">
                     <button type="submit" class="btn btn-xl">Заказать</button>

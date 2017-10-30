@@ -2,12 +2,15 @@
 
 namespace Kuhni\Bundle\Controller;
 
+use Doctrine\ORM\EntityRepository;
 use Kuhni\Bundle\Entity\CostProject;
 use Kuhni\Bundle\Entity\DesignerAtHome;
+use Kuhni\Bundle\Entity\DesignProjectShag;
 use Kuhni\Bundle\Entity\freeDesignProject;
 use Kuhni\Bundle\Entity\RequestCall;
 use Kuhni\Bundle\Entity\ZayavkaRazmer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\HttpFoundation\Response;
@@ -63,6 +66,7 @@ class KuhniCatalogController extends Controller
 
             'formRequestCall' => $this->getRequestCallForm(),
             'formRequestCallModal' => $this->getRequestCallForm(),
+            'formFreeDesignShag' => $this->getFreeDesignShagForm(),
         ));
     }
 
@@ -186,6 +190,7 @@ class KuhniCatalogController extends Controller
             'formZayavkaRazmer' => $this->getZayavkaRazmer(),
             'formDesignerAtHome' => $this->getDesignerAtHome(),
             'formCostProject' => $this->getCostProject(),
+            'formFreeDesignShag' => $this->getFreeDesignShagForm(),
         ));
     }
 
@@ -395,6 +400,7 @@ class KuhniCatalogController extends Controller
                 'formDesignerAtHome' => $this->getDesignerAtHome(),
                 'formCostProject' => $this->getCostProject(),
                 'formFreeProject' => $this->getCostProject(),
+                'formFreeDesignShag' => $this->getFreeDesignShagForm(),
             ));
         }
     }
@@ -546,6 +552,26 @@ class KuhniCatalogController extends Controller
                 ],
                 'label' => false,
             ))
+            ->add('idSalon', EntityType::class, array(
+                'class' => 'ApplicationSonataUserBundle:User',
+                'query_builder' => function (EntityRepository $er) {
+                    $qb = $er->createQueryBuilder('u');
+                    return
+                        $qb->where(
+                            $qb->expr()->notLike('u.username', ':name')
+                        )
+                            ->orderBy('u.title', 'ASC')
+                            ->setParameter('name', 'admin');
+                },
+                'attr' => [
+                    'data-validation-required-message' => 'Укажите ближайший салон.',
+                    'class' => 'form-control',
+                ],
+                'choice_label' => function ($idSalon) {
+                    return $idSalon->getTitle() . ' (' . $idSalon->getAddress() . ')';
+                },
+                'label' => false,
+            ))
             ->getForm()->createView();
 
         return $formRequestCall;
@@ -589,9 +615,81 @@ class KuhniCatalogController extends Controller
                 'download_link' => false,
                 'label'         => false,
             ))
+            ->add('idSalon', EntityType::class, array(
+                'class' => 'ApplicationSonataUserBundle:User',
+                'query_builder' => function (EntityRepository $er) {
+                    $qb = $er->createQueryBuilder('u');
+                    return
+                        $qb->where(
+                            $qb->expr()->notLike('u.username', ':name')
+                        )
+                            ->orderBy('u.title', 'ASC')
+                            ->setParameter('name', 'admin');
+                },
+                'attr' => [
+                    'data-validation-required-message' => 'Укажите ближайший салон.',
+                    'class' => 'form-control',
+                ],
+                'choice_label' => function ($idSalon) {
+                    return $idSalon->getTitle() . ' (' . $idSalon->getAddress() . ')';
+                },
+                'label' => false,
+            ))
             ->getForm()->createView();
 
         return $formFreeProject;
+    }
+
+    private function getFreeDesignShagForm()
+    {
+        $FreeDesignShag = new DesignProjectShag();
+
+        $formFreeDesignShag = $this->createFormBuilder($FreeDesignShag)
+            ->add('name', TextType::class, array('attr' => [
+                'placeholder' => 'ВАШЕ ИМЯ *',
+                'data-validation-required-message' => 'Укажите ваше Имя.',
+                'class' => 'form-control'],
+                'label' => false
+            ))
+            ->add('phone', NumberType::class, array(
+                'attr' => [
+                    'id' => '123',
+                    'data-validation-required-message' => 'Укажите ваш телефон для связи.',
+                    'class' => 'form-control',
+                    'type' => 'tel',
+                ],
+                'label' => false,
+            ))
+            ->add('email', EmailType::class, array(
+                'attr' => [
+                    'placeholder' => 'Ваш EMAIL *',
+                    'class' => 'form-control'
+                ],
+                'label' => false,
+            ))
+            ->add('idSalon', EntityType::class, array(
+                'class' => 'ApplicationSonataUserBundle:User',
+                'query_builder' => function (EntityRepository $er) {
+                    $qb = $er->createQueryBuilder('u');
+                    return
+                        $qb->where(
+                            $qb->expr()->notLike('u.username', ':name')
+                        )
+                            ->orderBy('u.title', 'ASC')
+                            ->setParameter('name', 'admin');
+                },
+                'attr' => [
+                    'data-validation-required-message' => 'Укажите ближайший салон.',
+                    'class' => 'form-control',
+                ],
+                'choice_label' => function ($idSalon) {
+                    return $idSalon->getTitle() . ' (' . $idSalon->getAddress() . ')';
+                },
+                'label' => false,
+            ))
+            ->getForm()->createView();
+
+        return $formFreeDesignShag;
     }
 
     private function getZayavkaRazmer()
@@ -616,6 +714,26 @@ class KuhniCatalogController extends Controller
                     'placeholder' => 'ВАШЕ СООБЩЕНИЕ *',
                     'class' => 'form-control',
                 ],
+                'label' => false,
+            ))
+            ->add('idSalon', EntityType::class, array(
+                'class' => 'ApplicationSonataUserBundle:User',
+                'query_builder' => function (EntityRepository $er) {
+                    $qb = $er->createQueryBuilder('u');
+                    return
+                        $qb->where(
+                            $qb->expr()->notLike('u.username', ':name')
+                        )
+                            ->orderBy('u.title', 'ASC')
+                            ->setParameter('name', 'admin');
+                },
+                'attr' => [
+                    'data-validation-required-message' => 'Укажите ближайший салон.',
+                    'class' => 'form-control',
+                ],
+                'choice_label' => function ($idSalon) {
+                    return $idSalon->getTitle() . ' (' . $idSalon->getAddress() . ')';
+                },
                 'label' => false,
             ))
             ->getForm()->createView();
@@ -646,6 +764,26 @@ class KuhniCatalogController extends Controller
                     'class' => 'form-control',
                     'required' => false,
                 ],
+                'label' => false,
+            ))
+            ->add('idSalon', EntityType::class, array(
+                'class' => 'ApplicationSonataUserBundle:User',
+                'query_builder' => function (EntityRepository $er) {
+                    $qb = $er->createQueryBuilder('u');
+                    return
+                        $qb->where(
+                            $qb->expr()->notLike('u.username', ':name')
+                        )
+                            ->orderBy('u.title', 'ASC')
+                            ->setParameter('name', 'admin');
+                },
+                'attr' => [
+                    'data-validation-required-message' => 'Укажите ближайший салон.',
+                    'class' => 'form-control',
+                ],
+                'choice_label' => function ($idSalon) {
+                    return $idSalon->getTitle() . ' (' . $idSalon->getAddress() . ')';
+                },
                 'label' => false,
             ))
             ->getForm()->createView();
@@ -683,6 +821,26 @@ class KuhniCatalogController extends Controller
                     'placeholder' => 'ВАШЕ СООБЩЕНИЕ *',
                     'class' => 'form-control',
                 ],
+                'label' => false,
+            ))
+            ->add('idSalon', EntityType::class, array(
+                'class' => 'ApplicationSonataUserBundle:User',
+                'query_builder' => function (EntityRepository $er) {
+                    $qb = $er->createQueryBuilder('u');
+                    return
+                        $qb->where(
+                            $qb->expr()->notLike('u.username', ':name')
+                        )
+                            ->orderBy('u.title', 'ASC')
+                            ->setParameter('name', 'admin');
+                },
+                'attr' => [
+                    'data-validation-required-message' => 'Укажите ближайший салон.',
+                    'class' => 'form-control',
+                ],
+                'choice_label' => function ($idSalon) {
+                    return $idSalon->getTitle() . ' (' . $idSalon->getAddress() . ')';
+                },
                 'label' => false,
             ))
             ->add('imageFile', VichImageType::class, array(

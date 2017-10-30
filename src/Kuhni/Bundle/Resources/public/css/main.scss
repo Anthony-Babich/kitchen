@@ -9,10 +9,6 @@ section{
 header.masthead.all{
 	height: 250px;
 }
-div#map{
-	width: 100%;
-	height: 450px;
-}
 .slide-product-img{
 	width: 100%;
 	height: 100%;
@@ -261,6 +257,9 @@ section#reviews{
 			text-decoration: underline;
 		}
 	}
+	button{
+		margin-bottom: 30px ;
+	}
 }
 #more-prod{
 	margin: 0 15px 30px;
@@ -455,8 +454,14 @@ span{padding: 0;}
 	background: #193153 url(/web/bundles/kuhni/img/map-image.png) no-repeat center;
 	margin: 15px;
 }
+section#contact{
+	button{
+		margin-top: 30px ;
+		margin-bottom: 30px ;
+	}
+}
 section#services{
-	line-height: 1.15em;
+	line-height: 1.25em;
 	color: #7f7f7f;
 	font-size: 12px;
 	h4.service-heading{
@@ -464,7 +469,7 @@ section#services{
 		font-family: 'Open+Sans Bold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	}
 	p{
-		line-height: 1.15em;
+		line-height: 1.25em;
 		font-family: 'Open+Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	}
 	li{
@@ -477,6 +482,18 @@ section#services{
 		content: '-';
 		position: relative;
 		left:     -5px;
+	}
+}
+section#map-section{
+	h2{
+		font-family: 'Open+Sans Bold', Arial, sans-serif;
+		font-size:  30px;
+		color: black;
+		margin-bottom: 30px;
+	}
+	div#map{
+		width: 100%;
+		height: 450px;
 	}
 }
 section#freedesignshag{
@@ -531,9 +548,9 @@ section#freedesignshag{
 			font-weight: normal;
 			text-decoration: inherit;
 			color: yellow;
-			font-size: 40px;
+			font-size: 60px;
 			position: absolute;
-			left: 46%;
+			left: 41%;
 		}
 	}
 }
@@ -580,6 +597,12 @@ section#freedesignshag{
 		}
 	}
 }
+select.form-control {
+	padding: 20px;
+}
+select.form-control:not([size]):not([multiple]) {
+	height: 62px;
+}
 @media (max-width: 767px) {
 	#all-products{
 		.row {
@@ -605,33 +628,33 @@ section#freedesignshag{
 	}
 }
 @media (max-width: 539px) {
-	#all-products{
-		.big-col{
-			.pos-bot-l {
-				width: 100%;
-				ul.nav>.left{
-					width: 50%;
+		#all-products{
+			.big-col{
+				.pos-bot-l {
+					width: 100%;
+					ul.nav>.left{
+						width: 50%;
+					}
+					ul.nav>.right{
+						width: 50%;
+					}
+					.first-desc{
+						display: none;
+					}
+					.last-price{
+						font-size: 13px;
+					}
+					.now-price{
+						font-size: 16px;
+					}
 				}
-				ul.nav>.right{
-					width: 50%;
+				.phone{
+					top: 60px;
+					right: 0;
 				}
-				.first-desc{
-					display: none;
+				.pos-bot-r.desc {
+					top: 0;
 				}
-				.last-price{
-					font-size: 13px;
-				}
-				.now-price{
-					font-size: 16px;
-				}
-			}
-			.phone{
-				top: 60px;
-				right: 0;
-			}
-			.pos-bot-r.desc {
-				top: 0;
 			}
 		}
 	}
-}

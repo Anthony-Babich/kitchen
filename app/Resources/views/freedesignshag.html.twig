@@ -6,10 +6,10 @@
                     <a href="#step1" class="nav-link active" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1" data-original-title="ШАГ 1: Сперва выберите стиль кухни."></a>
                 </li>
                 <li role="presentation" class="nav-item">
-                    <a href="#step2" class="nav-link " data-toggle="tab" aria-controls="step2" role="tab" title="Step 2" data-original-title="ШАГ 2: Укажите интересующую вас форму кухни"></a>
+                    <a href="#step2" class="nav-link" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2" data-original-title="ШАГ 2: Укажите интересующую вас форму кухни"></a>
                 </li>
                 <li role="presentation" class="nav-item">
-                    <a href="#step3" class="nav-link " data-toggle="tab" aria-controls="step3" role="tab" title="Step 3" data-original-title="ШАГ 3: Укажите ваши контакты"></a>
+                    <a href="#step3" class="nav-link" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3" data-original-title="ШАГ 3: Укажите ваши контакты"></a>
                 </li>
             </ul>
         </div>
@@ -20,14 +20,15 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <form id="myFormGetFreeDesign" role="form" method="post" action="">
+                {{ form_start(formFreeDesignShag, { "action": path("freedesignshag"), "method": "POST", "attr": {"class": "ajaxForm", "id": "freedesignshag"} }) }}
+                {{ form_errors(formFreeDesignShag) }}
                     <div class="tab-content">
                         <div class="tab-pane active" role="tabpanel" id="step1">
                             <h5 class="text-center">ШАГ 1 - Определите интересующий вас стиль кухни</h5>
                             <div class="row text-center">
                                 <div class="col-12 col-sm-6 col-lg-3">
                                     <label>
-                                        <input name="kitchen-style" type="radio" value="Классические">
+                                        <input name="kitchen-style" type="radio" value="Классические" checked="checked">
                                         <span class="check-circle">
                                             <img src="{{ asset('/web/upload/kuhni/style/kitchenstyle-klassicheskie.jpg')}}">
                                         </span>
@@ -78,7 +79,7 @@
                                 <div class="row text-center">
                                     <div class="col-12 col-sm-6 col-lg-3">
                                         <label>
-                                            <input name="kitchen-config" type="radio" value="kitchentype_pobraznye">
+                                            <input name="kitchen-config" type="radio" value="kitchentype_pobraznye" checked="checked">
                                             <span class="check-circle">
                                                 <img src="{{ asset('/web/upload/kuhni/config/kitchentype_pobraznye.svg')}}">
                                             </span>
@@ -133,16 +134,35 @@
                             <div class="step3">
                                 <h5 class="text-center">ШАГ 3 — Укажите желаемую форму кухонного гарнитура</h5>
                                 <div class="row">
-                                    <div class="center-input">
+                                    <div class="col-6 text-center">
                                         <div class="form-group">
-                                            <input class="form-control input-lg fcrp" name="name" data-required="true" type="text" placeholder="ИМЯ">
-                                        </div>
-                                        <div class="form-group">
-                                            <input class="form-control input-lg fcrp" name="phone2" maxlength="15" data-required="true" type="text" placeholder="ТЕЛЕФОН"><br>
-                                            <p class="privacy-politycs"><input type="checkbox" name="privacy-politycs" data-required="true" value="согласен с политикой конфиденциальности" checked=""> Прочитал и согласен с <br><a target="_blank" href="http://kitchens/web/app_dev.php/privacy.php">политикой конфиденциальности</a></p>
+                                            {{ form_row(formFreeDesignShag.name) }}
                                         </div>
                                     </div>
-                                    <div id="result5" class="text-center"></div>
+                                    <div class="col-6 text-center">
+                                        <div class="form-group">
+                                            {{ form_row(formFreeDesignShag.phone) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 text-center">
+                                        <div class="form-group">
+                                            {{ form_row(formFreeDesignShag.email) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-6 text-center">
+                                        <div class="form-group">
+                                            {{ form_row(formFreeDesignShag.idSalon) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <div class="form-group">
+                                            <input type="checkbox" name="privacy-politycs" id="privacy-politycs" data-required="true" value="согласен с политикой конфиденциальности"> Прочитал и согласен с <a target="_blank" href="http://kitchens/web/app_dev.php/privacy.php">политикой конфиденциальности</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -161,7 +181,8 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                {{ form_rest(formFreeDesignShag)}}
+                {{ form_end(formFreeDesignShag) }}
             </div>
         </div>
     </div>

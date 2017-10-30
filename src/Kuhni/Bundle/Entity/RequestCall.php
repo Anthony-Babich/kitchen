@@ -64,6 +64,11 @@ class RequestCall
      */
     private $created;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", cascade={"persist"})
+     * @ORM\JoinColumn(name="id_salon", referencedColumnName="id")
+     */
+    private $idSalon;
 
     /**
      * Get id
@@ -194,5 +199,20 @@ class RequestCall
     {
         return $this->created;
     }
-}
 
+    /**
+     * @return mixed
+     */
+    public function getIdSalon()
+    {
+        return $this->idSalon;
+    }
+
+    /**
+     * @param mixed $idSalon
+     */
+    public function setIdSalon($idSalon)
+    {
+        $this->idSalon = $idSalon;
+    }
+}

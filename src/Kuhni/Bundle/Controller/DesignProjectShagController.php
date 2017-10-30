@@ -18,11 +18,16 @@ class DesignProjectShagController extends Controller
         } else { $geo_info = "Не удалось определить координаты посетителя"; }
 
         $form = $request->get('form');
-        $name = htmlspecialchars($form['name']);
-        $phone = htmlspecialchars($form['phone']);
-        $email = htmlspecialchars($form['email']);
-        $style = htmlspecialchars($form['style']);
-        $config = htmlspecialchars($form['config']);
+        $polisity = htmlspecialchars($request->get('privacy-politycs'));
+        if ((isset($form['name']))&&(isset($form['phone']))&&(!empty($polisity))){
+            $name = htmlspecialchars($form['name']);
+            $phone = htmlspecialchars($form['phone']);
+            $email = htmlspecialchars($form['email']);
+            $style = htmlspecialchars($request->get('kitchen-style'));
+            $config = htmlspecialchars($request->get('kitchen-config'));
+        }else{
+            return new Response(json_encode(array('success' => 'noData')));
+        }
 
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
 

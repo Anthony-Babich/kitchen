@@ -10,6 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class freeDesignProjectController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function indexAction(Request $request)
     {
         //geoIP

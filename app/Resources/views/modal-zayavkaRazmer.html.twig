@@ -19,8 +19,17 @@
                     <div class="form-group">
                         {{ form_row(formZayavkaRazmer.message) }}
                     </div>
+                    <div class="form-group">
+                        {{ form_row(formZayavkaRazmer.idSalon) }}
+                    </div>
                 </div>
-                <div class="row text-center"><div class="col-12">Прочитал и согласен с <a href="#">политикой конфиденциальности</a></div></div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="form-group">
+                            <input type="checkbox" name="privacy-politycs" data-required="true" value="согласен с политикой конфиденциальности"> Прочитал и согласен с <a target="_blank" href="http://kitchens/web/app_dev.php/privacy.php">политикой конфиденциальности</a>
+                        </div>
+                    </div>
+                </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-xl">Отправить заявку</button>
                 </div>

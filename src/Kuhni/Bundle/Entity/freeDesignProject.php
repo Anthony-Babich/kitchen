@@ -33,6 +33,12 @@ class freeDesignProject
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", cascade={"persist"})
+     * @ORM\JoinColumn(name="id_salon", referencedColumnName="id")
+     */
+    private $idSalon;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
@@ -333,6 +339,22 @@ class freeDesignProject
         $this->url = $url;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdSalon()
+    {
+        return $this->idSalon;
+    }
+
+    /**
+     * @param mixed $idSalon
+     */
+    public function setIdSalon($idSalon)
+    {
+        $this->idSalon = $idSalon;
     }
 }
 

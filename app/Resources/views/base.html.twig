@@ -120,22 +120,21 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 //Пошаговая форма
-                $('#freedesignshag .nav-tabs > li a[title]').tooltip();
                 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-                    var $target = $(e.target);
-                    if ($target.parent().hasClass('disabled')) {
+                    if ($(e.target).parent().hasClass('disabled')){
                         return false;
                     }
                 });
                 $(".next-step").click(function (e) {
                     var $active = $('#freedesignshag .nav-tabs li>a.active');
                     $active.parent().next().removeClass('disabled');
-                    nextTab($active);
+                    $($active).parent().next().find('a[data-toggle="tab"]').click();
                 });
                 $(".prev-step").click(function (e) {
                     var $active = $('#freedesignshag .nav-tabs li>a.active');
-                    prevTab($active);
+                    $($active).parent().prev().find('a[data-toggle="tab"]').click();
                 });
+
                 // Конец пошаговой формы
                 $('.separator').html(' <i class="fa fa-angle-double-right" aria-hidden="true"></i> ');
                 $('ul.tabs li').click(function(){
@@ -163,12 +162,6 @@
                     $('#requestcall').on('show');
                 }
             });
-            function nextTab(elem) {
-                $(elem).parent().next().find('a[data-toggle="tab"]').click();
-            }
-            function prevTab(elem) {
-                $(elem).parent().prev().find('a[data-toggle="tab"]').click();
-            }
         </script>
         <script src="{{ asset('bundles/kuhni/js/slick-slider.js') }}"></script>
     {% endblock %}
