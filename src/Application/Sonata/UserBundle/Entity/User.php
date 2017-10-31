@@ -73,6 +73,75 @@ class User extends BaseUser
     private $workingHours;
 
     /**
+     * @var string $tc
+     *
+     * @ORM\Column(name="tc", type="string", length=255)
+     */
+    private $tc;
+
+    /**
+     * @var string $metro
+     *
+     * @ORM\Column(name="metro", type="string", length=255)
+     */
+    private $metro;
+
+    /**
+     * @var string $gorod
+     *
+     * @ORM\Column(name="gorod", type="string", length=255)
+     */
+    private $gorod;
+
+    /**
+     * @return string
+     */
+    public function getMetro()
+    {
+        return $this->metro;
+    }
+
+    /**
+     * @param string $metro
+     */
+    public function setMetro(string $metro)
+    {
+        $this->metro = $metro;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGorod()
+    {
+        return $this->gorod;
+    }
+
+    /**
+     * @param string $gorod
+     */
+    public function setGorod(string $gorod)
+    {
+        $this->gorod = $gorod;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTc()
+    {
+        return $this->tc;
+    }
+
+    /**
+     * @param string $tc
+     */
+    public function setTc(string $tc)
+    {
+        $this->tc = $tc;
+    }
+
+    /**
      * @return string
      */
     public function getLongitude()

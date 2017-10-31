@@ -16,6 +16,9 @@
         <field name="title" column="title" type="string" length="255" nullable="true" unique="false" />
         <field name="address" column="address" type="string" length="255" nullable="true" unique="false" />
         <field name="workingHours" column="workingHours" type="string" length="255" nullable="true" unique="false" />
+        <field name="tc" column="tc" type="string" length="255" nullable="true" unique="false" />
+        <field name="metro" column="metro" type="string" length="255" nullable="true" unique="false" />
+        <field name="gorod" column="gorod" type="string" length="255" nullable="true" unique="false" />
 
     </entity>
 

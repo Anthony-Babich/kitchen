@@ -568,7 +568,29 @@ class KuhniCatalogController extends Controller
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
-                    return $idSalon->getTitle() . ' (' . $idSalon->getAddress() . ')';
+                    $address = '';
+                    if (!empty($idSalon->getMetro())){
+                        $address .= $idSalon->getMetro() . ' | ';
+                    }else{
+                        $address .= $idSalon->getGorod() . ' | ';
+                    }
+                    if (!empty($idSalon->getTc())){
+                        $address .= $idSalon->getTc() . "\r\n";
+                    }else{
+                        $address .= "Белорусские кухни\r\n";
+                    }
+                    $address .= $idSalon->getAddress();
+                    return $address;
+                },
+                'choice_attr' => function($idSalon) {
+
+                    if ($idSalon->getGorod() == 'Москва'){
+                        $class = 'metro';
+                    }else{
+                        $class = '';
+                    }
+
+                    return array('class' => $class);
                 },
                 'label' => false,
             ))
@@ -631,7 +653,29 @@ class KuhniCatalogController extends Controller
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
-                    return $idSalon->getTitle() . ' (' . $idSalon->getAddress() . ')';
+                    $address = '';
+                    if (!empty($idSalon->getMetro())){
+                        $address .= $idSalon->getMetro() . ' | ';
+                    }else{
+                        $address .= $idSalon->getGorod() . ' | ';
+                    }
+                    if (!empty($idSalon->getTc())){
+                        $address .= $idSalon->getTc() . "\r\n";
+                    }else{
+                        $address .= "Белорусские кухни\r\n";
+                    }
+                    $address .= $idSalon->getAddress();
+                    return $address;
+                },
+                'choice_attr' => function($idSalon) {
+
+                    if ($idSalon->getGorod() == 'Москва'){
+                        $class = 'metro';
+                    }else{
+                        $class = '';
+                    }
+
+                    return array('class' => $class);
                 },
                 'label' => false,
             ))
@@ -683,7 +727,29 @@ class KuhniCatalogController extends Controller
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
-                    return $idSalon->getTitle() . ' (' . $idSalon->getAddress() . ')';
+                    $address = '';
+                    if (!empty($idSalon->getMetro())){
+                        $address .= $idSalon->getMetro() . ' | ';
+                    }else{
+                        $address .= $idSalon->getGorod() . ' | ';
+                    }
+                    if (!empty($idSalon->getTc())){
+                        $address .= $idSalon->getTc() . "\r\n";
+                    }else{
+                        $address .= "Белорусские кухни\r\n";
+                    }
+                    $address .= $idSalon->getAddress();
+                    return $address;
+                },
+                'choice_attr' => function($idSalon) {
+
+                    if ($idSalon->getGorod() == 'Москва'){
+                        $class = 'metro';
+                    }else{
+                        $class = '';
+                    }
+
+                    return array('class' => $class);
                 },
                 'label' => false,
             ))
@@ -732,7 +798,29 @@ class KuhniCatalogController extends Controller
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
-                    return $idSalon->getTitle() . ' (' . $idSalon->getAddress() . ')';
+                    $address = '';
+                    if (!empty($idSalon->getMetro())){
+                        $address .= $idSalon->getMetro() . ' | ';
+                    }else{
+                        $address .= $idSalon->getGorod() . ' | ';
+                    }
+                    if (!empty($idSalon->getTc())){
+                        $address .= $idSalon->getTc() . "\r\n";
+                    }else{
+                        $address .= "Белорусские кухни\r\n";
+                    }
+                    $address .= $idSalon->getAddress();
+                    return $address;
+                },
+                'choice_attr' => function($idSalon) {
+
+                    if ($idSalon->getGorod() == 'Москва'){
+                        $class = 'metro';
+                    }else{
+                        $class = '';
+                    }
+
+                    return array('class' => $class);
                 },
                 'label' => false,
             ))
@@ -782,7 +870,29 @@ class KuhniCatalogController extends Controller
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
-                    return $idSalon->getTitle() . ' (' . $idSalon->getAddress() . ')';
+                    $address = '';
+                    if (!empty($idSalon->getMetro())){
+                        $address .= $idSalon->getMetro() . ' | ';
+                    }else{
+                        $address .= $idSalon->getGorod() . ' | ';
+                    }
+                    if (!empty($idSalon->getTc())){
+                        $address .= $idSalon->getTc() . "\r\n";
+                    }else{
+                        $address .= "Белорусские кухни\r\n";
+                    }
+                    $address .= $idSalon->getAddress();
+                    return $address;
+                },
+                'choice_attr' => function($idSalon) {
+
+                    if ($idSalon->getGorod() == 'Москва'){
+                        $class = 'metro';
+                    }else{
+                        $class = '';
+                    }
+
+                    return array('class' => $class);
                 },
                 'label' => false,
             ))
@@ -839,7 +949,29 @@ class KuhniCatalogController extends Controller
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
-                    return $idSalon->getTitle() . ' (' . $idSalon->getAddress() . ')';
+                    $address = '';
+                    if (!empty($idSalon->getMetro())){
+                        $address .= $idSalon->getMetro() . ' | ';
+                    }else{
+                        $address .= $idSalon->getGorod() . ' | ';
+                    }
+                    if (!empty($idSalon->getTc())){
+                        $address .= $idSalon->getTc() . "\r\n";
+                    }else{
+                        $address .= "Белорусские кухни\r\n";
+                    }
+                    $address .= $idSalon->getAddress();
+                    return $address;
+                },
+                'choice_attr' => function($idSalon) {
+
+                    if ($idSalon->getGorod() == 'Москва'){
+                        $class = 'metro';
+                    }else{
+                        $class = '';
+                    }
+
+                    return array('class' => $class);
                 },
                 'label' => false,
             ))

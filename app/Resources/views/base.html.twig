@@ -119,6 +119,8 @@
         <script src="{{ asset('bundles/kuhni/slick/slick.js') }}" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
             $(document).ready(function(){
+                //Если салон находиться в Москве, то дописываем к нему что-то
+                $('option.metro').prepend('<span class="span-metro"><img src="{{ asset("/web/bundles/kuhni/img/map-marker.svg") }}" alt="metro"></span>');
                 //Пошаговая форма
                 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
                     if ($(e.target).parent().hasClass('disabled')){

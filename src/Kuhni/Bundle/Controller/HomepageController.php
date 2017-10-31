@@ -100,7 +100,29 @@ class HomepageController extends Controller
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
-                    return $idSalon->getTitle() . ' (' . $idSalon->getAddress() . ')';
+                    $address = '';
+                    if (!empty($idSalon->getMetro())){
+                        $address .= $idSalon->getMetro() . ' | ';
+                    }else{
+                        $address .= $idSalon->getGorod() . ' | ';
+                    }
+                    if (!empty($idSalon->getTc())){
+                        $address .= $idSalon->getTc() . " ";
+                    }else{
+                        $address .= "Белорусские кухни ";
+                    }
+                    $address .= $idSalon->getAddress();
+                    return $address;
+                },
+                'choice_attr' => function($idSalon) {
+
+                    if ($idSalon->getGorod() == 'Москва'){
+                        $class = 'metro';
+                    }else{
+                        $class = '';
+                    }
+
+                    return array('class' => $class);
                 },
                 'label' => false,
             ))
@@ -163,7 +185,29 @@ class HomepageController extends Controller
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
-                    return $idSalon->getTitle() . ' (' . $idSalon->getAddress() . ')';
+                    $address = '';
+                    if (!empty($idSalon->getMetro())){
+                        $address .= $idSalon->getMetro() . ' | ';
+                    }else{
+                        $address .= $idSalon->getGorod() . ' | ';
+                    }
+                    if (!empty($idSalon->getTc())){
+                        $address .= $idSalon->getTc() . " ";
+                    }else{
+                        $address .= "Белорусские кухни ";
+                    }
+                    $address .= $idSalon->getAddress();
+                    return $address;
+                },
+                'choice_attr' => function($idSalon) {
+
+                    if ($idSalon->getGorod() == 'Москва'){
+                        $class = 'metro';
+                    }else{
+                        $class = '';
+                    }
+
+                    return array('class' => $class);
                 },
                 'label' => false,
             ))
@@ -198,15 +242,37 @@ class HomepageController extends Controller
                         $qb->where(
                             $qb->expr()->notLike('u.username', ':name')
                         )
-                        ->orderBy('u.title', 'ASC')
-                        ->setParameter('name', 'admin');
+                            ->orderBy('u.title', 'ASC')
+                            ->setParameter('name', 'admin');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
-                    return $idSalon->getTitle() . ' (' . $idSalon->getAddress() . ')';
+                    $address = '';
+                    if (!empty($idSalon->getMetro())){
+                        $address .= $idSalon->getMetro() . ' | ';
+                    }else{
+                        $address .= $idSalon->getGorod() . ' | ';
+                    }
+                    if (!empty($idSalon->getTc())){
+                        $address .= $idSalon->getTc() . " ";
+                    }else{
+                        $address .= "Белорусские кухни ";
+                    }
+                    $address .= $idSalon->getAddress();
+                    return $address;
+                },
+                'choice_attr' => function($idSalon) {
+
+                    if ($idSalon->getGorod() == 'Москва'){
+                        $class = 'metro';
+                    }else{
+                        $class = '';
+                    }
+
+                    return array('class' => $class);
                 },
                 'label' => false,
             ))
@@ -253,7 +319,29 @@ class HomepageController extends Controller
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
-                    return $idSalon->getTitle() . ' (' . $idSalon->getAddress() . ')';
+                    $address = '';
+                    if (!empty($idSalon->getMetro())){
+                        $address .= $idSalon->getMetro() . ' | ';
+                    }else{
+                        $address .= $idSalon->getGorod() . ' | ';
+                    }
+                    if (!empty($idSalon->getTc())){
+                        $address .= $idSalon->getTc() . " ";
+                    }else{
+                        $address .= "Белорусские кухни ";
+                    }
+                    $address .= $idSalon->getAddress();
+                    return $address;
+                },
+                'choice_attr' => function($idSalon) {
+
+                    if ($idSalon->getGorod() == 'Москва'){
+                        $class = 'metro';
+                    }else{
+                        $class = '';
+                    }
+
+                    return array('class' => $class);
                 },
                 'label' => false,
             ))
@@ -310,7 +398,29 @@ class HomepageController extends Controller
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
-                    return $idSalon->getTitle() . ' (' . $idSalon->getAddress() . ')';
+                    $address = '';
+                    if (!empty($idSalon->getMetro())){
+                        $address .= $idSalon->getMetro() . ' | ';
+                    }else{
+                        $address .= $idSalon->getGorod() . ' | ';
+                    }
+                    if (!empty($idSalon->getTc())){
+                        $address .= $idSalon->getTc() . " ";
+                    }else{
+                        $address .= "Белорусские кухни ";
+                    }
+                    $address .= $idSalon->getAddress();
+                    return $address;
+                },
+                'choice_attr' => function($idSalon) {
+
+                    if ($idSalon->getGorod() == 'Москва'){
+                        $class = 'metro';
+                    }else{
+                        $class = '';
+                    }
+
+                    return array('class' => $class);
                 },
                 'label' => false,
             ))
