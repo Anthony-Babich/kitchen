@@ -89,7 +89,7 @@ class Catalog
     /**
      * @return string
      */
-    public function getAlt(): string
+    public function getAlt()
     {
         return $this->alt;
     }

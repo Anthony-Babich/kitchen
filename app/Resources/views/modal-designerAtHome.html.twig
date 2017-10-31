@@ -7,9 +7,9 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                {{ form_start(formDesignerAtHome, { "action": path("designerathome"), "method": "POST", "attr": {"class": "ajaxForm", "id": "ZayavkaRazmer"} }) }}
-                {{ form_errors(formDesignerAtHome) }}
+            {{ form_start(formDesignerAtHome, { "action": path("designerathome"), "method": "POST", "attr": {"class": "ajaxForm", "id": "ZayavkaRazmer"} }) }}
+            {{ form_errors(formDesignerAtHome) }}
+                <div class="modal-body">
                     <div class="form-group">
                         {{ form_row(formDesignerAtHome.name) }}
                     </div>
@@ -20,21 +20,21 @@
                         {{ form_row(formDesignerAtHome.message) }}
                     </div>
                     <div class="form-group">
-                        {{ form_row(formRequestCall.idSalon) }}
-                    </div>
-                {{ form_rest(formDesignerAtHome)}}
-                {{ form_end(formDesignerAtHome) }}
-            </div>
-            <div class="row">
-                <div class="col-12 text-center">
-                    <div class="form-group">
-                        <input type="checkbox" name="privacy-politycs" data-required="true" value="согласен с политикой конфиденциальности"> Прочитал и согласен с <a target="_blank" href="http://kitchens/web/app_dev.php/privacy.php">политикой конфиденциальности</a>
+                        {{ form_row(formDesignerAtHome.idSalon) }}
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-xl">Отправить заявку</button>
-            </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="form-group">
+                            <input type="checkbox" name="privacy-politycs" data-required="true" value="согласен с политикой конфиденциальности"> Прочитал и согласен с <a target="_blank" href="http://kitchens/web/app_dev.php/privacy.php">политикой конфиденциальности</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-xl">Отправить заявку</button>
+                </div>
+            {{ form_rest(formDesignerAtHome)}}
+            {{ form_end(formDesignerAtHome) }}
         </div>
     </div>
 </div>

@@ -38,7 +38,7 @@ class freeDesignProjectController extends Controller
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
         $call = new freeDesignProject();
 
-        if (!empty($_FILES)){
+        if ($_FILES['form']['error']['imageFile']['file'] == 0){
             $formFile = $_FILES['form'];
             $nameImage = htmlspecialchars($formFile['name']['imageFile']['file']);
             $sizeImage = htmlspecialchars($formFile['size']['imageFile']['file']);
@@ -49,6 +49,7 @@ class freeDesignProjectController extends Controller
             $fileThumbnail = new UploadedFile($fileImage, $nameImage, $typeImage, $sizeImage, $errorImage, true);
             $call->setImageFile($fileThumbnail);
         }else{
+            $call->setImageFile();
             $call->setImageName('');
             $call->setImageSize(0);
         }
