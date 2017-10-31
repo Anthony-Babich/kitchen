@@ -554,6 +554,24 @@ section#freedesignshag{
 		}
 	}
 }
+select.form-control {
+	padding: 20px;
+}
+span.span-metro{
+	background-color: yellow;
+	img{
+		width: 20px;
+		height: 20px;
+	}
+}
+.breadcrumb {
+	background-color: unset;
+	margin: 0;
+	padding: 0;
+}
+select.form-control:not([size]):not([multiple]) {
+	height: 62px;
+}
 @media (max-width: 1200px) {
 	#product{
 		#description{
@@ -596,12 +614,6 @@ section#freedesignshag{
 			}
 		}
 	}
-}
-select.form-control {
-	padding: 20px;
-}
-select.form-control:not([size]):not([multiple]) {
-	height: 62px;
 }
 @media (max-width: 767px) {
 	#all-products{
