@@ -1,41 +1,13 @@
 <section id="contact">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Связаться с Нами</h2>
-                <h3 class="section-subheading text-muted">Оставьте сообщение в наш отдел продаж.</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                {{ form_start(form, { 'action': path('callback'), 'method': 'POST', 'attr': {'class': 'ajaxForm', 'id': 'callBackForm'} }) }}
-                {{ form_errors(form) }}
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
-                                {{ form_row(form.name) }}
-                            </div>
-                            <div class="form-group">
-                                {{ form_row(form.email) }}
-                            </div>
-                            <div class="form-group">
-                                {{ form_row(form.phone) }}
-                            </div>
-                            <div class="form-group">
-                                {{ form_row(form.idSalon) }}
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                {{ form_row(form.message) }}
-                            </div>
-                        </div>
-                        <div class="col-lg-12 text-center">
-                            <button type="submit" class="btn btn-xl">Отправить сообщение</button>
-                        </div>
-                    </div>
-                {{form_rest(form)}}
-                {{ form_end(form) }}
+            <div class="hidden-sm col-md-2 col-lg-2 text-center">
+                <p>
+                    <a class="navbar-brand" href="{{ path('homepage') }}"><img src="{{ asset('bundles/kuhni/img/logo_white.svg') }}"/></a>
+                </p>
+                <p>
+                    Федеральная торговая сеть ЗОВ на территории России
+                </p>
             </div>
         </div>
     </div>

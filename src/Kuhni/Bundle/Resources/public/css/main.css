@@ -345,10 +345,6 @@ section#reviews {
   background: #193153 url(/web/bundles/kuhni/img/map-image.png) no-repeat center;
   margin: 15px; }
 
-section#contact button {
-  margin-top: 30px;
-  margin-bottom: 30px; }
-
 section#services {
   line-height: 1.25em;
   color: #7f7f7f;
@@ -500,6 +496,15 @@ form {
     margin-left: 16px; }
   form img {
     vertical-align: top; }
+
+#contact {
+  padding-top: 35px;
+  color: white; }
+
+footer {
+  color: #888989;
+  font-size: 12px;
+  font-family: 'Open+Sans Regular', Helvetica Neue, 'Arial', sans-serif; }
 
 @media (max-width: 1200px) {
   #product #description .price p {
