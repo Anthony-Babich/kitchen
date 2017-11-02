@@ -120,7 +120,88 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 //Если салон находиться в Москве, то дописываем к нему что-то
-                $('option.metro').prepend('<span class="span-metro"><img src="{{ asset("/web/bundles/kuhni/img/map-marker.svg") }}" alt="metro"></span>');
+                //Преобразование select>option в div, ul>li
+                $('select').each(function(){
+                    var $this = $(this), numberOfOptions = $(this).children('option').length;
+
+                    $this.addClass('select-hidden');
+                    $this.wrap('<div class="select form-control"></div>');
+                    $this.after('<div class="select-styled"></div>');
+
+                    var $styledSelect = $this.next('div.select-styled');
+                    var newText = $this.children('option').eq(0).text();
+                    var pos = newText.indexOf('|');
+                    var pos2 = newText.indexOf('ул.') - pos;
+                    var tc = newText.substr(pos + 1, pos2-2);
+                    $styledSelect.text(tc);
+
+                    var $list = $('<ul />', {
+                        'class': 'form-control select-options'
+                    }).insertAfter($styledSelect);
+
+                    for (var i = 0; i < numberOfOptions ; i++)
+                        if ($this.children('option').eq(i).attr('class') === 'metro'){
+                            var text = $this.children('option').eq(i).text();
+                            var pos = text.indexOf('|');
+                            var stantion = text.substr(0, pos);
+                            var pos2 = text.indexOf('ул.') - pos;
+                            var tc = text.substr(pos + 1, pos2-2);
+                            var address = text.substr(pos + pos2);
+                            var color = $this.children('option').eq(i).attr('id');
+                            $('<li />', {
+                            html: '<p><span class="span-metro"><img src="{{ asset("/web/bundles/kuhni/img/metro-ico.png") }}" alt="metro"></span>'
+                                  +'<span class="station" style="background-color: ' + color +';">' +
+                                            stantion +
+                                      '</span>' +
+                                      '<span class="tc">' +
+                                            tc +
+                                      '</span></p>' +
+                                      '<p><span class="span-address">' +
+                                            address +
+                                      '</span></p>',
+                                rel: $this.children('option').eq(i).val(),
+                                content: tc
+                            }).appendTo($list);
+                        }else{
+                            var text = $this.children('option').eq(i).text();
+                            var pos = text.indexOf('|');
+                            var stantion = text.substr(0, pos);
+                            var pos2 = text.indexOf('ул.') - pos;
+                            var tc = text.substr(pos + 1, pos2-2);
+                            var address = text.substr(pos + pos2);
+                            $('<li />', {
+                                html: '<p><span class="nometro-first-span">' + stantion + '</span>' +
+                                '<span class="tc">' + tc + '</span></p>' +
+                                '<p><span class="span-address">' + address + '</span></p>',
+                                rel: $this.children('option').eq(i).val(),
+                                content: tc
+                            }).appendTo($list);
+                        }
+
+                    var $listItems = $list.children('li');
+
+                    $styledSelect.click(function(e) {
+                        e.stopPropagation();
+                        $('div.select-styled.active').each(function(){
+                            $(this).removeClass('active').next('ul.select-options').hide();
+                        });
+                        $(this).toggleClass('active').next('ul.select-options').toggle();
+                    });
+                    $list.hide();
+
+                    $listItems.click(function(e) {
+                        e.stopPropagation();
+                        $styledSelect.text($(this).attr('content')).removeClass('active');
+                        $this.val($(this).attr('rel'));
+                        $list.hide();
+                    });
+
+                    $(document).click(function() {
+                        $styledSelect.removeClass('active');
+                        $list.hide();
+                    });
+                });
+
                 //Пошаговая форма
                 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
                     if ($(e.target).parent().hasClass('disabled')){

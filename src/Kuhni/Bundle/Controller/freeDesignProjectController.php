@@ -59,6 +59,11 @@ class freeDesignProjectController extends Controller
         }else{
             $call->setUrl('none');
         }
+
+        $userManager = $this->get('fos_user.user_manager');
+        $user = $userManager->findUserBy(array('id' => $form['idSalon']));
+        $call->setIdSalon($user);
+
         $call->setPhone($phone);
         $call->setMessage($message);
         $call->setName($name);

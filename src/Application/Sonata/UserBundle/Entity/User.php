@@ -2,6 +2,7 @@
 
 namespace Application\Sonata\UserBundle\Entity;
 
+use Kuhni\Bundle\Entity\StationMoscow;
 use Sonata\UserBundle\Entity\BaseUser as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -80,11 +81,12 @@ class User extends BaseUser
     private $tc;
 
     /**
-     * @var string $metro
+     * @var User $metroId
      *
-     * @ORM\Column(name="metro", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\StationMoscow", cascade={"persist"})
+     * @ORM\JoinColumn(name="metro_id", referencedColumnName="id")
      */
-    private $metro;
+    private $metroId;
 
     /**
      * @var string $gorod
@@ -94,19 +96,19 @@ class User extends BaseUser
     private $gorod;
 
     /**
-     * @return string
+     * @return StationMoscow
      */
-    public function getMetro()
+    public function getMetroId()
     {
-        return $this->metro;
+        return $this->metroId;
     }
 
     /**
-     * @param string $metro
+     * @param string $metroId
      */
-    public function setMetro(string $metro)
+    public function setMetroId(string $metroId)
     {
-        $this->metro = $metro;
+        $this->metroId = $metroId;
     }
 
     /**

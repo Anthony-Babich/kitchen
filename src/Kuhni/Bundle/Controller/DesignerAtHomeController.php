@@ -25,6 +25,11 @@ class DesignerAtHomeController extends Controller
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
 
         $call = new DesignerAtHome();
+
+        $userManager = $this->get('fos_user.user_manager');
+        $user = $userManager->findUserBy(array('id' => $form['idSalon']));
+        $call->setIdSalon($user);
+
         $call->setPhone($phone);
         $call->setMessage($message);
         $call->setName($name);

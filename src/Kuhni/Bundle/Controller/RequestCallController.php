@@ -24,6 +24,11 @@ class RequestCallController extends Controller
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
 
         $call = new RequestCall();
+
+        $userManager = $this->get('fos_user.user_manager');
+        $user = $userManager->findUserBy(array('id' => $form['idSalon']));
+        $call->setIdSalon($user);
+
         $call->setUrl((string) $_SERVER['HTTP_REFERER']);
         $call->setName($name);
         $call->setGeoIP($geo_info);

@@ -31,6 +31,9 @@ class DesignProjectShagController extends Controller
 
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
 
+        $userManager = $this->get('fos_user.user_manager');
+        $user = $userManager->findUserBy(array('id' => $form['idSalon']));
+
         $call = new DesignProjectShag();
         $call->setPhone($phone);
         $call->setEmail($email);
@@ -39,6 +42,7 @@ class DesignProjectShagController extends Controller
         $call->setStyle($style);
         $call->setUrl($_SERVER['HTTP_REFERER']);
         $call->setGeoIP($geo_info);
+        $call->setIdSalon($user);
         $entityManager->persist($call);
         $entityManager->flush();
 

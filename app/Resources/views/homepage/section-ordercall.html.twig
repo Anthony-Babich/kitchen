@@ -9,17 +9,17 @@
                 {{ form_start(formRequestCall, { 'action': path('requestcall'), 'method': 'POST', 'attr': {'class': 'ajaxForm', 'id': 'requestCallForm'} }) }}
                     {{ form_errors(formRequestCall) }}
                         <div class="form-row">
-                            <div class="col form-group">
+                            <div class="col-sm-12 col-md-12 col-lg-3 form-group">
                                 {{ form_row(formRequestCall.name) }}
                             </div>
-                            <div class="col form-group">
+                            <div class="col-sm-12 col-md-12 col-lg-3 form-group">
                                 {{ form_row(formRequestCall.phone) }}
                             </div>
-                            <div class="col form-group">
+                            <div class="col-sm-12 col-md-12 col-lg-3 form-group">
                                 {{ form_row(formRequestCall.idSalon) }}
                             </div>
-                            <div class="col form-group">
-                                <button type="submit" class="btn btn-xl" style="width: 350px">Заказать</button>
+                            <div class="col-sm-12 col-md-12 col-lg-2 form-group">
+                                <button type="submit" style="width: 100%;" class="btn btn-xl">Заказать</button>
                             </div>
                         </div>
                     {{form_rest(formRequestCall)}}

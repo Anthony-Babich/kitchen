@@ -221,9 +221,6 @@ section#reviews {
       max-height: 100px;
       vertical-align: middle; }
 
-span {
-  padding: 0; }
-
 #all-products {
   line-height: 1.15;
   padding: 150px 0 0 0; }
@@ -377,6 +374,7 @@ section#map-section h2 {
   color: black;
   margin-bottom: 30px; }
 section#map-section div#map {
+  border-top: 6px solid #fed136;
   width: 100%;
   height: 450px; }
 
@@ -430,12 +428,6 @@ section#freedesignshag {
 select.form-control {
   padding: 20px; }
 
-span.span-metro {
-  background-color: yellow; }
-  span.span-metro img {
-    width: 20px;
-    height: 20px; }
-
 .breadcrumb {
   background-color: unset;
   margin: 0;
@@ -443,6 +435,71 @@ span.span-metro {
 
 select.form-control:not([size]):not([multiple]) {
   height: 62px; }
+
+#ordercall form .select-styled, #contact form .select-styled {
+  padding: 20px; }
+
+form {
+  color: black; }
+  form p {
+    line-height: 1;
+    margin: 5px 0; }
+  form .select-hidden {
+    display: none;
+    visibility: hidden;
+    padding-right: 10px; }
+  form .select.form-control {
+    padding: 0; }
+  form .select {
+    cursor: pointer;
+    display: inline-block;
+    color: #717171; }
+  form .select-styled {
+    padding: 0.5rem 0.75rem; }
+  form .select-styled:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-color: #474647 transparent transparent transparent;
+    position: absolute; }
+  form .select-styled:active:after, form .select-styled.active:after {
+    top: 9px;
+    border-color: transparent transparent #fff transparent; }
+  form .select-options {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+    position: absolute;
+    z-index: 1000; }
+  form .select-options li {
+    padding: 8px 5px;
+    text-indent: 0;
+    border-bottom: 2px solid #7f7f7f;
+    z-index: 1000; }
+  form .select-options li:hover {
+    color: black; }
+  form .select-options li[rel="hide"] {
+    display: none; }
+  form .tc {
+    font-weight: bold;
+    margin-left: 5px; }
+  form .station {
+    color: white;
+    margin-left: 5px;
+    padding: 3px 5px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px; }
+  form .span-metro {
+    background-color: unset; }
+  form .span-address {
+    padding: 0 0 0 16px;
+    margin-top: 5px; }
+  form .nometro-first-span {
+    margin-left: 16px; }
+  form img {
+    vertical-align: top; }
 
 @media (max-width: 1200px) {
   #product #description .price p {

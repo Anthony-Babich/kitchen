@@ -20,6 +20,7 @@ use Vich\UploaderBundle\Form\Type\VichImageType;
 class HomepageController extends Controller
 {
     private $session;
+    private $colorStation;
     public function __construct()
     {
         $this->session = new Session();
@@ -101,8 +102,9 @@ class HomepageController extends Controller
                 ],
                 'choice_label' => function ($idSalon) {
                     $address = '';
-                    if (!empty($idSalon->getMetro())){
-                        $address .= $idSalon->getMetro() . ' | ';
+                    if (!empty($idSalon->getMetroId())){
+                        $address .= $idSalon->getMetroId()->getNameStation() . ' | ';
+                        $this->colorStation = $idSalon->getMetroId()->getColor();
                     }else{
                         $address .= $idSalon->getGorod() . ' | ';
                     }
@@ -115,14 +117,12 @@ class HomepageController extends Controller
                     return $address;
                 },
                 'choice_attr' => function($idSalon) {
-
                     if ($idSalon->getGorod() == 'Москва'){
                         $class = 'metro';
                     }else{
-                        $class = '';
+                        $class = 'nometro';
                     }
-
-                    return array('class' => $class);
+                    return array('class' => $class, 'id' => $this->colorStation);
                 },
                 'label' => false,
             ))
@@ -186,8 +186,9 @@ class HomepageController extends Controller
                 ],
                 'choice_label' => function ($idSalon) {
                     $address = '';
-                    if (!empty($idSalon->getMetro())){
-                        $address .= $idSalon->getMetro() . ' | ';
+                    if (!empty($idSalon->getMetroId())){
+                        $address .= $idSalon->getMetroId()->getNameStation() . ' | ';
+                        $this->colorStation = $idSalon->getMetroId()->getColor();
                     }else{
                         $address .= $idSalon->getGorod() . ' | ';
                     }
@@ -200,14 +201,12 @@ class HomepageController extends Controller
                     return $address;
                 },
                 'choice_attr' => function($idSalon) {
-
                     if ($idSalon->getGorod() == 'Москва'){
                         $class = 'metro';
                     }else{
-                        $class = '';
+                        $class = 'nometro';
                     }
-
-                    return array('class' => $class);
+                    return array('class' => $class, 'id' => $this->colorStation);
                 },
                 'label' => false,
             ))
@@ -251,8 +250,9 @@ class HomepageController extends Controller
                 ],
                 'choice_label' => function ($idSalon) {
                     $address = '';
-                    if (!empty($idSalon->getMetro())){
-                        $address .= $idSalon->getMetro() . ' | ';
+                    if (!empty($idSalon->getMetroId())){
+                        $address .= $idSalon->getMetroId()->getNameStation() . ' | ';
+                        $this->colorStation = $idSalon->getMetroId()->getColor();
                     }else{
                         $address .= $idSalon->getGorod() . ' | ';
                     }
@@ -265,14 +265,12 @@ class HomepageController extends Controller
                     return $address;
                 },
                 'choice_attr' => function($idSalon) {
-
                     if ($idSalon->getGorod() == 'Москва'){
                         $class = 'metro';
                     }else{
-                        $class = '';
+                        $class = 'nometro';
                     }
-
-                    return array('class' => $class);
+                    return array('class' => $class, 'id' => $this->colorStation);
                 },
                 'label' => false,
             ))
@@ -320,8 +318,9 @@ class HomepageController extends Controller
                 ],
                 'choice_label' => function ($idSalon) {
                     $address = '';
-                    if (!empty($idSalon->getMetro())){
-                        $address .= $idSalon->getMetro() . ' | ';
+                    if (!empty($idSalon->getMetroId())){
+                        $address .= $idSalon->getMetroId()->getNameStation() . ' | ';
+                        $this->colorStation = $idSalon->getMetroId()->getColor();
                     }else{
                         $address .= $idSalon->getGorod() . ' | ';
                     }
@@ -334,14 +333,12 @@ class HomepageController extends Controller
                     return $address;
                 },
                 'choice_attr' => function($idSalon) {
-
                     if ($idSalon->getGorod() == 'Москва'){
                         $class = 'metro';
                     }else{
-                        $class = '';
+                        $class = 'nometro';
                     }
-
-                    return array('class' => $class);
+                    return array('class' => $class, 'id' => $this->colorStation);
                 },
                 'label' => false,
             ))
@@ -399,8 +396,9 @@ class HomepageController extends Controller
                 ],
                 'choice_label' => function ($idSalon) {
                     $address = '';
-                    if (!empty($idSalon->getMetro())){
-                        $address .= $idSalon->getMetro() . ' | ';
+                    if (!empty($idSalon->getMetroId())){
+                        $address .= $idSalon->getMetroId()->getNameStation() . ' | ';
+                        $this->colorStation = $idSalon->getMetroId()->getColor();
                     }else{
                         $address .= $idSalon->getGorod() . ' | ';
                     }
@@ -413,14 +411,12 @@ class HomepageController extends Controller
                     return $address;
                 },
                 'choice_attr' => function($idSalon) {
-
                     if ($idSalon->getGorod() == 'Москва'){
                         $class = 'metro';
                     }else{
-                        $class = '';
+                        $class = 'nometro';
                     }
-
-                    return array('class' => $class);
+                    return array('class' => $class, 'id' => $this->colorStation);
                 },
                 'label' => false,
             ))
