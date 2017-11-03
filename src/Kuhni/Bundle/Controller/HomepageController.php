@@ -57,7 +57,6 @@ class HomepageController extends Controller
                 'formZayavkaRazmer' => $this->getZayavkaRazmer(),
                 'formDesignerAtHome' => $this->getDesignerAtHome(),
                 'form' => $this->getCallBackForm(),
-
             ));
         }
     }
@@ -302,7 +301,8 @@ class HomepageController extends Controller
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Ваше Сообщение *',
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'maxlength' => '254'
                 ]
             ))
             ->add('idSalon', EntityType::class, array(
@@ -574,5 +574,20 @@ class HomepageController extends Controller
             ->getForm()->createView();
 
         return $formDesignerAtHome;
+    }
+
+    private function getMapLocate()
+    {
+        $em = $this->getDoctrine()->getManager()
+            ->getRepository('ApplicationSonataUserBundle:User');
+        $qb = $er->createQueryBuilder('u');
+        return
+            $qb->where(
+                $qb->expr()->notLike('u.username', ':name')
+            )
+                ->orderBy('u.title', 'ASC')
+                ->setParameter('name', 'admin');
+
+        return $locate;
     }
 }

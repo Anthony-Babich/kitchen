@@ -10,14 +10,15 @@
                             center: [55.72, 37.64],
                             zoom: 5
                         });
-                        BalloonContentLayout = ymaps.templateLayoutFactory.createClass(
-                            '<div style="margin: 10px;">' +
-                            '<b>123456</b><br />' +
-                            '<i id="count"></i> ' +
-                            '<button id="counter-button"> +1 </button>' +
-                            '</div>', {
-                                // Переопределяем функцию build, чтобы при создании макета начинать
-                                // слушать событие click на кнопке-счетчике.
+                        {% for map in maps %}
+                            BalloonContentLayout = ymaps.templateLayoutFactory.createClass(
+                                '<div style="margin: 10px;">' +
+                                '<b> {{ map.title }} </b><br />' +
+                                '<i id="count"></i> ' +
+                                '<button id="counter-button"> +1 </button>' +
+                                '</div>', {
+                                    // Переопределяем функцию build, чтобы при создании макета начинать
+                                    // слушать событие click на кнопке-счетчике.
                                 build: function () {
                                     // Сначала вызываем метод build родительского класса.
                                     BalloonContentLayout.superclass.build.call(this);
@@ -26,14 +27,25 @@
                                     $('#count').html('123');
                                 }
                             });
+                            myMap.geoObjects.add(
+                                new ymaps.Placemark([{{ map.longitude }}, {{ map.latitude }}], {}, {
+                                    balloonContentLayout: BalloonContentLayout,
+                                    balloonPanelMaxMapArea: 0,
+                                    iconLayout: 'default#image',
+                                    iconImageHref: '../bundles/kuhni/img/map-marker.svg',
+                                    iconImageOffset: [-3, -42],
+                                    iconImageSize: [30, 42]
+                                })
+                            );
+                        {% endfor %}
                         myMap.geoObjects.add(
                             new ymaps.Placemark([55.76, 37.59], {}, {
                                 balloonContentLayout: BalloonContentLayout,
                                 balloonPanelMaxMapArea: 0,
                                 iconLayout: 'default#image',
                                 iconImageHref: '../bundles/kuhni/img/map-marker.svg',
-                                iconImageSize: [30, 42],
-                                iconImageOffset: [-3, -42]
+                                iconImageOffset: [-3, -42],
+                                iconImageSize: [30, 42]
                             })
                         );
                         myMap.geoObjects.add(

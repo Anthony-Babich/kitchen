@@ -3,6 +3,7 @@
 namespace Kuhni\Bundle\Controller;
 
 use Doctrine\ORM\EntityRepository;
+use Kuhni\Bundle\Entity\CallBack;
 use Kuhni\Bundle\Entity\CostProject;
 use Kuhni\Bundle\Entity\DesignerAtHome;
 use Kuhni\Bundle\Entity\DesignProjectShag;
@@ -13,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,6 +25,8 @@ use Vich\UploaderBundle\Form\Type\VichImageType;
  */
 class KuhniCatalogController extends Controller
 {
+    private $colorStation;
+
     /**
      * @Route("/", name="kuhni_list")
      * @return \Symfony\Component\HttpFoundation\Response
@@ -70,6 +74,7 @@ class KuhniCatalogController extends Controller
             'formZayavkaRazmer' => $this->getZayavkaRazmer(),
             'formDesignerAtHome' => $this->getDesignerAtHome(),
             'formCostProject' => $this->getCostProject(),
+            'form' => $this->getCallBackForm(),
         ));
     }
 
@@ -194,6 +199,7 @@ class KuhniCatalogController extends Controller
             'formDesignerAtHome' => $this->getDesignerAtHome(),
             'formCostProject' => $this->getCostProject(),
             'formFreeDesignShag' => $this->getFreeDesignShagForm(),
+            'form' => $this->getCallBackForm(),
         ));
     }
 
@@ -264,7 +270,7 @@ class KuhniCatalogController extends Controller
                         $strResult .= "</div></li></ul></span>";
 
                         $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
-                        $strResult .= "<span class='phone text-center'><i class='fa fa-phone'></i></span>";
+                        $strResult .= '<button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall"><i class="fa fa-phone"></i></button>';
                         $strResult .= "<span class='like'><i class='fa fa-heart'></i> {$result[$i]['likes']}</span>";
                         $strResult .= "</a></div>";
                     }
@@ -283,7 +289,7 @@ class KuhniCatalogController extends Controller
                         $strResult .= "</div></li></ul></span>";
 
                         $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
-                        $strResult .= "<span class='phone text-center'><i class='fa fa-phone'></i></span>";
+                        $strResult .= '<button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall"><i class="fa fa-phone"></i></button>';
                         $strResult .= "<span class='like'><i class='fa fa-heart'></i> {$result[$i]['likes']}</span>";
                         $strResult .= "</a></div>";
                     }
@@ -305,7 +311,7 @@ class KuhniCatalogController extends Controller
                         $strResult .= "</div></li></ul></span>";
 
                         $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
-                        $strResult .= "<span class='phone text-center'><i class='fa fa-phone'></i></span>";
+                        $strResult .= '<button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall"><i class="fa fa-phone"></i></button>';
                         $strResult .= "<span class='like'><i class='fa fa-heart'></i> {$result[$i]['likes']}</span>";
                         $strResult .= "</a></div>";
                     }
@@ -324,7 +330,7 @@ class KuhniCatalogController extends Controller
                         $strResult .= "</div></li></ul></span>";
 
                         $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
-                        $strResult .= "<span class='phone text-center'><i class='fa fa-phone'></i></span>";
+                        $strResult .= '<button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall"><i class="fa fa-phone"></i></button>';
                         $strResult .= "<span class='like'><i class='fa fa-heart'></i> {$result[$i]['likes']}</span>";
                         $strResult .= "</a></div>";
                     }
@@ -354,7 +360,7 @@ class KuhniCatalogController extends Controller
                         $strResult .= "<span class='through'>{$result[$i]['noDiscountPrice']}</span><br/></span><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span>";
                         $strResult .= "</div></li></ul></span>";
                         $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
-                        $strResult .= "<span class='phone text-center'><i class='fa fa-phone'></i></span>";
+                        $strResult .= '<button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall"><i class="fa fa-phone"></i></button>';
                         $strResult .= "<span class='like'><i class='fa fa-heart'></i> {$result[$i]['likes']}</span>";
                         $strResult .= "</a>";
                     }
@@ -378,11 +384,7 @@ class KuhniCatalogController extends Controller
                 $imageCatalog = 'none';
             }
 
-            if ($slug != 'allProducts'){
-                $result = $this->searchParametr($slug);
-            }else{
-                $result =
-            }
+            $result = $this->searchParametr($slug);
 
             foreach ($result as $item) {
                 $image[] = 'upload/kuhni/kitchens/' . $item['imageName'];
@@ -408,12 +410,13 @@ class KuhniCatalogController extends Controller
                 'formCostProject' => $this->getCostProject(),
                 'formFreeProject' => $this->getFreeProjectForm(),
                 'formFreeDesignShag' => $this->getFreeDesignShagForm(),
+                'form' => $this->getCallBackForm(),
             ));
         }
     }
 
     private function searchParametr(string $slug, $offset = 0, $limit = 10){
-        if ($slug == 'allProducts'){
+        if ($slug == 'allproducts'){
             $result = $this->getDoctrine()->getManager()
                 ->getRepository('KuhniBundle:Kuhni')
                 ->createQueryBuilder('n')
@@ -531,25 +534,29 @@ class KuhniCatalogController extends Controller
     }
 
     private function getNameBreadParam(string $slug){
-        $entity = $this->getDoctrine()->getManager()
-            ->getRepository('KuhniBundle:KuhniStyle')
-            ->findOneBy(array('slug' => $slug));
-        if (empty($entity)) {
+        if ($slug == 'allproducts'){
+            return 'Вся продукция';
+        }else{
             $entity = $this->getDoctrine()->getManager()
-                ->getRepository('KuhniBundle:KuhniConfig')
+                ->getRepository('KuhniBundle:KuhniStyle')
                 ->findOneBy(array('slug' => $slug));
             if (empty($entity)) {
                 $entity = $this->getDoctrine()->getManager()
-                    ->getRepository('KuhniBundle:KuhniMaterial')
+                    ->getRepository('KuhniBundle:KuhniConfig')
                     ->findOneBy(array('slug' => $slug));
                 if (empty($entity)) {
                     $entity = $this->getDoctrine()->getManager()
-                        ->getRepository('KuhniBundle:KuhniColor')
+                        ->getRepository('KuhniBundle:KuhniMaterial')
                         ->findOneBy(array('slug' => $slug));
+                    if (empty($entity)) {
+                        $entity = $this->getDoctrine()->getManager()
+                            ->getRepository('KuhniBundle:KuhniColor')
+                            ->findOneBy(array('slug' => $slug));
+                    }
                 }
             }
+            return $entity->getTitle();
         }
-        return $entity->getTitle();
     }
 
     private function getRequestCallForm()
@@ -913,6 +920,75 @@ class KuhniCatalogController extends Controller
             ->getForm()->createView();
 
         return $formDesignerAtHome;
+    }
+
+    private function getCallBackForm()
+    {
+        $callback = new CallBack();
+
+        $form = $this->createFormBuilder($callback)
+            ->add('name', TextType::class, array('attr' => ['placeholder' => 'ВАШЕ ИМЯ *', 'class' => 'form-control'], 'label' => false))
+            ->add('email', EmailType::class, array('label' => false, 'attr' => ['placeholder' => 'Ваш EMAIL *', 'class' => 'form-control']))
+            ->add('phone', NumberType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
+                    'class' => 'form-control',
+                    'type' => 'tel',
+                ],
+                'label' => false,
+            ))
+            ->add('message', TextareaType::class, array(
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Ваше Сообщение *',
+                    'class' => 'form-control',
+                    'maxlength' => '254'
+                ]
+            ))
+            ->add('idSalon', EntityType::class, array(
+                'class' => 'ApplicationSonataUserBundle:User',
+                'query_builder' => function (EntityRepository $er) {
+                    $qb = $er->createQueryBuilder('u');
+                    return
+                        $qb->where(
+                            $qb->expr()->notLike('u.username', ':name')
+                        )
+                            ->orderBy('u.title', 'ASC')
+                            ->setParameter('name', 'admin');
+                },
+                'attr' => [
+                    'data-validation-required-message' => 'Укажите ближайший салон.',
+                    'class' => 'form-control',
+                ],
+                'choice_label' => function ($idSalon) {
+                    $address = '';
+                    if (!empty($idSalon->getMetroId())){
+                        $address .= $idSalon->getMetroId()->getNameStation() . ' | ';
+                        $this->colorStation = $idSalon->getMetroId()->getColor();
+                    }else{
+                        $address .= $idSalon->getGorod() . ' | ';
+                    }
+                    if (!empty($idSalon->getTc())){
+                        $address .= $idSalon->getTc() . " ";
+                    }else{
+                        $address .= "Белорусские кухни ";
+                    }
+                    $address .= $idSalon->getAddress();
+                    return $address;
+                },
+                'choice_attr' => function($idSalon) {
+                    if ($idSalon->getGorod() == 'Москва'){
+                        $class = 'metro';
+                    }else{
+                        $class = 'nometro';
+                    }
+                    return array('class' => $class, 'id' => $this->colorStation);
+                },
+                'label' => false,
+            ))
+            ->getForm()->createView();
+
+        return $form;
     }
 
     private function getCostProject()

@@ -7,8 +7,9 @@
         var startFrom = 11;
         var slug = '{{ slug }}';
         var noMore = false;
+        var contact =jQuery('#contact').offset().top;
         $(window).scroll(function() {
-            if (($(window).scrollTop() === $(document).height() - $(window).height() && !inProgress)&&!noMore) {
+            if (($(window).scrollTop() > contact && !inProgress)&&!noMore) {
                 $.ajax({
                     /* адрес файла-обработчика запроса */
                     url: "{{ path('kuhni_parameters', {'slug' : slug}) }}",
