@@ -498,12 +498,47 @@ form {
     vertical-align: top; }
 
 #contact {
+  line-height: 1.5em;
   padding-top: 35px;
-  color: white; }
+  color: white;
+  font-size: 12px;
+  font-family: 'Open+Sans Regular', Helvetica Neue, 'Arial', sans-serif;
+  padding-bottom: 100px; }
+  #contact h6 {
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-weight: normal;
+    margin-bottom: 12px; }
+  #contact p {
+    line-height: 1.15em;
+    margin-bottom: 5px;
+    color: #b5b5b5; }
+    #contact p a {
+      color: #b5b5b5; }
+  #contact .fed {
+    color: white;
+    line-height: 1.5em; }
+  #contact .clear {
+    height: 13px; }
+  #contact .btn-sm {
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 20px;
+    color: white;
+    border-color: white;
+    background-color: #193153;
+    font-family: 'Open+Sans Regular', Helvetica Neue, 'Arial', sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 20px; }
+  #contact .icons {
+    color: white;
+    font-size: 20px; }
 
 footer {
   color: #888989;
+  line-height: 1em;
   font-size: 12px;
+  padding: 10px 0;
   font-family: 'Open+Sans Regular', Helvetica Neue, 'Arial', sans-serif; }
 
 @media (max-width: 1200px) {

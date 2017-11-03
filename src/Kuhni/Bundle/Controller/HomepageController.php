@@ -5,9 +5,11 @@ namespace Kuhni\Bundle\Controller;
 use Doctrine\ORM\EntityRepository;
 use Kuhni\Bundle\Entity\CallBack;
 use Kuhni\Bundle\Entity\CostProject;
+use Kuhni\Bundle\Entity\DesignerAtHome;
 use Kuhni\Bundle\Entity\DesignProjectShag;
 use Kuhni\Bundle\Entity\freeDesignProject;
 use Kuhni\Bundle\Entity\RequestCall;
+use Kuhni\Bundle\Entity\ZayavkaRazmer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -52,6 +54,8 @@ class HomepageController extends Controller
                 'formCostProject' => $this->getCostProject(),
                 'formFreeDesignShag' => $this->getFreeDesignShagForm(),
                 'formFreeProject' => $this->getFreeProjectForm(),
+                'formZayavkaRazmer' => $this->getZayavkaRazmer(),
+                'formDesignerAtHome' => $this->getDesignerAtHome(),
                 'form' => $this->getCallBackForm(),
 
             ));
@@ -429,5 +433,146 @@ class HomepageController extends Controller
             ->getForm()->createView();
 
         return $formCostProject;
+    }
+
+    private function getZayavkaRazmer()
+    {
+        $ZayavkaRazmer = new ZayavkaRazmer();
+
+        $formZayavkaRazmer = $this->createFormBuilder($ZayavkaRazmer)
+            ->add('name', TextType::class, array('attr' => [
+                'placeholder' => 'ВАШЕ ИМЯ *',
+                'class' => 'form-control'],
+                'label' => false
+            ))
+            ->add('phone', NumberType::class, array(
+                'attr' => [
+                    'class' => 'form-control',
+                    'type' => 'tel',
+                ],
+                'label' => false,
+            ))
+            ->add('message', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ СООБЩЕНИЕ *',
+                    'class' => 'form-control',
+                ],
+                'label' => false,
+            ))
+            ->add('idSalon', EntityType::class, array(
+                'class' => 'ApplicationSonataUserBundle:User',
+                'query_builder' => function (EntityRepository $er) {
+                    $qb = $er->createQueryBuilder('u');
+                    return
+                        $qb->where(
+                            $qb->expr()->notLike('u.username', ':name')
+                        )
+                            ->orderBy('u.title', 'ASC')
+                            ->setParameter('name', 'admin');
+                },
+                'attr' => [
+                    'data-validation-required-message' => 'Укажите ближайший салон.',
+                    'class' => 'form-control',
+                ],
+                'choice_label' => function ($idSalon) {
+                    $address = '';
+                    if (!empty($idSalon->getMetroId())){
+                        $address .= $idSalon->getMetroId()->getNameStation() . ' | ';
+                        $this->colorStation = $idSalon->getMetroId()->getColor();
+                    }else{
+                        $address .= $idSalon->getGorod() . ' | ';
+                    }
+                    if (!empty($idSalon->getTc())){
+                        $address .= $idSalon->getTc() . " ";
+                    }else{
+                        $address .= "Белорусские кухни ";
+                    }
+                    $address .= $idSalon->getAddress();
+                    return $address;
+                },
+                'choice_attr' => function($idSalon) {
+                    if ($idSalon->getGorod() == 'Москва'){
+                        $class = 'metro';
+                    }else{
+                        $class = 'nometro';
+                    }
+                    return array('class' => $class, 'id' => $this->colorStation);
+                },
+                'label' => false,
+            ))
+            ->getForm()->createView();
+
+        return $formZayavkaRazmer;
+    }
+
+    private function getDesignerAtHome()
+    {
+        $DesignerAtHome = new DesignerAtHome();
+
+        $formDesignerAtHome = $this->createFormBuilder($DesignerAtHome)
+            ->add('name', TextType::class, array('attr' => [
+                'placeholder' => 'ВАШЕ ИМЯ *',
+                'class' => 'form-control'],
+                'label' => false
+            ))
+            ->add('phone', NumberType::class, array(
+                'attr' => [
+                    'class' => 'form-control',
+                    'type' => 'tel',
+                ],
+                'label' => false,
+            ))
+            ->add('message', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ СООБЩЕНИЕ *',
+                    'class' => 'form-control',
+                    'required' => false,
+                ],
+                'label' => false,
+            ))
+            ->add('idSalon', EntityType::class, array(
+                'class' => 'ApplicationSonataUserBundle:User',
+                'query_builder' => function (EntityRepository $er) {
+                    $qb = $er->createQueryBuilder('u');
+                    return
+                        $qb->where(
+                            $qb->expr()->notLike('u.username', ':name')
+                        )
+                            ->orderBy('u.title', 'ASC')
+                            ->setParameter('name', 'admin');
+                },
+                'attr' => [
+                    'data-validation-required-message' => 'Укажите ближайший салон.',
+                    'class' => 'form-control',
+                ],
+                'choice_label' => function ($idSalon) {
+                    $address = '';
+                    if (!empty($idSalon->getMetroId())){
+                        $address .= $idSalon->getMetroId()->getNameStation() . ' | ';
+                        $this->colorStation = $idSalon->getMetroId()->getColor();
+                    }else{
+                        $address .= $idSalon->getGorod() . ' | ';
+                    }
+                    if (!empty($idSalon->getTc())){
+                        $address .= $idSalon->getTc() . " ";
+                    }else{
+                        $address .= "Белорусские кухни ";
+                    }
+                    $address .= $idSalon->getAddress();
+                    return $address;
+                },
+                'choice_attr' => function($idSalon) {
+                    if ($idSalon->getGorod() == 'Москва'){
+                        $class = 'metro';
+                    }else{
+                        $class = 'nometro';
+                    }
+                    return array('class' => $class, 'id' => $this->colorStation);
+                },
+                'label' => false,
+            ))
+            ->getForm()->createView();
+
+        return $formDesignerAtHome;
     }
 }

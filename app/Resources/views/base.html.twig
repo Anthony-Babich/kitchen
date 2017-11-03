@@ -37,56 +37,8 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/main.css') }}">
 
     {% endblock %}
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-    <script type="text/javascript">
-        ymaps.ready(function () {
-            ymaps.modules.require(['Map', 'Placemark'])
-                .spread(
-                    function (Map, Placemark) {
-                        var myMap = new Map("map", {
-                            center: [55.72, 37.64],
-                            zoom: 5
-                        });
-                        BalloonContentLayout = ymaps.templateLayoutFactory.createClass(
-                            '<div style="margin: 10px;">' +
-                            '<b>123456</b><br />' +
-                            '<i id="count"></i> ' +
-                            '<button id="counter-button"> +1 </button>' +
-                            '</div>', {
-                                // Переопределяем функцию build, чтобы при создании макета начинать
-                                // слушать событие click на кнопке-счетчике.
-                                build: function () {
-                                    // Сначала вызываем метод build родительского класса.
-                                    BalloonContentLayout.superclass.build.call(this);
-                                    // А затем выполняем дополнительные действия.
-                                    $('#counter-button').bind('click', this.onCounterClick);
-                                    $('#count').html('123');
-                                }
-                            });
-                        myMap.geoObjects.add(
-                            new ymaps.Placemark([55.76, 37.59], {}, {
-                                balloonContentLayout: BalloonContentLayout,
-                                balloonPanelMaxMapArea: 0,
-                                iconLayout: 'default#image',
-                                iconImageHref: '../bundles/kuhni/img/map-marker.svg',
-                                iconImageSize: [30, 42],
-                                iconImageOffset: [-3, -42]
-                            })
-                        );
-                        myMap.geoObjects.add(
-                            new ymaps.Placemark([55.76, 37.56], {}, {
-                                balloonContentLayout: BalloonContentLayout,
-                                balloonPanelMaxMapArea: 0,
-                                iconLayout: 'default#image',
-                                iconImageHref: '../bundles/kuhni/img/map-marker.svg',
-                                iconImageOffset: [-3, -42],
-                                iconImageSize: [30, 42]
-                            })
-                        );
-                    }
-                );
-        });
-    </script>
+    {% block map %}
+    {% endblock %}
 </head>
 
 <body id="page-top" data-spy="scroll">
@@ -101,6 +53,10 @@
     {% block modal %}
     {% endblock%}
     {% include 'modal-requestcall.html.twig' %}
+    {% include 'modal-costproject.html.twig' %}
+    {% include 'modal-designerAtHome.html.twig' %}
+    {% include 'modal-freedesign.html.twig' %}
+    {% include 'modal-zayavkaRazmer.html.twig' %}
 
     {% block javascripts %}
         <script src="{{ asset('bundles/kuhni/js/device.js') }}"></script>
@@ -247,9 +203,9 @@
             });
         </script>
         <script src="{{ asset('bundles/kuhni/js/slick-slider.js') }}"></script>
+        <script src="{{ asset('bundles/kuhni/js/ajax.js') }}"></script>
     {% endblock %}
     {% block ajax %}
-        <script src="{{ asset('bundles/kuhni/js/ajax.js') }}"></script>
     {% endblock%}
 </body>
 </html>

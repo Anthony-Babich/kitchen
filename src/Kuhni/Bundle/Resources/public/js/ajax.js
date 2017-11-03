@@ -31,8 +31,8 @@ $('form.ajaxFormWithFile').submit(function (e) {
                     '</div>'
                 );
             }
-            $('form button').removeAttr("disabled","disabled");
             setTimeout(function(){$('.alert').fadeOut('fast')},3000);
+            $('form button').removeAttr("disabled","disabled");
         }).fail(function (jqXHR, textStatus, errorThrown) {
             if (typeof jqXHR.responseJSON !== 'undefined') {
                 if (jqXHR.responseJSON.hasOwnProperty('form')) {
@@ -76,7 +76,7 @@ $('body').on('submit', '.ajaxForm', function (e) {
                     '</div>'
                 );
             }
-            $('form button[type="submit"]').removeAttr("disabled", "disabled");
+            $('form button').removeAttr("disabled", "disabled");
             setTimeout(function () {
                 $('.alert').fadeOut('fast')
             }, 3000);

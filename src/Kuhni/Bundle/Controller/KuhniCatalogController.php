@@ -66,7 +66,10 @@ class KuhniCatalogController extends Controller
 
             'formRequestCall' => $this->getRequestCallForm(),
             'formRequestCallModal' => $this->getRequestCallForm(),
-            'formFreeDesignShag' => $this->getFreeDesignShagForm(),
+            'formFreeProject' => $this->getFreeProjectForm(),
+            'formZayavkaRazmer' => $this->getZayavkaRazmer(),
+            'formDesignerAtHome' => $this->getDesignerAtHome(),
+            'formCostProject' => $this->getCostProject(),
         ));
     }
 
@@ -375,7 +378,11 @@ class KuhniCatalogController extends Controller
                 $imageCatalog = 'none';
             }
 
-            $result = $this->searchParametr($slug);
+            if ($slug != 'allProducts'){
+                $result = $this->searchParametr($slug);
+            }else{
+                $result =
+            }
 
             foreach ($result as $item) {
                 $image[] = 'upload/kuhni/kitchens/' . $item['imageName'];
@@ -399,46 +406,77 @@ class KuhniCatalogController extends Controller
                 'formZayavkaRazmer' => $this->getZayavkaRazmer(),
                 'formDesignerAtHome' => $this->getDesignerAtHome(),
                 'formCostProject' => $this->getCostProject(),
-                'formFreeProject' => $this->getCostProject(),
+                'formFreeProject' => $this->getFreeProjectForm(),
                 'formFreeDesignShag' => $this->getFreeDesignShagForm(),
             ));
         }
     }
 
     private function searchParametr(string $slug, $offset = 0, $limit = 10){
-        $entity = $this->getDoctrine()->getManager()
-            ->getRepository('KuhniBundle:KuhniStyle')
-            ->findBy(array('slug' => $slug));
-        if (empty($entity)){
+        if ($slug == 'allProducts'){
+            $result = $this->getDoctrine()->getManager()
+                ->getRepository('KuhniBundle:Kuhni')
+                ->createQueryBuilder('n')
+                ->select('n')
+                ->orderBy('n.likes', 'ASC')
+                ->getQuery()
+                ->setFirstResult($offset)
+                ->setMaxResults($limit)
+                ->getArrayResult();
+        }else{
             $entity = $this->getDoctrine()->getManager()
-                ->getRepository('KuhniBundle:KuhniConfig')
+                ->getRepository('KuhniBundle:KuhniStyle')
                 ->findBy(array('slug' => $slug));
             if (empty($entity)){
                 $entity = $this->getDoctrine()->getManager()
-                    ->getRepository('KuhniBundle:KuhniMaterial')
+                    ->getRepository('KuhniBundle:KuhniConfig')
                     ->findBy(array('slug' => $slug));
                 if (empty($entity)){
                     $entity = $this->getDoctrine()->getManager()
-                        ->getRepository('KuhniBundle:KuhniColor')
+                        ->getRepository('KuhniBundle:KuhniMaterial')
                         ->findBy(array('slug' => $slug));
-                    if (is_array($entity)){
-                        foreach ($entity as $item){
-                            $id[] = $item->getId();
+                    if (empty($entity)){
+                        $entity = $this->getDoctrine()->getManager()
+                            ->getRepository('KuhniBundle:KuhniColor')
+                            ->findBy(array('slug' => $slug));
+                        if (is_array($entity)){
+                            foreach ($entity as $item){
+                                $id[] = $item->getId();
+                            }
+                        }else{
+                            $id[] = $entity->getId();
                         }
+                        $result = $this->getDoctrine()->getManager()
+                            ->getRepository('KuhniBundle:Kuhni')
+                            ->createQueryBuilder('n')
+                            ->select('n')
+                            ->where('n.idKuhniColor = :id')
+                            ->orderBy('n.id', 'ASC')
+                            ->setParameters(array('id' => $id))
+                            ->getQuery()
+                            ->setFirstResult($offset)
+                            ->setMaxResults($limit)
+                            ->getArrayResult();
                     }else{
-                        $id[] = $entity->getId();
+                        if (is_array($entity)){
+                            foreach ($entity as $item){
+                                $id[] = $item->getId();
+                            }
+                        }else{
+                            $id[] = $entity->getId();
+                        }
+                        $result = $this->getDoctrine()->getManager()
+                            ->getRepository('KuhniBundle:Kuhni')
+                            ->createQueryBuilder('n')
+                            ->select('n')
+                            ->where('n.idKuhniMaterial IN (:id)')
+                            ->orderBy('n.id', 'ASC')
+                            ->setParameters(array('id' => $id))
+                            ->getQuery()
+                            ->setFirstResult($offset)
+                            ->setMaxResults($limit)
+                            ->getArrayResult();
                     }
-                    $result = $this->getDoctrine()->getManager()
-                        ->getRepository('KuhniBundle:Kuhni')
-                        ->createQueryBuilder('n')
-                        ->select('n')
-                        ->where('n.idKuhniColor = :id')
-                        ->orderBy('n.id', 'ASC')
-                        ->setParameters(array('id' => $id))
-                        ->getQuery()
-                        ->setFirstResult($offset)
-                        ->setMaxResults($limit)
-                        ->getArrayResult();
                 }else{
                     if (is_array($entity)){
                         foreach ($entity as $item){
@@ -451,7 +489,7 @@ class KuhniCatalogController extends Controller
                         ->getRepository('KuhniBundle:Kuhni')
                         ->createQueryBuilder('n')
                         ->select('n')
-                        ->where('n.idKuhniMaterial IN (:id)')
+                        ->where('n.idKuhniConfig IN (:id)')
                         ->orderBy('n.id', 'ASC')
                         ->setParameters(array('id' => $id))
                         ->getQuery()
@@ -471,7 +509,7 @@ class KuhniCatalogController extends Controller
                     ->getRepository('KuhniBundle:Kuhni')
                     ->createQueryBuilder('n')
                     ->select('n')
-                    ->where('n.idKuhniConfig IN (:id)')
+                    ->where('n.idKuhniStyle IN (:id)')
                     ->orderBy('n.id', 'ASC')
                     ->setParameters(array('id' => $id))
                     ->getQuery()
@@ -479,25 +517,6 @@ class KuhniCatalogController extends Controller
                     ->setMaxResults($limit)
                     ->getArrayResult();
             }
-        }else{
-            if (is_array($entity)){
-                foreach ($entity as $item){
-                    $id[] = $item->getId();
-                }
-            }else{
-                $id[] = $entity->getId();
-            }
-            $result = $this->getDoctrine()->getManager()
-                ->getRepository('KuhniBundle:Kuhni')
-                ->createQueryBuilder('n')
-                ->select('n')
-                ->where('n.idKuhniStyle IN (:id)')
-                ->orderBy('n.id', 'ASC')
-                ->setParameters(array('id' => $id))
-                ->getQuery()
-                ->setFirstResult($offset)
-                ->setMaxResults($limit)
-                ->getArrayResult();
         }
         return $result;
     }
@@ -569,28 +588,27 @@ class KuhniCatalogController extends Controller
                 ],
                 'choice_label' => function ($idSalon) {
                     $address = '';
-                    if (!empty($idSalon->getMetro())){
-                        $address .= $idSalon->getMetro() . ' | ';
+                    if (!empty($idSalon->getMetroId())){
+                        $address .= $idSalon->getMetroId()->getNameStation() . ' | ';
+                        $this->colorStation = $idSalon->getMetroId()->getColor();
                     }else{
                         $address .= $idSalon->getGorod() . ' | ';
                     }
                     if (!empty($idSalon->getTc())){
-                        $address .= $idSalon->getTc() . "\r\n";
+                        $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни\r\n";
+                        $address .= "Белорусские кухни ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
                 },
                 'choice_attr' => function($idSalon) {
-
                     if ($idSalon->getGorod() == 'Москва'){
                         $class = 'metro';
                     }else{
-                        $class = '';
+                        $class = 'nometro';
                     }
-
-                    return array('class' => $class);
+                    return array('class' => $class, 'id' => $this->colorStation);
                 },
                 'label' => false,
             ))
@@ -654,28 +672,27 @@ class KuhniCatalogController extends Controller
                 ],
                 'choice_label' => function ($idSalon) {
                     $address = '';
-                    if (!empty($idSalon->getMetro())){
-                        $address .= $idSalon->getMetro() . ' | ';
+                    if (!empty($idSalon->getMetroId())){
+                        $address .= $idSalon->getMetroId()->getNameStation() . ' | ';
+                        $this->colorStation = $idSalon->getMetroId()->getColor();
                     }else{
                         $address .= $idSalon->getGorod() . ' | ';
                     }
                     if (!empty($idSalon->getTc())){
-                        $address .= $idSalon->getTc() . "\r\n";
+                        $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни\r\n";
+                        $address .= "Белорусские кухни ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
                 },
                 'choice_attr' => function($idSalon) {
-
                     if ($idSalon->getGorod() == 'Москва'){
                         $class = 'metro';
                     }else{
-                        $class = '';
+                        $class = 'nometro';
                     }
-
-                    return array('class' => $class);
+                    return array('class' => $class, 'id' => $this->colorStation);
                 },
                 'label' => false,
             ))
@@ -728,28 +745,27 @@ class KuhniCatalogController extends Controller
                 ],
                 'choice_label' => function ($idSalon) {
                     $address = '';
-                    if (!empty($idSalon->getMetro())){
-                        $address .= $idSalon->getMetro() . ' | ';
+                    if (!empty($idSalon->getMetroId())){
+                        $address .= $idSalon->getMetroId()->getNameStation() . ' | ';
+                        $this->colorStation = $idSalon->getMetroId()->getColor();
                     }else{
                         $address .= $idSalon->getGorod() . ' | ';
                     }
                     if (!empty($idSalon->getTc())){
-                        $address .= $idSalon->getTc() . "\r\n";
+                        $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни\r\n";
+                        $address .= "Белорусские кухни ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
                 },
                 'choice_attr' => function($idSalon) {
-
                     if ($idSalon->getGorod() == 'Москва'){
                         $class = 'metro';
                     }else{
-                        $class = '';
+                        $class = 'nometro';
                     }
-
-                    return array('class' => $class);
+                    return array('class' => $class, 'id' => $this->colorStation);
                 },
                 'label' => false,
             ))
@@ -799,28 +815,27 @@ class KuhniCatalogController extends Controller
                 ],
                 'choice_label' => function ($idSalon) {
                     $address = '';
-                    if (!empty($idSalon->getMetro())){
-                        $address .= $idSalon->getMetro() . ' | ';
+                    if (!empty($idSalon->getMetroId())){
+                        $address .= $idSalon->getMetroId()->getNameStation() . ' | ';
+                        $this->colorStation = $idSalon->getMetroId()->getColor();
                     }else{
                         $address .= $idSalon->getGorod() . ' | ';
                     }
                     if (!empty($idSalon->getTc())){
-                        $address .= $idSalon->getTc() . "\r\n";
+                        $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни\r\n";
+                        $address .= "Белорусские кухни ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
                 },
                 'choice_attr' => function($idSalon) {
-
                     if ($idSalon->getGorod() == 'Москва'){
                         $class = 'metro';
                     }else{
-                        $class = '';
+                        $class = 'nometro';
                     }
-
-                    return array('class' => $class);
+                    return array('class' => $class, 'id' => $this->colorStation);
                 },
                 'label' => false,
             ))
@@ -871,28 +886,27 @@ class KuhniCatalogController extends Controller
                 ],
                 'choice_label' => function ($idSalon) {
                     $address = '';
-                    if (!empty($idSalon->getMetro())){
-                        $address .= $idSalon->getMetro() . ' | ';
+                    if (!empty($idSalon->getMetroId())){
+                        $address .= $idSalon->getMetroId()->getNameStation() . ' | ';
+                        $this->colorStation = $idSalon->getMetroId()->getColor();
                     }else{
                         $address .= $idSalon->getGorod() . ' | ';
                     }
                     if (!empty($idSalon->getTc())){
-                        $address .= $idSalon->getTc() . "\r\n";
+                        $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни\r\n";
+                        $address .= "Белорусские кухни ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
                 },
                 'choice_attr' => function($idSalon) {
-
                     if ($idSalon->getGorod() == 'Москва'){
                         $class = 'metro';
                     }else{
-                        $class = '';
+                        $class = 'nometro';
                     }
-
-                    return array('class' => $class);
+                    return array('class' => $class, 'id' => $this->colorStation);
                 },
                 'label' => false,
             ))
@@ -950,28 +964,27 @@ class KuhniCatalogController extends Controller
                 ],
                 'choice_label' => function ($idSalon) {
                     $address = '';
-                    if (!empty($idSalon->getMetro())){
-                        $address .= $idSalon->getMetro() . ' | ';
+                    if (!empty($idSalon->getMetroId())){
+                        $address .= $idSalon->getMetroId()->getNameStation() . ' | ';
+                        $this->colorStation = $idSalon->getMetroId()->getColor();
                     }else{
                         $address .= $idSalon->getGorod() . ' | ';
                     }
                     if (!empty($idSalon->getTc())){
-                        $address .= $idSalon->getTc() . "\r\n";
+                        $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни\r\n";
+                        $address .= "Белорусские кухни ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
                 },
                 'choice_attr' => function($idSalon) {
-
                     if ($idSalon->getGorod() == 'Москва'){
                         $class = 'metro';
                     }else{
-                        $class = '';
+                        $class = 'nometro';
                     }
-
-                    return array('class' => $class);
+                    return array('class' => $class, 'id' => $this->colorStation);
                 },
                 'label' => false,
             ))

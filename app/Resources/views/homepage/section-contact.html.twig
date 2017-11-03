@@ -1,12 +1,68 @@
 <section id="contact">
     <div class="container">
         <div class="row">
-            <div class="hidden-sm col-md-2 col-lg-2 text-center">
+            <div class="hidden-sm col-md-3 col-lg-3 text-center">
                 <p>
                     <a class="navbar-brand" href="{{ path('homepage') }}"><img src="{{ asset('bundles/kuhni/img/logo_white.svg') }}"/></a>
                 </p>
-                <p>
+                <p class="fed">
                     Федеральная торговая сеть ЗОВ на территории России
+                </p>
+            </div>
+            <div class="col-2 text-left">
+                <h6>каталог кухонь</h6>
+
+                <p><a href="{{ path('kuhni_parameters', {'slug' : 'sovremennye'}) }}">Современные кухни</a></p>
+                <p><a href="{{ path('kuhni_parameters', {'slug' : 'provans'}) }}">Кухни прованс</a></p>
+                <p><a href="{{ path('kuhni_parameters', {'slug' : 'klassicheskie'}) }}">Классические кухни</a></p>
+                <p><a href="{{ path('kuhni_parameters', {'slug' : 'skandinavskie'}) }}">Скандинавский стиль</a></p>
+
+                <p><a href="{{ path('kuhni_parameters', {'slug' : 'line'}) }}">Прямые кухни</a></p>
+                <p><a href="{{ path('kuhni_parameters', {'slug' : 'degree'}) }}">Угловые кухни</a></p>
+                <p><a href="{{ path('kuhni_parameters', {'slug' : 'pobraznye'}) }}">П образные кухни</a></p>
+
+                <p><a href="{{ path('kuhni_parameters', {'slug' : 'massiv'}) }}">Кухни из массива</a></p>
+                <p><a href="{{ path('kuhni_parameters', {'slug' : 'plastic'}) }}">Кухни из пластика</a></p>
+                <p><a href="{{ path('kuhni_parameters', {'slug' : 'mdf'}) }}">Кухни из МДФ</a></p>
+                <p><a href="{{ path('kuhni_parameters', {'slug' : 'acryl'}) }}">Акриловые кухни</a></p>
+            </div>
+            <div class="col-2 text-left">
+                <h6>Услуги и сервис</h6>
+
+                <p class="zakaz"><a href="#">Отследить заказ</a></p>
+                <p class="clear"></p>
+                <p><a data-target="#freedesignproject" data-toggle="modal">Бесплатный проект</a></p>
+                <p><a data-target="#zayavkaRazmer" data-toggle="modal">Заказать замер</a></p>
+                <p><a data-target="#costProject" data-toggle="modal">Рассчитать кухню</a></p>
+                <p><a data-target="#designerAtHome" data-toggle="modal">Визит дизайнера</a></p>
+                <p class="clear"></p>
+                <p><a href="#">Доставка</a></p>
+                <p><a href="#">Сборка</a></p>
+                <p><a href="#">Гарантии</a></p>
+                <p><a href="#">Вопросы и ответы</a></p>
+            </div>
+            <div class="col-2 text-left">
+                <h6>Сотрудничество</h6>
+
+                <p>Дизайнерам</p>
+                <p>Дилерам</p>
+            </div>
+            <div class="col-sm-12 col-md-3 col-lg-3 text-right">
+                <h6>Контактная информация</h6>
+
+                <p>230005, Республика Беларусь</p>
+                <p>г. Гродно, ул. Мясницкая 12</p>
+                <p>Тел: +375 152 79 90 08</p>
+                <p>Тел: +7 919 995 74 68</p>
+                <p>e-mail: opt@zov.by</p>
+                <button class="btn btn-sm">Отправить сообщение</button>
+
+                <h6>Присоединяйтесь к нам</h6>
+                <p class="icons">
+                    <i class="fa fa-odnoklassniki" aria-hidden="true"></i>
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                    <i class="fa fa-vk" aria-hidden="true"></i>
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
                 </p>
             </div>
         </div>
