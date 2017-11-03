@@ -57,6 +57,7 @@ class HomepageController extends Controller
                 'formZayavkaRazmer' => $this->getZayavkaRazmer(),
                 'formDesignerAtHome' => $this->getDesignerAtHome(),
                 'form' => $this->getCallBackForm(),
+                'maps' => $this->getMapLocate()
             ));
         }
     }
@@ -580,14 +581,14 @@ class HomepageController extends Controller
     {
         $em = $this->getDoctrine()->getManager()
             ->getRepository('ApplicationSonataUserBundle:User');
-        $qb = $er->createQueryBuilder('u');
-        return
-            $qb->where(
+        $qb = $em->createQueryBuilder('u');
+        $locate =
+            $qb->select()
+            ->where(
                 $qb->expr()->notLike('u.username', ':name')
             )
-                ->orderBy('u.title', 'ASC')
-                ->setParameter('name', 'admin');
-
-        return $locate;
+            ->orderBy('u.title', 'ASC')
+            ->setParameter('name', 'admin');
+        return $locate->getQuery()->getResult();
     }
 }
