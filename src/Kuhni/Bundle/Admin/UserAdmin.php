@@ -6,8 +6,9 @@ use Sonata\UserBundle\Admin\Model\UserAdmin as BaseUserAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class UserAdmin extends BaseUserAdmin
 {
@@ -18,6 +19,17 @@ class UserAdmin extends BaseUserAdmin
         $formMapper
             ->add('title', TextType::class, array(
                 'label' => 'Название'
+            ))
+            ->add('tc', TextType::class, array(
+                'label' => 'Торговый центр'
+            ))
+            ->add('gorod', TextType::class, array(
+                'label' => 'Город'
+            ))
+            ->add('metroId', EntityType::class, array(
+                'class' => 'KuhniBundle:StationMoscow',
+                'property' => 'title',
+                'label' => 'Метро'
             ))
             ->add('description', TextType::class, array(
                 'label' => 'Описание'
@@ -44,6 +56,18 @@ class UserAdmin extends BaseUserAdmin
             ->add('title', null, array(
                 'label' => 'Название'
             ))
+            ->add('tc', TextType::class, array(
+                'label' => 'Торговый центр'
+            ))
+            ->add('gorod', TextType::class, array(
+                'label' => 'Город'
+            ))
+            ->add('metroId', null, array(
+                'label'    => 'Метро'
+            ), 'entity', array(
+                'class' => 'KuhniBundle:StationMoscow',
+                'property' => 'title',
+            ))
             ->add('description', null, array(
                 'label' => 'Описание'
             ))
@@ -69,6 +93,15 @@ class UserAdmin extends BaseUserAdmin
             ->remove('impersonating')
             ->add('title', null, array(
                 'label' => 'Название'
+            ))
+            ->add('tc', TextType::class, array(
+                'label' => 'Торговый центр'
+            ))
+            ->add('gorod', TextType::class, array(
+                'label' => 'Город'
+            ))
+            ->add('metroId.title', null, array(
+                'label'    => 'Метро',
             ))
             ->add('description', null, array(
                 'label' => 'Описание'
@@ -101,6 +134,15 @@ class UserAdmin extends BaseUserAdmin
         $showMapper
             ->add('title', null, array(
                 'label' => 'Название'
+            ))
+            ->add('tc', TextType::class, array(
+                'label' => 'Торговый центр'
+            ))
+            ->add('gorod', TextType::class, array(
+                'label' => 'Город'
+            ))
+            ->add('metroId.title', null, array(
+                'label'    => 'Метро',
             ))
             ->add('description', null, array(
                 'label' => 'Описание'

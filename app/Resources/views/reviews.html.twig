@@ -11,114 +11,33 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-3 text-center">
-                <ul id="name" class="nav nav-justified">
-                    <li class="nav-item name text-left">Ольга</li>
-                    <li class="nav-item date text-right">18.10.2017</li>
-                </ul>
-                <p id="star" class="text-left">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                </p>
-                <p id="geo" class="text-left">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    <span>Кухни Белоруссии ТЦ ROOMER</span>
-                </p>
-                <p id="info" class="text-left">
-                    <span>У меня кухня получилось то, что нужно!
-                        Полностью соответствует моим запросам!
-                        Кухня комбинированная. Ничего лишнего, все
-                        расположено очень удобно.
-                        Готовить для меня одно удовольствие.
-                        Именно у вас я нашла подходящий вариант!</span>
-                    <span class="more-info">читать полностью</span>
-                </p>
-            </div>
-            <div class="col-12 col-md-3 text-center">
-                <ul id="name" class="nav nav-justified">
-                    <li class="nav-item name text-left">Ольга</li>
-                    <li class="nav-item date text-right">18.10.2017</li>
-                </ul>
-                <p id="star" class="text-left">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                </p>
-                <p id="geo" class="text-left">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    <span>Кухни Белоруссии ТЦ ROOMER</span>
-                </p>
-                <p id="info" class="text-left">
-                    <span>У меня кухня получилось то, что нужно!
-                        Полностью соответствует моим запросам!
-                        Кухня комбинированная. Ничего лишнего, все
-                        расположено очень удобно.
-                        Готовить для меня одно удовольствие.
-                        Именно у вас я нашла подходящий вариант!</span>
-                    <span class="more-info">читать полностью</span>
-                </p>
-            </div>
-            <div class="col-12 col-md-3 text-center">
-                <ul id="name" class="nav nav-justified">
-                    <li class="nav-item name text-left">Ольга</li>
-                    <li class="nav-item date text-right">18.10.2017</li>
-                </ul>
-                <p id="star" class="text-left">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                </p>
-                <p id="geo" class="text-left">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    <span>Кухни Белоруссии ТЦ ROOMER</span>
-                </p>
-                <p id="info" class="text-left">
-                    <span>У меня кухня получилось то, что нужно!
-                        Полностью соответствует моим запросам!
-                        Кухня комбинированная. Ничего лишнего, все
-                        расположено очень удобно.
-                        Готовить для меня одно удовольствие.
-                        Именно у вас я нашла подходящий вариант!</span>
-                    <span class="more-info">читать полностью</span>
-                </p>
-            </div>
-            <div class="col-12 col-md-3 text-center">
-                <ul id="name" class="nav nav-justified">
-                    <li class="nav-item name text-left">Ольга</li>
-                    <li class="nav-item date text-right">18.10.2017</li>
-                </ul>
-                <p id="star" class="text-left">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                </p>
-                <p id="geo" class="text-left">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    <span>Кухни Белоруссии ТЦ ROOMER</span>
-                </p>
-                <p id="info" class="text-left">
-                    <span>У меня кухня получилось то, что нужно!
-                        Полностью соответствует моим запросам!
-                        Кухня комбинированная. Ничего лишнего, все
-                        расположено очень удобно.
-                        Готовить для меня одно удовольствие.
-                        Именно у вас я нашла подходящий вариант!</span>
-                    <span class="more-info">читать полностью</span>
-                </p>
-            </div>
+            {% for review in reviews %}
+                <div class="col-12 col-md-3 text-center">
+                    <ul id="name" class="nav nav-justified">
+                        <li class="nav-item name text-left">{{ review.name }}</li>
+                        <li class="nav-item date text-right">{{ review.created }}</li>
+                    </ul>
+                    <p id="star" class="text-left">
+                        {% for i in 1..review.star %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {% endfor %}
+                    </p>
+                    <p id="geo" class="text-left">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <span>{{ review.idSalon.gorod }} {{ review.idSalon.tc }}</span>
+                    </p>
+                    <p id="info" class="text-left">
+                        <span class="review-span-text">
+                            {{ review.message }}
+                        </span>
+                        <span class="more-info">читать полностью</span>
+                    </p>
+                </div>
+            {% endfor %}
         </div>
         <div class="row">
             <div class="col-12 text-center">
-                <button class="btn btn-xl">ОСТАВИТЬ ОТЗЫВ</button>
+                <button type="submit" data-toggle="modal" data-target="#review" class="btn btn-xl">Оставить отзыв</button>
             </div>
         </div>
     </div>

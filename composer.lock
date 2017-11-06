@@ -2118,12 +2118,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCoreBundle.git",
-                "reference": "17fd7a61801576a98c85c6672af1dfdfccbb172e"
+                "reference": "d911899db2acd73910bef02ac977cad70a3eecb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/17fd7a61801576a98c85c6672af1dfdfccbb172e",
-                "reference": "17fd7a61801576a98c85c6672af1dfdfccbb172e",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/d911899db2acd73910bef02ac977cad70a3eecb9",
+                "reference": "d911899db2acd73910bef02ac977cad70a3eecb9",
                 "shasum": ""
             },
             "require": {
@@ -2140,7 +2140,7 @@
                 "symfony/twig-bridge": "^2.8 || ^3.2",
                 "symfony/validator": "^2.8 || ^3.2",
                 "twig/extensions": "^1.0",
-                "twig/twig": "^1.23 || ^2.0"
+                "twig/twig": "^1.30 || ^2.0"
             },
             "require-dev": {
                 "doctrine/orm": "^2.4",
@@ -2189,7 +2189,7 @@
             "keywords": [
                 "sonata"
             ],
-            "time": "2017-10-26 05:10:51"
+            "time": "2017-11-04T20:50:53+00:00"
         },
         {
             "name": "sonata-project/datagrid-bundle",
@@ -2247,7 +2247,7 @@
                 "datagrid",
                 "sonata"
             ],
-            "time": "2017-10-26 05:10:02"
+            "time": "2017-10-26T05:10:02+00:00"
         },
         {
             "name": "sonata-project/doctrine-extensions",
@@ -2440,7 +2440,7 @@
                 "Easy Extends",
                 "sonata"
             ],
-            "time": "2017-10-26 05:06:27"
+            "time": "2017-10-26T05:06:27+00:00"
         },
         {
             "name": "sonata-project/exporter",
@@ -2517,12 +2517,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "3233f69ca6fd99c180c95f1e466b0650630fcc7c"
+                "reference": "bd98e7c40ff14065eb9c1908613f991b386024f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/3233f69ca6fd99c180c95f1e466b0650630fcc7c",
-                "reference": "3233f69ca6fd99c180c95f1e466b0650630fcc7c",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/bd98e7c40ff14065eb9c1908613f991b386024f8",
+                "reference": "bd98e7c40ff14065eb9c1908613f991b386024f8",
                 "shasum": ""
             },
             "require": {
@@ -2605,7 +2605,7 @@
                 "sonata",
                 "user"
             ],
-            "time": "2017-10-26 00:00:32"
+            "time": "2017-11-03T09:51:23+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

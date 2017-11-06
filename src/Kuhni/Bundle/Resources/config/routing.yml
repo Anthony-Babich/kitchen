@@ -41,3 +41,8 @@ freedesignshag:
     defaults: { _controller: "KuhniBundle:DesignProjectShag:index" }
     requirements:
         methods:  GET|POST
+review:
+    path:  /review
+    defaults: { _controller: "KuhniBundle:Review:index" }
+    requirements:
+        methods:  GET|POST

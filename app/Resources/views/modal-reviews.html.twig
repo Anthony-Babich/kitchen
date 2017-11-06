@@ -1,0 +1,58 @@
+<div class="modal fade" id="review" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLabel">Оставить отзыв</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {{ form_start(formReview, { 'action': path('review'), 'method': 'POST', 'attr': {'class': 'ajaxForm', 'id': 'review'} }) }}
+            {{ form_errors(formReview) }}
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 form-group">
+                            {{ form_row(formReview.name) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 form-group">
+                            {{ form_row(formReview.phone) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 form-group">
+                            {{ form_row(formReview.email) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 form-group">
+                            {{ form_row(formReview.star) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 form-group">
+                            {{ form_row(formReview.idSalon) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 form-group">
+                            {{ form_row(formReview.message) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div class="form-group">
+                                <input type="checkbox" name="privacy-politycs" data-required="true" value="согласен с политикой конфиденциальности"> Прочитал и согласен с <a target="_blank" href="http://kitchens/web/app_dev.php/privacy.php">политикой конфиденциальности</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="submit" class="btn btn-xl">Отправить</button>
+                </div>
+            {{ form_rest(formReview) }}
+            {{ form_end(formReview) }}
+        </div>
+    </div>
+</div>

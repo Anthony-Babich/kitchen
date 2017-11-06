@@ -76,6 +76,11 @@
         <script src="{{ asset('bundles/kuhni/slick/slick.js') }}" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
             $(document).ready(function(){
+                //Ограничение количества символов в отвызывах
+                var rev = $('.review-span-text');
+                for (i = 0; i < rev.length; i++){
+                    rev.eq(i).text(rev.eq(i).text().slice(0, 198));
+                }
                 //Если салон находиться в Москве, то дописываем к нему что-то
                 //Преобразование select>option в div, ul>li
                 $('select').each(function(){

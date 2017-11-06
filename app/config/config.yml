@@ -45,8 +45,10 @@ doctrine:
         charset: UTF8
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        default_entity_manager: default
+        entity_managers:
+            default:
+                auto_mapping: true
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -54,6 +56,7 @@ swiftmailer:
     host: '%mailer_host%'
     username: '%mailer_user%'
     password: '%mailer_password%'
+    encryption: ssl
     spool: { type: memory }
 
 sonata_block:
@@ -65,6 +68,9 @@ sonata_block:
         sonata.user.block.account: # used to display menu option (login option)
         sonata.block.service.text: # used to if you plan to use Sonata user routes
 
+sonata_user:
+    manager_type: orm
+
 sonata_admin:
     show_mosaic_button: false
     security:
@@ -74,12 +80,6 @@ sonata_admin:
             ADMIN:    [MASTER]
         admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT, OPERATOR, MASTER]
 
-
-sonata_user:
-    manager_type: orm
-    admin:
-        user:
-            class: Kuhni\Bundle\Admin\UserAdmin
 fos_user:
     db_driver:  orm
     firewall_name:  main
@@ -89,7 +89,6 @@ fos_user:
         sender_name: Anthony
     group:
         group_class:  Application\Sonata\UserBundle\Entity\Group
-        group_manager: sonata.user.orm.group_manager
     service:
         user_manager: sonata.user.orm.user_manager
 

@@ -154,32 +154,32 @@ class KuhniAdmin extends AbstractAdmin
             ->add('price', null, array(
                 'label' => 'Цена'
             ))
-             ->add('idKuhniStyle.title', null, array(
-                 'label'    => 'Стиль',
-             ))
-             ->add('idKuhniMaterial.title', null, array(
-                 'label'    => 'Материал'
-             ))
-             ->add('idKuhniConfig.title', null, array(
-                 'label'    => 'Конфигурация'
-             ))
-             ->add('idKuhniColor.title', null, array(
-                 'label'    => 'Цвет'
-             ))
-             ->add('likes', null, array(
-                 'label' => 'Лайки'
-             ))
-             ->add('countProjects', null, array(
-                 'label' => 'Количество выполненных проектов'
-             ))
+            ->add('idKuhniStyle.title', null, array(
+             'label'    => 'Стиль',
+            ))
+            ->add('idKuhniMaterial.title', null, array(
+             'label'    => 'Материал'
+            ))
+            ->add('idKuhniConfig.title', null, array(
+             'label'    => 'Конфигурация'
+            ))
+            ->add('idKuhniColor.title', null, array(
+             'label'    => 'Цвет'
+            ))
+            ->add('likes', null, array(
+             'label' => 'Лайки'
+            ))
+            ->add('countProjects', null, array(
+             'label' => 'Количество выполненных проектов'
+            ))
             ->add('fixedPrice', null, array(
-                'label' => 'Фиксированная стоимость'
+            'label' => 'Фиксированная стоимость'
             ))
             ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                )
+            'actions' => array(
+                'show' => array(),
+                'edit' => array(),
+            )
             ));
     }
     // Fields to be shown on show action

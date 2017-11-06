@@ -3,7 +3,6 @@
 namespace Kuhni\Bundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * CallBack
