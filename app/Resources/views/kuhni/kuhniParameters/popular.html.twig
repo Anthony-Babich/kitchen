@@ -1,0 +1,43 @@
+<section id="popular">
+    <div class="container heading">
+        <h2 class="section-heading">Смотрите Популярные кухни</h2>
+    </div>
+    <div class="popular-slick">
+        {% for popular in populars %}
+            <div class="slide-col">
+                <a href="{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : popular.slug}) }}" >
+                    <img class="slide-product-img" src="{{ asset( popularImage[loop.index0] ) }}" alt="{{ popular.keywords }}" title="{{ popular.title }}">
+                    <span class="pos-bot-l">
+                        <ul class="nav">
+                            <li class="left">
+                                <div class="text-left">
+                                    <span class="first-name"><b>{{ popular.title }}</b></span>
+                                </div>
+                            </li>
+                            <li class="right">
+                                <div class="text-right right">
+                                    <span class="text-right now-price">сейчас от {{ popular.price }}</span><br/>
+                                    <span class="text-right last-price">старая цена
+                                        <span class="through">{{ popular.noDiscountPrice }}</span>
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+                    </span>
+                    {% if popular.discount != 0 %}
+                        <span class="pos-bot-r desc text-center">
+                        <span class="title"><b>{{ popular.discount }}%</b></span>
+                        <span>скидка</span>
+                    </span>
+                    {% endif %}
+                </a>
+                <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
+                    <i class="fa fa-phone"></i>
+                </button>
+                <button type="button" class="like text-center">
+                    <i class="fa fa-heart"></i> {{ popular.likes }}
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+</section>

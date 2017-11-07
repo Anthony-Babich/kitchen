@@ -191,6 +191,7 @@ class KuhniCatalogController extends Controller
             'catalog' => $resultCatalog,
             'imageCatalog' => $imageCatalog,
 
+            'title' => $result->getTitle(),
             //FORMS
             'formRequestCall' => $this->getRequestCallForm(),
             'formRequestCallModal' => $this->getRequestCallForm(),
@@ -390,6 +391,16 @@ class KuhniCatalogController extends Controller
                 $image[] = 'upload/kuhni/kitchens/' . $item['imageName'];
             }
 
+            $popular = $this->getPopular();
+            foreach ($popular as $item) {
+                $popularImage[] = 'upload/kuhni/kitchens/' . $item['imageName'];
+            }
+
+            $completedProjects = $this->getCompletedProjects();
+            foreach ($completedProjects as $item) {
+                $completedProjectsImage[] = 'upload/kuhni/kitchens/' . $item['imageName'];
+            }
+
             //Хлебные крошки
             $breadcrumbs = $this->get('white_october_breadcrumbs');
             $breadcrumbs->addItem("Главная", $this->get("router")->generate("homepage"));
@@ -403,6 +414,13 @@ class KuhniCatalogController extends Controller
                 'catalog' => $resultCatalog,
                 'imageCatalog' => $imageCatalog,
 
+                'populars' => $popular,
+                'popularImage' => $popularImage,
+                'completedProjects' => $completedProjects,
+                'completedProjectImage' => $completedProjectsImage,
+
+                'title' => $this->getNameBreadParam($slug),
+
                 'formRequestCall' => $this->getRequestCallForm(),
                 'formRequestCallModal' => $this->getRequestCallForm(),
                 'formZayavkaRazmer' => $this->getZayavkaRazmer(),
@@ -413,6 +431,31 @@ class KuhniCatalogController extends Controller
                 'form' => $this->getCallBackForm(),
             ));
         }
+    }
+
+    private function getPopular(){
+        $result = $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Kuhni')
+            ->createQueryBuilder('n')
+            ->select('n')
+            ->orderBy('n.likes', 'DESC')
+            ->getQuery()
+            ->setMaxResults(12)
+            ->getArrayResult();
+        return $result;
+    }
+
+    private function getCompletedProjects(){
+        $result = $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Kuhni')
+            ->createQueryBuilder('n')
+            ->select('n')
+            ->where('n.countProjects <> 0')
+            ->orderBy('n.countProjects', 'DESC')
+            ->getQuery()
+            ->setMaxResults(12)
+            ->getArrayResult();
+        return $result;
     }
 
     private function searchParametr(string $slug, $offset = 0, $limit = 10){
