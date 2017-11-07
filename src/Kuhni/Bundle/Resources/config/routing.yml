@@ -46,3 +46,8 @@ review:
     defaults: { _controller: "KuhniBundle:Review:index" }
     requirements:
         methods:  GET|POST
+about:
+    path:  /about
+    defaults: { _controller: "KuhniBundle:About:index" }
+    requirements:
+        methods:  GET|POST

@@ -606,12 +606,17 @@ form{
 		box-shadow: 0 0 4px rgba(0,0,0,0.6);
 		position: absolute;
 		z-index: 1000;
+		width: max-content;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 	.select-options li {
 		padding: 8px 5px;
 		text-indent: 0;
-		border-bottom: 2px solid #7f7f7f;
+		border-top: 2px solid #7f7f7f;
 		z-index: 1000;
+		width: max-content;
 	}
 	.select-options li:hover {
 		color: black;
@@ -674,6 +679,7 @@ form{
 	}
 	padding-bottom: 100px;
 	.btn-sm{
+		margin-top: 10px;
 		font-size: 14px;
 		font-weight: 400;
 		padding: 10px 20px;
@@ -683,6 +689,11 @@ form{
 		font-family: 'Open+Sans Regular', Helvetica Neue, 'Arial', sans-serif;
 		text-transform: uppercase;
 		margin-bottom: 20px;
+	}
+	.btn-sm:hover{
+		background-color: white;
+		border-color: #193153;
+		color: #193153;
 	}
 	.icons{
 		color: white;

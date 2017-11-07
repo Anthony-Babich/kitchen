@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    {% block navigation %}
+        {% include 'about/navigation.html.twig' %}
+    {% endblock %}
+
+    {% block header %}
+        {% include 'header.html.twig' %}
+        {% include 'homepage/section-ordercall.html.twig' %}
+    {% endblock %}
+
+    {% block content %}
+        {% include 'about/section-about.html.twig' %}
+        {% include 'homepage/section-contact.html.twig' %}
+    {% endblock %}
+
+    {% block modalForAll %}
+        {% include 'modal-costproject.html.twig' %}
+        {% include 'modal-designerAtHome.html.twig' %}
+        {% include 'modal-freedesign.html.twig' %}
+        {% include 'modal-zayavkaRazmer.html.twig' %}
+    {% endblock%}
+    {% include 'modal.html.twig' %}
+
+{% endblock %}

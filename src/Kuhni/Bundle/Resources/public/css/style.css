@@ -328,8 +328,7 @@ section#ordercall {
 section#ordercall .section-heading {
   color: white; }
 section#ordercall .form-group {
-  margin-bottom: 25px;
-  margin-right: 25px; }
+  margin-bottom: 25px; }
 section#ordercall .form-group input,
 section#ordercall .form-group textarea {
   padding: 20px; }

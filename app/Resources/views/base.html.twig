@@ -52,12 +52,15 @@
 
     {% block modal %}
     {% endblock%}
-    {% include 'modal-requestcall.html.twig' %}
-    {% include 'modal-costproject.html.twig' %}
-    {% include 'modal-designerAtHome.html.twig' %}
-    {% include 'modal-freedesign.html.twig' %}
-    {% include 'modal-zayavkaRazmer.html.twig' %}
-    {% include 'modal-contact.html.twig' %}
+
+    {% block modalForAll %}
+        {% include 'modal-requestcall.html.twig' %}
+        {% include 'modal-costproject.html.twig' %}
+        {% include 'modal-designerAtHome.html.twig' %}
+        {% include 'modal-freedesign.html.twig' %}
+        {% include 'modal-zayavkaRazmer.html.twig' %}
+        {% include 'modal-contact.html.twig' %}
+    {% endblock%}
 
     {% block javascripts %}
         <script src="{{ asset('bundles/kuhni/js/device.js') }}"></script>
