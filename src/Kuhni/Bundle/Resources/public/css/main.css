@@ -73,6 +73,8 @@ header.masthead.all {
     font-size: 12px; }
   #product .static-icons {
     margin-top: 20px; }
+    #product .static-icons p {
+      line-height: 1.15; }
   #product .btn-xl {
     font-size: 1rem;
     padding: 20px 20px; }
@@ -200,22 +202,31 @@ section#reviews {
 #more-prod {
   margin: 0 15px 30px;
   padding: 0; }
-  #more-prod #see-more .left-desc {
+  #more-prod h2.section-heading {
+    text-align: left;
+    font-size: 25px;
+    margin-bottom: 30px;
+    font-weight: bold; }
+  #more-prod #see-more li {
     width: 50%; }
-    #more-prod #see-more .left-desc p {
-      margin: 0;
-      font-size: 14px;
-      color: #7f7f7f;
-      padding: 0 15px 0 0; }
-    #more-prod #see-more .left-desc .title {
-      text-transform: uppercase;
-      color: #193153; }
+  #more-prod #see-more .left-desc p {
+    margin: 0;
+    font-size: 12.5px;
+    color: #7f7f7f;
+    padding: 0 15px 0 0;
+    font-family: 'Calibri Regular', 'Open+Sans Regular', Arial, serif; }
+  #more-prod #see-more .left-desc .title {
+    text-transform: uppercase;
+    color: #193153; }
   #more-prod #see-more .nav-item {
     line-height: 5; }
     #more-prod #see-more .nav-item img {
       max-width: 100px;
       max-height: 100px;
       vertical-align: middle; }
+
+#contactmodal textarea {
+  height: 199px; }
 
 #popular, #completed-projects {
   line-height: 1.15;
@@ -260,7 +271,7 @@ section#reviews {
     font-size: 25px;
     margin-bottom: 30px;
     font-weight: bold; }
-  #popular .container.heading, #completed-projects .container.heading {
+  #popular .container, #completed-projects .container {
     padding-left: 0;
     padding-right: 0; }
   #popular .slide-col, #completed-projects .slide-col {
@@ -333,6 +344,12 @@ section#reviews {
       z-index: 10;
       top: 60px;
       border: none; }
+
+#footer-buttons {
+  display: none;
+  height: 50px; }
+  #footer-buttons .fixed-bottom {
+    background-color: #193153; }
 
 #all-products {
   line-height: 1.15;
@@ -666,11 +683,14 @@ footer {
   padding: 10px 0;
   font-family: 'Open+Sans Regular', Helvetica Neue, 'Arial', sans-serif; }
 
+#modal-style, #modal-config, #modal-material {
+  color: white; }
+  #modal-style h4, #modal-config h4, #modal-material h4 {
+    font-size: 11px; }
+
 @media (max-width: 1200px) {
   #product #description .price p {
     font-size: 20px; }
-  #product .product-images {
-    margin-left: 40px; }
 
   #all-products .no-margin-left {
     margin-left: 0; }
@@ -690,14 +710,53 @@ footer {
       right: 0; }
     #all-products .big-a-10 .like {
       margin-left: 0; } }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   #all-products .row {
     margin-right: -15px; }
   #all-products .slide-product-img.big {
     height: 350px; }
   #all-products .small-col.full-screen {
     flex: 0 0 100%;
-    margin-left: 0; } }
+    margin-left: 0; }
+
+  #footer-buttons {
+    display: block; }
+
+  .featured_links_banner .title {
+    font-size: 36px; }
+
+  .btn {
+    white-space: normal; }
+
+  #portfolio .portfolio-item .portfolio-caption h4 {
+    font-size: 16px; } }
+@media (max-width: 425px) {
+  section h2.section-heading {
+    font-size: 36px; }
+
+  #modal-style h4, #modal-config h4, #modal-material h4 {
+    font-size: 16px; }
+
+  .featured_links_banner .title {
+    font-size: 56px; }
+
+  #contact .text-right {
+    text-align: left !important; }
+
+  #portfolio .portfolio-item .portfolio-caption h4 {
+    font-size: 26px; }
+
+  #kroshki .breadcrumb {
+    font-size: 12px; } }
+@media (max-width: 375px) {
+  .featured_links_banner .title {
+    font-size: 56px; } }
+@media (max-width: 320px) {
+  .featured_links_banner .title {
+    font-size: 56px; }
+
+  #footer-buttons {
+    font-size: 12px; } }
 @media (max-width: 575px) {
   #calc .row .vkladka {
     border: 1px solid #7f7f7f;

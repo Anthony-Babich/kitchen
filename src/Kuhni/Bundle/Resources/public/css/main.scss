@@ -92,6 +92,9 @@ header.masthead.all{
 	}
 	.static-icons{
 		margin-top: 20px;
+		p{
+			line-height: 1.15;
+		}
 	}
 	.btn-xl {
 		font-size: 1rem;
@@ -257,17 +260,26 @@ section#reviews{
 #more-prod{
 	margin: 0 15px 30px;
 	padding: 0;
+	h2.section-heading{
+		text-align: left;
+		font-size: 25px;
+		margin-bottom: 30px;
+		font-weight: bold;
+	}
 	#see-more{
-		.left-desc{
+		li{
 			width: 50%;
+		}
+		.left-desc{
 			p{
 				margin: 0;
-				font-size: 14px;
+				font-size: 12.5px;
 				color: #7f7f7f;
 				padding: 0 15px 0 0;
+				font-family: 'Calibri Regular', 'Open+Sans Regular', Arial, serif;
 			}
 			.title{
-				text-transform: uppercase ;
+				text-transform: uppercase;
 				color: #193153;
 			}
 		}
@@ -279,6 +291,11 @@ section#reviews{
 				vertical-align: middle;
 			}
 		}
+	}
+}
+#contactmodal{
+	textarea{
+		height: 199px;
 	}
 }
 #popular, #completed-projects{
@@ -330,7 +347,7 @@ section#reviews{
 		margin-bottom: 30px;
 		font-weight: bold;
 	}
-	.container.heading{
+	.container{
 		padding-left: 0;
 		padding-right: 0;
 	}
@@ -424,6 +441,13 @@ section#reviews{
 			top: 60px;
 			border: none;
 		}
+	}
+}
+#footer-buttons{
+	display: none;
+	height: 50px;
+	.fixed-bottom{
+		background-color: #193153;
 	}
 }
 #all-products{
@@ -849,6 +873,13 @@ footer{
 	padding: 10px 0;
 	font-family: 'Open+Sans Regular', Helvetica Neue, 'Arial', sans-serif;
 }
+#modal-style,#modal-config,#modal-material{
+	color: white;
+	h4{
+		font-size: 11px;
+	}
+}
+//laptop
 @media (max-width: 1200px) {
 	#product{
 		#description{
@@ -857,9 +888,6 @@ footer{
 					font-size: 20px;
 				}
 			}
-		}
-		.product-images{
-			margin-left: 40px;
 		}
 	}
 	#all-products{
@@ -892,7 +920,8 @@ footer{
 		}
 	}
 }
-@media (max-width: 767px) {
+//tablet
+@media (max-width: 768px) {
 	#all-products{
 		.row {
 			margin-right: -15px;
@@ -905,7 +934,56 @@ footer{
 			margin-left: 0;
 		}
 	}
+	#footer-buttons{
+		display: block;
+	}
+	.featured_links_banner .title {
+		font-size: 36px;
+	}
+	.btn{
+		white-space: normal;
+	}
+	#portfolio .portfolio-item .portfolio-caption h4 {
+		font-size: 16px;
+	}
 }
+//mobile L
+@media (max-width: 425px) {
+	section h2.section-heading {
+		font-size: 36px;
+	}
+	#modal-style h4, #modal-config h4, #modal-material h4 {
+		font-size: 16px;
+	}
+	.featured_links_banner .title {
+		font-size: 56px;
+	}
+	#contact .text-right{
+		text-align: left !important;
+	}
+	#portfolio .portfolio-item .portfolio-caption h4 {
+		font-size: 26px;
+	}
+	#kroshki .breadcrumb {
+		font-size: 12px;
+	}
+}
+//mobile M
+@media (max-width: 375px) {
+	.featured_links_banner .title {
+		font-size: 56px;
+	}
+}
+//mobile S
+@media (max-width: 320px) {
+	.featured_links_banner .title {
+		font-size: 56px;
+	}
+	#footer-buttons{
+		font-size: 12px;
+	}
+}
+
 @media (max-width: 575px) {
 	#calc{
 		.row{

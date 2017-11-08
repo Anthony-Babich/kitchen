@@ -11,10 +11,17 @@
         {% include 'product/kroshki.html.twig' %}
         {% include 'product/products.html.twig' %}
         {% include 'product/desc-fasade.html.twig' %}
+        {% include 'kuhni/kuhniParameters/popular.html.twig' %}
+        {% include 'kuhni/kuhniParameters/completed-projects.html.twig' %}
         {% include 'calc.html.twig' %}
         {% include 'product/more-prod.html.twig' %}
+        {% include 'homepage/section-contact.html.twig' %}
     {% endblock %}
     {% block modal %}
+        {% include 'kuhni/kuhniParameters/footer-buttons.html.twig' %}
+        {% include 'kuhni/kuhniParameters/modal-config.html.twig' %}
+        {% include 'kuhni/kuhniParameters/modal-material.html.twig' %}
+        {% include 'kuhni/kuhniParameters/modal-style.html.twig' %}
         {% include 'modal.html.twig' %}
         {% include 'modal-freedesign.html.twig' %}
         {% include 'modal-costproject.html.twig' %}

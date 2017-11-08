@@ -179,6 +179,29 @@ class KuhniCatalogController extends Controller
         $breadcrumbs->addItem("{$this->getNameBreadParam($slug)}", $this->get("router")->generate('kuhni_parameters', ['slug' => $slug]));
         $breadcrumbs->addItem("{$result->getTitle()}");
 
+        $popular = $this->getPopular();
+        foreach ($popular as $item) {
+            $popularImage[] = 'upload/kuhni/kitchens/' . $item['imageName'];
+        }
+
+        $completedProjects = $this->getCompletedProjects();
+        foreach ($completedProjects as $item) {
+            $completedProjectsImage[] = 'upload/kuhni/kitchens/' . $item['imageName'];
+        }
+
+        //модальные окна для фиксированного футера
+        $resultMaterial = $this->result('KuhniMaterial');
+        $countMaterial = count($resultMaterial)-4;
+        $imageMaterial = $this->imagePath($resultMaterial, 'material');
+
+        $resultStyle = $this->result('KuhniStyle');
+        $countStyle = count($resultStyle)-4;
+        $imageStyle = $this->imagePath($resultStyle, 'style');
+
+        $resultConfig = $this->result('KuhniConfig');
+        $countConfig = count($resultConfig)-4;
+        $imageConfig = $this->imagePath($resultConfig, 'config');
+
         return $this->render('product/index.html.twig', array(
             'kitchen' => $result,
             'images' => $image,
@@ -190,6 +213,23 @@ class KuhniCatalogController extends Controller
             'material' => $material,
             'catalog' => $resultCatalog,
             'imageCatalog' => $imageCatalog,
+
+            'populars' => $popular,
+            'popularImage' => $popularImage,
+            'completedProjects' => $completedProjects,
+            'completedProjectImage' => $completedProjectsImage,
+
+            'styleModal' => $resultStyle,
+            'countStyleModal' => $countStyle,
+            'imageStyleModal' => $imageStyle,
+
+            'configModal' => $resultConfig,
+            'countConfigModal' => $countConfig,
+            'imageConfigModal' => $imageConfig,
+
+            'materialModal' => $resultMaterial,
+            'countMaterialModal' => $countMaterial,
+            'imageMaterialModal' => $imageMaterial,
 
             'title' => $result->getTitle(),
             //FORMS
@@ -407,6 +447,19 @@ class KuhniCatalogController extends Controller
             $breadcrumbs->addItem("Кухни", $this->get("router")->generate("kuhni_list"));
             $breadcrumbs->addItem("{$this->getNameBreadParam($slug)}");
 
+            //модальные окна для фиксированного футера
+            $resultMaterial = $this->result('KuhniMaterial');
+            $countMaterial = count($resultMaterial)-4;
+            $imageMaterial = $this->imagePath($resultMaterial, 'material');
+
+            $resultStyle = $this->result('KuhniStyle');
+            $countStyle = count($resultStyle)-4;
+            $imageStyle = $this->imagePath($resultStyle, 'style');
+
+            $resultConfig = $this->result('KuhniConfig');
+            $countConfig = count($resultConfig)-4;
+            $imageConfig = $this->imagePath($resultConfig, 'config');
+
             return $this->render('kuhni/kuhniParameters/index.html.twig', array(
                 'kitchens' => $result,
                 'image' => $image,
@@ -418,6 +471,18 @@ class KuhniCatalogController extends Controller
                 'popularImage' => $popularImage,
                 'completedProjects' => $completedProjects,
                 'completedProjectImage' => $completedProjectsImage,
+
+                'styleModal' => $resultStyle,
+                'countStyleModal' => $countStyle,
+                'imageStyleModal' => $imageStyle,
+
+                'configModal' => $resultConfig,
+                'countConfigModal' => $countConfig,
+                'imageConfigModal' => $imageConfig,
+
+                'materialModal' => $resultMaterial,
+                'countMaterialModal' => $countMaterial,
+                'imageMaterialModal' => $imageMaterial,
 
                 'title' => $this->getNameBreadParam($slug),
 

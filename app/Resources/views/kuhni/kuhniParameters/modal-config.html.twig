@@ -1,0 +1,54 @@
+<div class="modal fade" id="modal-config" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLabel">Кухни по конфигурации</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    {% for configModal in configModal %}
+                        {% if loop.index0 < 4 %}
+                            <div class="col-md-3 col-sm-6 portfolio-item">
+                                <div class="portfolio-link">
+                                    <a href="{{ path('kuhni_parameters', {'slug' : configModal.slug}) }}">
+                                        <img class="img-fluid" src="{{ asset( imageConfigModal[loop.index0] ) }}" alt="{{ configModal.keywords }}" title="{{ configModal.title }}">
+                                    </a>
+                                </div>
+                                <div class="portfolio-caption">
+                                    <h4>{{ configModal.title }}</h4>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div id="collapse-kitchenconfig" class="collapse">
+                    <div class="row">
+                        {% for configModal in configModal %}
+                            {% if loop.index0 >= 4 %}
+                                <div class="col-md-3 col-sm-6 portfolio-item">
+                                    <div class="portfolio-link">
+                                        <a href="{{  path('kuhni_parameters', {'slug' : configModal.slug}) }}">
+                                            <img class="img-fluid" src="{{ asset( imageConfigModal[loop.index0] ) }}" alt="{{ configModal.keywords }}" title="{{ configModal.title }}">
+                                        </a>
+                                    </div>
+                                    <div class="portfolio-caption">
+                                        <h4>{{ configModal.title }}</h4>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {% if countConfigModal > 0 %}
+                    <div class="text-center">
+                        <a data-toggle="collapse" data-target="#collapse-kitchenconfig">Показать/скрыть еще ({{ countConfigModal }}) стилей</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
