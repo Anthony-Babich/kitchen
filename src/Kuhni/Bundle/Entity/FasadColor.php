@@ -25,11 +25,6 @@ class FasadColor
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Kuhni\Bundle\Entity\Kuhni", mappedBy="fasadColors")
-     */
-    private $kuhnies;
-
-    /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
      * @Vich\UploadableField(mapping="kuhni_fasad", fileNameProperty="imageName", size="imageSize")
@@ -94,21 +89,6 @@ class FasadColor
     public function getId()
     {
         return $this->id;
-    }
-    /**
-     * @return mixed
-     */
-    public function getKuhnies()
-    {
-        return $this->kuhnies;
-    }
-
-    /**
-     * @param mixed $kuhnies
-     */
-    public function setKuhnies($kuhnies)
-    {
-        $this->kuhnies = $kuhnies;
     }
 
     /**

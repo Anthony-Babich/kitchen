@@ -49,27 +49,7 @@ class HomepageController extends Controller
             }
         }
 
-        $entityManager = $this->get('doctrine.orm.default_entity_manager');
-        $kuhnione = $entityManager->getRepository('KuhniBundle:Kuhni')
-            ->findOneById(1);
-        $kuhnitwo = $entityManager->getRepository('KuhniBundle:Kuhni')
-            ->findOneById(2);
-        $kuhnimatone = $entityManager->getRepository('KuhniBundle:KuhniMaterial')
-            ->findOneById(1);
-        $call = new FasadColor();
-
-        $call->setIdKuhniMaterial($kuhnimatone);
-        $call->setKuhnies($kuhnione);
-        $call->addKuhnies($kuhnitwo);
-        $call->setName('art');
-        $call->setTitle('art');
-        $call->setAlt('art');
-        $call->setImageName('art');
-        $call->setImageSize(1024);
-        $call->setUpdated(new \DateTime());
-        $entityManager->persist($call);
-        $entityManager->flush();
-
+//        $entityManager = $this->get('doctrine.orm.default_entity_manager');
 //        $catalogone = $entityManager->getRepository('KuhniBundle:Catalog')
 //            ->findOneById(1);
 //        $styleone = $entityManager->getRepository('KuhniBundle:KuhniStyle')
@@ -84,7 +64,7 @@ class HomepageController extends Controller
 //            ->findOneById(1);
 //        $fasadeTwo = $entityManager->getRepository('KuhniBundle:FasadColor')
 //            ->findOneById(2);
-
+//
 //        $call = new Kuhni();
 //
 //        $call->setIdCatalog($catalogone);
@@ -92,8 +72,8 @@ class HomepageController extends Controller
 //        $call->setIdKuhniMaterial($materialone);
 //        $call->setIdKuhniColor($colorone);
 //        $call->setIdKuhniConfig($configone);
-//        $call->setFasadColors($fasadeOne);
 //        $call->addFasadColors($fasadeTwo);
+//        $call->addFasadColors($fasadeOne);
 //
 //        $call->setName('art');
 //        $call->setTitle('art');

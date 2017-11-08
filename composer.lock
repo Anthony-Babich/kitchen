@@ -2118,12 +2118,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCoreBundle.git",
-                "reference": "d911899db2acd73910bef02ac977cad70a3eecb9"
+                "reference": "4c2387ddc0cb1cfc332fc79e14af0b2a730b1248"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/d911899db2acd73910bef02ac977cad70a3eecb9",
-                "reference": "d911899db2acd73910bef02ac977cad70a3eecb9",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/4c2387ddc0cb1cfc332fc79e14af0b2a730b1248",
+                "reference": "4c2387ddc0cb1cfc332fc79e14af0b2a730b1248",
                 "shasum": ""
             },
             "require": {
@@ -2164,11 +2164,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Sonata\\CoreBundle\\": ""
-                },
-                "exclude-from-classmap": [
-                    "Tests/"
-                ]
+                    "Sonata\\CoreBundle\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -2189,7 +2186,7 @@
             "keywords": [
                 "sonata"
             ],
-            "time": "2017-11-04T20:50:53+00:00"
+            "time": "2017-11-08T01:40:07+00:00"
         },
         {
             "name": "sonata-project/datagrid-bundle",
@@ -2197,12 +2194,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDatagridBundle.git",
-                "reference": "d83fc5e1c39247d78bf725a79d0651afaf63cc0f"
+                "reference": "64d78f172738293ba772f20142a0b484dcf6ac8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/d83fc5e1c39247d78bf725a79d0651afaf63cc0f",
-                "reference": "d83fc5e1c39247d78bf725a79d0651afaf63cc0f",
+                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/64d78f172738293ba772f20142a0b484dcf6ac8c",
+                "reference": "64d78f172738293ba772f20142a0b484dcf6ac8c",
                 "shasum": ""
             },
             "require": {
@@ -2247,7 +2244,7 @@
                 "datagrid",
                 "sonata"
             ],
-            "time": "2017-10-26T05:10:02+00:00"
+            "time": "2017-11-08T01:35:07+00:00"
         },
         {
             "name": "sonata-project/doctrine-extensions",
@@ -2517,12 +2514,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "bd98e7c40ff14065eb9c1908613f991b386024f8"
+                "reference": "b62e25216e7b76a06015f3a1955003736cd8987c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/bd98e7c40ff14065eb9c1908613f991b386024f8",
-                "reference": "bd98e7c40ff14065eb9c1908613f991b386024f8",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/b62e25216e7b76a06015f3a1955003736cd8987c",
+                "reference": "b62e25216e7b76a06015f3a1955003736cd8987c",
                 "shasum": ""
             },
             "require": {
@@ -2605,7 +2602,7 @@
                 "sonata",
                 "user"
             ],
-            "time": "2017-11-03T09:51:23+00:00"
+            "time": "2017-11-08T07:16:59+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2663,16 +2660,16 @@
         },
         {
             "name": "symfony/monolog-bundle",
-            "version": "v3.1.1",
+            "version": "v3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/monolog-bundle.git",
-                "reference": "80c82d7d41c4eed0bf27e215f27531c05b217c17"
+                "reference": "2b41b8b6d2c6edb1a5494f02f8e4129be2a44784"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/80c82d7d41c4eed0bf27e215f27531c05b217c17",
-                "reference": "80c82d7d41c4eed0bf27e215f27531c05b217c17",
+                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/2b41b8b6d2c6edb1a5494f02f8e4129be2a44784",
+                "reference": "2b41b8b6d2c6edb1a5494f02f8e4129be2a44784",
                 "shasum": ""
             },
             "require": {
@@ -2684,8 +2681,8 @@
                 "symfony/monolog-bridge": "~2.7|~3.0|~4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8",
                 "symfony/console": "~2.3|~3.0|~4.0",
+                "symfony/phpunit-bridge": "^3.3|^4.0",
                 "symfony/yaml": "~2.3|~3.0|~4.0"
             },
             "type": "symfony-bundle",
@@ -2697,7 +2694,10 @@
             "autoload": {
                 "psr-4": {
                     "Symfony\\Bundle\\MonologBundle\\": ""
-                }
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -2719,7 +2719,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2017-09-26T03:17:02+00:00"
+            "time": "2017-11-06T16:02:17+00:00"
         },
         {
             "name": "symfony/polyfill-apcu",

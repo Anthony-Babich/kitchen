@@ -19,6 +19,7 @@ class Kuhni
     public function __construct()
     {
         $this->fasadColors = new ArrayCollection();
+        $this->fasadTypes = new ArrayCollection();
     }
 
     /**
@@ -223,8 +224,11 @@ class Kuhni
     private $mainDescription;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\FasadColor", inversedBy="kuhnies")
-     * @ORM\JoinColumn(name="fasadColors_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="Kuhni\Bundle\Entity\FasadColor")
+     * @ORM\JoinTable(name="fasadColor_kuhni",
+     *   joinColumns={@ORM\JoinColumn(name="kuhni_id", referencedColumnName = "id")},
+     *   inverseJoinColumns={@ORM\JoinColumn(name="fasadColors_id", referencedColumnName="id")}
+     * )
      */
     protected $fasadColors = array();
 
@@ -237,22 +241,59 @@ class Kuhni
     }
 
     /**
-     * @param FasadColor $fasadColors
-     * @return Kuhni
-     */
-    public function setFasadColors(FasadColor $fasadColor)
-    {
-        $this->fasadColors[] = $fasadColor;
-        return $this;
-    }
-
-    /**
      * @param FasadColor $array
      * @return Kuhni
      */
     public function addFasadColors(FasadColor $array)
     {
         $this->fasadColors[] = $array;
+        return $this;
+    }
+
+    /**
+     * @param FasadColor $element
+     * @return Kuhni
+     */
+    public function removeFasadColors(FasadColor $element)
+    {
+        $this->fasadColors->removeElement($element);
+        return $this;
+    }
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Kuhni\Bundle\Entity\FasadType")
+     * @ORM\JoinTable(name="fasadType_kuhni",
+     *   joinColumns={@ORM\JoinColumn(name="kuhni_id", referencedColumnName = "id")},
+     *   inverseJoinColumns={@ORM\JoinColumn(name="fasadTypes_id", referencedColumnName="id")}
+     * )
+     */
+    protected $fasadTypes = array();
+
+    /**
+     * @return mixed
+     */
+    public function getFasadTypes()
+    {
+        return $this->fasadTypes;
+    }
+
+    /**
+     * @param FasadType $array
+     * @return Kuhni
+     */
+    public function addFasadTypes(FasadType $array)
+    {
+        $this->fasadTypes[] = $array;
+        return $this;
+    }
+
+    /**
+     * @param FasadType $element
+     * @return Kuhni
+     */
+    public function removeFasadTypes(FasadType $element)
+    {
+        $this->fasadTypes->removeElement($element);
         return $this;
     }
 
