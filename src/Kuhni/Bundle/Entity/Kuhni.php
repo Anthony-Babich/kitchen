@@ -2,6 +2,7 @@
 
 namespace Kuhni\Bundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -15,6 +16,11 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class Kuhni
 {
+    public function __construct()
+    {
+        $this->fasadColors = new ArrayCollection();
+    }
+
     /**
      * @var int
      *
@@ -215,6 +221,40 @@ class Kuhni
      * @ORM\Column(name="main_description", type="string", length=255)
      */
     private $mainDescription;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\FasadColor", inversedBy="kuhnies")
+     * @ORM\JoinColumn(name="fasadColors_id", referencedColumnName="id")
+     */
+    protected $fasadColors = array();
+
+    /**
+     * @return mixed
+     */
+    public function getFasadColors()
+    {
+        return $this->fasadColors;
+    }
+
+    /**
+     * @param FasadColor $fasadColors
+     * @return Kuhni
+     */
+    public function setFasadColors(FasadColor $fasadColor)
+    {
+        $this->fasadColors[] = $fasadColor;
+        return $this;
+    }
+
+    /**
+     * @param FasadColor $array
+     * @return Kuhni
+     */
+    public function addFasadColors(FasadColor $array)
+    {
+        $this->fasadColors[] = $array;
+        return $this;
+    }
 
     /**
      * @return float
