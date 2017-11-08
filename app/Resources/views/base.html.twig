@@ -84,9 +84,50 @@
                     slidesToShow: 4,
                     slidesToScroll: 2,
                     autoplay: false,
-                    autoplaySpeed: 4000
+                    autoplaySpeed: 4000,
+                    dots: false,
+                    responsive: [
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 2
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
                 });
                 $('.popular-slick .slide-col .pos-bot-l').css('width', $('.popular-slick .slide-col').width());
+                $('.popular-slick .slide-col .pos-bot-r').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
+                $('.popular-slick .slide-col .phone').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
+                if(($(window).width >= 992)&&($(window).width < 1200)) {
+                    $('.popular-slick .slide-col .pos-bot-l').css('width', $('.popular-slick .slide-col').width());
+                    $('.popular-slick .slide-col .pos-bot-r').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
+                    $('.popular-slick .slide-col .phone').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
+                }
+                if(($(window).width >= 767)&&($(window).width < 992)) {
+                    $('.popular-slick .slide-col .pos-bot-l').css('width', $('.popular-slick .slide-col').width());
+                    $('.popular-slick .slide-col .pos-bot-r').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
+                    $('.popular-slick .slide-col .phone').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
+                }
+                if(($(window).width >= 480)&&($(window).width < 767)) {
+                    $('.popular-slick .slide-col .pos-bot-l').css('width', $('.popular-slick .slide-col').width());
+                    $('.popular-slick .slide-col .pos-bot-r').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
+                    $('.popular-slick .slide-col .phone').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
+                }
 
                 //Ограничение количества символов в отвызывах
                 var rev = $('.review-span-text');

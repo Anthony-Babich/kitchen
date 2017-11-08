@@ -2,44 +2,42 @@
     <div class="container heading">
         <h2 class="section-heading">Выполненые проекты кухонь</h2>
     </div>
-    <div id="container-with-products">
+    <div class="container">
         <div class="popular-slick">
             {% for completedProject in completedProjects %}
-                <div>
-                    <div class="slide-col">
-                        <a href="{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : completedProject.slug}) }}" >
-                            <img class="slide-product-img" src="{{ asset( completedProjectImage[loop.index0] ) }}" alt="{{ completedProject.keywords }}" title="{{ completedProject.title }}">
-                            <span class="pos-bot-l">
-                                <ul class="nav">
-                                    <li class="left">
-                                        <div class="text-left">
-                                            <span class="first-name"><b>{{ completedProject.title }}</b></span>
-                                        </div>
-                                    </li>
-                                    <li class="right">
-                                        <div class="text-right right">
-                                            <span class="text-right now-price">сейчас от {{ completedProject.price }}</span><br/>
-                                            <span class="text-right last-price">старая цена
-                                                <span class="through">{{ completedProject.noDiscountPrice }}</span>
-                                            </span>
-                                        </div>
-                                    </li>
-                                </ul>
+                <div class="slide-col">
+                    <a href="{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : completedProject.slug}) }}" >
+                        <img class="slide-product-img" src="{{ asset( completedProjectImage[loop.index0] ) }}" alt="{{ completedProject.keywords }}" title="{{ completedProject.title }}">
+                        <span class="pos-bot-l">
+                            <ul class="nav">
+                                <li class="left">
+                                    <div class="text-left">
+                                        <span class="first-name"><b>{{ completedProject.title }}</b></span>
+                                    </div>
+                                </li>
+                                <li class="right">
+                                    <div class="text-right right">
+                                        <span class="text-right now-price">сейчас от {{ completedProject.price }}</span><br/>
+                                        <span class="text-right last-price">старая цена
+                                            <span class="through">{{ completedProject.noDiscountPrice }}</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </span>
+                        {% if completedProject.discount != 0 %}
+                            <span class="pos-bot-r desc text-center">
+                                <span class="title"><b>{{ completedProject.discount }}%</b></span>
+                                <span>скидка</span>
                             </span>
-                            {% if completedProject.discount != 0 %}
-                                <span class="pos-bot-r desc text-center">
-                                    <span class="title"><b>{{ completedProject.discount }}%</b></span>
-                                    <span>скидка</span>
-                                </span>
-                            {% endif %}
-                        </a>
-                        <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
-                            <i class="fa fa-phone"></i>
-                        </button>
-                        <button type="button" class="like text-center">
-                            <i class="fa fa-heart"></i> {{ completedProject.likes }}
-                        </button>
-                    </div>
+                        {% endif %}
+                    </a>
+                    <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
+                        <i class="fa fa-phone"></i>
+                    </button>
+                    <button type="button" class="like text-center">
+                        <i class="fa fa-heart"></i> {{ completedProject.likes }}
+                    </button>
                 </div>
             {% endfor %}
         </div>

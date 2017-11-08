@@ -282,24 +282,68 @@ section#reviews{
 	}
 }
 #popular, #completed-projects{
+	.slick-prev, .slick-next{
+		background-color: #ffffff7d;
+		font-size: 0;
+		line-height: 0;
+		position: absolute;
+		top: 50%;
+		display: block;
+		width: 5%;
+		height: 100%;
+		padding: 0;
+		-webkit-transform: translate(0, -50%);
+		-ms-transform: translate(0, -50%);
+		transform: translate(0, -50%);
+		cursor: pointer;
+		border: none;
+		outline: none;
+	}
+	.slick-prev{
+		left: 0;
+	}
+	.slick-prev:before {
+		content: '\f104';
+	}
+	.slick-next:before {
+		content: '\f105';
+	}
+	.slick-prev:before,.slick-next:before {
+		font-family: FontAwesome, serif;
+		font-size: 50px;
+		line-height: 1;
+		opacity: 1;
+		color: #3a3e4a;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.slick-next{
+		right: 0;
+	}
+	.slick-arrow{
+		z-index: 999;
+	}
 	line-height: 1.15;
 	h2.section-heading{
 		text-align: left;
-		font-size: 1em;
+		font-size: 25px;
+		margin-bottom: 30px;
+		font-weight: bold;
 	}
 	.container.heading{
 		padding-left: 0;
 		padding-right: 0;
 	}
 	padding: 0;
+	margin-top: 75px;
 	margin-bottom: 10px;
 	.slide-col{
 		.slide-product-img {
-			width: 333px;
-			height: 199px;
+			width: 100%;
+			height: 275px;
 		}
 		a{
-			width: 333px;
+			width: 100%;
 			height: 199px;
 		}
 		width: 100%;
@@ -315,7 +359,6 @@ section#reviews{
 			background-color: yellow;
 			font-size: 12px;
 			top: 0;
-			margin-right: 283px;
 			.title{
 				font-size: 18px;
 			}
@@ -370,7 +413,7 @@ section#reviews{
 			border: none;
 		}
 		button.phone{
-			background-color: rgba(228, 228, 228, 0.79);
+			background-color: rgba(228, 228, 228, 0.6);
 			width: 50px;
 			height: 50px;
 			font-size: 35px;
@@ -379,7 +422,7 @@ section#reviews{
 			position: absolute;
 			z-index: 10;
 			top: 60px;
-			margin-right: 283px;
+			border: none;
 		}
 	}
 }
@@ -498,7 +541,7 @@ section#reviews{
 		}
 	}
 	.phone{
-		background-color: rgba(228, 228, 228, 0.79);
+		background-color: rgba(228, 228, 228, 0.6);
 		width: 50px;
 		height: 50px;
 		font-size: 35px;
@@ -507,6 +550,7 @@ section#reviews{
 		padding: 7px;
 		position: absolute;
 		z-index: 10;
+		border: none;
 	}
 	.like{
 		background-color: rgba(228, 228, 228, 0);
@@ -640,7 +684,7 @@ section#freedesignshag{
 		}
 		input[type="radio"]:checked+span.check-circle:before{
 			content: "\f058";
-			font-family: FontAwesome;
+			font-family: FontAwesome, serif;
 			font-style: normal;
 			font-weight: normal;
 			text-decoration: inherit;

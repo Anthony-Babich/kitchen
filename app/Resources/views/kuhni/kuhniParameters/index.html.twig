@@ -5,21 +5,21 @@
     {% endblock %}
     {% block header %}
         {% include 'header.html.twig' %}
-        {#{% include 'homepage/section-ordercall.html.twig' %}#}
+        {% include 'homepage/section-ordercall.html.twig' %}
     {% endblock %}
     {% block content %}
-        {#{% include 'kroshki.html.twig' %}#}
-        {#{% include 'kuhni/kuhniParameters/products.html.twig' %}#}
+        {% include 'kroshki.html.twig' %}
+        {% include 'kuhni/kuhniParameters/products.html.twig' %}
         {% include 'kuhni/kuhniParameters/popular.html.twig' %}
         {% include 'kuhni/kuhniParameters/completed-projects.html.twig' %}
-        {#{% include 'calc.html.twig' %}#}
-        {#{% include 'product/more-prod.html.twig' %}#}
-        {#{% include 'homepage/section-contact.html.twig' %}#}
+        {% include 'calc.html.twig' %}
+        {% include 'product/more-prod.html.twig' %}
+        {% include 'homepage/section-contact.html.twig' %}
     {% endblock %}
 {% endblock %}
 {% block modal %}
     {% include 'modal.html.twig' %}
 {% endblock %}
 {% block ajax %}
-    {#{% include 'kuhni/kuhniParameters/ajax-more-product.html.twig' %}#}
+    {% include 'kuhni/kuhniParameters/ajax-more-product.html.twig' %}
 {% endblock %}
