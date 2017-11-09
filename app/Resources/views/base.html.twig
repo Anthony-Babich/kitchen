@@ -113,22 +113,11 @@
                 $('.popular-slick .slide-col .pos-bot-l').css('width', $('.popular-slick .slide-col').width());
                 $('.popular-slick .slide-col .pos-bot-r').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
                 $('.popular-slick .slide-col .phone').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
-                if(($(window).width >= 992)&&($(window).width < 1200)) {
+                $(window).resize(function () {
                     $('.popular-slick .slide-col .pos-bot-l').css('width', $('.popular-slick .slide-col').width());
                     $('.popular-slick .slide-col .pos-bot-r').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
                     $('.popular-slick .slide-col .phone').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
-                }
-                if(($(window).width >= 767)&&($(window).width < 992)) {
-                    $('.popular-slick .slide-col .pos-bot-l').css('width', $('.popular-slick .slide-col').width());
-                    $('.popular-slick .slide-col .pos-bot-r').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
-                    $('.popular-slick .slide-col .phone').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
-                }
-                if(($(window).width >= 480)&&($(window).width < 767)) {
-                    $('.popular-slick .slide-col .pos-bot-l').css('width', $('.popular-slick .slide-col').width());
-                    $('.popular-slick .slide-col .pos-bot-r').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
-                    $('.popular-slick .slide-col .phone').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
-                }
-
+                });
                 //Ограничение количества символов в отвызывах
                 var rev = $('.review-span-text');
                 for (i = 0; i < rev.length; i++){
