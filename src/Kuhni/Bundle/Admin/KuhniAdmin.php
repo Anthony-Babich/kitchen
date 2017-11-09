@@ -18,87 +18,120 @@ class KuhniAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', TextType::class, array(
-                'label' => 'Название'
-            ))
-            ->add('title', TextType::class, array(
-                'label' => 'Заглавие'
-            ))
-            ->add('description', TextType::class, array(
-                'label' => 'Описание'
-            ))
-            ->add('price', MoneyType::class, array(
-                'label' => 'Цена'
-            ))
-            ->add('idKuhniStyle', EntityType::class, array(
-                 'class' => 'KuhniBundle:KuhniStyle',
-                 'property' => 'title',
-                 'label' => 'Стиль'
-             ))
-             ->add('idKuhniMaterial', EntityType::class, array(
-                 'class' => 'KuhniBundle:KuhniMaterial',
-                 'property' => 'title',
-                 'label' => 'Материал'
-             ))
-             ->add('idKuhniConfig', EntityType::class, array(
-                 'class' => 'KuhniBundle:KuhniConfig',
-                 'property' => 'title',
-                 'label' => 'Конфигурация'
-             ))
-             ->add('idKuhniColor', EntityType::class, array(
-                 'class' => 'KuhniBundle:KuhniColor',
-                 'property' => 'title',
-                 'label' => 'Цвет'
-             ))
-
-             ->add('noDiscountPrice', MoneyType::class, array(
-                 'label' => 'Цена до скидки'
-             ))
-            ->add('discount', MoneyType::class, array(
-                'label' => 'Скидка'
-            ))
-            ->add('likes', NumberType::class, array(
-               'label' => 'Лайки'
-           ))
-           ->add('countProjects', NumberType::class, array(
-               'label' => 'Количество выполненных проектов'
-           ))
-            ->add('fixedPrice', TextType::class, array(
-                'label' => 'Фиксированная стоимость'
-            ))
-            ->add('razmer', TextType::class, array(
-                'label' => 'Размер'
-            ))
-            ->add('nameFasad', TextType::class, array(
-                'label' => 'Название фасада'
-            ))
-            ->add('matFasad', TextType::class, array(
-                'label' => 'Материал фасада'
-            ))
-            ->add('stoleshnica', TextType::class, array(
-                'label' => 'Столешница'
-            ))
-            ->add('korpus', TextType::class, array(
-                'label' => 'Корпус'
-            ))
-            ->add('furnitura', TextType::class, array(
-                'label' => 'Фурнитура'
-            ))
-            ->add('keywords', TextType::class, array(
-                'label' => 'Ключевые слова'
-            ))
-            ->add('mainDescription', TextType::class, array(
-                'label' => 'Описание'
-            ))
-            ->add('slug', TextType::class, array(
-                'label' => 'slug'
-            ))
-            ->add('imageFile', VichImageType::class, array(
-                'required'      => false,
-                'allow_delete'  => true,
-                'download_link' => false,
-                'label'         => 'Картинка',
-            ));
+            ->tab('Основаные параметры')
+                ->with('Описание', array('class' => 'col-12 col-md-6'))
+                    ->add('name', TextType::class, array(
+                        'label' => 'Название'
+                    ))
+                    ->add('title', TextType::class, array(
+                        'label' => 'Заглавие'
+                    ))
+                    ->add('description', TextType::class, array(
+                        'label' => 'Описание'
+                    ))
+                    ->add('price', MoneyType::class, array(
+                        'label' => 'Цена'
+                    ))
+                    ->add('idCatalog', EntityType::class, array(
+                        'class' => 'KuhniBundle:Catalog',
+                        'property' => 'title',
+                        'label' => 'Каталог'
+                    ))
+                    ->add('idKuhniStyle', EntityType::class, array(
+                        'class' => 'KuhniBundle:KuhniStyle',
+                        'property' => 'title',
+                        'label' => 'Стиль'
+                    ))
+                    ->add('idKuhniMaterial', EntityType::class, array(
+                        'class' => 'KuhniBundle:KuhniMaterial',
+                        'property' => 'title',
+                        'label' => 'Материал'
+                    ))
+                    ->add('idKuhniConfig', EntityType::class, array(
+                        'class' => 'KuhniBundle:KuhniConfig',
+                        'property' => 'title',
+                        'label' => 'Конфигурация'
+                    ))
+                    ->add('idKuhniColor', EntityType::class, array(
+                        'class' => 'KuhniBundle:KuhniColor',
+                        'property' => 'title',
+                        'label' => 'Цвет'
+                    ))
+                    ->add('noDiscountPrice', MoneyType::class, array(
+                        'label' => 'Цена до скидки'
+                    ))
+                    ->add('discount', MoneyType::class, array(
+                        'label' => 'Скидка'
+                    ))
+                    ->add('likes', NumberType::class, array(
+                        'label' => 'Лайки'
+                    ))
+                    ->add('countProjects', NumberType::class, array(
+                        'label' => 'Количество выполненных проектов'
+                    ))
+                    ->add('fixedPrice', TextType::class, array(
+                        'label' => 'Фиксированная стоимость'
+                    ))
+                    ->add('keywords', TextType::class, array(
+                        'label' => 'Ключевые слова'
+                    ))
+                    ->add('mainDescription', TextType::class, array(
+                        'label' => 'Описание'
+                    ))
+                    ->add('slug', TextType::class, array(
+                        'label' => 'slug'
+                    ))
+                    ->add('imageFile', VichImageType::class, array(
+                        'required'      => false,
+                        'allow_delete'  => true,
+                        'download_link' => false,
+                        'label'         => 'Картинка',
+                    ))
+                ->end()
+                ->with('Характеристики', array('class' => 'col-12 col-md-6'))
+                    ->add('razmer', TextType::class, array(
+                        'label' => 'Размер'
+                    ))
+                    ->add('nameFasad', TextType::class, array(
+                        'label' => 'Название фасада'
+                    ))
+                    ->add('matFasad', TextType::class, array(
+                        'label' => 'Материал фасада'
+                    ))
+                    ->add('stoleshnica', TextType::class, array(
+                        'label' => 'Столешница'
+                    ))
+                    ->add('korpus', TextType::class, array(
+                        'label' => 'Корпус'
+                    ))
+                    ->add('furnitura', TextType::class, array(
+                        'label' => 'Фурнитура'
+                    ))
+                ->end()
+            ->end()
+            ->tab('Фасады')
+                ->with('Цвета фасадов', array('class' => 'col-12 col-md-6'))
+                    ->add('fasadColors', 'sonata_type_model', array(
+                        'class' => 'KuhniBundle:FasadColor',
+                        'property' => 'title',
+                        'multiple' => true,
+                        'expanded' => true,
+                        'required' => false,
+                        'label' => false
+                    ))
+                ->end()
+                ->with('Типы фасадов', array('class' => 'col-12 col-md-6'))
+                    ->add('fasadTypes', 'sonata_type_model', array(
+                        'class' => 'KuhniBundle:FasadType',
+                        'property' => 'title',
+                        'multiple' => true,
+                        'expanded' => true,
+                        'required' => false,
+                        'label' => false
+                    ))
+                ->end()
+            ->end()
+        ;
     }
     // Fields to be shown on filter forms
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -253,4 +286,6 @@ class KuhniAdmin extends AbstractAdmin
                'label' => 'Картинка',
            ));
     }
+
+
 }

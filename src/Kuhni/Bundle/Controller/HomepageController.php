@@ -8,9 +8,7 @@ use Kuhni\Bundle\Entity\CallBack;
 use Kuhni\Bundle\Entity\CostProject;
 use Kuhni\Bundle\Entity\DesignerAtHome;
 use Kuhni\Bundle\Entity\DesignProjectShag;
-use Kuhni\Bundle\Entity\FasadColor;
 use Kuhni\Bundle\Entity\freeDesignProject;
-use Kuhni\Bundle\Entity\Kuhni;
 use Kuhni\Bundle\Entity\RequestCall;
 use Kuhni\Bundle\Entity\Reviews;
 use Kuhni\Bundle\Entity\ZayavkaRazmer;
@@ -48,56 +46,6 @@ class HomepageController extends Controller
                 $image[] = 'upload/catalog/' . $item->getImageName();
             }
         }
-
-//        $entityManager = $this->get('doctrine.orm.default_entity_manager');
-//        $catalogone = $entityManager->getRepository('KuhniBundle:Catalog')
-//            ->findOneById(1);
-//        $styleone = $entityManager->getRepository('KuhniBundle:KuhniStyle')
-//            ->findOneById(1);
-//        $colorone = $entityManager->getRepository('KuhniBundle:KuhniColor')
-//            ->findOneById(1);
-//        $materialone = $entityManager->getRepository('KuhniBundle:KuhniMaterial')
-//            ->findOneById(1);
-//        $configone = $entityManager->getRepository('KuhniBundle:KuhniConfig')
-//            ->findOneById(1);
-//        $fasadeOne = $entityManager->getRepository('KuhniBundle:FasadColor')
-//            ->findOneById(1);
-//        $fasadeTwo = $entityManager->getRepository('KuhniBundle:FasadColor')
-//            ->findOneById(2);
-//
-//        $call = new Kuhni();
-//
-//        $call->setIdCatalog($catalogone);
-//        $call->setIdKuhniStyle($styleone);
-//        $call->setIdKuhniMaterial($materialone);
-//        $call->setIdKuhniColor($colorone);
-//        $call->setIdKuhniConfig($configone);
-//        $call->addFasadColors($fasadeTwo);
-//        $call->addFasadColors($fasadeOne);
-//
-//        $call->setName('art');
-//        $call->setTitle('art');
-//        $call->setDescription('art');
-//        $call->setKeywords('art');
-//        $call->setMainDescription('art');
-//        $call->setImageName('art');
-//        $call->setImageSize(1024);
-//        $call->setUpdated(new \DateTime());
-//        $call->setSlug('art_1_2');
-//        $call->setPrice(10000);
-//        $call->setDiscount(10);
-//        $call->setFixedPrice(1);
-//        $call->setRazmer('100x100');
-//        $call->setNameFasad('Акрил Како, Акрил Винил');
-//        $call->setMatFasad('Акрил');
-//        $call->setStoleshnica('Бежевый гранит 38мм');
-//        $call->setKorpus('ЛДСП Негро 18мм');
-//        $call->setFurnitura('Hettich, Blum, FGV');
-//        $call->setLikes(2);
-//        $call->setCountProjects(2);
-//        $call->setNoDiscountPrice(11000);
-//        $entityManager->persist($call);
-//        $entityManager->flush();
 
         return $this->render('homepage/index.html.twig', array(
             'catalog' => $result,

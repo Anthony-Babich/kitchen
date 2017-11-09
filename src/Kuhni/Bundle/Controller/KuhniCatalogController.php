@@ -35,17 +35,17 @@ class KuhniCatalogController extends Controller
     {
         $resultMaterial = $this->result('KuhniMaterial');
         $countMaterial = count($resultMaterial)-4;
-        $imageMaterial = $this->imagePath($resultMaterial, 'material');
+        $imageMaterial = $this->arrayImagePath($resultMaterial, 'material');
 
         $resultColor = $this->result('KuhniColor');
 
         $resultStyle = $this->result('KuhniStyle');
         $countStyle = count($resultStyle)-4;
-        $imageStyle = $this->imagePath($resultStyle, 'style');
+        $imageStyle = $this->arrayImagePath($resultStyle, 'style');
 
         $resultConfig = $this->result('KuhniConfig');
         $countConfig = count($resultConfig)-4;
-        $imageConfig = $this->imagePath($resultConfig, 'config');
+        $imageConfig = $this->arrayImagePath($resultConfig, 'config');
 
         //Хлебные крошки
         $breadcrumbs = $this->get('white_october_breadcrumbs');
@@ -102,21 +102,47 @@ class KuhniCatalogController extends Controller
 
     /**
      * @param $result
+     * @param string $path
      * @return array|string
      */
-    private function imagePath($result, $path){
+    private function imagePath($result, string $path){
         if (!empty($result)){
-            if (is_array($result)){
-                foreach ($result as $item) {
-                    $image[] = 'upload/kuhni/' . $path . '/' . $item->getImageName();
-                }
-            }else{
-                $image = 'upload/kuhni/' . $path . '/' . $result->getImageName();
+            return 'upload/kuhni/' . $path . '/' . $result->getImageName();
+        }else{
+            return 'upload/kuhni/img/no_image.jpg';
+        }
+    }
+
+    /**
+     * @param $result
+     * @return array|string
+     */
+    private function arrayImagePath(array $result, $path){
+        if (!empty($result)){
+            $image = array();
+            foreach ($result as $item) {
+                $image[] = 'upload/kuhni/' . $path . '/' . $item->getImageName();
             }
             return $image;
         }else{
-            return 'Error! Bad source';
+            return 'upload/kuhni/img/no_image.jpg';
         }
+    }
+
+    /**
+     * @param $result
+     * @return array
+     */
+    private function catalogImagePath(array $result){
+        $imageCatalog = array();
+        if (!empty($result)){
+            foreach ($result as $item) {
+                $imageCatalog[] = 'upload/catalog/' . $item->getImageName();
+            }
+        }else{
+            $imageCatalog[] = 'upload/kuhni/img/no_image.jpg';
+        }
+        return $imageCatalog;
     }
 
     /**
@@ -128,13 +154,7 @@ class KuhniCatalogController extends Controller
     {
         //получение каталога товаров
         $resultCatalog = $this->getCatalogresult();
-        if (!empty($resultCatalog)){
-            foreach ($resultCatalog as $item) {
-                $imageCatalog[] = 'upload/catalog/' . $item->getImageName();
-            }
-        }else{
-            $imageCatalog[] = 'none';
-        }
+        $imageCatalog = $this->catalogImagePath($resultCatalog);
 
         $result = $this->getDoctrine()->getManager()
             ->getRepository('KuhniBundle:Kuhni')
@@ -143,27 +163,63 @@ class KuhniCatalogController extends Controller
         $images = $this->getDoctrine()->getManager()
             ->getRepository('KuhniBundle:KuhniImages')
             ->findByKuhniId($id);
-        $image = $this->imagePath($images, 'kitchens');
+        $image = $this->arrayImagePath($images, 'kitchens');
 
-        //search all fasades
-        //SELECT * FROM `fasad_color` where fasad_color.id_kuhni_material = 3;
-        $fasadesColor = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:FasadColor')
+        /*search all fasades
+            SELECT *
+            FROM `fasad_color`
+            INNER JOIN fasadColor_kuhni ON fasadColor_kuhni.kuhni_id = id
+            where id = 41;
+         */
+        $fasadesColorKuhni = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:Kuhni')
             ->createQueryBuilder('n')
-            ->select('n')
-            ->where('n.idKuhniMaterial = :id')
-            ->setParameter('id', $result->getIdKuhniMaterial())
+            ->select('n, m')
+            ->innerjoin('n.fasadColors', 'm')
+            ->where('n.id = :id')
+            ->setParameter('id', $id)
             ->getQuery()
             ->getResult();
-        $imageFasadesColor = $this->imagePath($fasadesColor, 'fasad');
+        //обращение к фасадам
+        //$fasadesColor[0]->getFasadColors()[$i]
+        $imageFasadesColor = array();
+        if (!empty($fasadesColorKuhni)){
+            $fasadesColor = $fasadesColorKuhni[0]->getFasadColors();
+            for ($i = 0; $i <= count($fasadesColor); $i++){
+                if (!empty($fasadesColor[$i])){
+                    $imageFasadesColor[] = $this->imagePath($fasadesColor[$i], 'fasad');
+                }else{
+                    $imageFasadesColor[] = $this->imagePath('', 'fasad');
+                }
+            }
+        }else{
+            $fasadesColor = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:FasadColor')->findOneById(1000);
+            $imageFasadesColor[] = $this->imagePath('', 'fasad');
+        }
 
-        $fasadesType = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:FasadType')
+        $fasadesTypeKuhni = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:Kuhni')
             ->createQueryBuilder('n')
-            ->select('n')
-            ->where('n.idKuhniMaterial = :id')
-            ->setParameter('id', $result->getIdKuhniMaterial())
+            ->select('n, m')
+            ->innerjoin('n.fasadTypes', 'm')
+            ->where('n.id = :id')
+            ->setParameter('id', $id)
             ->getQuery()
             ->getResult();
-        $imageFasadesType = $this->imagePath($fasadesType, 'fasad');
+        //обращение к фасадам
+        //$fasadesType[0]->getFasadTypes()[$i]
+        $imageFasadesType = array();
+        if (!empty($fasadesTypeKuhni)){
+            $fasadesType = $fasadesTypeKuhni[0]->getFasadTypes();
+            for ($i = 0; $i <= count($fasadesType); $i++) {
+                if (!empty($fasadesColor[$i])) {
+                    $imageFasadesType[] = $this->imagePath($fasadesType[$i], 'fasad');
+                } else {
+                    $imageFasadesType[] = $this->imagePath('', 'fasad');
+                }
+            }
+        } else {
+            $fasadesType = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:FasadType')->findOneById(1000);
+            $imageFasadesType[] = $this->imagePath('', 'fasad');
+        }
 
         $material = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:KuhniMaterial')
             ->createQueryBuilder('n')
@@ -180,11 +236,13 @@ class KuhniCatalogController extends Controller
         $breadcrumbs->addItem("{$result->getTitle()}");
 
         $popular = $this->getPopular();
+        $popularImage = array();
         foreach ($popular as $item) {
             $popularImage[] = 'upload/kuhni/kitchens/' . $item['imageName'];
         }
 
         $completedProjects = $this->getCompletedProjects();
+        $completedProjectsImage = array();
         foreach ($completedProjects as $item) {
             $completedProjectsImage[] = 'upload/kuhni/kitchens/' . $item['imageName'];
         }
@@ -192,17 +250,17 @@ class KuhniCatalogController extends Controller
         //модальные окна для фиксированного футера
         $resultMaterial = $this->result('KuhniMaterial');
         $countMaterial = count($resultMaterial)-4;
-        $imageMaterial = $this->imagePath($resultMaterial, 'material');
+        $imageMaterial = $this->arrayImagePath($resultMaterial, 'material');
 
         $resultStyle = $this->result('KuhniStyle');
         $countStyle = count($resultStyle)-4;
-        $imageStyle = $this->imagePath($resultStyle, 'style');
+        $imageStyle = $this->arrayImagePath($resultStyle, 'style');
 
         $resultConfig = $this->result('KuhniConfig');
         $countConfig = count($resultConfig)-4;
-        $imageConfig = $this->imagePath($resultConfig, 'config');
+        $imageConfig = $this->arrayImagePath($resultConfig, 'config');
 
-        return $this->render('product/index.html.twig', array(
+        return $this->render('product/index.html.twig', [
             'kitchen' => $result,
             'images' => $image,
             'slug' => $slug,
@@ -241,7 +299,7 @@ class KuhniCatalogController extends Controller
             'formCostProject' => $this->getCostProject(),
             'formFreeDesignShag' => $this->getFreeDesignShagForm(),
             'form' => $this->getCallBackForm(),
-        ));
+        ]);
     }
 
     /**
@@ -416,14 +474,7 @@ class KuhniCatalogController extends Controller
         }else{
             //получение каталога товаров
             $resultCatalog = $this->getCatalogresult();
-
-            if (!empty($resultCatalog)){
-                foreach ($resultCatalog as $item) {
-                    $imageCatalog[] = 'upload/catalog/' . $item->getImageName();
-                }
-            }else{
-                $imageCatalog = 'none';
-            }
+            $imageCatalog = $this->catalogImagePath($resultCatalog);
 
             $result = $this->searchParametr($slug);
 
@@ -450,15 +501,15 @@ class KuhniCatalogController extends Controller
             //модальные окна для фиксированного футера
             $resultMaterial = $this->result('KuhniMaterial');
             $countMaterial = count($resultMaterial)-4;
-            $imageMaterial = $this->imagePath($resultMaterial, 'material');
+            $imageMaterial = $this->arrayImagePath($resultMaterial, 'material');
 
             $resultStyle = $this->result('KuhniStyle');
             $countStyle = count($resultStyle)-4;
-            $imageStyle = $this->imagePath($resultStyle, 'style');
+            $imageStyle = $this->arrayImagePath($resultStyle, 'style');
 
             $resultConfig = $this->result('KuhniConfig');
             $countConfig = count($resultConfig)-4;
-            $imageConfig = $this->imagePath($resultConfig, 'config');
+            $imageConfig = $this->arrayImagePath($resultConfig, 'config');
 
             return $this->render('kuhni/kuhniParameters/index.html.twig', array(
                 'kitchens' => $result,

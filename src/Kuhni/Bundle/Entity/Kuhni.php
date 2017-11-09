@@ -300,7 +300,7 @@ class Kuhni
     /**
      * @return float
      */
-    public function getNoDiscountPrice(): float
+    public function getNoDiscountPrice()
     {
         return $this->noDiscountPrice;
     }
@@ -318,7 +318,7 @@ class Kuhni
     /**
      * @return int
      */
-    public function getLikes(): int
+    public function getLikes()
     {
         return $this->likes;
     }
@@ -334,7 +334,7 @@ class Kuhni
     /**
      * @return int
      */
-    public function getCountProjects(): int
+    public function getCountProjects()
     {
         return $this->countProjects;
     }
@@ -350,7 +350,7 @@ class Kuhni
     /**
      * @return bool
      */
-    public function isFixedPrice(): bool
+    public function isFixedPrice()
     {
         return $this->fixedPrice;
     }
@@ -452,7 +452,7 @@ class Kuhni
     /**
      * @return KuhniStyle
      */
-    public function getIdKuhniStyle(): KuhniStyle
+    public function getIdKuhniStyle()
     {
         return $this->idKuhniStyle;
     }
@@ -470,7 +470,7 @@ class Kuhni
     /**
      * @return KuhniMaterial
      */
-    public function getIdKuhniMaterial(): KuhniMaterial
+    public function getIdKuhniMaterial()
     {
         return $this->idKuhniMaterial;
     }
@@ -488,7 +488,7 @@ class Kuhni
     /**
      * @return KuhniConfig
      */
-    public function getIdKuhniConfig(): KuhniConfig
+    public function getIdKuhniConfig()
     {
         return $this->idKuhniConfig;
     }
@@ -506,7 +506,7 @@ class Kuhni
     /**
      * @return KuhniColor
      */
-    public function getIdKuhniColor(): KuhniColor
+    public function getIdKuhniColor()
     {
         return $this->idKuhniColor;
     }
@@ -524,7 +524,7 @@ class Kuhni
     /**
      * @return Catalog
      */
-    public function getIdCatalog(): Catalog
+    public function getIdCatalog()
     {
         return $this->idCatalog;
     }
@@ -543,7 +543,7 @@ class Kuhni
     /**
      * @return float
      */
-    public function getPrice(): float
+    public function getPrice()
     {
         return $this->price;
     }
@@ -561,7 +561,7 @@ class Kuhni
     /**
      * @return float
      */
-    public function getDiscount(): float
+    public function getDiscount()
     {
         return $this->discount;
     }
@@ -579,7 +579,7 @@ class Kuhni
     /**
      * @return string
      */
-    public function getSlug(): string
+    public function getSlug()
     {
         return $this->slug;
     }
@@ -727,7 +727,7 @@ class Kuhni
     /**
      * @return string
      */
-    public function getRazmer(): string
+    public function getRazmer()
     {
         return $this->razmer;
     }
@@ -745,7 +745,7 @@ class Kuhni
     /**
      * @return string
      */
-    public function getNameFasad(): string
+    public function getNameFasad()
     {
         return $this->nameFasad;
     }
@@ -763,7 +763,7 @@ class Kuhni
     /**
      * @return string
      */
-    public function getMatFasad(): string
+    public function getMatFasad()
     {
         return $this->matFasad;
     }
@@ -781,7 +781,7 @@ class Kuhni
     /**
      * @return string
      */
-    public function getStoleshnica(): string
+    public function getStoleshnica()
     {
         return $this->stoleshnica;
     }
@@ -799,7 +799,7 @@ class Kuhni
     /**
      * @return string
      */
-    public function getKorpus(): string
+    public function getKorpus()
     {
         return $this->korpus;
     }
@@ -817,7 +817,7 @@ class Kuhni
     /**
      * @return string
      */
-    public function getFurnitura(): string
+    public function getFurnitura()
     {
         return $this->furnitura;
     }
