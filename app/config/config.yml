@@ -94,6 +94,9 @@ fos_user:
 
 white_october_breadcrumbs: ~
 
+genemu_form:
+    tinymce: ~
+
 vich_uploader:
     db_driver: orm
     mappings:

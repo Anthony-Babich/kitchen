@@ -2,6 +2,7 @@
 
 namespace Kuhni\Bundle\Admin;
 
+use Doctrine\DBAL\Types\IntegerType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -11,7 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class CallBackAdmin extends AbstractAdmin
+class ReviewsAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -19,11 +20,14 @@ class CallBackAdmin extends AbstractAdmin
             ->add('name', TextType::class, array(
                 'label' => 'Имя'
             ))
-            ->add('email', TextType::class, array(
-                'label' => 'EMail'
-            ))
             ->add('phone', TextType::class, array(
                 'label' => 'Телефон'
+            ))
+            ->add('email', TextType::class, array(
+                'label' => 'EMAIL'
+            ))
+            ->add('star', IntegerType::class, array(
+                'label' => 'Количество звезд'
             ))
             ->add('message', TextType::class, array(
                 'label' => 'Сообщение'
@@ -50,11 +54,14 @@ class CallBackAdmin extends AbstractAdmin
             ->add('name', null, array(
                 'label' => 'Имя'
             ))
-            ->add('email', null, array(
-                'label' => 'EMail'
-            ))
             ->add('phone', null, array(
                 'label' => 'Телефон'
+            ))
+            ->add('email', null, array(
+                'label' => 'EMAIL'
+            ))
+            ->add('star', null, array(
+                'label' => 'Количество звезд'
             ))
             ->add('idSalon', null, array(
                 'label'    => 'Салон'
@@ -73,11 +80,14 @@ class CallBackAdmin extends AbstractAdmin
             ->add('name', null, array(
                 'label' => 'Имя'
             ))
-            ->add('email', null, array(
-                'label' => 'EMail'
-            ))
             ->add('phone', null, array(
                 'label' => 'Телефон'
+            ))
+            ->add('email', null, array(
+                'label' => 'EMAIL'
+            ))
+            ->add('star', null, array(
+                'label' => 'Количество звезд'
             ))
             ->add('message', null, array(
                 'label' => 'Сообщение'
@@ -102,11 +112,14 @@ class CallBackAdmin extends AbstractAdmin
             ->add('name', null, array(
                 'label' => 'Имя'
             ))
-            ->add('email', null, array(
-                'label' => 'EMail'
-            ))
             ->add('phone', null, array(
                 'label' => 'Телефон'
+            ))
+            ->add('email', null, array(
+                'label' => 'EMAIL'
+            ))
+            ->add('star', null, array(
+                'label' => 'Количество звезд'
             ))
             ->add('message', null, array(
                 'label' => 'Сообщение'

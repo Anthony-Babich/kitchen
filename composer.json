@@ -20,6 +20,7 @@
         "friendsofsymfony/user-bundle": "v2.0.1",
         "incenteev/composer-parameter-handler": "~2.0",
         "knplabs/knp-paginator-bundle": "^2.6",
+        "genemu/form-bundle" : "^3.0@dev",
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "^3.0.27",
         "sonata-project/admin-bundle": "^3.20",

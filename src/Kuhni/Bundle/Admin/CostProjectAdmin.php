@@ -34,6 +34,11 @@ class CostProjectAdmin extends AbstractAdmin
             ->add('geoIP', TextType::class, array(
                 'label' => 'IP-адресс'
             ))
+            ->add('idSalon', EntityType::class, array(
+                'label' => 'Салон',
+                'class' => 'ApplicationSonataUserBundle:User',
+                'property' => 'title',
+            ))
             ->add('updated', DateTimeType::class, array(
                 'label' => 'Время заказа'
             ))
@@ -56,6 +61,12 @@ class CostProjectAdmin extends AbstractAdmin
             ->add('phone', null, array(
                 'label' => 'Телефон'
             ))
+            ->add('idSalon', null, array(
+                'label'    => 'Салон'
+            ), 'entity', array(
+                'class'    => 'ApplicationSonataUserBundle:User',
+                'property' => 'title',
+            ))
             ->add('updated', null, array(
                 'label' => 'Время заказа'
             ));
@@ -75,6 +86,9 @@ class CostProjectAdmin extends AbstractAdmin
             ))
             ->add('message', null, array(
                 'label' => 'Сообщение'
+            ))
+            ->add('idSalon.title', null, array(
+                'label'    => 'Салон'
             ))
             ->add('updated', null, array(
                 'label' => 'Время заказа'
@@ -101,6 +115,9 @@ class CostProjectAdmin extends AbstractAdmin
             ))
             ->add('message', null, array(
                 'label' => 'Сообщение'
+            ))
+            ->add('idSalon.title', null, array(
+                'label'    => 'Салон'
             ))
             ->add('updated', null, array(
                 'label' => 'Время заказа'

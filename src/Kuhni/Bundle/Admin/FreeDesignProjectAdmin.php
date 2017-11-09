@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sonata\AdminBundle\Show\ShowMapper;
@@ -34,6 +35,11 @@ class FreeDesignProjectAdmin extends AbstractAdmin
             ->add('geoIP', TextType::class, array(
                 'label' => 'IP-адресс'
             ))
+            ->add('idSalon', EntityType::class, array(
+                'label' => 'Салон',
+                'class' => 'ApplicationSonataUserBundle:User',
+                'property' => 'title',
+            ))
             ->add('updated', DateTimeType::class, array(
                 'label' => 'Время заказа'
             ))
@@ -56,6 +62,12 @@ class FreeDesignProjectAdmin extends AbstractAdmin
             ->add('phone', null, array(
                 'label' => 'Телефон'
             ))
+            ->add('idSalon', null, array(
+                'label'    => 'Салон'
+            ), 'entity', array(
+                'class'    => 'ApplicationSonataUserBundle:User',
+                'property' => 'title',
+            ))
             ->add('updated', null, array(
                 'label' => 'Время заказа'
             ));
@@ -75,6 +87,9 @@ class FreeDesignProjectAdmin extends AbstractAdmin
             ))
             ->add('message', null, array(
                 'label' => 'Сообщение'
+            ))
+            ->add('idSalon.title', null, array(
+                'label'    => 'Салон'
             ))
             ->add('updated', null, array(
                 'label' => 'Время заказа'
@@ -101,6 +116,9 @@ class FreeDesignProjectAdmin extends AbstractAdmin
             ))
             ->add('message', null, array(
                 'label' => 'Сообщение'
+            ))
+            ->add('idSalon.title', null, array(
+                'label'    => 'Салон'
             ))
             ->add('updated', null, array(
                 'label' => 'Время заказа'

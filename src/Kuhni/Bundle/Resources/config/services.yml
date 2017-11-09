@@ -56,6 +56,61 @@ services:
     calls:
       - [ setTranslationDomain, [Kuhni\Bundle]]
     public: true
+  app.admin.kuhni.glass:
+    class: Kuhni\Bundle\Admin\KuhniGlassAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Кухни", label: "Виды стекол" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\KuhniGlass
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.kuhni.shpon:
+    class: Kuhni\Bundle\Admin\KuhniShponAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Кухни", label: "Виды шпона" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\KuhniShpon
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.kuhni.plastic:
+    class: Kuhni\Bundle\Admin\KuhniPlasticAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Кухни", label: "Виды пластика" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\KuhniPlastic
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.kuhni.acryl:
+    class: Kuhni\Bundle\Admin\KuhniAcrylAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Кухни", label: "Виды акрил" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\KuhniAcryl
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.kuhni.dsp:
+    class: Kuhni\Bundle\Admin\KuhniDSPAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Кухни", label: "Виды ДСП" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\KuhniDSP
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
   app.admin.kuhni.mdf:
     class: Kuhni\Bundle\Admin\KuhniMdfAdmin
     tags:
@@ -179,6 +234,17 @@ services:
     calls:
       - [ setTranslationDomain, [Kuhni\Bundle]]
     public: true
+  app.admin.order.designProjectShag:
+    class: Kuhni\Bundle\Admin\DesignProjectShagAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Заказы", label: "Пошаговая форма" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\DesignProjectShag
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
   app.admin.order.costProject:
     class: Kuhni\Bundle\Admin\CostProjectAdmin
     tags:
@@ -186,6 +252,29 @@ services:
     arguments:
       - ~
       - Kuhni\Bundle\Entity\CostProject
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  app.admin.order.reviews:
+    class: Kuhni\Bundle\Admin\ReviewsAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Заказы", label: "Отзывы" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\Reviews
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+#  Статьи
+  app.admin.articles:
+    class: Kuhni\Bundle\Admin\ArticlesAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: "Статьи" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\Articles
       - ~
     calls:
       - [ setTranslationDomain, [Kuhni\Bundle]]

@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class CallBackAdmin extends AbstractAdmin
+class DesignProjectShagAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -19,20 +19,20 @@ class CallBackAdmin extends AbstractAdmin
             ->add('name', TextType::class, array(
                 'label' => 'Имя'
             ))
-            ->add('email', TextType::class, array(
-                'label' => 'EMail'
-            ))
             ->add('phone', TextType::class, array(
                 'label' => 'Телефон'
-            ))
-            ->add('message', TextType::class, array(
-                'label' => 'Сообщение'
             ))
             ->add('url', TextType::class, array(
                 'label' => 'Откуда пришли'
             ))
             ->add('geoIP', TextType::class, array(
                 'label' => 'IP-адресс'
+            ))
+            ->add('config', TextType::class, array(
+                'label' => 'Конфигурация кухни'
+            ))
+            ->add('style', TextType::class, array(
+                'label' => 'Стиль кухни'
             ))
             ->add('idSalon', EntityType::class, array(
                 'label' => 'Салон',
@@ -50,11 +50,14 @@ class CallBackAdmin extends AbstractAdmin
             ->add('name', null, array(
                 'label' => 'Имя'
             ))
-            ->add('email', null, array(
-                'label' => 'EMail'
-            ))
             ->add('phone', null, array(
                 'label' => 'Телефон'
+            ))
+            ->add('config', null, array(
+                'label' => 'Конфигурация кухни'
+            ))
+            ->add('style', null, array(
+                'label' => 'Стиль кухни'
             ))
             ->add('idSalon', null, array(
                 'label'    => 'Салон'
@@ -73,20 +76,17 @@ class CallBackAdmin extends AbstractAdmin
             ->add('name', null, array(
                 'label' => 'Имя'
             ))
-            ->add('email', null, array(
-                'label' => 'EMail'
-            ))
             ->add('phone', null, array(
                 'label' => 'Телефон'
             ))
-            ->add('message', null, array(
-                'label' => 'Сообщение'
+            ->add('config', null, array(
+                'label' => 'Конфигурация кухни'
+            ))
+            ->add('style', null, array(
+                'label' => 'Стиль кухни'
             ))
             ->add('idSalon.title', null, array(
                 'label'    => 'Салон'
-            ))
-            ->add('created', null, array(
-                'label' => 'Время заказа'
             ))
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -102,14 +102,17 @@ class CallBackAdmin extends AbstractAdmin
             ->add('name', null, array(
                 'label' => 'Имя'
             ))
-            ->add('email', null, array(
-                'label' => 'EMail'
-            ))
             ->add('phone', null, array(
                 'label' => 'Телефон'
             ))
             ->add('message', null, array(
                 'label' => 'Сообщение'
+            ))
+            ->add('config', null, array(
+                'label' => 'Конфигурация кухни'
+            ))
+            ->add('style', null, array(
+                'label' => 'Стиль кухни'
             ))
             ->add('idSalon.title', null, array(
                 'label'    => 'Салон'
