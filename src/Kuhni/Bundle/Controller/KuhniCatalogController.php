@@ -109,7 +109,7 @@ class KuhniCatalogController extends Controller
         if (!empty($result)){
             return 'upload/kuhni/' . $path . '/' . $result->getImageName();
         }else{
-            return 'upload/kuhni/img/no_image.jpg';
+            return 'bundles/kuhni/img/no_image.jpg';
         }
     }
 
@@ -125,7 +125,7 @@ class KuhniCatalogController extends Controller
             }
             return $image;
         }else{
-            return 'upload/kuhni/img/no_image.jpg';
+            return 'bundles/kuhni/img/no_image.jpg';
         }
     }
 
@@ -140,7 +140,7 @@ class KuhniCatalogController extends Controller
                 $imageCatalog[] = 'upload/catalog/' . $item->getImageName();
             }
         }else{
-            $imageCatalog[] = 'upload/kuhni/img/no_image.jpg';
+            $imageCatalog[] = 'bundles/kuhni/img/no_image.jpg';
         }
         return $imageCatalog;
     }
