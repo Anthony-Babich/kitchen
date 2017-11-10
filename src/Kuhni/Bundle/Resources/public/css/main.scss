@@ -258,7 +258,7 @@ section#reviews{
 	}
 }
 #more-prod{
-	margin: 0 15px 30px;
+	margin: 0 15px 100px;
 	padding: 0;
 	h2.section-heading{
 		text-align: left;
@@ -417,20 +417,21 @@ section#reviews{
 				font-size: 16px;
 			}
 		}
-		button.like{
-			background-color: rgba(228, 228, 228, 0);
-			width: 80px;
-			height: 50px;
+		.like{
+			background-color: rgba(255, 255, 255, 0.6);
+			width: 50px;
+			height: 30px;
 			font-size: 16px;
-			top: 20px;
+			top: 10px;
 			padding: 7px;
 			position: absolute;
 			z-index: 99;
-			color: #222222;
-			border: none;
-		}
-		button.like{
 			color: red;
+			border: none;
+			margin-left: 10px;
+		}
+		.active{
+			color: #193153;
 		}
 		button.phone{
 			background-color: rgba(228, 228, 228, 0.6);
@@ -580,20 +581,20 @@ section#reviews{
 		border: none;
 	}
 	.like{
-		background-color: rgba(228, 228, 228, 0);
-		width: 80px;
-		height: 50px;
+		background-color: rgba(255, 255, 255, 0.6);
+		width: 50px;
+		height: 30px;
 		font-size: 16px;
 		left: 10px;
-		top: 20px;
+		top: 10px;
 		padding: 7px;
 		position: absolute;
 		z-index: 99;
-		color: #222222;
+		color: red;
 		border: none;
 	}
-	.like .active{
-		color: red;
+	.active{
+		color: #193153;
 	}
 	.first-small-col{
 		margin-left: 0;

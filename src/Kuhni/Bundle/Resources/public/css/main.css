@@ -200,7 +200,7 @@ section#reviews {
     margin-bottom: 30px; }
 
 #more-prod {
-  margin: 0 15px 30px;
+  margin: 0 15px 100px;
   padding: 0; }
   #more-prod h2.section-heading {
     text-align: left;
@@ -322,17 +322,20 @@ section#reviews {
         font-size: 13px; }
       #popular .slide-col .pos-bot-l .now-price, #completed-projects .slide-col .pos-bot-l .now-price {
         font-size: 16px; }
-    #popular .slide-col button.like, #completed-projects .slide-col button.like {
-      background-color: rgba(228, 228, 228, 0);
-      width: 80px;
-      height: 50px;
+    #popular .slide-col .like, #completed-projects .slide-col .like {
+      background-color: rgba(255, 255, 255, 0.6);
+      width: 50px;
+      height: 30px;
       font-size: 16px;
-      top: 20px;
+      top: 10px;
       padding: 7px;
       position: absolute;
       z-index: 99;
       color: red;
-      border: none; }
+      border: none;
+      margin-left: 10px; }
+    #popular .slide-col .active, #completed-projects .slide-col .active {
+      color: #193153; }
     #popular .slide-col button.phone, #completed-projects .slide-col button.phone {
       background-color: rgba(228, 228, 228, 0.6);
       width: 50px;
@@ -446,17 +449,19 @@ section#reviews {
     z-index: 10;
     border: none; }
   #all-products .like {
-    background-color: rgba(228, 228, 228, 0);
-    width: 80px;
-    height: 50px;
+    background-color: rgba(255, 255, 255, 0.6);
+    width: 50px;
+    height: 30px;
     font-size: 16px;
     left: 10px;
-    top: 20px;
+    top: 10px;
     padding: 7px;
     position: absolute;
     z-index: 99;
     color: red;
     border: none; }
+  #all-products .active {
+    color: #193153; }
   #all-products .first-small-col {
     margin-left: 0; }
   #all-products .marginleft10 {
