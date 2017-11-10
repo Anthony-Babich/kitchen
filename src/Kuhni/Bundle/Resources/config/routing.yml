@@ -51,3 +51,8 @@ about:
     defaults: { _controller: "KuhniBundle:About:index" }
     requirements:
         methods:  GET|POST
+newlike:
+    path:  /newlike
+    defaults: { _controller: "KuhniBundle:Like:index" }
+    requirements:
+        methods:  GET|POST

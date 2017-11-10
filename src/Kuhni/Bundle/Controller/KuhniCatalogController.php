@@ -331,26 +331,31 @@ class KuhniCatalogController extends Controller
                 for ($i = 0; $i < count($result); $i++){
                     if ($i == 0){
                         $strResult .= "<a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
-
                         $strResult .= "<img class='slide-product-img big' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
-                        $strResult .= "<span class='pos-bot-l'";
+                        $strResult .= '<span class="pos-bot-l"';
                         if ($result[$i]['discount'] == 0){
                             $strResult .= 'style="width:100%;"';
                         }
-                        $strResult .= "><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/></span>";
+                        $strResult .= "><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/>";
+                        $strResult .= '</span>';
                         $strResult .= "<span class='first-desc'>";
                         if ($result[$i]['fixedPrice']){
                             $strResult .= "*Цена указана за 1 метр погонный кухни";
                         }else{
                             $strResult .= "*Цену и наличие уточняйте";
                         }
-                        $strResult .= "</span></div></li><li class='right'><div class='text-right right'><span class='text-right last-price'>старая цена";
-                        $strResult .= "<span class='through'>{$result[$i]['noDiscountPrice']}</span><br/></span><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span>";
+                        $strResult .= '</span></div></li>';
+
+                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right last-price'>старая цена";
+                        $strResult .= "<span class='through'>{$result[$i]['noDiscountPrice']}</span><br/></span>";
+                        $strResult .= "<span class='text-right now-price'>сейчас от {$result[$i]['price']}</span>";
                         $strResult .= "</div></li></ul></span>";
-                        $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
+                        }
                         $strResult .= "</a>";
-                        $strResult .= "<button type='button' class='phone text-center' data-toggle=\"modal\" data-target=\"#requestcall\"><i class='fa fa-phone'></i></button>";
-                        $strResult .= "<button type='button' class='like text-center'><i class='fa fa-heart'></i> {$result[$i]['likes']}</button>";
+                        $strResult .= "<button type='button' class='phone text-center' data-toggle='modal' data-target='#requestcall'><i class='fa fa-phone'></i></button>";
+                        $strResult .= '<button type="button" id="like" data-id='.$result[$i]["id"].' style="margin-left: 10px;" class="like text-center"><i class="fa fa-heart"></i><span class="countLikes"> '.$result[$i]['likes'].'</span></button>';
                     }
                 }
                 $strResult .= "</div>";
@@ -363,15 +368,18 @@ class KuhniCatalogController extends Controller
 
                         $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
 
-                        $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/></span>";
-                        $strResult .= "</div></li><li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
+                        $strResult .= "<span class='pos-bot-l'><ul class='nav'>";
+                        $strResult .= "<li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span></div></li>";
+                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
                         $strResult .= "<span class='text-right last-price'>старая цена<span class='through'>{$result[$i]['noDiscountPrice']}</span></span>";
                         $strResult .= "</div></li></ul></span>";
 
-                        $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
+                        }
+                        $strResult .= "</a>";
                         $strResult .= '<button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall"><i class="fa fa-phone"></i></button>';
-                        $strResult .= "<span class='like'><i class='fa fa-heart'></i> {$result[$i]['likes']}</span>";
-                        $strResult .= "</a></div>";
+                        $strResult .= '<button type="button" id="like" data-id='.$result[$i]["id"].' style="margin-left: 10px;" class="like text-center"><i class="fa fa-heart"></i><span class="countLikes"> '.$result[$i]['likes'].'</span></button></div>';
                     }
                 }
                 $strResult .= "</div><div class='col-xs-12 col-sm-12 col-md-6 small-col full-screen'>";
@@ -381,16 +389,17 @@ class KuhniCatalogController extends Controller
                         $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
 
                         $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
-
-                        $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/></span>";
-                        $strResult .= "</div></li><li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
+                        $strResult .= "<span class='pos-bot-l'><ul class='nav'>";
+                        $strResult .= "<li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span></div></li>";
+                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
                         $strResult .= "<span class='text-right last-price'>старая цена<span class='through'>{$result[$i]['noDiscountPrice']}</span></span>";
                         $strResult .= "</div></li></ul></span>";
-
-                        $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
+                        }
+                        $strResult .= "</a>";
                         $strResult .= '<button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall"><i class="fa fa-phone"></i></button>';
-                        $strResult .= "<span class='like'><i class='fa fa-heart'></i> {$result[$i]['likes']}</span>";
-                        $strResult .= "</a></div>";
+                        $strResult .= '<button type="button" id="like" data-id='.$result[$i]["id"].' style="margin-left: 10px;" class="like text-center"><i class="fa fa-heart"></i><span class="countLikes"> '.$result[$i]['likes'].'</span></button></div>';
                     }
                 }
                 $strResult .= "</div></div></div></div></div>";
@@ -401,18 +410,18 @@ class KuhniCatalogController extends Controller
                 for ($i = 0; $i < count($result); $i++){
                     if (($i <= 6)&&($i > 4)){
                         $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
-
                         $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
-
-                        $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/></span>";
-                        $strResult .= "</div></li><li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
+                        $strResult .= "<span class='pos-bot-l'><ul class='nav'>";
+                        $strResult .= "<li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span></div></li>";
+                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
                         $strResult .= "<span class='text-right last-price'>старая цена<span class='through'>{$result[$i]['noDiscountPrice']}</span></span>";
                         $strResult .= "</div></li></ul></span>";
-
-                        $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
+                        }
+                        $strResult .= "</a>";
                         $strResult .= '<button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall"><i class="fa fa-phone"></i></button>';
-                        $strResult .= "<span class='like'><i class='fa fa-heart'></i> {$result[$i]['likes']}</span>";
-                        $strResult .= "</a></div>";
+                        $strResult .= '<button type="button" id="like" data-id='.$result[$i]["id"].' style="margin-left: 10px;" class="like text-center"><i class="fa fa-heart"></i><span class="countLikes"> '.$result[$i]['likes'].'</span></button></div>';
                     }
                 }
                 $strResult .= "</div><div class='col-sm-12 col-md-6 small-col full-screen'>";
@@ -423,32 +432,31 @@ class KuhniCatalogController extends Controller
 
                         $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
 
-                        $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/></span>";
+                        $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span>";
                         $strResult .= "</div></li><li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
                         $strResult .= "<span class='text-right last-price'>старая цена<span class='through'>{$result[$i]['noDiscountPrice']}</span></span>";
                         $strResult .= "</div></li></ul></span>";
 
-                        $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
+                        }
+                        $strResult .= "</a>";
                         $strResult .= '<button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall"><i class="fa fa-phone"></i></button>';
-                        $strResult .= "<span class='like'><i class='fa fa-heart'></i> {$result[$i]['likes']}</span>";
-                        $strResult .= "</a></div>";
+                        $strResult .= '<button type="button" id="like" data-id='.$result[$i]["id"].' style="margin-left: 10px;" class="like text-center"><i class="fa fa-heart"></i><span class="countLikes"> '.$result[$i]['likes'].'</span></button></div>';
                     }
                 }
-                $strResult .= "</div></div></div>";
-
-                $strResult .= "<div class='col-xl-6 col-md-12 big-col'>";
+                $strResult .= "</div></div></div><div class='col-xl-6 col-md-12 big-col'>";
 
                 for ($i = 0; $i < count($result); $i++){
                     if ($i == 9){
                         $strResult .= "<a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}' class='big-a-10'>";
-
                         $strResult .= "<img class='slide-product-img big' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
 
                         $strResult .= "<span class='pos-bot-l'";
                         if ($result[$i]['discount'] == 0){
                             $strResult .= 'style="width:100%;"';
                         }
-                        $strResult .= "><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/></span>";
+                        $strResult .= "><ul class='nav'><li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span>";
                         $strResult .= "<span class='first-desc'>";
                         if ($result[$i]['fixedPrice']){
                             $strResult .= "*Цена указана за 1 метр погонный кухни";
@@ -458,10 +466,12 @@ class KuhniCatalogController extends Controller
                         $strResult .= "</span></div></li><li class='right'><div class='text-right right'><span class='text-right last-price'>старая цена";
                         $strResult .= "<span class='through'>{$result[$i]['noDiscountPrice']}</span><br/></span><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span>";
                         $strResult .= "</div></li></ul></span>";
-                        $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
-                        $strResult .= '<button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall"><i class="fa fa-phone"></i></button>';
-                        $strResult .= "<span class='like'><i class='fa fa-heart'></i> {$result[$i]['likes']}</span>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
+                        }
                         $strResult .= "</a>";
+                        $strResult .= '<button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall"><i class="fa fa-phone"></i></button>';
+                        $strResult .= '<button type="button" id="like" data-id='.$result[$i]["id"].' style="margin-left: 10px;" class="like text-center"><i class="fa fa-heart"></i><span class="countLikes"> '.$result[$i]['likes'].'</span></button>';
                     }
                 }
                 $strResult .= "</div></div></div>";
@@ -580,7 +590,7 @@ class KuhniCatalogController extends Controller
                 ->getRepository('KuhniBundle:Kuhni')
                 ->createQueryBuilder('n')
                 ->select('n')
-                ->orderBy('n.likes', 'ASC')
+                ->orderBy('n.likes', 'DESC')
                 ->getQuery()
                 ->setFirstResult($offset)
                 ->setMaxResults($limit)
@@ -613,7 +623,7 @@ class KuhniCatalogController extends Controller
                             ->createQueryBuilder('n')
                             ->select('n')
                             ->where('n.idKuhniColor = :id')
-                            ->orderBy('n.id', 'ASC')
+                            ->orderBy('n.likes', 'DESC')
                             ->setParameters(array('id' => $id))
                             ->getQuery()
                             ->setFirstResult($offset)
@@ -632,7 +642,7 @@ class KuhniCatalogController extends Controller
                             ->createQueryBuilder('n')
                             ->select('n')
                             ->where('n.idKuhniMaterial IN (:id)')
-                            ->orderBy('n.id', 'ASC')
+                            ->orderBy('n.likes', 'DESC')
                             ->setParameters(array('id' => $id))
                             ->getQuery()
                             ->setFirstResult($offset)
@@ -652,7 +662,7 @@ class KuhniCatalogController extends Controller
                         ->createQueryBuilder('n')
                         ->select('n')
                         ->where('n.idKuhniConfig IN (:id)')
-                        ->orderBy('n.id', 'ASC')
+                        ->orderBy('n.likes', 'DESC')
                         ->setParameters(array('id' => $id))
                         ->getQuery()
                         ->setFirstResult($offset)
@@ -672,7 +682,7 @@ class KuhniCatalogController extends Controller
                     ->createQueryBuilder('n')
                     ->select('n')
                     ->where('n.idKuhniStyle IN (:id)')
-                    ->orderBy('n.id', 'ASC')
+                    ->orderBy('n.likes', 'DESC')
                     ->setParameters(array('id' => $id))
                     ->getQuery()
                     ->setFirstResult($offset)

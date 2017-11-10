@@ -40,8 +40,11 @@
                         <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
                             <i class="fa fa-phone"></i>
                         </button>
-                        <button type="button" class="like text-center">
-                            <i class="fa fa-heart"></i> {{ kitchen.likes }}
+                        <button type="button" id="like" data-id="{{ kitchen.id }}" class="like text-center">
+                            <i class="fa fa-heart"></i>
+                            <span class="countLikes">
+                                {{ kitchen.likes }}
+                            </span>
                         </button>
                     {% endif %}
                 {% endfor %}
@@ -81,8 +84,11 @@
                                     <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
                                         <i class="fa fa-phone"></i>
                                     </button>
-                                    <button type="button" class="like text-center">
-                                        <i class="fa fa-heart"></i> {{ kitchen.likes }}
+                                    <button type="button" id="like" data-id="{{ kitchen.id }}" class="like text-center">
+                                        <i class="fa fa-heart"></i>
+                                        <span class="countLikes">
+                                            {{ kitchen.likes }}
+                                        </span>
                                     </button>
                                 </div>
                             {% endif %}
@@ -121,8 +127,11 @@
                                     <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
                                         <i class="fa fa-phone"></i>
                                     </button>
-                                    <button type="button" class="like text-center">
-                                        <i class="fa fa-heart"></i> {{ kitchen.likes }}
+                                    <button type="button" id="like" data-id="{{ kitchen.id }}" class="like text-center">
+                                        <i class="fa fa-heart"></i>
+                                        <span class="countLikes">
+                                            {{ kitchen.likes }}
+                                        </span>
                                     </button>
                                 </div>
                             {% endif %}
@@ -171,8 +180,11 @@
                                     <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
                                         <i class="fa fa-phone"></i>
                                     </button>
-                                    <button type="button" class="like text-center">
-                                        <i class="fa fa-heart"></i> {{ kitchen.likes }}
+                                    <button type="button" id="like" data-id="{{ kitchen.id }}" class="like text-center">
+                                        <i class="fa fa-heart"></i>
+                                        <span class="countLikes">
+                                            {{ kitchen.likes }}
+                                        </span>
                                     </button>
                                 </div>
                             {% endif %}
@@ -211,8 +223,11 @@
                                     <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
                                         <i class="fa fa-phone"></i>
                                     </button>
-                                    <button type="button" class="like text-center">
-                                        <i class="fa fa-heart"></i> {{ kitchen.likes }}
+                                    <button type="button" id="like" data-id="{{ kitchen.id }}" class="like text-center">
+                                        <i class="fa fa-heart"></i>
+                                        <span class="countLikes">
+                                            {{ kitchen.likes }}
+                                        </span>
                                     </button>
                                 </div>
                             {% endif %}
@@ -259,8 +274,11 @@
                         <button type="button" style="right: -10px;" class="phone text-center" data-toggle="modal" data-target="#requestcall">
                             <i class="fa fa-phone"></i>
                         </button>
-                        <button type="button" class="like text-center">
-                            <i class="fa fa-heart"></i> {{ kitchen.likes }}
+                        <button type="button" id="like" style="margin-left: 10px;" data-id="{{ kitchen.id }}" class="like text-center">
+                            <i class="fa fa-heart"></i>
+                            <span class="countLikes">
+                                {{ kitchen.likes }}
+                            </span>
                         </button>
                     {% endif %}
                 {% endfor %}

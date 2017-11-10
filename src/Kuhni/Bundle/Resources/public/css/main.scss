@@ -426,8 +426,11 @@ section#reviews{
 			padding: 7px;
 			position: absolute;
 			z-index: 99;
-			color: red;
+			color: #222222;
 			border: none;
+		}
+		button.like{
+			color: red;
 		}
 		button.phone{
 			background-color: rgba(228, 228, 228, 0.6);
@@ -586,8 +589,11 @@ section#reviews{
 		padding: 7px;
 		position: absolute;
 		z-index: 99;
-		color: red;
+		color: #222222;
 		border: none;
+	}
+	.like .active{
+		color: red;
 	}
 	.first-small-col{
 		margin-left: 0;

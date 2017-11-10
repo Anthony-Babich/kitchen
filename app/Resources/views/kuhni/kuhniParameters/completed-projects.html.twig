@@ -35,8 +35,11 @@
                     <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
                         <i class="fa fa-phone"></i>
                     </button>
-                    <button type="button" class="like text-center">
-                        <i class="fa fa-heart"></i> {{ completedProject.likes }}
+                    <button type="button" id="like" data-id="{{ completedProject.id }}" class="like text-center">
+                        <i class="fa fa-heart"></i>
+                        <span class="countLikes">
+                            {{ completedProject.likes }}
+                        </span>
                     </button>
                 </div>
             {% endfor %}

@@ -18,18 +18,11 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class HomepageController extends Controller
 {
-    private $session;
     private $colorStation;
-    public function __construct()
-    {
-        $this->session = new Session();
-        $this->session->set('likeKuhniProduct', 0);
-    }
 
     public function indexAction()
     {
