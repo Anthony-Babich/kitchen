@@ -20,6 +20,7 @@
 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link href="{{ asset('bundles/kuhni/css/bootstrap.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('bundles/kuhni/css/bootstrap-grid.css') }}" rel="stylesheet" type="text/css">
 
         <link href="{{ asset('bundles/kuhni/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
@@ -48,7 +49,10 @@
         {% block content %}{% endblock %}
     {% endblock %}
 
-    {% include 'footer.html.twig' %}
+
+    {% block footer %}
+        {% include 'footer.html.twig' %}
+    {% endblock%}
 
     {% block modal %}
     {% endblock%}
@@ -79,6 +83,8 @@
         <script src="{{ asset('bundles/kuhni/slick/slick.js') }}" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
             $(document).ready(function(){
+                //promo
+                //$('section#promo').css('height', document.documentElement.clientHeight);
                 //slick slider for popular and completed projects
                 $('.popular-slick').slick({
                     slidesToShow: 4,

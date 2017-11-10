@@ -35,9 +35,12 @@ class HomepageController extends Controller
             ->getResult();
 
         if (!empty($result)){
+            $image = array();
             foreach ($result as $item) {
                 $image[] = 'upload/catalog/' . $item->getImageName();
             }
+        }else{
+            $image[] = 'upload/catalog/no_image.jpg';
         }
 
         return $this->render('homepage/index.html.twig', array(
@@ -91,26 +94,26 @@ class HomepageController extends Controller
                 'attr' => [
                     'placeholder' => 'ВАШЕ EMAIL *',
                     'class' => 'form-control',
-                    'required' => false,
                 ],
+                'required' => false,
                 'label' => false,
             ))
             ->add('message', TextareaType::class, array(
                 'attr' => [
                     'placeholder' => 'ВАШЕ СООБЩЕНИЕ *',
                     'class' => 'form-control',
-                    'required' => false,
                 ],
+                'required' => false,
                 'label' => false,
             ))
             ->add('star', IntegerType::INTEGER, array(
                 'attr' => [
                     'placeholder' => 'Количество звезд *',
                     'class' => 'form-control',
-                    'required' => false,
                     'min' => 1,
                     'max' => 5
                 ],
+                'required' => false,
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
@@ -253,8 +256,8 @@ class HomepageController extends Controller
                 'attr' => [
                     'placeholder' => 'Ваш EMAIL',
                     'class' => 'form-control',
-                    'required' => false,
                 ],
+                'required' => false,
                 'label' => false,
             ))
             ->add('message', TextType::class, array(
@@ -470,8 +473,8 @@ class HomepageController extends Controller
                 'attr' => [
                     'placeholder' => 'Ваш EMAIL',
                     'class' => 'form-control',
-                    'required' => false,
                 ],
+                'required' => false,
                 'label' => false,
             ))
             ->add('message', TextType::class, array(
@@ -624,8 +627,8 @@ class HomepageController extends Controller
                 'attr' => [
                     'placeholder' => 'ВАШЕ СООБЩЕНИЕ *',
                     'class' => 'form-control',
-                    'required' => false,
                 ],
+                'required' => false,
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(

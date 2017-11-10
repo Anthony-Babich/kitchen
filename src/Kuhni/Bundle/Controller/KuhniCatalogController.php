@@ -814,8 +814,8 @@ class KuhniCatalogController extends Controller
                 'attr' => [
                     'placeholder' => 'Ваш EMAIL',
                     'class' => 'form-control',
-                    'required' => false,
                 ],
+                'required' => false,
                 'label' => false,
             ))
             ->add('message', TextType::class, array(
@@ -1041,8 +1041,8 @@ class KuhniCatalogController extends Controller
                 'attr' => [
                     'placeholder' => 'ВАШЕ СООБЩЕНИЕ *',
                     'class' => 'form-control',
-                    'required' => false,
                 ],
+                'required' => false,
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
@@ -1181,8 +1181,8 @@ class KuhniCatalogController extends Controller
                 'attr' => [
                     'placeholder' => 'Ваш EMAIL',
                     'class' => 'form-control',
-                    'required' => false,
                 ],
+                'required' => false,
                 'label' => false,
             ))
             ->add('message', TextType::class, array(

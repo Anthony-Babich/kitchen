@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-10 col-md-5 col-lg-4 text-center">
+            {{ form_start(formPromo, { "action": path("promo_order"), "method": "POST", "attr": {"class": "ajaxForm", "id": "PromoForm"} }) }}
+            {{ form_errors(formPromo) }}
+                <div class="form-group">
+                    {{ form_row(formPromo.name) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(formPromo.phone) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(formPromo.gorod) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(formPromo.email) }}
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" name="privacy-politycs" data-required="true" value="согласен с политикой конфиденциальности"> Прочитал и согласен с <a target="_blank" href="http://kitchens/web/app_dev.php/privacy.php">политикой конфиденциальности</a>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-xl">Отправить заявку</button>
+                </div>
+            {{ form_rest(formPromo)}}
+            {{ form_end(formPromo) }}
+        </div>
+    </div>
+</div>

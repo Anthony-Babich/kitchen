@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 09 2017 г., 17:40
+-- Время создания: Ноя 10 2017 г., 17:21
 -- Версия сервера: 5.7.16-log
 -- Версия PHP: 7.1.0
 
@@ -2241,7 +2241,7 @@ CREATE TABLE `fos_user_user` (
 --
 
 INSERT INTO `fos_user_user` (`id`, `metro_id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `confirmation_token`, `password_requested_at`, `roles`, `longitude`, `latitude`, `description`, `title`, `address`, `workingHours`, `tc`, `gorod`) VALUES
-(1, NULL, 'admin', 'admin', 'antosha.1998.ru@mail.ru', 'antosha.1998.ru@mail.ru', 1, 's8idrmPEbwqhCdI1xVPzmJM.4wnIwxjQBv3avvmmwdk', 'Jj37G2HUiIN+V61ebiIHg9NbA6kzvSSNBiYJNgIJ9HeQT5tL5ighU6QKhn/zg4cQKuMxOBK5MNtULXcafRicjA==', '2017-11-09 15:03:50', NULL, NULL, 'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}', '55.761745', '37.572460', 'АртСтильДизайн', 'АртСтильДизайн', 'Гродно, ул. Держинского', '9:00 - 18:00', NULL, NULL),
+(1, NULL, 'admin', 'admin', 'antosha.1998.ru@mail.ru', 'antosha.1998.ru@mail.ru', 1, 's8idrmPEbwqhCdI1xVPzmJM.4wnIwxjQBv3avvmmwdk', 'Jj37G2HUiIN+V61ebiIHg9NbA6kzvSSNBiYJNgIJ9HeQT5tL5ighU6QKhn/zg4cQKuMxOBK5MNtULXcafRicjA==', '2017-11-10 13:59:03', NULL, NULL, 'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}', '55.761745', '37.572460', 'АртСтильДизайн', 'АртСтильДизайн', 'Гродно, ул. Держинского', '9:00 - 18:00', NULL, NULL),
 (2, 1, 'zov', 'zov', 'zov@gmail.com', 'zov@gmail.com', 1, 's8idrmPEbwqhCdI1xVPzmJM.4wnIwxjQBv3avvmmwdk', 'Jj37G2HUiIN+V61ebiIHg9NbA6kzvSSNBiYJNgIJ9HeQT5tL5ighU6QKhn/zg4cQKuMxOBK5MNtULXcafRicjA==', '2017-10-26 15:34:48', NULL, NULL, 'a:1:{i:0;s:10:\"ROLE_STAFF\";}', '55.752743', '37.597351', 'ZOV1', 'ZOV1', 'ул. Горького 5к1', '9:00 - 18:00', 'ТЦ \"Меридиан\"', 'Москва'),
 (3, NULL, 'zov2', 'zov2', 'zov2@gmail.com', 'zov2@gmail.com', 1, 's8idrmPEbwqhCdI1xVPzmJM.4wnIwxjQBv3avvmmwdk', 'Jj37G2HUiIN+V61ebiIHg9NbA6kzvSSNBiYJNgIJ9HeQT5tL5ighU6QKhn/zg4cQKuMxOBK5MNtULXcafRicjA==', '2017-10-26 15:34:48', NULL, NULL, 'a:1:{i:0;s:10:\"ROLE_ADMIN\";}', '55.749742', '37.632713', 'ZOV2', 'ZOV2', 'ул. Горького 10к2', '9:00 - 18:00', NULL, 'Рядом с Москвой');
 
@@ -2326,15 +2326,15 @@ CREATE TABLE `kuhni` (
 
 INSERT INTO `kuhni` (`id`, `id_catalog`, `name`, `title`, `description`, `keywords`, `main_description`, `id_kuhni_style`, `id_kuhni_material`, `id_kuhni_config`, `id_kuhni_color`, `imageName`, `imageSize`, `updated`, `slug`, `price`, `discount`, `fixedPrice`, `razmer`, `nameFasad`, `matFasad`, `stoleshnica`, `korpus`, `furnitura`, `likes`, `count_projects`, `noDiscountPrice`) VALUES
 (1, 1, 'alberta', 'alberta', 'alberta', 'alberta', 'alberta', 1, 1, 1, 1, 'alberta_1.jpg', 1024, '2017-10-05 10:13:13', 'alberta', 10200, 15, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 1, 1, 11730),
-(2, 1, 'annetta', 'annetta', 'annetta', 'annetta', 'annetta', 2, 2, 2, 2, 'annetta_1.jpg', 1024, '2017-10-05 10:13:13', 'annetta', 10200, 0, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
-(3, 1, 'art', 'art', 'art', 'art', 'art', 3, 3, 3, 3, 'art_1.jpg', 1024, '2017-10-05 10:13:13', 'art', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
-(4, 1, 'artwood', 'artwood', 'artwood', 'artwood', 'artwood', 4, 4, 4, 4, 'artwood_1.jpg', 1024, '2017-10-05 10:13:13', 'artwood', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
-(5, 1, 'belfast', 'belfast', 'belfast', 'belfast', 'belfast', 5, 5, 5, 5, 'belfast_1.jpg', 1024, '2017-10-05 10:13:13', 'belfast', 10200, 15, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
-(6, 1, 'bergen', 'bergen', 'bergen', 'bergen', 'bergen', 6, 6, 6, 6, 'bergen_1.jpg', 1024, '2017-10-05 10:13:13', 'bergen', 10200, 15, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
-(7, 1, 'born', 'born', 'born', 'born', 'born', 7, 7, 7, 7, 'born_1.jpg', 1024, '2017-10-05 10:13:13', 'born', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
+(2, 1, 'annetta', 'annetta', 'annetta', 'annetta', 'annetta', 2, 2, 2, 2, 'annetta_1.jpg', 1024, '2017-10-05 10:13:13', 'annetta', 10200, 0, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 10200),
+(3, 1, 'art', 'art', 'art', 'art', 'art', 3, 3, 3, 3, 'art_1.jpg', 1024, '2017-10-05 10:13:13', 'art', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 1, 0, 11730),
+(4, 1, 'artwood', 'artwood', 'artwood', 'artwood', 'artwood', 4, 4, 4, 4, 'artwood_1.jpg', 1024, '2017-10-05 10:13:13', 'artwood', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 1, 0, 11730),
+(5, 1, 'belfast', 'belfast', 'belfast', 'belfast', 'belfast', 5, 5, 5, 5, 'belfast_1.jpg', 1024, '2017-10-05 10:13:13', 'belfast', 10200, 15, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 1, 0, 11730),
+(6, 1, 'bergen', 'bergen', 'bergen', 'bergen', 'bergen', 6, 6, 6, 6, 'bergen_1.jpg', 1024, '2017-10-05 10:13:13', 'bergen', 10200, 15, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 1, 0, 11730),
+(7, 1, 'born', 'born', 'born', 'born', 'born', 7, 7, 7, 7, 'born_1.jpg', 1024, '2017-10-05 10:13:13', 'born', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 1, 0, 11730),
 (8, 1, 'brig', 'brig', 'brig', 'brig', 'brig', 8, 8, 1, 8, 'brig_1.jpg', 1024, '2017-10-05 10:13:13', 'brig', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
-(9, 1, 'brunnen', 'brunnen', 'brunnen', 'brunnen', 'brunnen', 9, 9, 2, 9, 'brunnen_1.jpg', 1024, '2017-10-05 10:13:13', 'brunnen', 10200, 15, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
-(10, 1, 'chicago', 'chicago', 'chicago', 'chicago', 'chicago', 10, 10, 3, 10, 'chicago_1.jpg', 1024, '2017-10-05 10:13:13', 'chicago', 10200, 15, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
+(9, 1, 'brunnen', 'brunnen', 'brunnen', 'brunnen', 'brunnen', 9, 9, 2, 9, 'brunnen_1.jpg', 1024, '2017-10-05 10:13:13', 'brunnen', 10200, 15, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 1, 0, 11730),
+(10, 1, 'chicago', 'chicago', 'chicago', 'chicago', 'chicago', 10, 10, 3, 10, 'chicago_1.jpg', 1024, '2017-10-05 10:13:13', 'chicago', 10200, 15, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 1, 0, 11730),
 (11, 1, 'fortwood', 'fortwood', 'fortwood', 'fortwood', 'fortwood', 1, 11, 4, 11, 'fortwood_1.jpg', 1024, '2017-10-05 10:13:13', 'fortwood', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
 (12, 1, 'fortwood_v2', 'fortwood_v2', 'fortwood_v2', 'fortwood_v2', 'fortwood_v2', 2, 12, 5, 12, 'fortwood_v2_1.jpg', 1024, '2017-10-05 10:13:13', 'fortwood_v2', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
 (13, 1, 'glasgow', 'glasgow', 'glasgow', 'glasgow', 'glasgow', 3, 13, 6, 1, 'glasgow_1.jpg', 1024, '2017-10-05 10:13:13', 'glasgow', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
@@ -2346,28 +2346,28 @@ INSERT INTO `kuhni` (`id`, `id_catalog`, `name`, `title`, `description`, `keywor
 (19, 1, 'loft', 'loft', 'loft', 'loft', 'loft', 9, 6, 5, 7, 'loft_1.jpg', 1024, '2017-10-05 10:13:13', 'loft', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
 (20, 1, 'london', 'london', 'london', 'london', 'london', 10, 7, 6, 8, 'london_1.jpg', 1024, '2017-10-05 10:13:13', 'london', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
 (21, 1, 'longford', 'longford', 'longford', 'longford', 'longford', 1, 8, 7, 9, 'longford_1.jpg', 1024, '2017-10-05 10:13:13', 'longford', 10200, 15, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
-(22, 1, 'lotte', 'lotte', 'lotte', 'lotte', 'lotte', 2, 9, 1, 10, 'lotte_1.jpg', 1024, '2017-10-05 10:13:13', 'lotte', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
+(22, 1, 'lotte', 'lotte', 'lotte', 'lotte', 'lotte', 2, 9, 1, 10, 'lotte_1.jpg', 1024, '2017-10-05 10:13:13', 'lotte', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 1, 0, 11730),
 (23, 1, 'lotte_v2', 'lotte_v2', 'lotte_v2', 'lotte_v2', 'lotte_v2', 3, 10, 2, 11, 'lotte_v2_1.jpg', 1024, '2017-10-05 10:13:13', 'lotte_v2', 10200, 15, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
-(24, 1, 'lugano', 'lugano', 'lugano', 'lugano', 'lugano', 4, 11, 3, 12, 'lugano_1.jpg', 1024, '2017-10-05 10:13:13', 'lugano', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
+(24, 1, 'lugano', 'lugano', 'lugano', 'lugano', 'lugano', 4, 11, 3, 12, 'lugano_1.jpg', 1024, '2017-10-05 10:13:13', 'lugano', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 1, 0, 11730),
 (25, 1, 'madeira', 'madeira', 'madeira', 'madeira', 'madeira', 5, 12, 4, 1, 'madeira_1.jpg', 1024, '2017-10-05 10:13:13', 'madeira', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
 (26, 1, 'marseille-4', 'marseille-4', 'marseille-4', 'marseille-4', 'marseille-4', 6, 1, 5, 2, 'marseille-4_1.jpg', 1024, '2017-10-05 10:13:13', 'marseille-4', 10200, 15, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
 (27, 1, 'nord', 'nord', 'nord', 'nord', 'nord', 7, 2, 6, 3, 'nord_1.jpg', 1024, '2017-10-05 10:13:13', 'nord', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
 (28, 1, 'norfolk', 'norfolk', 'norfolk', 'norfolk', 'norfolk', 8, 3, 7, 4, 'norfolk_1.jpg', 1024, '2017-10-05 10:13:13', 'norfolk', 10200, 15, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
 (29, 1, 'oldfin', 'oldfin', 'oldfin', 'oldfin', 'oldfin', 9, 4, 1, 5, 'oldfin_1.jpg', 1024, '2017-10-05 10:13:13', 'oldfin', 10200, 15, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
-(30, 1, 'orion-mat-glossy', 'orion-mat-glossy', 'orion-mat-glossy', 'orion-mat-glossy', 'orion-mat-glossy', 10, 5, 2, 6, 'orion-mat-glossy_1.jpg', 1024, '2017-10-05 10:13:13', 'orion-mat-glossy', 10200, 15, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
+(30, 1, 'orion-mat-glossy', 'orion-mat-glossy', 'orion-mat-glossy', 'orion-mat-glossy', 'orion-mat-glossy', 10, 5, 2, 6, 'orion-mat-glossy_1.jpg', 1024, '2017-10-05 10:13:13', 'orion-mat-glossy', 10200, 15, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 1, 0, 11730),
 (31, 1, 'orion-olive-grey', 'orion-olive-grey', 'orion-olive-grey', 'orion-olive-grey', 'orion-olive-grey', 9, 6, 3, 7, 'orion-olive-grey_1.jpg', 1024, '2017-10-05 10:13:13', 'orion-olive-grey', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
 (32, 1, 'palermo', 'palermo', 'palermo', 'palermo', 'palermo', 1, 7, 4, 8, 'palermo_1.jpg', 1024, '2017-10-05 10:13:13', 'palermo', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
 (33, 1, 'paris', 'paris', 'paris', 'paris', 'paris', 2, 8, 5, 9, 'paris_1.jpg', 1024, '2017-10-05 10:13:13', 'paris', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
-(34, 1, 'pasadena', 'pasadena', 'pasadena', 'pasadena', 'pasadena', 3, 9, 6, 10, 'pasadena_1.jpg', 1024, '2017-10-05 10:13:13', 'pasadena', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
+(34, 1, 'pasadena', 'pasadena', 'pasadena', 'pasadena', 'pasadena', 3, 9, 6, 10, 'pasadena_1.jpg', 1024, '2017-10-05 10:13:13', 'pasadena', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 1, 0, 11730),
 (35, 1, 'portofino', 'portofino', 'portofino', 'portofino', 'portofino', 4, 10, 7, 11, 'portofino_1.jpg', 1024, '2017-10-05 10:13:13', 'portofino', 10200, 15, 1, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
 (36, 1, 'tirol', 'tirol', 'tirol', 'tirol', 'tirol', 5, 11, 1, 12, 'tirol_1.jpg', 1024, '2017-10-05 10:13:13', 'tirol', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
 (37, 1, 'tivoli', 'tivoli', 'tivoli', 'tivoli', 'tivoli', 6, 12, 2, 10, 'tivoli_1.jpg', 1024, '2017-10-05 10:13:13', 'tivoli', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
 (38, 1, 'weiden', 'weiden', 'weiden', 'weiden', 'weiden', 7, 13, 3, 11, 'weiden_1.jpg', 1024, '2017-10-05 10:13:13', 'weiden', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
 (39, 1, 'pasadena', 'pasadena', 'pasadena', 'pasadena', 'pasadena', 8, 9, 6, 10, 'pasadena_1.jpg', 1024, '2017-10-05 10:13:13', 'pasadena', 10200, 15, 0, '280х160см', '	Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 0, 11730),
-(40, 1, 'art', 'art', 'art', 'art', 'art', 1, 1, 1, 1, 'art_1.jpg', 1024, '2017-11-08 20:25:36', 'art_1_2', 10000, 10, 1, '100x100', 'Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 2, 2, 11000),
-(41, 1, 'art', 'art', 'art', 'art', 'art', 1, 1, 1, 1, 'art_1.jpg', 1024, '2017-11-08 20:27:33', 'art_1_2', 10000, 10, 1, '100x100', 'Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 2, 2, 11000),
-(42, 1, 'art', 'art', 'art', 'art', 'art', 1, 1, 1, 1, 'art_1.jpg', 1024, '2017-11-08 20:27:56', 'art_1_2', 10000, 10, 1, '100x100', 'Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 2, 2, 11000),
-(43, NULL, '123', '123', '123', '12312412', '124234142', 1, 1, 1, 1, 'artwood_1.jpg', 401404, '2017-11-09 12:47:44', 'blablabla', 1111, 1111, 1, '123', '123', '123', '123', '123', '123', 23, 32, 1111);
+(40, 1, 'art', 'art', 'art', 'art', 'art', 1, 1, 1, 1, 'art_1.jpg', 1024, '2017-11-08 20:25:36', 'art_1_2', 10000, 10, 1, '100x100', 'Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 2, 11000),
+(41, 1, 'art', 'art', 'art', 'art', 'art', 1, 1, 1, 1, 'art_1.jpg', 1024, '2017-11-08 20:27:33', 'art_1_2', 10000, 10, 1, '100x100', 'Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 2, 11000),
+(42, 1, 'art', 'art', 'art', 'art', 'art', 1, 1, 1, 1, 'art_1.jpg', 1024, '2017-11-08 20:27:56', 'art_1_2', 10000, 10, 1, '100x100', 'Акрил Како, Акрил Винил', 'Акрил', 'Бежевый гранит 38мм', 'ЛДСП Негро 18мм', 'Hettich, Blum, FGV', 0, 2, 11000),
+(43, 1, '123', '123', '123', '12312412', '124234142', 1, 1, 1, 1, 'artwood_1.jpg', 401404, '2017-11-09 12:47:44', 'blablabla', 1111, 1111, 1, '123', '123', '123', '123', '123', '123', 1, 32, 13454.21);
 
 --
 -- Триггеры `kuhni`
@@ -2782,6 +2782,31 @@ INSERT INTO `kuhni_style` (`id`, `title`, `keywords`, `main_description`, `image
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `promo`
+--
+
+CREATE TABLE `promo` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `gorod` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `discount` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `geoIP` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `promo`
+--
+
+INSERT INTO `promo` (`id`, `name`, `phone`, `gorod`, `email`, `discount`, `url`, `geoIP`) VALUES
+(1, 'Антон Бабич', '+7 (495)123-45-678', 'Гродно', 'pipets1675@gmail.com', '40%', 'http://kitchen/web/app_dev.php/promo', 'Не удалось определить координаты посетителя'),
+(2, 'Антон Бабич', '298324405', 'Гродно', '', '40%', 'http://kitchen/web/app_dev.php/promo', 'Не удалось определить координаты посетителя');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `request_call`
 --
 
@@ -3121,6 +3146,12 @@ ALTER TABLE `kuhni_style`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `promo`
+--
+ALTER TABLE `promo`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `request_call`
 --
 ALTER TABLE `request_call`
@@ -3291,6 +3322,11 @@ ALTER TABLE `kuhni_shpon`
 --
 ALTER TABLE `kuhni_style`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT для таблицы `promo`
+--
+ALTER TABLE `promo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT для таблицы `request_call`
 --

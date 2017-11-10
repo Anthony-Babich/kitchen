@@ -271,10 +271,22 @@ services:
   app.admin.articles:
     class: Kuhni\Bundle\Admin\ArticlesAdmin
     tags:
-      - { name: sonata.admin, manager_type: orm, label: "Статьи" }
+      - { name: sonata.admin, manager_type: orm, group: "Статьи", label: "Статьи" }
     arguments:
       - ~
       - Kuhni\Bundle\Entity\Articles
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+#  Promo
+  app.admin.promo:
+    class: Kuhni\Bundle\Admin\PromoAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Промо", label: "Статьи" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\Promo
       - ~
     calls:
       - [ setTranslationDomain, [Kuhni\Bundle]]
