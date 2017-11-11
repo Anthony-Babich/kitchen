@@ -733,9 +733,6 @@ footer {
   #portfolio .portfolio-item .portfolio-caption h4 {
     font-size: 16px; } }
 @media (max-width: 425px) {
-  section h2.section-heading {
-    font-size: 36px; }
-
   #modal-style h4, #modal-config h4, #modal-material h4 {
     font-size: 16px; }
 
