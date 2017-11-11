@@ -1074,17 +1074,17 @@ footer{
 }
 
 //all-products
-@media (min-width: 1200px){
-	#all-products{
-		.col-xl-6 {
-			flex: 0 0 calc(50% - 12.5px);
-		}
-	}
-}
 @media (min-width: 768px){
 	#all-products{
 		.col-md-12 {
 			flex: 0 0 calc(100% - 10px);
+		}
+	}
+}
+@media (min-width: 1200px){
+	#all-products{
+		.col-xl-6 {
+			flex: 0 0 calc(50% - 12px);
 		}
 	}
 }
