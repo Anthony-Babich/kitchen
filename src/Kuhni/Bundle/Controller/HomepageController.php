@@ -121,11 +121,8 @@ class HomepageController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.salon = 1')
+                            ->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -194,11 +191,8 @@ class HomepageController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.salon = 1')
+                            ->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -278,11 +272,8 @@ class HomepageController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.salon = 1')
+                            ->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -342,11 +333,8 @@ class HomepageController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.salon = 1')
+                            ->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -411,11 +399,8 @@ class HomepageController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.salon = 1')
+                            ->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -489,11 +474,8 @@ class HomepageController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.salon = 1')
+                            ->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -565,11 +547,8 @@ class HomepageController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.salon = 1')
+                            ->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -636,11 +615,8 @@ class HomepageController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.salon = 1')
+                            ->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',

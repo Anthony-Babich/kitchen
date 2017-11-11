@@ -101,6 +101,29 @@ class User extends BaseUser
     private $gorod;
 
     /**
+     * @var boolean $salon
+     *
+     * @ORM\Column(name="salon", type="boolean")
+     */
+    private $salon;
+
+    /**
+     * @return boolean
+     */
+    public function getSalon()
+    {
+        return $this->salon;
+    }
+
+    /**
+     * @param boolean $salon
+     */
+    public function setSalon(boolean $salon)
+    {
+        $this->salon = $salon;
+    }
+
+    /**
      * @return User
      */
     public function getMetroId()

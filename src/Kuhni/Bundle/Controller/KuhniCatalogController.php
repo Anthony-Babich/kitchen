@@ -488,16 +488,19 @@ class KuhniCatalogController extends Controller
 
             $result = $this->searchParametr($slug);
 
+            $image = array();
             foreach ($result as $item) {
                 $image[] = 'upload/kuhni/kitchens/' . $item['imageName'];
             }
 
             $popular = $this->getPopular();
+            $popularImage = array();
             foreach ($popular as $item) {
                 $popularImage[] = 'upload/kuhni/kitchens/' . $item['imageName'];
             }
 
             $completedProjects = $this->getCompletedProjects();
+            $completedProjectsImage = array();
             foreach ($completedProjects as $item) {
                 $completedProjectsImage[] = 'upload/kuhni/kitchens/' . $item['imageName'];
             }
@@ -752,11 +755,8 @@ class KuhniCatalogController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.salon = 1')
+                            ->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -836,11 +836,8 @@ class KuhniCatalogController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.salon = 1')
+                            ->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -909,11 +906,8 @@ class KuhniCatalogController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.salon = 1')
+                            ->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -979,11 +973,8 @@ class KuhniCatalogController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.salon = 1')
+                            ->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -1050,11 +1041,8 @@ class KuhniCatalogController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.salon = 1')
+                            ->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -1119,11 +1107,8 @@ class KuhniCatalogController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.salon = 1')
+                            ->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -1197,11 +1182,8 @@ class KuhniCatalogController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.salon = 1')
+                            ->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',

@@ -2181,12 +2181,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCoreBundle.git",
-                "reference": "4c2387ddc0cb1cfc332fc79e14af0b2a730b1248"
+                "reference": "2946a0b40df0699afdaee4f6bd6c413f6b052ca9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/4c2387ddc0cb1cfc332fc79e14af0b2a730b1248",
-                "reference": "4c2387ddc0cb1cfc332fc79e14af0b2a730b1248",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/2946a0b40df0699afdaee4f6bd6c413f6b052ca9",
+                "reference": "2946a0b40df0699afdaee4f6bd6c413f6b052ca9",
                 "shasum": ""
             },
             "require": {
@@ -2249,7 +2249,7 @@
             "keywords": [
                 "sonata"
             ],
-            "time": "2017-11-08T01:40:07+00:00"
+            "time": "2017-11-11T01:55:06+00:00"
         },
         {
             "name": "sonata-project/datagrid-bundle",
@@ -2257,12 +2257,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDatagridBundle.git",
-                "reference": "64d78f172738293ba772f20142a0b484dcf6ac8c"
+                "reference": "37bdbf20a43e1c84fb81a10de9a8bff5c53720dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/64d78f172738293ba772f20142a0b484dcf6ac8c",
-                "reference": "64d78f172738293ba772f20142a0b484dcf6ac8c",
+                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/37bdbf20a43e1c84fb81a10de9a8bff5c53720dc",
+                "reference": "37bdbf20a43e1c84fb81a10de9a8bff5c53720dc",
                 "shasum": ""
             },
             "require": {
@@ -2307,7 +2307,7 @@
                 "datagrid",
                 "sonata"
             ],
-            "time": "2017-11-08T01:35:07+00:00"
+            "time": "2017-11-11T02:00:07+00:00"
         },
         {
             "name": "sonata-project/doctrine-extensions",
@@ -2446,12 +2446,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataEasyExtendsBundle.git",
-                "reference": "02440196c40b22198b34fb5d8296012be0d89303"
+                "reference": "dc388d529e7a24518e5d453c3b5f08de45688c69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataEasyExtendsBundle/zipball/02440196c40b22198b34fb5d8296012be0d89303",
-                "reference": "02440196c40b22198b34fb5d8296012be0d89303",
+                "url": "https://api.github.com/repos/sonata-project/SonataEasyExtendsBundle/zipball/dc388d529e7a24518e5d453c3b5f08de45688c69",
+                "reference": "dc388d529e7a24518e5d453c3b5f08de45688c69",
                 "shasum": ""
             },
             "require": {
@@ -2500,7 +2500,7 @@
                 "Easy Extends",
                 "sonata"
             ],
-            "time": "2017-11-08T19:14:55+00:00"
+            "time": "2017-11-11T02:25:08+00:00"
         },
         {
             "name": "sonata-project/exporter",
@@ -3360,16 +3360,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.8.28",
+            "version": "v2.8.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "074ae55c3e8029655bfcf2577c89844784cf6518"
+                "reference": "341df0d9ee359197061fc18a033a8532cb4d5d56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/074ae55c3e8029655bfcf2577c89844784cf6518",
-                "reference": "074ae55c3e8029655bfcf2577c89844784cf6518",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/341df0d9ee359197061fc18a033a8532cb4d5d56",
+                "reference": "341df0d9ee359197061fc18a033a8532cb4d5d56",
                 "shasum": ""
             },
             "require": {
@@ -3441,6 +3441,7 @@
                 "symfony/yaml": "self.version"
             },
             "require-dev": {
+                "doctrine/annotations": "~1.0",
                 "doctrine/data-fixtures": "1.0.*",
                 "doctrine/dbal": "~2.4",
                 "doctrine/doctrine-bundle": "~1.2",
@@ -3494,7 +3495,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2017-10-05T23:24:20+00:00"
+            "time": "2017-11-10T19:54:36+00:00"
         },
         {
             "name": "twig/extensions",
@@ -3895,7 +3896,7 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v2.8.28",
+            "version": "v2.8.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
