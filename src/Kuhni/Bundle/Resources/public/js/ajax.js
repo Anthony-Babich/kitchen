@@ -99,44 +99,5 @@ $(document).ready(function(){
                 '</div>'
             );
         }
-    })
-
-    //like for kitchen
-    .on('click', 'button#like', function (e) {
-        e.preventDefault();
-        var $button = $(this);
-        var ar = {
-            'id' : $(this).attr('data-id')
-        };
-        //id kitchen $(this).attr('data-id')
-        $.ajax({
-            type: 'post',
-            url: 'http://kitchen/web/app_dev.php/newlike',
-            data: ar
-        }).done(function (data, status) {
-            var data1 = $.parseJSON(data);
-            if ((data1['success'] = 'success') && ((status = 'success'))) {
-                if ($button.hasClass('active')) {
-                    $button.removeClass('active');
-                    $button.find('span.countLikes').text(data1['count']);
-                } else {
-                    $button.addClass('active');
-                    $button.find('span.countLikes').text(data1['count']);
-                }
-            }else{
-                if (data['success'] = 'noData'){
-                    alert('Нету такой кухни! Перезагрузите страницу!');
-                }
-            }
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-            if (typeof jqXHR.responseJSON !== 'undefined') {
-                if (jqXHR.responseJSON.hasOwnProperty('form')) {
-                    $('#form_body').html(jqXHR.responseJSON.form);
-                }
-                $('.form_error').html(jqXHR.responseJSON.message);
-            } else {
-                alert(errorThrown);
-            }
-        });
     });
 });

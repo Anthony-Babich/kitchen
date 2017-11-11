@@ -2,11 +2,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-xl-8 text-center">
-                <div class="product-images">
+                <div class="fotorama" data-width="100%" data-nav-inside="true">
                     {% for image in images %}
-                        {% if not loop.first %}
-                        <img src="{{ asset(image) }}" class="slide-product-img">
-                        {% endif %}
+                        <img src="{{ asset(image) }}">
                     {% endfor %}
                 </div>
             </div>

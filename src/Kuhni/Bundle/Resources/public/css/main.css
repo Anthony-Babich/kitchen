@@ -277,9 +277,6 @@ section#reviews {
   #popular .slide-col, #completed-projects .slide-col {
     width: 100%;
     margin-right: 5px; }
-    #popular .slide-col .slide-product-img, #completed-projects .slide-col .slide-product-img {
-      width: 100%;
-      height: 175px; }
     #popular .slide-col a, #completed-projects .slide-col a {
       width: 100%;
       height: 199px; }
@@ -469,9 +466,9 @@ section#reviews {
   #all-products .row {
     margin-right: -25px; }
   #all-products .slide-product-img.big {
-    height: 350px; }
+    height: 500px; }
   #all-products .slide-product-img {
-    height: 170px; }
+    height: 245px; }
   #all-products .big-a-10 {
     margin-left: 10px; }
     #all-products .big-a-10 .pos-bot-l {
