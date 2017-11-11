@@ -283,7 +283,7 @@ services:
   app.admin.promo:
     class: Kuhni\Bundle\Admin\PromoAdmin
     tags:
-      - { name: sonata.admin, manager_type: orm, group: "Промо", label: "Статьи" }
+      - { name: sonata.admin, manager_type: orm, group: "Промо", label: "Промо" }
     arguments:
       - ~
       - Kuhni\Bundle\Entity\Promo
