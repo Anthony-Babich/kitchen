@@ -1,39 +1,24 @@
 <section id="product">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-xl-8 text-center">
+            <div class="col-12 col-xl-7 text-center">
                 <div class="fotorama" data-width="100%" data-nav-inside="true">
                     {% for image in images %}
                         <img src="{{ asset(image) }}">
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-md-12 col-xl-4" id="description">
+            <div class="col-12 col-xl-5" id="description">
                 <div class="row title">
                     <div class="col-12">
                         <h3 class="text-left">{{ kitchen.title }}</h3>
                     </div>
                 </div>
-                <div class="row description">
-                    <div class="col-12">
-                        <p>{{ kitchen.description }}</p>
-                    </div>
-                </div>
                 <div class="row">
-                    <div class="col-4 price text-center">
-                        <p class="head">цена со скидкой</p>
-                        <p class="active">от {{ kitchen.price }} руб</p>
-                    </div>
-                    <div class="col-4 price text-center">
-                        <p class="head active">скидка</p>
-                        <div class="procent active">
-                            <span>{{ kitchen.discount }}%</span>
-                        </div>
-                        <a href="#">Смотреть акцию <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="col-4 price text-center">
-                        <p class="head">цена</p>
-                        <p><s>{{ kitchen.noDiscountPrice }} руб</s></p>
+                    <div class="col-12">
+                        <p class="now-price">
+                            {{ kitchen.price }} руб.
+                        </p>
                     </div>
                 </div>
                 <div class="row">
@@ -45,6 +30,22 @@
                                 <p>*Цену и наличие уточняйте</p>
                             {% endif %}
                         </div>
+                    </div>
+                </div>
+                <div class="row" id="price">
+                    <div class="col-4">
+                        <span class="cost-price"><b>Цена</b><del>{{ kitchen.noDiscountPrice }} руб.</del></span>
+                    </div>
+                    <div class="col-4">
+                        <span class="discount"><b>Скидка</b><em>{{ kitchen.discount }}%</em></span>
+                    </div>
+                    <div class="col-4">
+                        <span class="save-price"><b>Вы экономите</b><em>{{ kitchen.noDiscountPrice - kitchen.price }} руб.</em></span>
+                    </div>
+                </div>
+                <div class="row description">
+                    <div class="col-12">
+                        <p>{{ kitchen.description }}</p>
                     </div>
                 </div>
                 <div class="row">

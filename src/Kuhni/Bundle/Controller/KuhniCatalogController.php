@@ -470,8 +470,8 @@ class KuhniCatalogController extends Controller
                             $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
                         }
                         $strResult .= "</a>";
-                        $strResult .= '<button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall"><i class="fa fa-phone"></i></button>';
-                        $strResult .= '<button type="button" id="like" data-id='.$result[$i]["id"].' style="margin-left: 10px;" class="like text-center"><i class="fa fa-heart"></i><span class="countLikes"> '.$result[$i]['likes'].'</span></button>';
+                        $strResult .= '<button type="button" class="phone big-a-10 text-center" data-toggle="modal" data-target="#requestcall"><i class="fa fa-phone"></i></button>';
+                        $strResult .= '<button type="button" id="like" data-id='.$result[$i]["id"].' class="like text-center"><i class="fa fa-heart"></i><span class="countLikes"> '.$result[$i]['likes'].'</span></button>';
                     }
                 }
                 $strResult .= "</div></div></div>";
