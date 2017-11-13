@@ -6,10 +6,10 @@ php_value session.auto_start 1
 </IfModule>
 
 <IfModule mod_rewrite.c>
-    Options +FollowSymlinks
+#    Options +FollowSymlinks
     RewriteEngine On
 
-    RewriteRule ^bundles/(.*)$ /web/bundles/$1  [QSA,L]
+#    RewriteRule ^bundles/(.*)$ /web/bundles/$1  [QSA,L]
     RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
     RewriteRule ^(.*) - [E=BASE:%1]
 
@@ -22,7 +22,7 @@ php_value session.auto_start 1
     RewriteCond %{REQUEST_FILENAME} -f
     RewriteRule .? - [L]
 
-    RewriteRule .? %{ENV:BASE}/web/app.php [L]
+    RewriteRule .? %{ENV:BASE}/app.php [L]
 </IfModule>
 
 <IfModule !mod_rewrite.c>
