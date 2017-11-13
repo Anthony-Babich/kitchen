@@ -15,7 +15,7 @@ php_value session.auto_start 1
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
     RewriteCond %{ENV:REDIRECT_STATUS} ^$
-    RewriteRule ^app\.php(/(.*)|$) %{ENV:BASE}../$2 [R=301,L]
+    RewriteRule ^app\.php(/(.*)|$) %{ENV:BASE}/$2 [R=301,L]
 
     RewriteCond %{REQUEST_FILENAME} -f
     RewriteRule .? - [L]
