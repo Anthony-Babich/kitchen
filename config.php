@@ -12,7 +12,7 @@ if (!in_array(@$_SERVER['REMOTE_ADDR'], array(
     exit('This script is only accessible from localhost.');
 }
 
-require_once dirname(__FILE__).'/../app/SymfonyRequirements.php';
+require_once dirname(__FILE__) . '/../app/SymfonyRequirements.php';
 
 $symfonyRequirements = new SymfonyRequirements();
 
@@ -238,7 +238,7 @@ $hasMinorProblems = (bool) count($minorProblems);
                 background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAcCAIAAAAvP0KbAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAEFJREFUeNpiPnv2LNMdvlymf///M/37B8R/QfQ/MP33L4j+B6Qh7L9//sHpf2h8MA1V+w/KRjYLaDaLCU8vQIABAFO3TxZriO4yAAAAAElFTkSuQmCC) repeat-x top left;
             }
         </style>
-        <link rel="stylesheet" href="bundles/sensiodistribution/webconfigurator/css/install.css" media="all" />
+        <link rel="stylesheet" href="web/bundles/sensiodistribution/webconfigurator/css/install.css" media="all" />
     </head>
     <body>
         <div id="content">
