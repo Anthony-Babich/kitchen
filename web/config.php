@@ -12,7 +12,7 @@ if (!in_array(@$_SERVER['REMOTE_ADDR'], array(
     exit('This script is only accessible from localhost.');
 }
 
-require_once dirname(__FILE__) . '/../app/SymfonyRequirements.php';
+require_once dirname(__FILE__).'/../app/SymfonyRequirements.php';
 
 $symfonyRequirements = new SymfonyRequirements();
 
@@ -322,8 +322,8 @@ $hasMinorProblems = (bool) count($minorProblems);
 
                         <ul class="symfony-install-continue">
                             <?php if (!$hasMajorProblems): ?>
-                                <li><a href="web/app_dev.php/_configurator/">Configure your Symfony Application online</a></li>
-                                <li><a href="app_dev.php">Bypass configuration and go to the Welcome page</a></li>
+                                <li><a href="app_dev.php/_configurator/">Configure your Symfony Application online</a></li>
+                                <li><a href="app_dev.php/">Bypass configuration and go to the Welcome page</a></li>
                             <?php endif; ?>
                             <?php if ($hasMajorProblems || $hasMinorProblems): ?>
                                 <li><a href="config.php">Re-check configuration</a></li>

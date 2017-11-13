@@ -2181,12 +2181,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCoreBundle.git",
-                "reference": "2946a0b40df0699afdaee4f6bd6c413f6b052ca9"
+                "reference": "7c72ed83ebd773837e0cc06d56cea9eb4b2e6283"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/2946a0b40df0699afdaee4f6bd6c413f6b052ca9",
-                "reference": "2946a0b40df0699afdaee4f6bd6c413f6b052ca9",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/7c72ed83ebd773837e0cc06d56cea9eb4b2e6283",
+                "reference": "7c72ed83ebd773837e0cc06d56cea9eb4b2e6283",
                 "shasum": ""
             },
             "require": {
@@ -2249,7 +2249,7 @@
             "keywords": [
                 "sonata"
             ],
-            "time": "2017-11-11T01:55:06+00:00"
+            "time": "2017-11-13T06:47:44+00:00"
         },
         {
             "name": "sonata-project/datagrid-bundle",
