@@ -102,52 +102,52 @@ vich_uploader:
     db_driver: orm
     mappings:
         kuhni:
-            uri_prefix:         /web/upload/kuhni/kitchens
-            upload_destination: %kernel.root_dir%/../web/upload/kuhni/kitchens
+            uri_prefix:         /upload/kuhni/kitchens
+            upload_destination: %kernel.root_dir%/../upload/kuhni/kitchens
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
         kuhni_style:
-            uri_prefix:         /web/upload/kuhni/style
-            upload_destination: %kernel.root_dir%/../web/upload/kuhni/style
+            uri_prefix:         /upload/kuhni/style
+            upload_destination: %kernel.root_dir%/../upload/kuhni/style
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
         kuhni_material:
-            uri_prefix:         /web/upload/kuhni/material
-            upload_destination: %kernel.root_dir%/../web/upload/kuhni/material
+            uri_prefix:         /upload/kuhni/material
+            upload_destination: %kernel.root_dir%/../upload/kuhni/material
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
         kuhni_config:
-            uri_prefix:         /web/upload/kuhni/config
-            upload_destination: %kernel.root_dir%/../web/upload/kuhni/config
+            uri_prefix:         /upload/kuhni/config
+            upload_destination: %kernel.root_dir%/../upload/kuhni/config
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
         kuhni_fasad:
-            uri_prefix:         /web/upload/kuhni/fasad
-            upload_destination: %kernel.root_dir%/../web/upload/kuhni/fasad
+            uri_prefix:         /upload/kuhni/fasad
+            upload_destination: %kernel.root_dir%/../upload/kuhni/fasad
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
 
         catalog_image:
-            uri_prefix:         /web/upload/catalog
-            upload_destination: %kernel.root_dir%/../web/upload/catalog
+            uri_prefix:         /upload/catalog
+            upload_destination: %kernel.root_dir%/../upload/catalog
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
 
         kuhni_zakazy_cost_project:
-            uri_prefix:         /web/upload/zakazy/costproject
-            upload_destination: %kernel.root_dir%/../web/upload/zakazy/costproject
+            uri_prefix:         /upload/zakazy/costproject
+            upload_destination: %kernel.root_dir%/../upload/zakazy/costproject
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
         kuhni_zakazy_freedesign:
-            uri_prefix:         /web/upload/zakazy/freedesign
-            upload_destination: %kernel.root_dir%/../web/upload/zakazy/freedesign
+            uri_prefix:         /upload/zakazy/freedesign
+            upload_destination: %kernel.root_dir%/../upload/zakazy/freedesign
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
