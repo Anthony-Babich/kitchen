@@ -238,7 +238,7 @@ $hasMinorProblems = (bool) count($minorProblems);
                 background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAcCAIAAAAvP0KbAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAEFJREFUeNpiPnv2LNMdvlymf///M/37B8R/QfQ/MP33L4j+B6Qh7L9//sHpf2h8MA1V+w/KRjYLaDaLCU8vQIABAFO3TxZriO4yAAAAAElFTkSuQmCC) repeat-x top left;
             }
         </style>
-        <link rel="stylesheet" href="web/bundles/sensiodistribution/webconfigurator/css/install.css" media="all" />
+        <link rel="stylesheet" href="bundles/sensiodistribution/webconfigurator/css/install.css" media="all" />
     </head>
     <body>
         <div id="content">
@@ -322,8 +322,8 @@ $hasMinorProblems = (bool) count($minorProblems);
 
                         <ul class="symfony-install-continue">
                             <?php if (!$hasMajorProblems): ?>
-                                <li><a href="app_dev.php/_configurator/">Configure your Symfony Application online</a></li>
-                                <li><a href="app_dev.php/">Bypass configuration and go to the Welcome page</a></li>
+                                <li><a href="web/app_dev.php/_configurator/">Configure your Symfony Application online</a></li>
+                                <li><a href="app_dev.php">Bypass configuration and go to the Welcome page</a></li>
                             <?php endif; ?>
                             <?php if ($hasMajorProblems || $hasMinorProblems): ?>
                                 <li><a href="config.php">Re-check configuration</a></li>
