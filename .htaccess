@@ -1,18 +1,20 @@
-DirectoryIndex /app.php
-php_value session.auto_start 1
+DirectoryIndex app.php
 
 <IfModule mod_negotiation.c>
     Options -MultiViews
 </IfModule>
 
 <IfModule mod_rewrite.c>
-#    Options +FollowSymlinks
+    Options +FollowSymlinks
     RewriteEngine On
 
-#    RewriteRule ^bundles/(.*)$ /web/bundles/$1  [QSA,L]
     RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
     RewriteRule ^(.*) - [E=BASE:%1]
 
+    RewriteRule ^bundles/(.*)$ /web/bundles/$1  [QSA,L]
+    RewriteRule ^upload/(.*)$ /web/upload/$1  [QSA,L]
+
+    # Sets the HTTP_AUTHORIZATION header removed by apache
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
@@ -22,7 +24,7 @@ php_value session.auto_start 1
     RewriteCond %{REQUEST_FILENAME} -f
     RewriteRule .? - [L]
 
-    RewriteRule .? %{ENV:BASE}/app.php [L]
+    RewriteRule .? %{ENV:BASE}/web/app.php [L]
 </IfModule>
 
 <IfModule !mod_rewrite.c>
