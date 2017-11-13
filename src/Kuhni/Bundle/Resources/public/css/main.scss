@@ -115,8 +115,12 @@ header.masthead.all{
 			color: #e20074;
 			font-size: 28px;
 			font-weight: 900;
+			margin-bottom: 0;
 		}
 		#price{
+			.col-4:not(:first-child){
+				border-left: 1px solid #e1e1e1;
+			}
 			padding: 10px 0;
 			border-bottom: 1px solid #e1e1e1;
 			border-top: 1px solid #e1e1e1;
@@ -134,19 +138,14 @@ header.masthead.all{
 				}
 			}
 			span{
-				float: left;
 				height: 45px;
-				padding: 2px 20px 0;
-				border-left: 1px solid #e1e1e1;
-			}
-			span.cost-price{
-				border: none;
+				padding: 2px 0 0 0;
 			}
 			em{
 				margin: 0;
 				padding: 0;
 				border: 0;
-				vertical-align: baseline;
+				vertical-align: middle;
 			}
 		}
 		.description{
@@ -160,7 +159,7 @@ header.masthead.all{
 		display: block;
 		line-height: 25px;
 		color: #999;
-		margin-top: 5px;
+		margin-top: 0;
 		p{
 			margin-top: 0;
 			margin-bottom: 10px;
@@ -1186,6 +1185,15 @@ footer{
 		li{
 			margin: 0 5px;
 		}
+	}
+	#product #description #price del,em{
+		font-size: small;
+	}
+	#product .btn-xl {
+		font-size: x-small;
+	}
+	#product #description p.desc{
+		font-size: xx-small;
 	}
 }
 //mobile S
