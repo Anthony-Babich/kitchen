@@ -118,7 +118,7 @@ class User extends BaseUser
     /**
      * @param boolean $salon
      */
-    public function setSalon(boolean $salon)
+    public function setSalon($salon)
     {
         $this->salon = $salon;
     }
