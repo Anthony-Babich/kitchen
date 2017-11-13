@@ -1,4 +1,4 @@
-DirectoryIndex web/app.php
+DirectoryIndex app.php
 php_value session.auto_start 1
 
 <IfModule mod_negotiation.c>
@@ -7,6 +7,7 @@ php_value session.auto_start 1
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    RewriteBase /web
 
     RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
     RewriteRule ^(.*) - [E=BASE:%1]
