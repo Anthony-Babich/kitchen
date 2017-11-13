@@ -467,9 +467,9 @@ section#reviews {
     #all-products .big-col .pos-bot-l {
       width: 90%; }
       #all-products .big-col .pos-bot-l ul.nav > .left {
-        width: 60%; }
+        width: 65%; }
       #all-products .big-col .pos-bot-l ul.nav > .right {
-        width: 40%; }
+        width: 35%; }
       #all-products .big-col .pos-bot-l .first-name {
         font-size: 17px; }
       #all-products .big-col .pos-bot-l .first-desc {
@@ -490,11 +490,13 @@ section#reviews {
       #all-products .small-col .pos-bot-l ul.nav > .right {
         width: 50%; }
       #all-products .small-col .pos-bot-l .first-name {
-        font-size: 14px; }
+        font-size: 12px; }
       #all-products .small-col .pos-bot-l .last-price {
-        font-size: 13px; }
+        font-size: 12px;
+        font-weight: 600; }
       #all-products .small-col .pos-bot-l .now-price {
-        font-size: 16px; }
+        font-size: 14px;
+        font-weight: 700; }
     #all-products .small-col button.phone {
       top: 60px;
       right: 0; }

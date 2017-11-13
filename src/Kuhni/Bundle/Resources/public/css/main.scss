@@ -601,10 +601,10 @@ section#reviews{
 		.pos-bot-l {
 			width: 90%;
 			ul.nav>.left{
-				width: 60%;
+				width: 65%;
 			}
 			ul.nav>.right{
-				width: 40%;
+				width: 35%;
 			}
 			.first-name{
 				font-size: 17px;
@@ -634,13 +634,15 @@ section#reviews{
 			}
 			width: 100%;
 			.first-name{
-				font-size: 14px;
+				font-size: 12px;
 			}
 			.last-price{
-				font-size: 13px;
+				font-size: 12px;
+				font-weight: 600;
 			}
 			.now-price{
-				font-size: 16px;
+				font-size: 14px;
+				font-weight: 700;
 			}
 		}
 		button.phone{
