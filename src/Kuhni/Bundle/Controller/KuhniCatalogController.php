@@ -68,6 +68,8 @@ class KuhniCatalogController extends Controller
             'countMaterial' => $countMaterial,
             'imageMaterial' => $imageMaterial,
 
+            'maps' => $this->getMapLocate(),
+
             'formRequestCall' => $this->getRequestCallForm(),
             'formRequestCallModal' => $this->getRequestCallForm(),
             'formFreeProject' => $this->getFreeProjectForm(),
@@ -76,73 +78,6 @@ class KuhniCatalogController extends Controller
             'formCostProject' => $this->getCostProject(),
             'form' => $this->getCallBackForm(),
         ));
-    }
-
-    /**
-     * @param string $db
-     * @return mixed
-     */
-    private function result(string $db){
-        $db = 'KuhniBundle:'.$db;
-        $titles = $this->getDoctrine()->getManager()->getRepository($db)
-            ->createQueryBuilder('n')
-            ->select('DISTINCT n.title')
-            ->getQuery()
-            ->getResult();
-
-        foreach ($titles as $title) {
-            $result[] = $this->getDoctrine()->getManager()
-                ->getRepository($db)
-                ->findOneBy(array('title' => $title['title']));
-        }
-        if (!empty($result)){
-            return $result;
-        }
-    }
-
-    /**
-     * @param $result
-     * @param string $path
-     * @return array|string
-     */
-    private function imagePath($result, string $path){
-        if (!empty($result)){
-            return 'upload/kuhni/' . $path . '/' . $result->getImageName();
-        }else{
-            return 'bundles/kuhni/img/no_image.jpg';
-        }
-    }
-
-    /**
-     * @param $result
-     * @return array|string
-     */
-    private function arrayImagePath(array $result, $path){
-        if (!empty($result)){
-            $image = array();
-            foreach ($result as $item) {
-                $image[] = 'upload/kuhni/' . $path . '/' . $item->getImageName();
-            }
-            return $image;
-        }else{
-            return 'bundles/kuhni/img/no_image.jpg';
-        }
-    }
-
-    /**
-     * @param $result
-     * @return array
-     */
-    private function catalogImagePath(array $result){
-        $imageCatalog = array();
-        if (!empty($result)){
-            foreach ($result as $item) {
-                $imageCatalog[] = 'upload/catalog/' . $item->getImageName();
-            }
-        }else{
-            $imageCatalog[] = 'bundles/kuhni/img/no_image.jpg';
-        }
-        return $imageCatalog;
     }
 
     /**
@@ -264,10 +199,15 @@ class KuhniCatalogController extends Controller
             'kitchen' => $result,
             'images' => $image,
             'slug' => $slug,
+
+            'maps' => $this->getMapLocate(),
+
             'fasadesColor' => $fasadesColor,
             'imageFasadesColor' => $imageFasadesColor,
+
             'fasadesType' => $fasadesType,
             'imageFasadesType' => $imageFasadesType,
+
             'material' => $material,
             'catalog' => $resultCatalog,
             'imageCatalog' => $imageCatalog,
@@ -530,6 +470,8 @@ class KuhniCatalogController extends Controller
                 'slug' => $slug,
                 'catalog' => $resultCatalog,
                 'imageCatalog' => $imageCatalog,
+
+                'maps' => $this->getMapLocate(),
 
                 'populars' => $popular,
                 'popularImage' => $popularImage,
@@ -1224,5 +1166,84 @@ class KuhniCatalogController extends Controller
             ->getForm()->createView();
 
         return $formCostProject;
+    }
+
+    /**
+     * @param $result
+     * @return array
+     */
+    private function catalogImagePath(array $result){
+        $imageCatalog = array();
+        if (!empty($result)){
+            foreach ($result as $item) {
+                $imageCatalog[] = 'upload/catalog/' . $item->getImageName();
+            }
+        }else{
+            $imageCatalog[] = 'bundles/kuhni/img/no_image.jpg';
+        }
+        return $imageCatalog;
+    }
+
+    /**
+     * @param $result
+     * @param string $path
+     * @return array|string
+     */
+    private function imagePath($result, string $path){
+        if (!empty($result)){
+            return 'upload/kuhni/' . $path . '/' . $result->getImageName();
+        }else{
+            return 'bundles/kuhni/img/no_image.jpg';
+        }
+    }
+
+    /**
+     * @param $result
+     * @return array|string
+     */
+    private function arrayImagePath(array $result, $path){
+        if (!empty($result)){
+            $image = array();
+            foreach ($result as $item) {
+                $image[] = 'upload/kuhni/' . $path . '/' . $item->getImageName();
+            }
+            return $image;
+        }else{
+            return 'bundles/kuhni/img/no_image.jpg';
+        }
+    }
+
+    /**
+     * @param string $db
+     * @return mixed
+     */
+    private function result(string $db){
+        $db = 'KuhniBundle:'.$db;
+        $titles = $this->getDoctrine()->getManager()->getRepository($db)
+            ->createQueryBuilder('n')
+            ->select('DISTINCT n.title')
+            ->getQuery()
+            ->getResult();
+
+        foreach ($titles as $title) {
+            $result[] = $this->getDoctrine()->getManager()
+                ->getRepository($db)
+                ->findOneBy(array('title' => $title['title']));
+        }
+        if (!empty($result)){
+            return $result;
+        }
+    }
+
+    private function getMapLocate()
+    {
+        $em = $this->getDoctrine()->getManager()
+            ->getRepository('ApplicationSonataUserBundle:User');
+        $qb = $em->createQueryBuilder('u');
+        $locate =
+            $qb->select()
+                ->where('u.salon = 1')
+                ->orderBy('u.id', 'ASC');
+        return $locate->getQuery()->getResult();
     }
 }

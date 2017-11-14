@@ -40,6 +40,37 @@
 
     {% endblock %}
     {% block map %}
+        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+        <script type="text/javascript">
+            ymaps.ready(function () {
+                ymaps.modules.require(['Map', 'Placemark'])
+                    .spread(
+                        function (Map) {
+                            var myMap = new Map("map", {
+                                center: [55.72, 37.64],
+                                zoom: 9
+                            });
+                            {% for map in maps %}
+                            BalloonContentLayout{{ loop.index0 }} = ymaps.templateLayoutFactory.createClass(
+                                '<div style="margin: 10px;">' +
+                                '<b> {{ map.title }} </b><br />' +
+                                '</div>'
+                            );
+                            myMap.geoObjects.add(
+                                new ymaps.Placemark([{{ map.longitude }}, {{ map.latitude }}], {}, {
+                                    balloonContentLayout: BalloonContentLayout{{ loop.index0 }},
+                                    balloonPanelMaxMapArea: 0,
+                                    iconLayout: 'default#image',
+                                    iconImageHref: '/web/bundles/kuhni/img/map-marker.svg',
+                                    iconImageOffset: [-3, -42],
+                                    iconImageSize: [30, 42]
+                                })
+                            );
+                            {% endfor %}
+                        }
+                    );
+            });
+        </script>
     {% endblock %}
 </head>
 
@@ -128,6 +159,7 @@
                 for (i = 0; i < rev.length; i++){
                     rev.eq(i).text(rev.eq(i).text().slice(0, 198));
                 }
+
                 //Если салон находиться в Москве, то дописываем к нему что-то
                 //Преобразование select>option в div, ul>li
                 $('select').each(function(){
@@ -140,44 +172,81 @@
                     var $styledSelect = $this.next('div.select-styled');
                     var newText = $this.children('option').eq(0).text();
                     var pos = newText.indexOf('|');
-                    var pos2 = newText.indexOf('ул.') - pos;
-                    var tc = newText.substr(pos + 1, pos2-2);
-                    $styledSelect.text(tc);
+                    var vsePristavki = [
+                        'аллея',
+                        'бульвар',
+                        'вал',
+                        'взвоз',
+                        'въезд',
+                        'дорога',
+                        'заезд',
+                        'кольцо',
+                        'линия',
+                        'луч',
+                        'магистраль',
+                        'набережная',
+                        'переулок',
+                        'перспектива',
+                        'площадь',
+                        'проезд',
+                        'проспект',
+                        'разъезд',
+                        'спуск',
+                        'съезд',
+                        'территория',
+                        'тракт',
+                        'тупик',
+                        'ул.',
+                        'шоссе'
+                    ];
+                    var pos2;
+                    for (i=0; i<vsePristavki.length; i++){
+                        pos2 = newText.indexOf(vsePristavki[i]);
+                        if (pos2 !== -1){
+                            pos2 = newText.indexOf(vsePristavki[i]) - pos;
+                            break;
+                        }
+                    }
+                    $styledSelect.text(newText.substr(pos + 1, pos2-2));
 
                     var $list = $('<ul />', {
                         'class': 'form-control select-options'
                     }).insertAfter($styledSelect);
 
-                    for (var i = 0; i < numberOfOptions ; i++)
+                    for (i = 0; i < numberOfOptions ; i++){
+                        var text = $this.children('option').eq(i).text();
+                        var pos = text.indexOf('|');
+                        var stantion = text.substr(0, pos);
+                        for (j=0; j<vsePristavki.length; j++){
+                            var pos2 = text.indexOf(vsePristavki[j]);
+                            if (pos2 !== -1){
+                                pos2 = pos2 - pos;
+                                console.log('pos2 = '+ pos2);
+                                break;
+                            }
+                        }
+                        var tc = text.substr(pos + 1, pos2-2);
+                        var address = text.substr(pos + pos2);
+                        console.log(text + ' pos= ' + pos + ' stantion ' + stantion);
+                        console.log(' pos2= ' + pos2+ ' tc ' + tc + ' address= ' + address);
+
                         if ($this.children('option').eq(i).attr('class') === 'metro'){
-                            var text = $this.children('option').eq(i).text();
-                            var pos = text.indexOf('|');
-                            var stantion = text.substr(0, pos);
-                            var pos2 = text.indexOf('ул.') - pos;
-                            var tc = text.substr(pos + 1, pos2-2);
-                            var address = text.substr(pos + pos2);
                             var color = $this.children('option').eq(i).attr('id');
                             $('<li />', {
-                            html: '<p><span class="span-metro"><img src="{{ asset("/web/bundles/kuhni/img/metro-ico.png") }}" alt="metro"></span>'
-                                  +'<span class="station" style="background-color: ' + color +';">' +
-                                            stantion +
-                                      '</span>' +
-                                      '<span class="tc">' +
-                                            tc +
-                                      '</span></p>' +
-                                      '<p><span class="span-address">' +
-                                            address +
-                                      '</span></p>',
+                                html: '<p><span class="span-metro"><img src="{{ asset("/web/bundles/kuhni/img/metro-ico.png") }}" alt="metro"></span>'
+                                +'<span class="station" style="background-color: ' + color +';">' +
+                                stantion +
+                                '</span>' +
+                                '<span class="tc">' +
+                                tc +
+                                '</span></p>' +
+                                '<p><span class="span-address">' +
+                                address +
+                                '</span></p>',
                                 rel: $this.children('option').eq(i).val(),
                                 content: tc
                             }).appendTo($list);
                         }else{
-                            var text = $this.children('option').eq(i).text();
-                            var pos = text.indexOf('|');
-                            var stantion = text.substr(0, pos);
-                            var pos2 = text.indexOf('ул.') - pos;
-                            var tc = text.substr(pos + 1, pos2-2);
-                            var address = text.substr(pos + pos2);
                             $('<li />', {
                                 html: '<p><span class="nometro-first-span">' + stantion + '</span>' +
                                 '<span class="tc">' + tc + '</span></p>' +
@@ -186,6 +255,7 @@
                                 content: tc
                             }).appendTo($list);
                         }
+                    }
 
                     var $listItems = $list.children('li');
 

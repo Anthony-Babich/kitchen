@@ -660,11 +660,8 @@ class HomepageController extends Controller
         $qb = $em->createQueryBuilder('u');
         $locate =
             $qb->select()
-            ->where(
-                $qb->expr()->notLike('u.username', ':name')
-            )
-            ->orderBy('u.title', 'ASC')
-            ->setParameter('name', 'admin');
+            ->where('u.salon = 1')
+            ->orderBy('u.id', 'ASC');
         return $locate->getQuery()->getResult();
     }
 }
