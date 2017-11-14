@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="fos_user")
+ * @ORM\Table(name="fos_user_user")
  */
 class User extends BaseUser
 {
@@ -265,5 +265,13 @@ class User extends BaseUser
     public function setWorkingHours(string $workingHours)
     {
         $this->workingHours = $workingHours;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return strval($this->id);
     }
 }

@@ -291,3 +291,12 @@ services:
     calls:
       - [ setTranslationDomain, [Kuhni\Bundle]]
     public: true
+
+  application_sonata_user.admin.user:
+    class: Application\Sonata\UserBundle\Admin\UserAdmin
+    arguments: [~, Application\Sonata\UserBundle\Entity\User, SonataAdminBundle:CRUD]
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Пользователи!!!!!", label: "Пользователи" }
+    calls:
+      - [ setTranslationDomain, [Application\Sonata\UserBundle]]
+    public: true

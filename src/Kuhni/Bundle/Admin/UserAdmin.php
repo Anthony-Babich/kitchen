@@ -90,7 +90,6 @@ class UserAdmin extends BaseUserAdmin
         parent::configureListFields($listMapper);
 
         $listMapper
-            ->remove('impersonating')
             ->add('title', null, array(
                 'label' => 'Название'
             ))
