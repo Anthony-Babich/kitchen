@@ -17,6 +17,7 @@ ol.breadcrumb li:not(:last-child):after {
 	content: '/';
 	color: #000000;
 	margin: 0 3px;
+	padding: 0 5px;
 }
 header.masthead.all{
 	height: 250px;
@@ -408,7 +409,6 @@ section#reviews{
 		color: #3a3e4a;
 		-webkit-font-smoothing: antialiased;
 	}
-
 	.slick-next{
 		right: 0;
 	}
@@ -479,20 +479,24 @@ section#reviews{
 				width: 50%;
 			}
 			.first-name{
-				font-size: 14px;
+				font-size: 12px;
+				font-weight: 600;
 			}
 			.last-price{
-				font-size: 13px;
+				font-size: 12px;
+				font-weight: 600;
 			}
 			.now-price{
-				font-size: 16px;
+				font-size: 14px;
+				font-weight: 700;
 			}
 		}
 		.like{
 			background-color: rgba(255, 255, 255, 0.6);
 			width: 50px;
 			height: 30px;
-			font-size: 16px;
+			font-size: 12px;
+			font-weight: 600;
 			top: 10px;
 			padding: 7px;
 			position: absolute;
@@ -672,7 +676,8 @@ section#reviews{
 		background-color: rgba(255, 255, 255, 0.6);
 		width: 50px;
 		height: 30px;
-		font-size: 16px;
+		font-size: 12px;
+		font-weight: 600;
 		left: 10px;
 		top: 10px;
 		padding: 7px;
@@ -875,12 +880,12 @@ form{
 	.select-options li {
 		padding: 8px 5px;
 		text-indent: 0;
-		border-top: 2px solid #7f7f7f;
+		border-top: 1px solid #7f7f7f;
 		z-index: 1000;
-		width: max-content;
 	}
 	.select-options li:hover {
 		color: black;
+		background-color: #f5f5f5;
 	}
 	.select-options li[rel="hide"] {
 		display: none;

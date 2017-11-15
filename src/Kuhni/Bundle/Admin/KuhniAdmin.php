@@ -19,7 +19,7 @@ class KuhniAdmin extends AbstractAdmin
     {
         $formMapper
             ->tab('Основаные параметры')
-                ->with('Описание', array('class' => 'col-12 col-md-6'))
+                ->with('Описание', array('class' => 'col-xs-12 col-md-6'))
                     ->add('name', TextType::class, array(
                         'label' => 'Название'
                     ))
@@ -85,7 +85,7 @@ class KuhniAdmin extends AbstractAdmin
                         'label'         => 'Картинка',
                     ))
                 ->end()
-                ->with('Характеристики', array('class' => 'col-12 col-md-6'))
+                ->with('Характеристики', array('class' => 'col-xs-12 col-md-6'))
                     ->add('razmer', TextType::class, array(
                         'label' => 'Размер'
                     ))
@@ -216,7 +216,7 @@ class KuhniAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('title', null, array(
+            ->add('name', null, array(
                 'label' => 'Название'
             ))
             ->add('title', null, array(
@@ -240,44 +240,44 @@ class KuhniAdmin extends AbstractAdmin
             ->add('idKuhniColor.title', null, array(
                 'label' => 'Цвет'
             ))
-             ->add('discount', null, array(
-                 'label' => 'Скидка'
-             ))
-             ->add('likes', null, array(
-                 'label' => 'Лайки'
-             ))
+            ->add('discount', null, array(
+                'label' => 'Скидка'
+            ))
+            ->add('likes', null, array(
+                'label' => 'Лайки'
+            ))
             ->add('countProjects', null, array(
-                   'label' => 'Количество выполненных проектов'
-               ))
+                'label' => 'Количество выполненных проектов'
+            ))
             ->add('fixedPrice', null, array(
-               'label' => 'Фиксированная стоимость'
-           ))
-           ->add('razmer', null, array(
-               'label' => 'Размер'
-           ))
-           ->add('nameFasad', null, array(
-               'label' => 'Название фасада'
-           ))
-           ->add('matFasad', null, array(
-               'label' => 'Материал фасада'
-           ))
-           ->add('stoleshnica', null, array(
-               'label' => 'Столешница'
-           ))
-           ->add('korpus', null, array(
-               'label' => 'Корпус'
-           ))
-           ->add('furnitura', null, array(
-               'label' => 'Фурнитура'
-           ))
-           ->add('keywords', null, array(
-               'label' => 'Ключевые слова'
-           ))
-           ->add('mainDescription', null, array(
-               'label' => 'Описание'
-           ))
-           ->add('imageName', null, array(
-               'label' => 'Картинка',
-           ));
+                'label' => 'Фиксированная стоимость'
+            ))
+            ->add('razmer', null, array(
+                'label' => 'Размер'
+            ))
+            ->add('nameFasad', null, array(
+                'label' => 'Название фасада'
+            ))
+            ->add('matFasad', null, array(
+                'label' => 'Материал фасада'
+            ))
+            ->add('stoleshnica', null, array(
+                'label' => 'Столешница'
+            ))
+            ->add('korpus', null, array(
+                'label' => 'Корпус'
+            ))
+            ->add('furnitura', null, array(
+                'label' => 'Фурнитура'
+            ))
+            ->add('keywords', null, array(
+                'label' => 'Ключевые слова'
+            ))
+            ->add('mainDescription', null, array(
+                'label' => 'Описание'
+            ))
+            ->add('imageName', null, array(
+                'label' => 'Картинка',
+            ));
     }
 }

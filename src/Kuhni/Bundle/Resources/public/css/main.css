@@ -14,7 +14,8 @@ section {
 ol.breadcrumb li:not(:last-child):after {
   content: '/';
   color: #000000;
-  margin: 0 3px; }
+  margin: 0 3px;
+  padding: 0 5px; }
 
 header.masthead.all {
   height: 250px; }
@@ -371,16 +372,20 @@ section#reviews {
       #popular .slide-col .pos-bot-l ul.nav > .right, #completed-projects .slide-col .pos-bot-l ul.nav > .right {
         width: 50%; }
       #popular .slide-col .pos-bot-l .first-name, #completed-projects .slide-col .pos-bot-l .first-name {
-        font-size: 14px; }
+        font-size: 12px;
+        font-weight: 600; }
       #popular .slide-col .pos-bot-l .last-price, #completed-projects .slide-col .pos-bot-l .last-price {
-        font-size: 13px; }
+        font-size: 12px;
+        font-weight: 600; }
       #popular .slide-col .pos-bot-l .now-price, #completed-projects .slide-col .pos-bot-l .now-price {
-        font-size: 16px; }
+        font-size: 14px;
+        font-weight: 700; }
     #popular .slide-col .like, #completed-projects .slide-col .like {
       background-color: rgba(255, 255, 255, 0.6);
       width: 50px;
       height: 30px;
-      font-size: 16px;
+      font-size: 12px;
+      font-weight: 600;
       top: 10px;
       padding: 7px;
       position: absolute;
@@ -520,7 +525,8 @@ section#reviews {
     background-color: rgba(255, 255, 255, 0.6);
     width: 50px;
     height: 30px;
-    font-size: 16px;
+    font-size: 12px;
+    font-weight: 600;
     left: 10px;
     top: 10px;
     padding: 7px;
@@ -680,11 +686,11 @@ form {
   form .select-options li {
     padding: 8px 5px;
     text-indent: 0;
-    border-top: 2px solid #7f7f7f;
-    z-index: 1000;
-    width: max-content; }
+    border-top: 1px solid #7f7f7f;
+    z-index: 1000; }
   form .select-options li:hover {
-    color: black; }
+    color: black;
+    background-color: #f5f5f5; }
   form .select-options li[rel="hide"] {
     display: none; }
   form .tc {

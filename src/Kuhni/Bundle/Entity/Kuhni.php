@@ -111,6 +111,7 @@ class Kuhni
      * @ORM\JoinColumn(name="id_kuhni_color", referencedColumnName="id")
      */
     private $idKuhniColor;
+
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
@@ -176,7 +177,7 @@ class Kuhni
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
 
@@ -190,7 +191,7 @@ class Kuhni
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, unique=true)
      */
     private $title;
 
