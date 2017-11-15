@@ -265,21 +265,22 @@ class KuhniCatalogController extends Controller
             $result = $this->searchParametr($slug, $offset, $limit);
 
             if (!empty($result)){
-
+                $image = array();
                 foreach ($result as $item) {
                     $image[] = 'upload/kuhni/kitchens/' . $item['imageName'];
                 }
 
-                $kurs = $this->getKurs();
-                $coef = $this->getCoef();
-                $nds = $this->getNDS();
+                $kurs = $this->getKurs()->getSetting();
+                $coef = $this->getCoef()->getSetting();
+                $nds = $this->getNDS()->getSetting();
 
                 $strResult = "<div class='container'><div class='row'><div class='col-xl-6 col-md-12 big-col'>";
 
                 for ($i = 0; $i < count($result); $i++){
                     if ($i == 0){
-                        $newPrice = $result[$i]['price'] * $kurs->getSetting() * $nds->getSetting() * $coef->getSetting();
-                        $newNoDiscountPrice = ($newPrice * $result[$i]['discount'])/100 + $newPrice;
+                        $newPrice = round($result[$i]['price'] * $kurs * $nds * $coef);
+                        $newNoDiscountPrice = number_format(round(($newPrice * $result[$i]['discount'])/100 + $newPrice), 0, '', ' ');
+                        $newPrice = number_format($newPrice, 0, '', ' ');
 
                         $strResult .= "<a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
                         $strResult .= "<img class='slide-product-img big' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
@@ -298,8 +299,8 @@ class KuhniCatalogController extends Controller
                         $strResult .= '</span></div></li>';
 
                         $strResult .= "<li class='right'><div class='text-right right'><span class='text-right last-price'>старая цена ";
-                        $strResult .= "<span class='through'> $newNoDiscountPrice</span><br/></span>";
-                        $strResult .= "<span class='text-right now-price'>сейчас от $newPrice</span>";
+                        $strResult .= "<span class='through'> {$newNoDiscountPrice}p </span><br/></span>";
+                        $strResult .= "<span class='text-right now-price'>сейчас от {$newPrice}р</span>";
                         $strResult .= "</div></li></ul></span>";
                         if ($result[$i]['discount'] != 0){
                             $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
@@ -315,8 +316,9 @@ class KuhniCatalogController extends Controller
 
                 for ($i = 0; $i < count($result); $i++){
                     if (($i <= 2)&&($i > 0)){
-                        $newPrice = $result[$i]['price'] * $kurs->getSetting() * $nds->getSetting() * $coef->getSetting();
-                        $newNoDiscountPrice = ($newPrice * $result[$i]['discount'])/100 + $newPrice;
+                        $newPrice = round($result[$i]['price'] * $kurs * $nds * $coef);
+                        $newNoDiscountPrice = number_format(round(($newPrice * $result[$i]['discount'])/100 + $newPrice), 0, '', ' ');
+                        $newPrice = number_format($newPrice, 0, '', ' ');
 
                         $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
 
@@ -324,8 +326,8 @@ class KuhniCatalogController extends Controller
 
                         $strResult .= "<span class='pos-bot-l'><ul class='nav'>";
                         $strResult .= "<li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span></div></li>";
-                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от $newPrice</span><br/>";
-                        $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice </span></span>";
+                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$newPrice}р</span><br/>";
+                        $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> {$newNoDiscountPrice}p  </span></span>";
                         $strResult .= "</div></li></ul></span>";
 
                         if ($result[$i]['discount'] != 0){
@@ -340,16 +342,17 @@ class KuhniCatalogController extends Controller
 
                 for ($i = 0; $i < count($result); $i++){
                     if (($i <= 4)&&($i > 2)){
-                        $newPrice = $result[$i]['price'] * $kurs->getSetting() * $nds->getSetting() * $coef->getSetting();
-                        $newNoDiscountPrice = ($newPrice * $result[$i]['discount'])/100 + $newPrice;
+                        $newPrice = round($result[$i]['price'] * $kurs * $nds * $coef);
+                        $newNoDiscountPrice = number_format(round(($newPrice * $result[$i]['discount'])/100 + $newPrice), 0, '', ' ');
+                        $newPrice = number_format($newPrice, 0, '', ' ');
 
                         $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
 
                         $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
                         $strResult .= "<span class='pos-bot-l'><ul class='nav'>";
                         $strResult .= "<li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span></div></li>";
-                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от $newPrice</span><br/>";
-                        $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice </span></span>";
+                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$newPrice}р</span><br/>";
+                        $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> {$newNoDiscountPrice}p  </span></span>";
                         $strResult .= "</div></li></ul></span>";
                         if ($result[$i]['discount'] != 0){
                             $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
@@ -366,15 +369,16 @@ class KuhniCatalogController extends Controller
 
                 for ($i = 0; $i < count($result); $i++){
                     if (($i <= 6)&&($i > 4)){
-                        $newPrice = $result[$i]['price'] * $kurs->getSetting() * $nds->getSetting() * $coef->getSetting();
-                        $newNoDiscountPrice = ($newPrice * $result[$i]['discount'])/100 + $newPrice;
+                        $newPrice = round($result[$i]['price'] * $kurs * $nds * $coef);
+                        $newNoDiscountPrice = number_format(round(($newPrice * $result[$i]['discount'])/100 + $newPrice), 0, '', ' ');
+                        $newPrice = number_format($newPrice, 0, '', ' ');
 
                         $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
                         $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
                         $strResult .= "<span class='pos-bot-l'><ul class='nav'>";
                         $strResult .= "<li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span></div></li>";
-                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от $newPrice</span><br/>";
-                        $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice </span></span>";
+                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$newPrice}р</span><br/>";
+                        $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> {$newNoDiscountPrice}p  </span></span>";
                         $strResult .= "</div></li></ul></span>";
                         if ($result[$i]['discount'] != 0){
                             $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
@@ -388,16 +392,17 @@ class KuhniCatalogController extends Controller
 
                 for ($i = 0; $i < count($result); $i++){
                     if (($i <= 8)&&($i > 6)){
-                        $newPrice = $result[$i]['price'] * $kurs->getSetting() * $nds->getSetting() * $coef->getSetting();
-                        $newNoDiscountPrice = ($newPrice * $result[$i]['discount'])/100 + $newPrice;
+                        $newPrice = round($result[$i]['price'] * $kurs * $nds * $coef);
+                        $newNoDiscountPrice = number_format(round(($newPrice * $result[$i]['discount'])/100 + $newPrice), 0, '', ' ');
+                        $newPrice = number_format($newPrice, 0, '', ' ');
 
                         $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
 
                         $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
 
                         $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span>";
-                        $strResult .= "</div></li><li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от $newPrice</span><br/>";
-                        $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice </span></span>";
+                        $strResult .= "</div></li><li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$newPrice}р</span><br/>";
+                        $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> {$newNoDiscountPrice}p  </span></span>";
                         $strResult .= "</div></li></ul></span>";
 
                         if ($result[$i]['discount'] != 0){
@@ -412,8 +417,9 @@ class KuhniCatalogController extends Controller
 
                 for ($i = 0; $i < count($result); $i++){
                     if ($i == 9){
-                        $newPrice = $result[$i]['price'] * $kurs->getSetting() * $nds->getSetting() * $coef->getSetting();
-                        $newNoDiscountPrice = ($newPrice * $result[$i]['discount'])/100 + $newPrice;
+                        $newPrice = round($result[$i]['price'] * $kurs * $nds * $coef);
+                        $newNoDiscountPrice = number_format(round(($newPrice * $result[$i]['discount'])/100 + $newPrice), 0, '', ' ');
+                        $newPrice = number_format($newPrice, 0, '', ' ');
 
                         $strResult .= "<a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}' class='big-a-10'>";
                         $strResult .= "<img class='slide-product-img big' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
@@ -430,7 +436,7 @@ class KuhniCatalogController extends Controller
                             $strResult .= "*Цену и наличие уточняйте";
                         }
                         $strResult .= "</span></div></li><li class='right'><div class='text-right right'><span class='text-right last-price'>старая цена ";
-                        $strResult .= "<span class='through'> $newNoDiscountPrice </span><br/></span><span class='text-right now-price'>сейчас от $newPrice</span>";
+                        $strResult .= "<span class='through'> {$newNoDiscountPrice}p </span><br/></span><span class='text-right now-price'>сейчас от {$newPrice}р</span>";
                         $strResult .= "</div></li></ul></span>";
                         if ($result[$i]['discount'] != 0){
                             $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";

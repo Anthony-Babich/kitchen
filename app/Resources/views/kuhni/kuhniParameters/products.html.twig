@@ -22,12 +22,12 @@
                                     </li>
                                     <li class="right">
                                         <div class="text-right right">
-                                            {% set price = kitchen.price * kurs.setting * nds.setting * coef.setting %}
-                                            {% set noDiscountPrice = (price * kitchen.discount)/100 + price %}
+                                            {% set price = (kitchen.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                            {% set noDiscountPrice = (((price * kitchen.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
                                             <span class="text-right last-price">старая цена
-                                                <span class="through">{{ noDiscountPrice }}</span><br/>
+                                                <span class="through">{{ noDiscountPrice }}р</span><br/>
                                             </span>
-                                            <span class="text-right now-price">сейчас от {{ price }}</span>
+                                            <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }}р</span>
                                         </div>
                                     </li>
                                 </ul>
@@ -68,11 +68,11 @@
                                                 </li>
                                                 <li class="right">
                                                     <div class="text-right right">
-                                                        {% set price = kitchen.price * kurs.setting * nds.setting * coef.setting %}
-                                                        {% set noDiscountPrice = (price * kitchen.discount)/100 + price %}
-                                                        <span class="text-right now-price">сейчас от {{ price }}</span><br/>
+                                                        {% set price = (kitchen.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                                        {% set noDiscountPrice = (((price * kitchen.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                                        <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }}р</span><br/>
                                                         <span class="text-right last-price">старая цена
-                                                            <span class="through">{{ noDiscountPrice }}</span>
+                                                            <span class="through">{{ noDiscountPrice }}р</span>
                                                         </span>
                                                     </div>
                                                 </li>
@@ -113,11 +113,11 @@
                                                 </li>
                                                 <li class="right">
                                                     <div class="text-right right">
-                                                        {% set price = kitchen.price * kurs.setting * nds.setting * coef.setting %}
-                                                        {% set noDiscountPrice = (price * kitchen.discount)/100 + price %}
-                                                        <span class="text-right now-price">сейчас от {{ price }}</span><br/>
+                                                        {% set price = (kitchen.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                                        {% set noDiscountPrice = (((price * kitchen.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                                        <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }}р</span><br/>
                                                         <span class="text-right last-price">старая цена
-                                                            <span class="through">{{ noDiscountPrice }}</span>
+                                                            <span class="through">{{ noDiscountPrice }}р</span>
                                                         </span>
                                                     </div>
                                                 </li>
@@ -168,11 +168,11 @@
                                                 </li>
                                                 <li class="right">
                                                     <div class="text-right right">
-                                                        {% set price = kitchen.price * kurs.setting * nds.setting * coef.setting %}
-                                                        {% set noDiscountPrice = (price * kitchen.discount)/100 + price %}
-                                                        <span class="text-right now-price">сейчас от {{ price }}</span><br/>
+                                                        {% set price = (kitchen.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                                        {% set noDiscountPrice = (((price * kitchen.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                                        <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }}р</span><br/>
                                                         <span class="text-right last-price">старая цена
-                                                            <span class="through">{{ noDiscountPrice }}</span>
+                                                            <span class="through">{{ noDiscountPrice }}р</span>
                                                         </span>
                                                     </div>
                                                 </li>
@@ -213,11 +213,11 @@
                                                 </li>
                                                 <li class="right">
                                                     <div class="text-right right">
-                                                        {% set price = kitchen.price * kurs.setting * nds.setting * coef.setting %}
-                                                        {% set noDiscountPrice = (price * kitchen.discount)/100 + price %}
-                                                        <span class="text-right now-price">сейчас от {{ price }}</span><br/>
+                                                        {% set price = (kitchen.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                                        {% set noDiscountPrice = (((price * kitchen.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                                        <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }}р</span><br/>
                                                         <span class="text-right last-price">старая цена
-                                                            <span class="through">{{ noDiscountPrice }}</span>
+                                                            <span class="through">{{ noDiscountPrice }}р</span>
                                                         </span>
                                                     </div>
                                                 </li>
@@ -266,12 +266,12 @@
                                     </li>
                                     <li class="right">
                                         <div class="text-right right">
-                                            {% set price = kitchen.price * kurs.setting * nds.setting * coef.setting %}
-                                            {% set noDiscountPrice = (price * kitchen.discount)/100 + price %}
+                                            {% set price = (kitchen.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                            {% set noDiscountPrice = (((price * kitchen.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
                                             <span class="text-right last-price">старая цена
-                                                <span class="through">{{ noDiscountPrice }}</span><br/>
+                                                <span class="through">{{ noDiscountPrice }}р</span><br/>
                                             </span>
-                                            <span class="text-right now-price">сейчас от {{ price }}</span>
+                                            <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }}р</span>
                                         </div>
                                     </li>
                                 </ul>

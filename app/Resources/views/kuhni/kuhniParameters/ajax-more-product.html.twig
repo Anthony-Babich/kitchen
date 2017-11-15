@@ -7,9 +7,8 @@
         var startFrom = 10;
         var slug = '{{ slug }}';
         var noMore = false;
-        var contact = $('#popular').offset().top - 600;
-        console.log(contact);
         $(window).scroll(function() {
+            var contact = $('#popular').offset().top - 600;
             if ( ( $(window).scrollTop() >= contact && !inProgress ) && !noMore) {
                 console.log($(window).scrollTop());
                 $.ajax({
