@@ -34,17 +34,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="row text-center" id="price">
-                    <div class="col-4">
-                        <span class="cost-price"><b>Цена</b><del>{{ noDiscountPrice }} <i class='fa fa-rub' aria-hidden='true'></i></del></span>
+                {% if kitchen.discount <> 0 %}
+                    <div class="row text-center" id="price">
+                        <div class="col-4">
+                            <span class="cost-price"><b>Цена</b><del>{{ noDiscountPrice }} <i class='fa fa-rub' aria-hidden='true'></i></del></span>
+                        </div>
+                        <div class="col-4">
+                            <span class="discount"><b>Скидка</b><em>{{ kitchen.discount }}%</em></span>
+                        </div>
+                        <div class="col-4">
+                            <span class="save-price"><b>Экономия</b><em>{{ noDiscountPrice - price }} <i class='fa fa-rub' aria-hidden='true'></i></em></span>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <span class="discount"><b>Скидка</b><em>{{ kitchen.discount }}%</em></span>
-                    </div>
-                    <div class="col-4">
-                        <span class="save-price"><b>Экономия</b><em>{{ noDiscountPrice - price }} <i class='fa fa-rub' aria-hidden='true'></i></em></span>
-                    </div>
-                </div>
+                {% endif %}
                 <div class="row description">
                     <div class="col-12">
                         <p>{{ kitchen.description }}</p>

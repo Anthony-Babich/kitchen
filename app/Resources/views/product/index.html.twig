@@ -18,14 +18,15 @@
         {% include 'homepage/section-map.html.twig' %}
         {% include 'homepage/section-contact.html.twig' %}
     {% endblock %}
-    {% block modal %}
-        {% include 'kuhni/kuhniParameters/footer-buttons.html.twig' %}
-        {% include 'kuhni/kuhniParameters/modal-config.html.twig' %}
-        {% include 'kuhni/kuhniParameters/modal-material.html.twig' %}
-        {% include 'kuhni/kuhniParameters/modal-style.html.twig' %}
-        {% include 'modal/modal.html.twig' %}
-    {% endblock %}
-    {% block ajax %}
-        {% include 'kuhni/kuhniParameters/likes.html.twig' %}
-    {% endblock %}
+{% endblock %}
+
+{% block modal %}
+    {% include 'kuhni/kuhniParameters/footer-buttons.html.twig' %}
+    {% include 'kuhni/kuhniParameters/modal-config.html.twig' %}
+    {% include 'kuhni/kuhniParameters/modal-material.html.twig' %}
+    {% include 'kuhni/kuhniParameters/modal-style.html.twig' %}
+    {% include 'modal/modal.html.twig' %}
+{% endblock %}
+{% block ajax %}
+    {% include 'kuhni/kuhniParameters/likes.html.twig' %}
 {% endblock %}
