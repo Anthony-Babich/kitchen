@@ -107,7 +107,6 @@
 
         <script src="{{ asset('bundles/kuhni/js/jqBootstrapValidation.js') }}"></script>
         <script src="{{ asset('bundles/kuhni/js/jquery.easing.js') }}"></script>
-        <script src="{{ asset('bundles/kuhni/js/contact_me.js') }}"></script>
 
         <script src="{{ asset('bundles/kuhni/js/agency.js') }}"></script>
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
@@ -172,42 +171,8 @@
                     var $styledSelect = $this.next('div.select-styled');
                     var newText = $this.children('option').eq(0).text();
                     var pos = newText.indexOf('|');
-                    var vsePristavki = [
-                        'аллея',
-                        'бульвар',
-                        'вал',
-                        'взвоз',
-                        'въезд',
-                        'дорога',
-                        'заезд',
-                        'кольцо',
-                        'линия',
-                        'луч',
-                        'магистраль',
-                        'набережная',
-                        'переулок',
-                        'перспектива',
-                        'площадь',
-                        'проезд',
-                        'проспект',
-                        'разъезд',
-                        'спуск',
-                        'съезд',
-                        'территория',
-                        'тракт',
-                        'тупик',
-                        'ул.',
-                        'шоссе'
-                    ];
-                    var pos2;
-                    for (i=0; i<vsePristavki.length; i++){
-                        pos2 = newText.indexOf(vsePristavki[i]);
-                        if (pos2 !== -1){
-                            pos2 = newText.indexOf(vsePristavki[i]) - pos;
-                            break;
-                        }
-                    }
-                    $styledSelect.text(newText.substr(pos + 1, pos2-2));
+                    var pos2 = newText.indexOf('»') - pos;
+                    $styledSelect.text(newText.substr(pos + 1, pos2));
 
                     var $list = $('<ul />', {
                         'class': 'form-control select-options'
@@ -217,18 +182,9 @@
                         var text = $this.children('option').eq(i).text();
                         var pos = text.indexOf('|');
                         var stantion = text.substr(0, pos);
-                        for (j=0; j<vsePristavki.length; j++){
-                            var pos2 = text.indexOf(vsePristavki[j]);
-                            if (pos2 !== -1){
-                                pos2 = pos2 - pos;
-                                console.log('pos2 = '+ pos2);
-                                break;
-                            }
-                        }
-                        var tc = text.substr(pos + 1, pos2-2);
-                        var address = text.substr(pos + pos2);
-                        console.log(text + ' pos= ' + pos + ' stantion ' + stantion);
-                        console.log(' pos2= ' + pos2+ ' tc ' + tc + ' address= ' + address);
+                        var pos2 = text.indexOf('»') - pos;
+                        var tc = text.substr(pos + 1, pos2);
+                        var address = text.substr(pos + pos2 + 1);
 
                         if ($this.children('option').eq(i).attr('class') === 'metro'){
                             var color = $this.children('option').eq(i).attr('id');
@@ -282,17 +238,16 @@
                 });
 
                 //Пошаговая форма
-                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-                    if ($(e.target).parent().hasClass('disabled')){
-                        return false;
-                    }
+                $('#freedesignshag a[data-toggle="tab"]').click(function (e) {
+                    e.preventDefault();
+                    $(this).tab('show');
                 });
-                $(".next-step").click(function (e) {
+                $(".next-step").click(function () {
                     var $active = $('#freedesignshag .nav-tabs li>a.active');
                     $active.parent().next().removeClass('disabled');
                     $($active).parent().next().find('a[data-toggle="tab"]').click();
                 });
-                $(".prev-step").click(function (e) {
+                $(".prev-step").click(function () {
                     var $active = $('#freedesignshag .nav-tabs li>a.active');
                     $($active).parent().prev().find('a[data-toggle="tab"]').click();
                 });

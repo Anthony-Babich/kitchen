@@ -139,7 +139,7 @@ class HomepageController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни»  ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -209,7 +209,7 @@ class HomepageController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни»  ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -290,7 +290,7 @@ class HomepageController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни»  ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -351,7 +351,7 @@ class HomepageController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни»  ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -417,7 +417,7 @@ class HomepageController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни»  ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -492,7 +492,7 @@ class HomepageController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни»  ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -565,7 +565,7 @@ class HomepageController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни»  ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -633,7 +633,7 @@ class HomepageController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;

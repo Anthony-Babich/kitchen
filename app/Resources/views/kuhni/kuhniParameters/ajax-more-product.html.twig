@@ -4,12 +4,14 @@
         В самом начале даем ей значение false, т.е. запрос не в процессе выполнения */
         var inProgress = false;
         /* С какой статьи надо делать выборку из базы при ajax-запросе */
-        var startFrom = 11;
+        var startFrom = 10;
         var slug = '{{ slug }}';
         var noMore = false;
-        var contact = $('#calc').offset().top;
+        var contact = $('#popular').offset().top - 600;
+        console.log(contact);
         $(window).scroll(function() {
-            if ( ( $(window).scrollTop() > contact && !inProgress ) && !noMore) {
+            if ( ( $(window).scrollTop() >= contact && !inProgress ) && !noMore) {
+                console.log($(window).scrollTop());
                 $.ajax({
                     /* адрес файла-обработчика запроса */
                     url: "{{ path('kuhni_parameters', {'slug' : slug}) }}",
@@ -36,44 +38,6 @@
                     }
                 });
             }
-        });
-        //like for kitchen
-        $('body').on('click', 'button#like', function (e) {
-            e.preventDefault();
-            var $button = $(this);
-            var ar = {
-                'id' : $(this).attr('data-id')
-            };
-            //id kitchen $(this).attr('data-id')
-            $.ajax({
-                type: 'post',
-                url: '{{ path('newlike') }}',
-                data: ar
-            }).done(function (data, status) {
-                var data1 = $.parseJSON(data);
-                if ((data1['success'] = 'success') && ((status = 'success'))) {
-                    if ($button.hasClass('active')) {
-                        $button.removeClass('active');
-                        $button.find('span.countLikes').text(data1['count']);
-                    } else {
-                        $button.addClass('active');
-                        $button.find('span.countLikes').text(data1['count']);
-                    }
-                }else{
-                    if (data['success'] = 'noData'){
-                        alert('Нету такой кухни! Перезагрузите страницу!');
-                    }
-                }
-            }).fail(function (jqXHR, textStatus, errorThrown) {
-                if (typeof jqXHR.responseJSON !== 'undefined') {
-                    if (jqXHR.responseJSON.hasOwnProperty('form')) {
-                        $('#form_body').html(jqXHR.responseJSON.form);
-                    }
-                    $('.form_error').html(jqXHR.responseJSON.message);
-                } else {
-                    alert(errorThrown);
-                }
-            });
         });
     });
 </script>

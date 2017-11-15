@@ -229,6 +229,10 @@ class KuhniCatalogController extends Controller
             'countMaterialModal' => $countMaterial,
             'imageMaterialModal' => $imageMaterial,
 
+            'kurs' => $this->getKurs(),
+            'coef' => $this->getCoef(),
+            'nds' => $this->getNDS(),
+
             'title' => $result->getTitle(),
             //FORMS
             'formRequestCall' => $this->getRequestCallForm(),
@@ -249,7 +253,7 @@ class KuhniCatalogController extends Controller
      */
     public function parametersAction(string $slug)
     {
-        if (!is_null($this->getRequest()->get('offset'))){
+        if (null !== $this->getRequest()->get('offset')){
             $offset = $this->getRequest()->get('offset');
             $limit = $offset + 10;
         }else{
@@ -258,7 +262,7 @@ class KuhniCatalogController extends Controller
         }
         if (($offset <> 0)&&($limit <> 10)){
 
-            $result = $this->searchParametr($slug, $limit, $offset);
+            $result = $this->searchParametr($slug, $offset, $limit);
 
             if (!empty($result)){
 
@@ -266,10 +270,17 @@ class KuhniCatalogController extends Controller
                     $image[] = 'upload/kuhni/kitchens/' . $item['imageName'];
                 }
 
+                $kurs = $this->getKurs();
+                $coef = $this->getCoef();
+                $nds = $this->getNDS();
+
                 $strResult = "<div class='container'><div class='row'><div class='col-xl-6 col-md-12 big-col'>";
 
                 for ($i = 0; $i < count($result); $i++){
                     if ($i == 0){
+                        $newPrice = $result[$i]['price'] * $kurs->getSetting() * $nds->getSetting() * $coef->getSetting();
+                        $newNoDiscountPrice = ($newPrice * $result[$i]['discount'])/100 + $newPrice;
+
                         $strResult .= "<a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
                         $strResult .= "<img class='slide-product-img big' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
                         $strResult .= '<span class="pos-bot-l"';
@@ -286,9 +297,9 @@ class KuhniCatalogController extends Controller
                         }
                         $strResult .= '</span></div></li>';
 
-                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right last-price'>старая цена";
-                        $strResult .= "<span class='through'>{$result[$i]['noDiscountPrice']}</span><br/></span>";
-                        $strResult .= "<span class='text-right now-price'>сейчас от {$result[$i]['price']}</span>";
+                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right last-price'>старая цена ";
+                        $strResult .= "<span class='through'> $newNoDiscountPrice</span><br/></span>";
+                        $strResult .= "<span class='text-right now-price'>сейчас от $newPrice</span>";
                         $strResult .= "</div></li></ul></span>";
                         if ($result[$i]['discount'] != 0){
                             $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
@@ -304,14 +315,17 @@ class KuhniCatalogController extends Controller
 
                 for ($i = 0; $i < count($result); $i++){
                     if (($i <= 2)&&($i > 0)){
+                        $newPrice = $result[$i]['price'] * $kurs->getSetting() * $nds->getSetting() * $coef->getSetting();
+                        $newNoDiscountPrice = ($newPrice * $result[$i]['discount'])/100 + $newPrice;
+
                         $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
 
                         $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
 
                         $strResult .= "<span class='pos-bot-l'><ul class='nav'>";
                         $strResult .= "<li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span></div></li>";
-                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
-                        $strResult .= "<span class='text-right last-price'>старая цена<span class='through'>{$result[$i]['noDiscountPrice']}</span></span>";
+                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от $newPrice</span><br/>";
+                        $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice </span></span>";
                         $strResult .= "</div></li></ul></span>";
 
                         if ($result[$i]['discount'] != 0){
@@ -326,13 +340,16 @@ class KuhniCatalogController extends Controller
 
                 for ($i = 0; $i < count($result); $i++){
                     if (($i <= 4)&&($i > 2)){
+                        $newPrice = $result[$i]['price'] * $kurs->getSetting() * $nds->getSetting() * $coef->getSetting();
+                        $newNoDiscountPrice = ($newPrice * $result[$i]['discount'])/100 + $newPrice;
+
                         $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
 
                         $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
                         $strResult .= "<span class='pos-bot-l'><ul class='nav'>";
                         $strResult .= "<li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span></div></li>";
-                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
-                        $strResult .= "<span class='text-right last-price'>старая цена<span class='through'>{$result[$i]['noDiscountPrice']}</span></span>";
+                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от $newPrice</span><br/>";
+                        $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice </span></span>";
                         $strResult .= "</div></li></ul></span>";
                         if ($result[$i]['discount'] != 0){
                             $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
@@ -349,12 +366,15 @@ class KuhniCatalogController extends Controller
 
                 for ($i = 0; $i < count($result); $i++){
                     if (($i <= 6)&&($i > 4)){
+                        $newPrice = $result[$i]['price'] * $kurs->getSetting() * $nds->getSetting() * $coef->getSetting();
+                        $newNoDiscountPrice = ($newPrice * $result[$i]['discount'])/100 + $newPrice;
+
                         $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
                         $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
                         $strResult .= "<span class='pos-bot-l'><ul class='nav'>";
                         $strResult .= "<li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span></div></li>";
-                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
-                        $strResult .= "<span class='text-right last-price'>старая цена<span class='through'>{$result[$i]['noDiscountPrice']}</span></span>";
+                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от $newPrice</span><br/>";
+                        $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice </span></span>";
                         $strResult .= "</div></li></ul></span>";
                         if ($result[$i]['discount'] != 0){
                             $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
@@ -368,13 +388,16 @@ class KuhniCatalogController extends Controller
 
                 for ($i = 0; $i < count($result); $i++){
                     if (($i <= 8)&&($i > 6)){
+                        $newPrice = $result[$i]['price'] * $kurs->getSetting() * $nds->getSetting() * $coef->getSetting();
+                        $newNoDiscountPrice = ($newPrice * $result[$i]['discount'])/100 + $newPrice;
+
                         $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
 
                         $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
 
                         $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span>";
-                        $strResult .= "</div></li><li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
-                        $strResult .= "<span class='text-right last-price'>старая цена<span class='through'>{$result[$i]['noDiscountPrice']}</span></span>";
+                        $strResult .= "</div></li><li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от $newPrice</span><br/>";
+                        $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice </span></span>";
                         $strResult .= "</div></li></ul></span>";
 
                         if ($result[$i]['discount'] != 0){
@@ -389,6 +412,9 @@ class KuhniCatalogController extends Controller
 
                 for ($i = 0; $i < count($result); $i++){
                     if ($i == 9){
+                        $newPrice = $result[$i]['price'] * $kurs->getSetting() * $nds->getSetting() * $coef->getSetting();
+                        $newNoDiscountPrice = ($newPrice * $result[$i]['discount'])/100 + $newPrice;
+
                         $strResult .= "<a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}' class='big-a-10'>";
                         $strResult .= "<img class='slide-product-img big' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
 
@@ -403,15 +429,15 @@ class KuhniCatalogController extends Controller
                         }else{
                             $strResult .= "*Цену и наличие уточняйте";
                         }
-                        $strResult .= "</span></div></li><li class='right'><div class='text-right right'><span class='text-right last-price'>старая цена";
-                        $strResult .= "<span class='through'>{$result[$i]['noDiscountPrice']}</span><br/></span><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span>";
+                        $strResult .= "</span></div></li><li class='right'><div class='text-right right'><span class='text-right last-price'>старая цена ";
+                        $strResult .= "<span class='through'> $newNoDiscountPrice </span><br/></span><span class='text-right now-price'>сейчас от $newPrice</span>";
                         $strResult .= "</div></li></ul></span>";
                         if ($result[$i]['discount'] != 0){
                             $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
                         }
                         $strResult .= "</a>";
                         $strResult .= '<button type="button" class="phone big-a-10 text-center" data-toggle="modal" data-target="#requestcall"><i class="fa fa-phone"></i></button>';
-                        $strResult .= '<button type="button" id="like" data-id='.$result[$i]["id"].' class="like text-center"><i class="fa fa-heart"></i><span class="countLikes"> '.$result[$i]['likes'].'</span></button>';
+                        $strResult .= '<button type="button" style="left: 20px;" id="like" data-id='.$result[$i]["id"].' class="like text-center"><i class="fa fa-heart"></i><span class="countLikes"> '.$result[$i]['likes'].'</span></button>';
                     }
                 }
                 $strResult .= "</div></div></div>";
@@ -490,6 +516,10 @@ class KuhniCatalogController extends Controller
                 'countMaterialModal' => $countMaterial,
                 'imageMaterialModal' => $imageMaterial,
 
+                'kurs' => $this->getKurs(),
+                'coef' => $this->getCoef(),
+                'nds' => $this->getNDS(),
+
                 'title' => $this->getNameBreadParam($slug),
 
                 'formRequestCall' => $this->getRequestCallForm(),
@@ -567,7 +597,7 @@ class KuhniCatalogController extends Controller
                             ->getRepository('KuhniBundle:Kuhni')
                             ->createQueryBuilder('n')
                             ->select('n')
-                            ->where('n.idKuhniColor = :id')
+                            ->where('n.idKuhniColor IN (:id)')
                             ->orderBy('n.likes', 'DESC')
                             ->setParameters(array('id' => $id))
                             ->getQuery()
@@ -715,7 +745,7 @@ class KuhniCatalogController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -796,7 +826,7 @@ class KuhniCatalogController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -866,7 +896,7 @@ class KuhniCatalogController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -933,7 +963,7 @@ class KuhniCatalogController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -1001,7 +1031,7 @@ class KuhniCatalogController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -1067,7 +1097,7 @@ class KuhniCatalogController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -1142,7 +1172,7 @@ class KuhniCatalogController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -1245,5 +1275,23 @@ class KuhniCatalogController extends Controller
                 ->where('u.salon = 1')
                 ->orderBy('u.id', 'ASC');
         return $locate->getQuery()->getResult();
+    }
+
+    private function getKurs(){
+        return $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Settings')
+            ->findOneByName('kurs');
+    }
+
+    private function getNDS(){
+        return $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Settings')
+            ->findOneByName('nds');
+    }
+
+    private function getCoef(){
+        return $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Settings')
+            ->findOneByName('coef');
     }
 }

@@ -17,9 +17,11 @@
                                 </li>
                                 <li class="right">
                                     <div class="text-right right">
-                                        <span class="text-right now-price">сейчас от {{ completedProject.price }}</span><br/>
+                                        {% set price = completedProject.price * kurs.setting * nds.setting * coef.setting %}
+                                        {% set noDiscountPrice = (price * completedProject.discount)/100 + price %}
+                                        <span class="text-right now-price">сейчас от {{ price }}</span><br/>
                                         <span class="text-right last-price">старая цена
-                                            <span class="through">{{ completedProject.noDiscountPrice }}</span>
+                                            <span class="through">{{ noDiscountPrice }}</span>
                                         </span>
                                     </div>
                                 </li>

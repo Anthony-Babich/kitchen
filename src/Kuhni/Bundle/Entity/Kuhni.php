@@ -152,14 +152,6 @@ class Kuhni
      * @ORM\Column(name="price", type="float")
      */
     private $price;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="noDiscountPrice", type="float")
-     */
-    private $noDiscountPrice;
-
     /**
      * @var integer
      *
@@ -294,24 +286,6 @@ class Kuhni
     public function removeFasadTypes(FasadType $element)
     {
         $this->fasadTypes->removeElement($element);
-        return $this;
-    }
-
-    /**
-     * @return float
-     */
-    public function getNoDiscountPrice()
-    {
-        return $this->noDiscountPrice;
-    }
-
-    /**
-     * @param float $noDiscountPrice
-     * @return Kuhni
-     */
-    public function setNoDiscountPrice(float $noDiscountPrice)
-    {
-        $this->noDiscountPrice = $noDiscountPrice;
         return $this;
     }
 

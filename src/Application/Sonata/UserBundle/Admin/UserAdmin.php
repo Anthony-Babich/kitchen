@@ -78,12 +78,6 @@ class UserAdmin extends BaseUserAdmin
             ->add('email', null, array(
                 'label' => 'e-mail'
             ))
-            ->add('salt', null, array(
-                'label' => 'Salt'
-            ))
-            ->add('password', null, array(
-                'label' => 'Пароль'
-            ))
             ->add('title', null, array(
                 'label' => 'Название'
             ))
@@ -124,12 +118,6 @@ class UserAdmin extends BaseUserAdmin
             ))
             ->add('email', null, array(
                 'label' => 'e-mail'
-            ))
-            ->add('salt', null, array(
-                'label' => 'Salt'
-            ))
-            ->add('password', null, array(
-                'label' => 'Пароль'
             ))
             ->add('title', null, array(
                 'label' => 'Название'

@@ -57,9 +57,6 @@ class KuhniAdmin extends AbstractAdmin
                         'property' => 'title',
                         'label' => 'Цвет'
                     ))
-                    ->add('noDiscountPrice', MoneyType::class, array(
-                        'label' => 'Цена до скидки'
-                    ))
                     ->add('discount', MoneyType::class, array(
                         'label' => 'Скидка'
                     ))
@@ -137,7 +134,7 @@ class KuhniAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name', null, array(
+            ->add('title', null, array(
                 'label' => 'Название'
             ))
             ->add('price', null, array(
@@ -181,7 +178,7 @@ class KuhniAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name', null, array(
+            ->add('title', null, array(
                 'label' => 'Название'
             ))
             ->add('price', null, array(
@@ -219,7 +216,7 @@ class KuhniAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name', null, array(
+            ->add('title', null, array(
                 'label' => 'Название'
             ))
             ->add('title', null, array(
@@ -242,9 +239,6 @@ class KuhniAdmin extends AbstractAdmin
             ))
             ->add('idKuhniColor.title', null, array(
                 'label' => 'Цвет'
-            ))
-            ->add('noDiscountPrice', null, array(
-                'label' => 'Цена до скидки'
             ))
              ->add('discount', null, array(
                  'label' => 'Скидка'
@@ -286,6 +280,4 @@ class KuhniAdmin extends AbstractAdmin
                'label' => 'Картинка',
            ));
     }
-
-
 }
