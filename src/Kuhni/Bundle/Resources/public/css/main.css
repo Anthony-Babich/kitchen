@@ -1,3 +1,6 @@
+b {
+  font-weight: bold; }
+
 section {
   padding-bottom: 0;
   padding-top: 100px; }
@@ -494,9 +497,9 @@ section#reviews {
     #all-products .small-col .pos-bot-l {
       width: 100%; }
       #all-products .small-col .pos-bot-l ul.nav > .left {
-        width: 50%; }
+        width: 49%; }
       #all-products .small-col .pos-bot-l ul.nav > .right {
-        width: 50%; }
+        width: 51%; }
       #all-products .small-col .pos-bot-l .first-name {
         font-size: 12px; }
       #all-products .small-col .pos-bot-l .last-price {
