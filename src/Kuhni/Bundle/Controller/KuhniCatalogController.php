@@ -291,11 +291,6 @@ class KuhniCatalogController extends Controller
                         $strResult .= "><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/>";
                         $strResult .= '</span>';
                         $strResult .= "<span class='first-desc'>";
-                        if ($result[$i]['fixedPrice']){
-                            $strResult .= "*Цена указана за 1 метр погонный кухни";
-                        }else{
-                            $strResult .= "*Цену и наличие уточняйте";
-                        }
                         $strResult .= '</span></div></li>';
 
                         $strResult .= "<li class='right'><div class='text-right right'><span class='text-right last-price'>старая цена ";
@@ -430,11 +425,6 @@ class KuhniCatalogController extends Controller
                         }
                         $strResult .= "><ul class='nav'><li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span>";
                         $strResult .= "<span class='first-desc'>";
-                        if ($result[$i]['fixedPrice']){
-                            $strResult .= "*Цена указана за 1 метр погонный кухни";
-                        }else{
-                            $strResult .= "*Цену и наличие уточняйте";
-                        }
                         $strResult .= "</span></div></li><li class='right'><div class='text-right right'><span class='text-right last-price'>старая цена ";
                         $strResult .= "<span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i></span><br/></span><span class='text-right now-price'>сейчас от $newPrice <i class='fa fa-rub' aria-hidden='true'></i></span>";
                         $strResult .= "</div></li></ul></span>";
@@ -504,6 +494,7 @@ class KuhniCatalogController extends Controller
                 'imageCatalog' => $imageCatalog,
 
                 'maps' => $this->getMapLocate(),
+                'article' => $this->getArticle($slug),
 
                 'populars' => $popular,
                 'popularImage' => $popularImage,
@@ -672,6 +663,35 @@ class KuhniCatalogController extends Controller
             }
         }
         return $result;
+    }
+
+    private function getArticle(string $slug)
+    {
+        if ($slug = 'allproducts'){
+            $entity = $this->getDoctrine()->getManager()
+                ->getRepository( 'KuhniBundle:Settings' )
+                ->findOneByName('article')->getSetting();
+        }else{
+            $entity = $this->getDoctrine()->getManager()
+                ->getRepository( 'KuhniBundle:KuhniStyle' )
+                ->findOneBySlug($slug)->getArticle();
+            if (empty( $entity )) {
+                $entity = $this->getDoctrine()->getManager()
+                    ->getRepository( 'KuhniBundle:KuhniConfig' )
+                    ->findOneBySlug($slug)->getArticle();
+                if (empty( $entity )) {
+                    $entity = $this->getDoctrine()->getManager()
+                        ->getRepository( 'KuhniBundle:KuhniMaterial' )
+                        ->findOneBySlug($slug)->getArticle();
+                    if (empty( $entity )) {
+                        $entity = $this->getDoctrine()->getManager()
+                            ->getRepository( 'KuhniBundle:KuhniColor' )
+                            ->findOneBySlug($slug)->getArticle();
+                    }
+                }
+            }
+        }
+        return $entity;
     }
 
     private function getCatalogResult(){

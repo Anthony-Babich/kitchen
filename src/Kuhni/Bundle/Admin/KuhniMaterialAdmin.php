@@ -22,6 +22,9 @@ class KuhniMaterialAdmin extends AbstractAdmin
             ->add('mainDescription', TextType::class, array(
                 'label' => 'Описание'
             ))
+            ->add('caption', TextType::class, array(
+                'label' => 'Подпись'
+            ))
             ->add('idMassive', EntityType::class, array(
                 'class' => 'KuhniBundle:KuhniMassive',
                 'property' => 'title',
@@ -132,6 +135,9 @@ class KuhniMaterialAdmin extends AbstractAdmin
             ))
             ->add('mainDescription', null, array(
                 'label'    => 'Описание'
+            ))
+            ->add('caption', null, array(
+                'label' => 'Подпись'
             ))
             ->add('idMassive.title',  null, array(
                 'label' => 'Массив',

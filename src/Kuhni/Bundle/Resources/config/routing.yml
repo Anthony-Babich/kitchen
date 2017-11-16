@@ -51,6 +51,11 @@ about:
     defaults: { _controller: "KuhniBundle:About:index" }
     requirements:
         methods:  GET|POST
+reviews:
+    path:  /reviews
+    defaults: { _controller: "KuhniBundle:Reviews:index" }
+    requirements:
+        methods:  GET|POST
 newlike:
     path:  /newlike
     defaults: { _controller: "KuhniBundle:Like:index" }

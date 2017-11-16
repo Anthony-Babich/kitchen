@@ -28,7 +28,6 @@ header.masthead.all{
 .slide-product-img{
 	width: 100%;
 	height: 100%;
-	max-height: 360px;
 }
 #kroshki{
 	padding-top: 10px;
@@ -318,6 +317,7 @@ section#reviews{
 		font-family: 'Open+Sans Light', Helvetica Neue, 'Arial', sans-serif;
 		font-size: 13px;
 		color: #7f7f7f;
+		word-wrap: break-word;
 		span{
 			text-decoration: underline;
 		}
@@ -544,6 +544,39 @@ section#reviews{
 #all-products{
 	line-height: 1.15;
 	padding: 10px 0 0 0;
+	#search-tags{
+		margin-bottom: 30px;
+		background-color: unset;
+		a{
+			background-color: #b2b4b5cc;
+			border-radius: 3px;
+			box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+			box-sizing: border-box;
+			height: 49px;
+			margin-right: 8px;
+			overflow: hidden;
+			text-align: center;
+			padding: 0 16px;
+			span{
+				color: rgba(255,255,255,.8);
+				display: inline-block;
+				font-size: 14px;
+				font-weight: 300;
+				line-height: 49px;
+				text-decoration: none;
+				white-space: nowrap;
+			}
+		}
+		.slick-prev{
+			left: -5px;
+		}
+		.slick-next{
+			right: -5px;
+		}
+		.slick-prev:before, .slick-next:before {
+			 color: #7d7e84;
+		}
+	}
 	h2.section-heading{
 		text-align: left;
 		font-size: 2em;
@@ -1014,10 +1047,10 @@ footer{
 			margin-left: 0;
 		}
 		.slide-product-img{
-			height: 350px;
+			height: auto;
 		}
-		.big{
-			height: 450px;
+		.slide-product-img.big{
+			height: auto;
 		}
 		.big-a-10{
 			margin-left: 0;
@@ -1084,10 +1117,10 @@ footer{
 			margin-right: -15px;
 		}
 		.slide-product-img.big{
-			height: 350px;
+			height: auto;
 		}
 		.small-col.full-screen{
-			flex: 0 0 100%;
+			flex: 0 0 calc(50% - 5px);
 			margin-left: 0;
 		}
 	}

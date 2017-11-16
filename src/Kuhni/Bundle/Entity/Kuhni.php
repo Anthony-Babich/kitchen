@@ -20,6 +20,7 @@ class Kuhni
     {
         $this->fasadColors = new ArrayCollection();
         $this->fasadTypes = new ArrayCollection();
+        $this->color = new ArrayCollection();
     }
 
     /**
@@ -73,12 +74,14 @@ class Kuhni
      */
     private $furnitura;
 
+
+
     /**
      * @var boolean
      *
      * @ORM\Column(name="fixedPrice", type="boolean")
      */
-    private $fixedPrice;
+    private $fixedPrice = false;
 
     /**
      * @var KuhniStyle
@@ -103,14 +106,6 @@ class Kuhni
      * @ORM\JoinColumn(name="id_kuhni_config", referencedColumnName="id")
      */
     private $idKuhniConfig;
-
-    /**
-     * @var KuhniColor
-     *
-     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\KuhniColor", cascade={"persist"})
-     * @ORM\JoinColumn(name="id_kuhni_color", referencedColumnName="id")
-     */
-    private $idKuhniColor;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
@@ -184,9 +179,16 @@ class Kuhni
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=50)
      */
     private $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="article", type="string", length=3000)
+     */
+    private $article;
 
     /**
      * @var string
@@ -288,6 +290,59 @@ class Kuhni
     {
         $this->fasadTypes->removeElement($element);
         return $this;
+    }
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Kuhni\Bundle\Entity\KuhniColor")
+     * @ORM\JoinTable(name="kuhniColor_kuhni",
+     *   joinColumns={@ORM\JoinColumn(name="kuhni_id", referencedColumnName = "id")},
+     *   inverseJoinColumns={@ORM\JoinColumn(name="kuhniColors_id", referencedColumnName="id")}
+     * )
+     */
+    protected $kuhniColors = array();
+
+    /**
+     * @return mixed
+     */
+    public function getKuhniColors()
+    {
+        return $this->kuhniColors;
+    }
+
+    /**
+     * @param KuhniColor $array
+     * @return Kuhni
+     */
+    public function addKuhniColors(KuhniColor $array)
+    {
+        $this->kuhniColors[] = $array;
+        return $this;
+    }
+
+    /**
+     * @param KuhniColor $element
+     * @return Kuhni
+     */
+    public function removeKuhniColors(KuhniColor $element)
+    {
+        $this->kuhniColors->removeElement($element);
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * @param string $article
+     */
+    public function setArticle(string $article)
+    {
+        $this->article = $article;
     }
 
     /**
@@ -475,24 +530,6 @@ class Kuhni
     public function setIdKuhniConfig(KuhniConfig $idKuhniConfig)
     {
         $this->idKuhniConfig = $idKuhniConfig;
-        return $this;
-    }
-
-    /**
-     * @return KuhniColor
-     */
-    public function getIdKuhniColor()
-    {
-        return $this->idKuhniColor;
-    }
-
-    /**
-     * @param KuhniColor $idKuhniColor
-     * @return Kuhni
-     */
-    public function setIdKuhniColor(KuhniColor $idKuhniColor)
-    {
-        $this->idKuhniColor = $idKuhniColor;
         return $this;
     }
 

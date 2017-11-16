@@ -21,6 +21,9 @@ class KuhniConfigAdmin extends AbstractAdmin
             ->add('mainDescription', TextType::class, array(
                 'label' => 'Описание'
             ))
+            ->add('caption', TextType::class, array(
+                'label' => 'Подпись'
+            ))
             ->add('keywords', TextType::class, array(
                 'label' => 'Ключевые слова'
             ))
@@ -58,6 +61,9 @@ class KuhniConfigAdmin extends AbstractAdmin
             ->add('mainDescription', null, array(
                 'label' => 'Описание'
             ))
+            ->add('caption', null, array(
+                'label' => 'Подпись'
+            ))
             ->add('keywords', null, array(
                 'label' => 'Ключевые слова'
             ))
@@ -81,6 +87,9 @@ class KuhniConfigAdmin extends AbstractAdmin
             ))
             ->add('mainDescription', null, array(
                 'label' => 'Описание'
+            ))
+            ->add('caption', null, array(
+                'label' => 'Подпись'
             ))
             ->add('keywords', null, array(
                 'label' => 'Ключевые слова'

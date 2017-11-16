@@ -25,8 +25,7 @@ header.masthead.all {
 
 .slide-product-img {
   width: 100%;
-  height: 100%;
-  max-height: 360px; }
+  height: 100%; }
 
 #kroshki {
   padding-top: 10px;
@@ -246,7 +245,8 @@ section#reviews {
   section#reviews p#geo {
     font-family: 'Open+Sans Light', Helvetica Neue, 'Arial', sans-serif;
     font-size: 13px;
-    color: #7f7f7f; }
+    color: #7f7f7f;
+    word-wrap: break-word; }
     section#reviews p#geo span {
       text-decoration: underline; }
   section#reviews p#info {
@@ -426,6 +426,33 @@ section#reviews {
 #all-products {
   line-height: 1.15;
   padding: 10px 0 0 0; }
+  #all-products #search-tags {
+    margin-bottom: 30px;
+    background-color: unset; }
+    #all-products #search-tags a {
+      background-color: #b2b4b5cc;
+      border-radius: 3px;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+      box-sizing: border-box;
+      height: 49px;
+      margin-right: 8px;
+      overflow: hidden;
+      text-align: center;
+      padding: 0 16px; }
+      #all-products #search-tags a span {
+        color: rgba(255, 255, 255, 0.8);
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 49px;
+        text-decoration: none;
+        white-space: nowrap; }
+    #all-products #search-tags .slick-prev {
+      left: -5px; }
+    #all-products #search-tags .slick-next {
+      right: -5px; }
+    #all-products #search-tags .slick-prev:before, #all-products #search-tags .slick-next:before {
+      color: #7d7e84; }
   #all-products h2.section-heading {
     text-align: left;
     font-size: 2em; }
@@ -786,9 +813,9 @@ footer {
   #all-products .marginleft10 {
     margin-left: 0; }
   #all-products .slide-product-img {
-    height: 350px; }
-  #all-products .big {
-    height: 450px; }
+    height: auto; }
+  #all-products .slide-product-img.big {
+    height: auto; }
   #all-products .big-a-10 {
     margin-left: 0; }
     #all-products .big-a-10 .pos-bot-l {
@@ -830,9 +857,9 @@ footer {
   #all-products .row {
     margin-right: -15px; }
   #all-products .slide-product-img.big {
-    height: 350px; }
+    height: auto; }
   #all-products .small-col.full-screen {
-    flex: 0 0 100%;
+    flex: 0 0 calc(50% - 5px);
     margin-left: 0; }
 
   .popular-slick .slide-col .pos-bot-l {

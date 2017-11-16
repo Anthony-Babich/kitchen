@@ -10,7 +10,6 @@
         $(window).scroll(function() {
             var contact = $('#popular').offset().top - 600;
             if ( ( $(window).scrollTop() >= contact && !inProgress ) && !noMore) {
-                console.log($(window).scrollTop());
                 $.ajax({
                     /* адрес файла-обработчика запроса */
                     url: "{{ path('kuhni_parameters', {'slug' : slug}) }}",
