@@ -860,8 +860,7 @@ footer {
     height: auto; }
   #all-products .small-col.full-screen {
     flex: 0 0 calc(50% - 5px);
-    padding: 0;
-    margin-left: 0; }
+    padding: 0; }
 
   .popular-slick .slide-col .pos-bot-l {
     width: 265px; }
