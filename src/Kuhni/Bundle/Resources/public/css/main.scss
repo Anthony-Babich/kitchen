@@ -1119,6 +1119,11 @@ footer{
 		.slide-product-img.big{
 			height: auto;
 		}
+		.small-col.full-screen{
+			flex: 0 0 calc(50% - 5px);
+			padding: 0;
+			margin-left: 10px;
+		}
 	}
 	.popular-slick{
 		.slide-col{
