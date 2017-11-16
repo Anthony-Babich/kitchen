@@ -17,7 +17,7 @@ class SettingsAdmin extends AbstractAdmin
             ->add('name', TextType::class, array(
                 'label' => 'Название'
             ))
-            ->add('settings', 'genemu_tinymce', array(
+            ->add('setting', 'genemu_tinymce', array(
                 'label' => 'Описание',
                 'configs' => array(
                     'add_unload_trigger' => 'false',
@@ -44,7 +44,7 @@ class SettingsAdmin extends AbstractAdmin
             ->add('name', null, array(
                 'label' => 'Название'
             ))
-            ->add('settings', null, array(
+            ->add('setting', null, array(
                 'label' => 'Описание'
             ));
     }
@@ -55,7 +55,7 @@ class SettingsAdmin extends AbstractAdmin
             ->add('name', null, array(
                 'label' => 'Название'
             ))
-            ->add('settings', null, array(
+            ->add('setting', null, array(
                 'label' => 'Описание'
             ))
             ->add('_action', 'actions', array(
@@ -72,7 +72,7 @@ class SettingsAdmin extends AbstractAdmin
             ->add('name', null, array(
                 'label' => 'Название'
             ))
-            ->add('settings', null, array(
+            ->add('setting', null, array(
                 'label' => 'Описание'
             ));
     }
