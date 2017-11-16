@@ -858,9 +858,6 @@ footer {
     margin-right: -15px; }
   #all-products .slide-product-img.big {
     height: auto; }
-  #all-products .small-col.full-screen {
-    flex: 0 0 calc(50% - 5px);
-    margin-left: 0; }
 
   .popular-slick .slide-col .pos-bot-l {
     width: 265px; }
