@@ -91,9 +91,6 @@ class CostProjectAdmin extends AbstractAdmin
             ->add('idSalon.title', null, array(
                 'label'    => 'Салон'
             ))
-            ->add('geoIP', TextType::class, array(
-                'label' => 'IP-адресс'
-            ))
             ->add('updated', null, array(
                 'label' => 'Время заказа'
             ))
@@ -122,9 +119,6 @@ class CostProjectAdmin extends AbstractAdmin
             ))
             ->add('idSalon.title', null, array(
                 'label'    => 'Салон'
-            ))
-            ->add('geoIP', TextType::class, array(
-                'label' => 'IP-адресс'
             ))
             ->add('updated', null, array(
                 'label' => 'Время заказа'

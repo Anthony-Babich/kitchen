@@ -75,9 +75,6 @@ class PromoAdmin extends AbstractAdmin
             ->add('url', null, array(
                 'label' => 'Откуда пришли'
             ))
-            ->add('geoIP', null, array(
-                'label' => 'IP-адресс'
-            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -106,9 +103,6 @@ class PromoAdmin extends AbstractAdmin
             ))
             ->add('url', null, array(
                 'label' => 'Откуда пришли'
-            ))
-            ->add('geoIP', null, array(
-                'label' => 'IP-адресс'
             ));
     }
 }
