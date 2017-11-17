@@ -53,11 +53,6 @@ class KuhniAdmin extends AbstractAdmin
                         'property' => 'title',
                         'label' => 'Конфигурация'
                     ))
-                    ->add('idKuhniColor', EntityType::class, array(
-                        'class' => 'KuhniBundle:KuhniColor',
-                        'property' => 'title',
-                        'label' => 'Цвет'
-                    ))
                     ->add('discount', MoneyType::class, array(
                         'label' => 'Скидка'
                     ))
@@ -130,8 +125,8 @@ class KuhniAdmin extends AbstractAdmin
                     ))
                 ->end()
             ->end()
-            ->tab('Фасады')
-                ->with('Цвета фасадов', array('class' => 'col-12 col-md-6'))
+            ->tab('Фасады и цвета')
+                ->with('Цвета фасадов', array('class' => 'col-12 col-md-4'))
                     ->add('fasadColors', 'sonata_type_model', array(
                         'class' => 'KuhniBundle:FasadColor',
                         'property' => 'title',
@@ -141,9 +136,19 @@ class KuhniAdmin extends AbstractAdmin
                         'label' => false
                     ))
                 ->end()
-                ->with('Типы фасадов', array('class' => 'col-12 col-md-6'))
+                ->with('Типы фасадов', array('class' => 'col-12 col-md-4'))
                     ->add('fasadTypes', 'sonata_type_model', array(
                         'class' => 'KuhniBundle:FasadType',
+                        'property' => 'title',
+                        'multiple' => true,
+                        'expanded' => true,
+                        'required' => false,
+                        'label' => false
+                    ))
+                ->end()
+                ->with('Цвета', array('class' => 'col-12 col-md-2'))
+                    ->add('kuhniColors', 'sonata_type_model', array(
+                        'class' => 'KuhniBundle:KuhniColor',
                         'property' => 'title',
                         'multiple' => true,
                         'expanded' => true,
@@ -182,12 +187,6 @@ class KuhniAdmin extends AbstractAdmin
                 'class' => 'KuhniBundle:KuhniConfig',
                 'property' => 'title',
             ))
-            ->add('idKuhniColor', null, array(
-                'label'    => 'Цвет'
-            ), 'entity', array(
-                'class' => 'KuhniBundle:KuhniColor',
-                'property' => 'title',
-            ))
             ->add('likes', null, array(
                 'label' => 'Лайки'
             ))
@@ -216,9 +215,6 @@ class KuhniAdmin extends AbstractAdmin
             ))
             ->add('idKuhniConfig.title', null, array(
              'label'    => 'Конфигурация'
-            ))
-            ->add('idKuhniColor.title', null, array(
-             'label'    => 'Цвет'
             ))
             ->add('likes', null, array(
              'label' => 'Лайки'
@@ -263,9 +259,6 @@ class KuhniAdmin extends AbstractAdmin
             ))
             ->add('idKuhniConfig.title', null, array(
                 'label' => 'Конфигурация'
-            ))
-            ->add('idKuhniColor.title', null, array(
-                'label' => 'Цвет'
             ))
             ->add('discount', null, array(
                 'label' => 'Скидка'

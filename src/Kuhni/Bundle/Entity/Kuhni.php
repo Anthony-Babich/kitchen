@@ -74,8 +74,6 @@ class Kuhni
      */
     private $furnitura;
 
-
-
     /**
      * @var boolean
      *

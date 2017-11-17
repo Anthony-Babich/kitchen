@@ -1,7 +1,7 @@
 {% set container1 %}
     <div class="container">
         <div class="row">
-            <div class="col-xl-6 col-md-12 big-col">
+            <div class="col-md-12 col-xl-6 big-col">
                 {% for kitchen in kitchens %}
                     {% if loop.index0 == 0 %}
                         <a href="{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : kitchen.slug}) }}">
@@ -46,7 +46,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-xl-6">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6 small-col no-margin-left full-screen">
+                    <div class="col-12 col-sm-12 col-md-6 small-col no-margin-left full-screen">
                         {% for kitchen in kitchens %}
                             {% if loop.index0 <= 2 and loop.index0 > 0 %}
                                 <div class="col-12 big-col">
@@ -91,7 +91,7 @@
                             {% endif %}
                         {% endfor %}
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-6 small-col full-screen">
+                    <div class="col-12 col-sm-12 col-md-6 small-col full-screen">
                         {% for kitchen in kitchens %}
                             {% if loop.index0 <= 4 and loop.index0 > 2 %}
                                 <div class="col-12 big-col">
@@ -146,7 +146,7 @@
         <div class="row">
             <div class="col-md-12 col-xl-6">
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 small-col first-small-col full-screen">
+                    <div class="col-12 col-md-6 small-col first-small-col full-screen">
                         {% for kitchen in kitchens %}
                             {% if loop.index0 > 4 and loop.index0 <= 6 %}
                                 <div class="col-12 big-col">
@@ -191,7 +191,7 @@
                             {% endif %}
                         {% endfor %}
                     </div>
-                    <div class="col-sm-12 col-md-6 small-col full-screen">
+                    <div class="col-12 col-md-6 small-col full-screen">
                         {% for kitchen in kitchens %}
                             {% if loop.index0 > 6 and loop.index0 <= 8 %}
                                 <div class="col-12 big-col">
@@ -238,7 +238,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 col-md-12 big-col">
+            <div class="col-md-12 col-xl-6 big-col">
                 {% for kitchen in kitchens %}
                     {% if loop.index0 == 9 %}
                         <a href="{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : kitchen.slug}) }}" class="big-a-10">
@@ -289,6 +289,7 @@
         <h2 class="section-heading">{{ title }}</h2>
     </div>
     <div class="container" id="search-tags">
+        <a href="{{ path('kuhni_parameters', {'slug' : 'allproducts'}) }}"><span>Вся продукция</span></a>
         <a href="{{ path('kuhni_parameters', {'slug' : 'sovremennye'}) }}"><span>Современные</span></a>
         <a href="{{ path('kuhni_parameters', {'slug' : 'provans'}) }}"><span>Прованс</span></a>
         <a href="{{ path('kuhni_parameters', {'slug' : 'klassicheskie'}) }}"><span>Классические</span></a>
@@ -322,7 +323,6 @@
         <a href="{{ path('kuhni_parameters', {'slug' : 'yellow'}) }}"><span>Желтый</span></a>
         <a href="{{ path('kuhni_parameters', {'slug' : 'orange'}) }}"><span>Оранжевый</span></a>
         <a href="{{ path('kuhni_parameters', {'slug' : 'blue'}) }}"><span>Синий</span></a>
-        <a href="{{ path('kuhni_parameters', {'slug' : 'allproducts'}) }}"><span>Вся продукция</span></a>
     </div>
     <div id="container-with-products">
         {{ container1 }}
