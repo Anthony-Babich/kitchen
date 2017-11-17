@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class SalonAdmin extends AbstractAdmin
@@ -44,6 +45,20 @@ class SalonAdmin extends AbstractAdmin
             ->add('workingHours', TextType::class, array(
                 'label' => 'Время работы'
             ))
+            ->add('vivodKarta', ChoiceType::class, array(
+                'label' => 'Вывод на карту',
+                'choices' => [
+                    'Не выводить' => '0',
+                    'Выводить' => '1'
+                ],
+            ))
+            ->add('vivodSelect', ChoiceType::class, array(
+                'label' => 'Вывод в select',
+                'choices' => [
+                    'Не выводить' => '0',
+                    'Выводить' => '1'
+                ],
+            ))
         ;
     }
 
@@ -79,6 +94,12 @@ class SalonAdmin extends AbstractAdmin
             ->add('workingHours', null, array(
                 'label' => 'Время работы'
             ))
+            ->add('vivodKarta', null, array(
+                'label' => 'Вывод на карту',
+            ))
+            ->add('vivodSelect', null, array(
+                'label' => 'Вывод в select',
+            ))
         ;
     }
 
@@ -112,6 +133,12 @@ class SalonAdmin extends AbstractAdmin
             ->add('workingHours', null, array(
                 'label' => 'Время работы'
             ))
+            ->add('vivodKarta', null, array(
+                'label' => 'Вывод на карту',
+            ))
+            ->add('vivodSelect', null, array(
+                'label' => 'Вывод в select',
+            ))
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
@@ -138,6 +165,12 @@ class SalonAdmin extends AbstractAdmin
             ))
             ->add('gorod', null, array(
                 'label' => 'Город'
+            ))
+            ->add('vivodKarta', null, array(
+                'label' => 'Вывод на карту',
+            ))
+            ->add('vivodSelect', null, array(
+                'label' => 'Вывод в select',
             ))
             ->add('metroId.nameStation', null, array(
                 'label' => 'Метро'

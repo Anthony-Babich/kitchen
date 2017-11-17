@@ -130,7 +130,7 @@ class HomepageController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -199,7 +199,7 @@ class HomepageController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->select()->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -279,7 +279,7 @@ class HomepageController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->select()->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -339,7 +339,7 @@ class HomepageController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->select()->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -404,7 +404,7 @@ class HomepageController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->select()->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -478,7 +478,7 @@ class HomepageController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->select()->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -550,7 +550,7 @@ class HomepageController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->select()->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -617,7 +617,7 @@ class HomepageController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->select()->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -660,7 +660,7 @@ class HomepageController extends Controller
             ->getRepository('KuhniBundle:Salon');
         $qb = $em->createQueryBuilder('u');
         $locate =
-            $qb->select()->orderBy('u.id', 'ASC');
+            $qb->where('u.vivodKarta = 1')->orderBy('u.id', 'ASC');
         return $locate->getQuery()->getResult();
     }
 }

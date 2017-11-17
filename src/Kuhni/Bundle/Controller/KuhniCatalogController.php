@@ -557,7 +557,7 @@ class KuhniCatalogController extends Controller
     }
 
     private function searchParametr(string $slug, $offset = 0, $limit = 10){
-        if ($slug == 'allproducts'){
+        if ($slug == 'kuhni-zov'){
             $result = $this->getDoctrine()->getManager()
                 ->getRepository('KuhniBundle:Kuhni')
                 ->createQueryBuilder('n')
@@ -674,7 +674,7 @@ class KuhniCatalogController extends Controller
 
     private function getArticle(string $slug)
     {
-        if ($slug = 'allproducts'){
+        if ($slug = 'kuhni-zov'){
             $entity = $this->getDoctrine()->getManager()
                 ->getRepository( 'KuhniBundle:Settings' )
                 ->findOneByName('article')->getSetting();
@@ -711,8 +711,8 @@ class KuhniCatalogController extends Controller
     }
 
     private function getNameBreadParam(string $slug){
-        if ($slug == 'allproducts'){
-            return 'Вся продукция';
+        if ($slug == 'kuhni-zov'){
+            return 'Все кухни';
         }else{
             $entity = $this->getDoctrine()->getManager()
                 ->getRepository('KuhniBundle:KuhniStyle')
@@ -760,7 +760,7 @@ class KuhniCatalogController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -840,7 +840,7 @@ class KuhniCatalogController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -909,7 +909,7 @@ class KuhniCatalogController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -975,7 +975,7 @@ class KuhniCatalogController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -1042,7 +1042,7 @@ class KuhniCatalogController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -1107,7 +1107,7 @@ class KuhniCatalogController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -1181,7 +1181,7 @@ class KuhniCatalogController extends Controller
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -1297,8 +1297,7 @@ class KuhniCatalogController extends Controller
             ->getRepository('KuhniBundle:Salon');
         $qb = $em->createQueryBuilder('u');
         $locate =
-            $qb->select()
-                ->orderBy('u.id', 'ASC');
+            $qb->where('u.vivodKarta = 1')->orderBy('u.id', 'ASC');
         return $locate->getQuery()->getResult();
     }
 

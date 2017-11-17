@@ -86,6 +86,20 @@ class Salon
     private $gorod;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="vivodKarta", type="boolean")
+     */
+    private $vivodKarta = 0;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="vivodSelect", type="boolean")
+     */
+    private $vivodSelect = 0;
+
+    /**
      * Get id
      *
      * @return int
@@ -93,6 +107,38 @@ class Salon
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVivodKarta(): bool
+    {
+        return $this->vivodKarta;
+    }
+
+    /**
+     * @param bool $vivodKarta
+     */
+    public function setVivodKarta(bool $vivodKarta)
+    {
+        $this->vivodKarta = $vivodKarta;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVivodSelect(): bool
+    {
+        return $this->vivodSelect;
+    }
+
+    /**
+     * @param bool $vivodSelect
+     */
+    public function setVivodSelect(bool $vivodSelect)
+    {
+        $this->vivodSelect = $vivodSelect;
     }
 
     /**
