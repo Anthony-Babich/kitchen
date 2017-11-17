@@ -5,6 +5,12 @@ section{
 b{
 	font-weight: bold;
 }
+a, a:focus, a:hover, a:active, button:focus, button:hover, button:active{
+	outline: none;
+	color: #fff;
+	background-color: unset;
+	cursor: pointer;
+}
 #wo-breadcrumbs{
 	display: inline-flex;
 	width: 100%;

@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DesignProjectShagController extends Controller
 {
-    public function indexAction(Request $request){
+    public function indexAction(Request $request, \Swift_Mailer $mailer){
         //geoIP
         $ip = $_SERVER['REMOTE_ADDR'];
         $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
@@ -45,6 +45,28 @@ class DesignProjectShagController extends Controller
         $call->setIdSalon($user);
         $entityManager->persist($call);
         $entityManager->flush();
+
+        //send to email
+        $message = (new \Swift_Message('Новая заявка на бесплатный дизайн проект'))
+            ->setFrom('info@зов.москва')
+            ->setTo('antosha.1998.ru@mail.ru')
+            ->setBody(
+                $this->renderView(
+                    'Emails/freedesignproject.html.twig',
+                    array(
+                        'sender_name' => $name,
+                        'email' => 'antosha.1998.ru@mail.ru',
+                        'phone' => $phone,
+                        'styleKitchen' => $style,
+                        'configKitchen' => $config,
+                        'created' => new \DateTime(),
+                        'geoIP' => $geo_info
+                    )
+                ),
+                'text/html'
+            )
+        ;
+        $mailer->send($message);
 
         $response = json_encode(array('success' => 'success'));
         return new Response($response);
