@@ -596,18 +596,6 @@ class KuhniCatalogController extends Controller
                             ->setMaxResults($limit)
                             ->getQuery()
                             ->getArrayResult();
-//                        $result = $this->getDoctrine()->getManager()
-//                            ->getRepository('KuhniBundle:Kuhni')->createQueryBuilder('r')
-//                            ->join('r.applicationStatus', 's')
-//                            ->where('r.submitted IS NOT NULL')
-//                            ->andWhere('r.created >= :date')
-//                            ->andWhere('r.created < :date2')
-//                            ->andWhere('s IN (:status)') // Here's the In statement
-//                            ->orderBy('r.created', 'DESC')
-//                            ->setParameter('date', $appSearch->getDateFrom())
-//                            ->setParameter('date2', $end)
-//                            ->setParameter('status', $appSearch->getApplicationStatus()) //Here's the array collection
-//                            ->getQuery();
                     }else{
                         if (is_array($entity)){
                             foreach ($entity as $item){
