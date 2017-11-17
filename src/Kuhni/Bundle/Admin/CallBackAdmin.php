@@ -85,6 +85,12 @@ class CallBackAdmin extends AbstractAdmin
             ->add('idSalon.title', null, array(
                 'label'    => 'Салон'
             ))
+            ->add('url', null, array(
+                'label' => 'Откуда пришли'
+            ))
+            ->add('geoIP', null, array(
+                'label' => 'IP-адресс'
+            ))
             ->add('created', null, array(
                 'label' => 'Время заказа'
             ))
@@ -113,6 +119,12 @@ class CallBackAdmin extends AbstractAdmin
             ))
             ->add('idSalon.title', null, array(
                 'label'    => 'Салон'
+            ))
+            ->add('url', null, array(
+                'label' => 'Откуда пришли'
+            ))
+            ->add('geoIP', null, array(
+                'label' => 'IP-адресс'
             ))
             ->add('created', null, array(
                 'label' => 'Время заказа'

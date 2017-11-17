@@ -68,6 +68,12 @@ class CostProjectAdmin extends AbstractAdmin
                 'class'    => 'ApplicationSonataUserBundle:User',
                 'property' => 'title',
             ))
+            ->add('url', null, array(
+                'label' => 'Откуда пришли'
+            ))
+            ->add('geoIP', null, array(
+                'label' => 'IP-адресс'
+            ))
             ->add('updated', null, array(
                 'label' => 'Время заказа'
             ));
@@ -90,6 +96,12 @@ class CostProjectAdmin extends AbstractAdmin
             ))
             ->add('idSalon.title', null, array(
                 'label'    => 'Салон'
+            ))
+            ->add('url', null, array(
+                'label' => 'Откуда пришли'
+            ))
+            ->add('geoIP', null, array(
+                'label' => 'IP-адресс'
             ))
             ->add('updated', null, array(
                 'label' => 'Время заказа'

@@ -91,6 +91,12 @@ class FreeDesignProjectAdmin extends AbstractAdmin
             ->add('idSalon.title', null, array(
                 'label'    => 'Салон'
             ))
+            ->add('url', null, array(
+                'label' => 'Откуда пришли'
+            ))
+            ->add('geoIP', null, array(
+                'label' => 'IP-адресс'
+            ))
             ->add('updated', null, array(
                 'label' => 'Время заказа'
             ))
@@ -119,6 +125,12 @@ class FreeDesignProjectAdmin extends AbstractAdmin
             ))
             ->add('idSalon.title', null, array(
                 'label'    => 'Салон'
+            ))
+            ->add('url', null, array(
+                'label' => 'Откуда пришли'
+            ))
+            ->add('geoIP', null, array(
+                'label' => 'IP-адресс'
             ))
             ->add('updated', null, array(
                 'label' => 'Время заказа'

@@ -61,6 +61,12 @@ class DesignerAtHomeAdmin extends AbstractAdmin
             ->add('message', null, array(
                 'label' => 'Сообщение'
             ))
+            ->add('url', null, array(
+                'label' => 'Откуда пришли'
+            ))
+            ->add('geoIP', null, array(
+                'label' => 'IP-адресс'
+            ))
             ->add('created', null, array(
                 'label' => 'Время заказа'
             ))
@@ -83,6 +89,12 @@ class DesignerAtHomeAdmin extends AbstractAdmin
             ))
             ->add('message', null, array(
                 'label' => 'Сообщение'
+            ))
+            ->add('url', null, array(
+                'label' => 'Откуда пришли'
+            ))
+            ->add('geoIP', null, array(
+                'label' => 'IP-адресс'
             ))
             ->add('created', null, array(
                 'label' => 'Время заказа'
