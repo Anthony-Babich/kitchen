@@ -267,18 +267,6 @@ services:
     calls:
       - [ setTranslationDomain, [Kuhni\Bundle]]
     public: true
-#  Статьи
-  app.admin.articles:
-    class: Kuhni\Bundle\Admin\ArticlesAdmin
-    tags:
-      - { name: sonata.admin, manager_type: orm, group: Настройки , label: "Статьи" }
-    arguments:
-      - ~
-      - Kuhni\Bundle\Entity\Articles
-      - ~
-    calls:
-      - [ setTranslationDomain, [Kuhni\Bundle]]
-    public: true
 #  Promo
   app.admin.promo:
     class: Kuhni\Bundle\Admin\PromoAdmin
@@ -310,4 +298,12 @@ services:
       - { name: sonata.admin, manager_type: orm, group: "Пользователи!!!!!", label: "Пользователи" }
     calls:
       - [ setTranslationDomain, [Application\Sonata\UserBundle]]
+    public: true
+  app.admin.salon:
+    class: Kuhni\Bundle\Admin\SalonAdmin
+    arguments: [~, Kuhni\Bundle\Entity\Salon, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Пользователи!!!!!", label: "Салоны" }
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
     public: true

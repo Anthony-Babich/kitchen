@@ -76,7 +76,7 @@ class Reviews
     private $message;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\Salon", cascade={"persist"})
      * @ORM\JoinColumn(name="id_salon", referencedColumnName="id")
      */
     private $idSalon;

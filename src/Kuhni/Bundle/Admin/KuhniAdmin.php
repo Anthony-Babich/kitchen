@@ -65,8 +65,8 @@ class KuhniAdmin extends AbstractAdmin
                     ->add('fixedPrice', ChoiceType::class, array(
                         'label' => 'Фиксированная стоимость',
                         'choices' => [
-                            'Цену и наличие уточняйте' => '1',
-                            'Цена указана за 1 метр погонный кухни в стандартной комплектации' => '0'
+                            'Цену и наличие уточняйте' => '0',
+                            'Цена указана за 1 метр погонный кухни в стандартной комплектации' => '1'
                         ],
                     ))
                     ->add('keywords', TextType::class, array(
@@ -153,7 +153,7 @@ class KuhniAdmin extends AbstractAdmin
                         'multiple' => true,
                         'expanded' => true,
                         'required' => false,
-                        'label' => false
+                        'label' => 'Выберите салон(ы)'
                     ))
                 ->end()
             ->end()
