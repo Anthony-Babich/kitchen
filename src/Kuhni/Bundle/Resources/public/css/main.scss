@@ -837,6 +837,9 @@ section#map-section{
 	}
 }
 section#freedesignshag{
+	.form-control{
+		padding: 20px;
+	}
 	h3{
 		font-family: 'Open+Sans Bold', Arial, sans-serif;
 		font-size:  30px;
@@ -857,8 +860,8 @@ section#freedesignshag{
 	background: #193153 url('/web/bundles/kuhni/img/map-image.png') no-repeat center;
 	label{
 		p{
-			margin-top: 5px;
-			margin-bottom: 5px;
+			margin-top: 10px;
+			margin-bottom: 10px;
 		}
 		text-transform: uppercase;
 		vertical-align: middle;

@@ -661,6 +661,8 @@ section#freedesignshag {
   padding-top: 20px;
   color: white;
   background: #193153 url("/web/bundles/kuhni/img/map-image.png") no-repeat center; }
+  section#freedesignshag .form-control {
+    padding: 20px; }
   section#freedesignshag h3 {
     font-family: 'Open+Sans Bold', Arial, sans-serif;
     font-size: 30px; }
@@ -680,8 +682,8 @@ section#freedesignshag {
     font-size: 16px;
     background-color: #FFF; }
     section#freedesignshag label p {
-      margin-top: 5px;
-      margin-bottom: 5px; }
+      margin-top: 10px;
+      margin-bottom: 10px; }
     section#freedesignshag label img {
       width: 100%;
       height: 200px; }

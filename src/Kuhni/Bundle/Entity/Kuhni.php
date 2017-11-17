@@ -186,7 +186,7 @@ class Kuhni
      *
      * @ORM\Column(name="article", type="string", length=3000)
      */
-    private $article = '';
+    private $article = '.';
 
     /**
      * @var string
