@@ -50,20 +50,20 @@ class DesignProjectShagController extends Controller
         $message = (new \Swift_Message('Новая заявка на бесплатный дизайн проект'))
             ->setFrom('info@зов.москва')
             ->setTo('antosha.1998.ru@mail.ru')
-            ->setBody(
-                $this->renderView(
-                    'Emails/freedesignproject.html.twig',
-                    array(
-                        'sender_name' => $name,
-                        'email' => 'antosha.1998.ru@mail.ru',
-                        'phone' => $phone,
-                        'styleKitchen' => $style,
-                        'configKitchen' => $config,
-                        'created' => new \DateTime(),
-                        'geoIP' => $geo_info
-                    )
-                ),
-                'text/html'
+            ->setBody('123'
+//                $this->renderView(
+//                    'Emails/freedesignproject.html.twig',
+//                    array(
+//                        'sender_name' => $name,
+//                        'email' => 'antosha.1998.ru@mail.ru',
+//                        'phone' => $phone,
+//                        'styleKitchen' => $style,
+//                        'configKitchen' => $config,
+//                        'created' => new \DateTime(),
+//                        'geoIP' => $geo_info
+//                    )
+//                ),
+//                'text/html'
             )
         ;
         $mailer->send($message);
