@@ -36,6 +36,13 @@ class RequestCallController extends Controller
         $entityManager->persist($call);
         $entityManager->flush();
 
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Contact enquiry from symblog')
+            ->setFrom('info@a0170685.xsph.ru')
+            ->setTo('antosha.1998.ru@mail.ru')
+            ->setBody('1234324');
+        $this->get('mailer')->send($message);
+
         $response = json_encode(array('success' => 'success'));
         return new Response($response);
     }

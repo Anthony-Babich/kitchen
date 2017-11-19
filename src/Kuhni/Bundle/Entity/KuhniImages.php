@@ -24,7 +24,6 @@ class KuhniImages
      */
     private $id;
 
-
     /**
      * @var Kuhni
      *
