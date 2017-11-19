@@ -29,8 +29,8 @@
                                     <font style="font-size:18px;font-weight: bold;color:#646464;">Подробно о клиенте:</font><br/><em>{{ created }}, {{ geoIP }}</em><br/><br/>
                                     <b>Имя:</b>	<em>{{ sender_name }}</em><br/>
                                     <b>Телефон:</b>	<em>{{ phone }}</em><br/>
-                                    <b>Стиль кухни:</b>	<em>{{ styleKitchen }}</em><br/>
-                                    <b>Форма кухни:</b>	<em>{{ configKitchen }}</em><br/>
+                                    {% block moreInfo %}
+                                    {% endblock %}
                                     <b>Клиент согласен с политикой конфиденциальности</b><br/>
                                 </p>
                                 <br><br>

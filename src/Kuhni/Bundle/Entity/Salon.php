@@ -71,6 +71,13 @@ class Salon
     private $tc;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255)
+     */
+    private $email;
+
+    /**
      * @var Salon $metroId
      *
      * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\StationMoscow")
@@ -107,6 +114,22 @@ class Salon
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email)
+    {
+        $this->email = $email;
     }
 
     /**

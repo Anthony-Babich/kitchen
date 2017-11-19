@@ -2,6 +2,7 @@
 
 namespace Kuhni\Bundle\Controller;
 
+use DateTime;
 use Kuhni\Bundle\Entity\RequestCall;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,9 +25,19 @@ class RequestCallController extends Controller
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
 
         $call = new RequestCall();
+        $salon = $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Salon')
+            ->findOneBy(array('id' => $form['idSalon']));
+        $user = $this->getDoctrine()->getManager()->getRepository('ApplicationSonataUserBundle:User')
+            ->createQueryBuilder('n')
+            ->select('n, m')
+            ->innerjoin('n.salons', 'm')
+            ->where('m.id = :id')
+            ->setParameter('id', $salon->getId())
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
 
-        $userManager = $this->get('fos_user.user_manager');
-        $user = $userManager->findUserBy(array('id' => $form['idSalon']));
         $call->setIdSalon($user);
 
         $call->setUrl((string) $_SERVER['HTTP_REFERER']);
@@ -40,7 +51,19 @@ class RequestCallController extends Controller
             ->setSubject('Contact enquiry from symblog')
             ->setFrom('info@a0170685.xsph.ru')
             ->setTo('antosha.1998.ru@mail.ru')
-            ->setBody('1234324');
+            ->setBody(
+                $this->renderView(
+                    'Emails/requestCall.html.twig',
+                    array(
+                        'sender_name' => $name,
+                        'created' => new \DateTime(),
+                        'geoIP' => $geo_info,
+                        'phone' => $phone,
+                        'email' => $user->getEmail(),
+                    )
+                ),
+                'text/html'
+            );
         $this->get('mailer')->send($message);
 
         $response = json_encode(array('success' => 'success'));
