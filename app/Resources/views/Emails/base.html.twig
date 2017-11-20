@@ -22,11 +22,11 @@
                         <td align="left" valign="middle"><br><br>
                             <font color="#333333" face="Arial, sans-serif" size="2" style="font-size:14px;line-height:1.5em">
                                 <p align="center">
-                                    <font style="font-size:18px;font-weight: bold;color:#646464;">С сайта <a style="text-decoration:none;color:#43a04f;" href="{{ path() }}">зов.москва</a> поступила заявка</font><br />
+                                    <font style="font-size:18px;font-weight: bold;color:#646464;">С сайта <a style="text-decoration:none;color:#43a04f;" href="{{ path('homepage') }}">зов.москва</a> поступила заявка</font><br />
                                     <font size="4" style="font-size:25px;color:#43a04f;text-transform:uppercase;">{% block nameForm %} {% endblock %}</font>
                                 </p>
                                 <p>
-                                    <font style="font-size:18px;font-weight: bold;color:#646464;">Подробно о клиенте:</font><br/><em>{{ created }}, {{ geoIP }}</em><br/><br/>
+                                    <font style="font-size:18px;font-weight: bold;color:#646464;">Подробно о клиенте:</font><br/><em>{{ geoIP }}</em><br/><br/>
                                     <b>Имя:</b>	<em>{{ sender_name }}</em><br/>
                                     <b>Телефон:</b>	<em>{{ phone }}</em><br/>
                                     {% block moreInfo %}

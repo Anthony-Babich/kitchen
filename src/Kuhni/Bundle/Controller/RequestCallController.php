@@ -51,7 +51,6 @@ class RequestCallController extends Controller
                     'Emails/requestCall.html.twig',
                     array(
                         'sender_name' => $name,
-                        'created' => new \DateTime(),
                         'geoIP' => $geo_info,
                         'phone' => $phone,
                         'email' => $user->getEmail(),
