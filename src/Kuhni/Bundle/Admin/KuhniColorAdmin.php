@@ -23,6 +23,9 @@ class KuhniColorAdmin extends AbstractAdmin
             ->add('color', TextType::class, array(
                 'label' => 'Цвет'
             ))
+            ->add('caption', TextType::class, array(
+                'label' => 'Подпись'
+            ))
             ->add('keywords', TextType::class, array(
                 'label' => 'Ключевые слова'
             ))
@@ -57,6 +60,9 @@ class KuhniColorAdmin extends AbstractAdmin
             ->add('mainDescription', null, array(
                 'label' => 'Описание'
             ))
+            ->add('caption', null, array(
+                'label' => 'Подпись'
+            ))
             ->add('color', null, array(
                 'label' => 'Цвет'
             ))
@@ -79,6 +85,9 @@ class KuhniColorAdmin extends AbstractAdmin
             ))
             ->add('keywords', null, array(
                 'label' => 'Ключевые слова'
+            ))
+            ->add('caption', null, array(
+                'label' => 'Подпись'
             ))
             ->add('article', null, array(
                 'label' => 'Статья'

@@ -1,4 +1,7 @@
 {% extends 'base.html.twig' %}
+{% block title %}
+    {{ titleMain|striptags('<p>')|raw }}
+{% endblock %}
 {% block body %}
     {% block navigation %}
         {% include 'homepage/navigation.html.twig' %}

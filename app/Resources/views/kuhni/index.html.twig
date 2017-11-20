@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-    Кухни ЗОВ
+    {{ titleKuhni|striptags('<p>')|raw }}
 {% endblock %}
 {% block body %}
     {% block navigation %}

@@ -63,6 +63,9 @@ class KuhniMaterialAdmin extends AbstractAdmin
             ->add('keywords', TextType::class, array(
                 'label' => 'Ключевые слова'
             ))
+            ->add('caption', TextType::class, array(
+                'label' => 'Подпись'
+            ))
             ->add('article', 'genemu_tinymce', array(
                 'label' => 'Статья',
                 'configs' => array(

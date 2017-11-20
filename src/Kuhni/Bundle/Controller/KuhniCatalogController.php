@@ -69,6 +69,7 @@ class KuhniCatalogController extends Controller
             'imageMaterial' => $imageMaterial,
 
             'maps' => $this->getMapLocate(),
+            'titleKuhni' => $this->getTitleKuhni(),
 
             'formRequestCall' => $this->getRequestCallForm(),
             'formRequestCallModal' => $this->getRequestCallForm(),
@@ -167,7 +168,12 @@ class KuhniCatalogController extends Controller
         $breadcrumbs = $this->get('white_october_breadcrumbs');
         $breadcrumbs->addItem("Главная", $this->get("router")->generate("homepage"));
         $breadcrumbs->addItem("Кухни", $this->get("router")->generate("kuhni_list"));
-        $breadcrumbs->addItem("{$this->getNameBreadParam($slug)}", $this->get("router")->generate('kuhni_parameters', ['slug' => $slug]));
+        if ($slug == 'kuhni-zov'){
+            $breadcrumbs->addItem("Все кухни", $this->get("router")->generate('kuhni_parameters', ['slug' => 'kuhni-zov']));
+        }else{
+            $breadcrumbs->addItem("Все кухни", $this->get("router")->generate('kuhni_parameters', ['slug' => 'kuhni-zov']));
+            $breadcrumbs->addItem("{$this->getNameBreadParam($slug)}", $this->get("router")->generate('kuhni_parameters', ['slug' => $slug]));
+        }
         $breadcrumbs->addItem("{$result->getTitle()}");
 
         $popular = $this->getPopular();
@@ -482,7 +488,12 @@ class KuhniCatalogController extends Controller
             $breadcrumbs = $this->get('white_october_breadcrumbs');
             $breadcrumbs->addItem("Главная", $this->get("router")->generate("homepage"));
             $breadcrumbs->addItem("Кухни", $this->get("router")->generate("kuhni_list"));
-            $breadcrumbs->addItem("{$this->getNameBreadParam($slug)}");
+            if ($slug == 'kuhni-zov'){
+                $breadcrumbs->addItem("Все кухни", $this->get("router")->generate('kuhni_parameters', ['slug' => 'kuhni-zov']));
+            }else{
+                $breadcrumbs->addItem("Все кухни", $this->get("router")->generate('kuhni_parameters', ['slug' => 'kuhni-zov']));
+                $breadcrumbs->addItem("{$this->getNameBreadParam($slug)}");
+            }
 
             //модальные окна для фиксированного футера
             $resultMaterial = $this->result('KuhniMaterial');
@@ -528,7 +539,7 @@ class KuhniCatalogController extends Controller
                 'coef' => $this->getCoef(),
                 'nds' => $this->getNDS(),
 
-                'title' => $this->getNameBreadParam($slug),
+                'title' => $this->getTitleOnHead($slug),
 
                 'formRequestCall' => $this->getRequestCallForm(),
                 'formRequestCallModal' => $this->getRequestCallForm(),
@@ -552,6 +563,13 @@ class KuhniCatalogController extends Controller
             ->setMaxResults(12)
             ->getArrayResult();
         return $result;
+    }
+
+    private function getTitleKuhni()
+    {
+        return $this->getDoctrine()->getManager()
+            ->getRepository( 'KuhniBundle:Settings' )
+            ->findOneByName('title-kuhni')->getSetting();
     }
 
     private function getCompletedProjects(){
@@ -732,6 +750,32 @@ class KuhniCatalogController extends Controller
                 }
             }
             return $entity->getTitle();
+        }
+    }
+
+    private function getTitleOnHead(string $slug){
+        if ($slug == 'kuhni-zov'){
+            return 'Все кухни фабрики ЗОВ';
+        }else{
+            $entity = $this->getDoctrine()->getManager()
+                ->getRepository('KuhniBundle:KuhniStyle')
+                ->findOneBy(array('slug' => $slug));
+            if (empty($entity)) {
+                $entity = $this->getDoctrine()->getManager()
+                    ->getRepository('KuhniBundle:KuhniConfig')
+                    ->findOneBy(array('slug' => $slug));
+                if (empty($entity)) {
+                    $entity = $this->getDoctrine()->getManager()
+                        ->getRepository('KuhniBundle:KuhniMaterial')
+                        ->findOneBy(array('slug' => $slug));
+                    if (empty($entity)) {
+                        $entity = $this->getDoctrine()->getManager()
+                            ->getRepository('KuhniBundle:KuhniColor')
+                            ->findOneBy(array('slug' => $slug));
+                    }
+                }
+            }
+            return $entity->getCaption();
         }
     }
 
@@ -925,7 +969,7 @@ class KuhniCatalogController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "«Белорусские кухни» ";
+                        $address .= "«Белорусские кухни»  ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;

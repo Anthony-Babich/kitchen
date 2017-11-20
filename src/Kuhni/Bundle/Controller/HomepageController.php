@@ -46,8 +46,11 @@ class HomepageController extends Controller
         return $this->render('homepage/index.html.twig', array(
             'catalog' => $result,
             'image' => $image,
+
             'article' => $this->getArticle(),
+            'titleMain' => $this->getTitleMain(),
             'maps' => $this->getMapLocate(),
+
             'formRequestCallModal' => $this->getRequestCallForm(),
             'formRequestCall' => $this->getRequestCallForm(),
             'formCostProject' => $this->getCostProject(),
@@ -66,6 +69,13 @@ class HomepageController extends Controller
         return $this->getDoctrine()->getManager()
             ->getRepository( 'KuhniBundle:Settings' )
             ->findOneByName('article')->getSetting();
+    }
+
+    private function getTitleMain()
+    {
+        return $this->getDoctrine()->getManager()
+            ->getRepository( 'KuhniBundle:Settings' )
+            ->findOneByName('title-main')->getSetting();
     }
 
     private function getReviews()

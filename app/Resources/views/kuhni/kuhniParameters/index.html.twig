@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-    Изменить
+    {{ title|striptags('<p>')|raw }}
 {% endblock %}
 {% block body %}
     {% block navigation %}
@@ -13,11 +13,12 @@
     {% block content %}
         {% include 'kroshki.html.twig' %}
         {% include 'kuhni/kuhniParameters/products.html.twig' %}
+        {% include 'kuhni/kuhniParameters/article.html.twig' %}
+        {% include 'freedesignshag.html.twig' %}
         {% include 'kuhni/kuhniParameters/popular.html.twig' %}
         {% include 'kuhni/kuhniParameters/completed-projects.html.twig' %}
         {% include 'calc.html.twig' %}
         {% include 'product/more-prod.html.twig' %}
-        {% include 'kuhni/kuhniParameters/article.html.twig' %}
         {% include 'homepage/section-map.html.twig' %}
         {% include 'homepage/section-contact.html.twig' %}
     {% endblock %}

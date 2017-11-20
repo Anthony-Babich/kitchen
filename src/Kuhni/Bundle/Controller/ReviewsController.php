@@ -39,6 +39,7 @@ class ReviewsController extends Controller
             ->createQueryBuilder('n')
             ->select('n')
             ->orderBy('n.star', 'DESC')
+            ->addOrderBy('n.created', 'DESC')
             ->getQuery()
             ->getResult();
 
