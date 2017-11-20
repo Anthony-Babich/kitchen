@@ -49,7 +49,7 @@ class RequestCallController extends Controller
 
         $message = \Swift_Message::newInstance()
             ->setSubject('Contact enquiry from symblog')
-            ->setFrom('info@зов.москва')
+            ->setFrom('info@xn--b1ajv.xn--80adxhks')
             ->setTo('antosha.1998.ru@mail.ru')
             ->setBody('123'
 //                $this->renderView(
