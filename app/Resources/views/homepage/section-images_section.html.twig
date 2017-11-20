@@ -55,7 +55,7 @@
         </div>
         <div class="cols">
             <a class="cols_links">
-                <span class="textcol">ДОПОЛНИТЕЛЬНАЯ ГАРАНТИЯ</span>
+                <span class="textcol">ОТСЛЕДИТЬ ЗАКАЗ</span>
                 <span class="imagecol">
                 <img class="no_hover" alt="waterproof" src="{{ asset('bundles/kuhni/img/images_section/guaranteeblackico.svg') }}" />
                 <img class="on_hover" alt="waterproof" src="{{ asset('bundles/kuhni/img/images_section/guaranteewhiteico.svg') }}" />
@@ -66,64 +66,76 @@
 
     <div class="featured_links_banner">
         <div class="banner_col">
-            <img alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/slider_autumn_1920x450.jpg') }}" />
-            <img class="mob_banner" alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/discountmob.jpg') }}" />
-            <div class="content black_color">
-                <div class="sub_title">— СКИДКИ —</div>
-                <div class="title">до 35%</div>
-                <p>Получите скидку до 35%, заказав кухню «ЗОВ» в наших фирменных салонах в городе Москва, до конца месяца.</p>
-                <a class="btn btn-xl" href="#">ПОДРОБНЕЕ</a>
-            </div>
+            <a href="{{ path('homepage') }}">
+                <img alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/slide-1.jpg') }}" />
+                <img class="mob_banner" alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/slide-1-mob.jpg') }}" />
+                <!--<div class="content black_color">
+                    <div class="sub_title">— СКИДКИ —</div>
+                    <div class="title">до 35%</div>
+                    <p>Получите скидку до 35%, заказав кухню «ЗОВ» в наших фирменных салонах в городе Москва, до конца месяца.</p>
+                    <a class="btn btn-xl" href="#">ПОДРОБНЕЕ</a>
+                </div>-->
+            </a>
         </div>
         <div class="banner_col">
-            <img alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/slider_autumn_1920x450.jpg') }}" />
-            <img class="mob_banner" alt="featured_links_banner" src="" />
-            <div class="content black_color">
-                <div class="sub_title">— СКИДКА —</div>
-                <div class="title">ПЛЮС 5%</div>
-                <p>Получите дополнительную скидку в размере 5% на мебель для кухни «ЗОВ», при заказе комплекта бытовой техники.</p>
-                <a class="btn btn-xl" href="#">ПОДРОБНЕЕ</a>
-            </div>
+            <a href="{{ path('homepage') }}">
+                <img alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/slide-2.jpg') }}" />
+                <img class="mob_banner" alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/slide-2-mob.jpg') }}" />
+                <!--<div class="content black_color">
+                    <div class="sub_title">— СКИДКА —</div>
+                    <div class="title">ПЛЮС 5%</div>
+                    <p>Получите дополнительную скидку в размере 5% на мебель для кухни «ЗОВ», при заказе комплекта бытовой техники.</p>
+                    <a class="btn btn-xl" href="#">ПОДРОБНЕЕ</a>
+                </div>-->
+            </a>
         </div>
         <div class="banner_col">
-            <img alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/project.jpg') }}" />
-            <img class="mob_banner" alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/projectmob.jpg') }}" />
-            <div class="content black_color">
-                <div class="sub_title">— БЕСПЛАТНО —</div>
-                <div class="title">ДИЗАЙН-ПРОЕКТ</div>
-                <p>Получите бесплатно три проекта Вашей будущей кухни от творческой команды дизайнеров фабрики «ЗОВ», обратившись в один из наших фирменных салонов.</p>
-                <a class="btn btn-xl" data-toggle="modal" data-target="#freedesignproject">ЗАКАЗАТЬ ПРОЕКТ</a>
-            </div>
+            <a data-toggle="modal" data-target="#freedesignproject">
+                <img alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/slide-3.jpg') }}" />
+                <img class="mob_banner" alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/slide-3-mob.jpg') }}" />
+                <!--<div class="content black_color">
+                    <div class="sub_title">— БЕСПЛАТНО —</div>
+                    <div class="title">ДИЗАЙН-ПРОЕКТ</div>
+                    <p>Получите бесплатно три проекта Вашей будущей кухни от творческой команды дизайнеров фабрики «ЗОВ», обратившись в один из наших фирменных салонов.</p>
+                    <a class="btn btn-xl" data-toggle="modal" data-target="#freedesignproject">ЗАКАЗАТЬ ПРОЕКТ</a>
+                </div>-->
+            </a>
         </div>
         <div class="banner_col">
-            <img alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/pig.jpg') }}" />
-            <img class="mob_banner" alt="featured_links_banner" src="" />
-            <div class="content black_color">
-                <div class="sub_title">— ЦЕНА —</div>
-                <div class="title">ПРИЯТНО УДИВИТ</div>
-                <p>Пришлите нам проект Вашей кухни — мы рассчитаем его в 5 различных комплектациях и озвучим наиболее выгодное предложение!</p>
-                <a class="btn btn-xl" data-toggle="modal" data-target="#costProject">РАССЧИТАТЬ</a>
-            </div>
+            <a data-toggle="modal" data-target="#costProject">
+                <img alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/slide-4.jpg') }}" />
+                <img class="mob_banner" alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/slide-4-mob.jpg') }}" />
+                <!--<div class="content black_color">
+                    <div class="sub_title">— ЦЕНА —</div>
+                    <div class="title">ПРИЯТНО УДИВИТ</div>
+                    <p>Пришлите нам проект Вашей кухни — мы рассчитаем его в 5 различных комплектациях и озвучим наиболее выгодное предложение!</p>
+                    <a class="btn btn-xl" data-toggle="modal" data-target="#costProject">РАССЧИТАТЬ</a>
+                </div>-->
+            </a>
         </div>
         <div class="banner_col">
-            <img alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/present.jpg') }}" />
-            <img class="mob_banner" alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/presentmob.jpg') }}" />
-            <div class="content white_color">
-                <div class="sub_title">— ПОДАРОК —</div>
-                <div class="title">КАЖДОМУ КЛИЕНТУ</div>
-                <p>При покупке кухни — наши консультанты подготовят для Вас индивидуальный подарок!</p>
-                <a class="btn btn-xl" href="#">ПОДРОБНЕЕ</a>
-            </div>
+            <a href="{{ path('homepage') }}">
+                <img alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/slide-5.jpg') }}" />
+                <img class="mob_banner" alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/slide-5-mob.jpg') }}" />
+                <!--<div class="content white_color">
+                    <div class="sub_title">— ПОДАРОК —</div>
+                    <div class="title">КАЖДОМУ КЛИЕНТУ</div>
+                    <p>При покупке кухни — наши консультанты подготовят для Вас индивидуальный подарок!</p>
+                    <a class="btn btn-xl" href="#">ПОДРОБНЕЕ</a>
+                </div>-->
+            </a>
         </div>
         <div class="banner_col">
-            <img alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/slider_autumn_1920x450.jpg') }}" />
-            <img class="mob_banner" alt="featured_links_banner" src="" />
-            <div class="content black_color">
-                <div class="sub_title">— ПЛЮС 1 ГОД —</div>
-                <div class="title">К ГАРАНТИИ</div>
-                <p>Получите дополнительно один год гарантии при заказе кухни до конца сезона!</p>
-                <a class="btn btn-xl" href="#">ПОДРОБНЕЕ</a>
-            </div>
+            <a href="{{ path('homepage') }}">
+                <img alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/slide-6.jpg') }}" />
+                <img class="mob_banner" alt="featured_links_banner" src="{{ asset('bundles/kuhni/img/images_section/slide-6-mob.jpg') }}" />
+                <!--<div class="content black_color">
+                    <div class="sub_title">— ПЛЮС 1 ГОД —</div>
+                    <div class="title">К ГАРАНТИИ</div>
+                    <p>Получите дополнительно один год гарантии при заказе кухни до конца сезона!</p>
+                    <a class="btn btn-xl" href="#">ПОДРОБНЕЕ</a>
+                </div>-->
+            </a>
         </div>
     </div>
 </section>
