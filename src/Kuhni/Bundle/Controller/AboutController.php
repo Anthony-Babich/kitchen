@@ -406,12 +406,10 @@ class AboutController extends Controller
     private function getMapLocate()
     {
         $em = $this->getDoctrine()->getManager()
-            ->getRepository('ApplicationSonataUserBundle:User');
+            ->getRepository('KuhniBundle:Salon');
         $qb = $em->createQueryBuilder('u');
         $locate =
-            $qb->select()
-                ->where('u.salon = 1')
-                ->orderBy('u.id', 'ASC');
+            $qb->where('u.vivodKarta = 1')->orderBy('u.id', 'ASC');
         return $locate->getQuery()->getResult();
     }
 }
