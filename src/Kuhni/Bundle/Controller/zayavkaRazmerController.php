@@ -56,6 +56,7 @@ class zayavkaRazmerController extends Controller
                         'created' => new \DateTime(),
                         'geoIP' => $geo_info,
                         'phone' => $phone,
+                        'message' => $message,
                         'email' => $user->getEmail(),
                         'ref' => $_SERVER['HTTP_REFERER'],
                     )
