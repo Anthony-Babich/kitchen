@@ -46,12 +46,9 @@ class freeDesignProjectController extends Controller
             $errorImage = htmlspecialchars($formFile['error']['imageFile']['file']);
             $typeImage = htmlspecialchars($formFile['type']['imageFile']['file']);
 
-            $imgSrc = 'http://xn--b1ajv.xn--80adxhks/upload/zakazy/freedesign/'.$nameImage;
-
             $fileThumbnail = new UploadedFile($fileImage, $nameImage, $typeImage, $sizeImage, $errorImage, true);
             $call->setImageFile($fileThumbnail);
         }else{
-            $imgSrc = 'http://xn--b1ajv.xn--80adxhks/upload/catalog/no_image.jpg';
             $call->setImageFile();
             $call->setImageName('');
             $call->setImageSize(0);
@@ -93,7 +90,6 @@ class freeDesignProjectController extends Controller
                         'geoIP' => $geo_info,
                         'phone' => $phone,
                         'email' => $user->getEmail(),
-                        'imgSrc' => $imgSrc,
                         'ref' => $_SERVER['HTTP_REFERER'],
                     )
                 ),
