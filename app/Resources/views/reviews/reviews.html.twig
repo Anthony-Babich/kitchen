@@ -10,8 +10,8 @@
                 </i>
             </div>
         </div>
-        <div class="row">
-            {% for review in reviews %}
+        {% for review in reviews %}
+            <div class="row">
                 <div class="col-12 col-md-3 text-center">
                     <ul id="name" class="nav nav-justified">
                         <li class="nav-item name text-left">{{ review.name }}</li>
@@ -32,8 +32,8 @@
                         </span>
                     </p>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
         <div class="row">
             <div class="col-12 text-center">
                 <button type="submit" data-toggle="modal" data-target="#review" class="btn btn-xl">Оставить отзыв</button>
