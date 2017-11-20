@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'Emails/base.html.twig' %}
 {% block nameForm %}
     , чтобы расчитали проект
 {% endblock %}
@@ -6,4 +6,5 @@
     Расчет проекта
 {% endblock %}
 {% block moreInfo %}
+    <img src="{{ imgSrc }}" alt="" style="width: 300px; height: 300px;">
 {% endblock %}

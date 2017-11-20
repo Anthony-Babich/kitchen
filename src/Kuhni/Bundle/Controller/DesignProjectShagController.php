@@ -64,6 +64,7 @@ class DesignProjectShagController extends Controller
                         'geoIP' => $geo_info,
                         'phone' => $phone,
                         'email' => $user->getEmail(),
+                        'ref' => $_SERVER['HTTP_REFERER'],
                     )
                 ),
                 'text/html'

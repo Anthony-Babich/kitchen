@@ -94,6 +94,7 @@ class freeDesignProjectController extends Controller
                         'phone' => $phone,
                         'email' => $user->getEmail(),
                         'imgSrc' => $imgSrc,
+                        'ref' => $_SERVER['HTTP_REFERER'],
                     )
                 ),
                 'text/html'
