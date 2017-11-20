@@ -148,7 +148,7 @@ class SalonAdmin extends AbstractAdmin
                 'label' => 'Вывод в select',
             ))
             ->add('idUser.username', null, array(
-                'label' => 'Метро'
+                'label' => 'Салон пользователя'
             ))
             ->add('_action', null, array(
                 'actions' => array(
@@ -162,12 +162,6 @@ class SalonAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('salt', null, array(
-                'label' => 'Salt'
-            ))
-            ->add('password', null, array(
-                'label' => 'Пароль'
-            ))
             ->add('title', null, array(
                 'label' => 'Название'
             ))
@@ -202,7 +196,7 @@ class SalonAdmin extends AbstractAdmin
                 'label' => 'Время работы'
             ))
             ->add('idUser.username', null, array(
-                'label' => 'Метро'
+                'label' => 'Салон пользователя'
             ))
         ;
     }
