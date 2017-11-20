@@ -31,10 +31,16 @@ class DesignProjectShagController extends Controller
 
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
 
-        $userManager = $this->get('fos_user.user_manager');
-        $user = $userManager->findUserBy(array('id' => $form['idSalon']));
+        $salon = $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Salon')
+            ->findOneBy(array('id' => $form['idSalon']));
+
+        $user = $this->getDoctrine()->getManager()
+            ->getRepository('ApplicationSonataUserBundle:User')
+            ->findOneBy(array('id' => $salon->getIdUser()));
 
         $call = new DesignProjectShag();
+        $call->setIdSalon($salon);
         $call->setPhone($phone);
         $call->setEmail($email);
         $call->setName($name);
@@ -42,31 +48,27 @@ class DesignProjectShagController extends Controller
         $call->setStyle($style);
         $call->setUrl($_SERVER['HTTP_REFERER']);
         $call->setGeoIP($geo_info);
-        $call->setIdSalon($user);
         $entityManager->persist($call);
         $entityManager->flush();
 
-        //send to email
-        $message = (new \Swift_Message('Новая заявка на бесплатный дизайн проект'))
-            ->setFrom('info@зов.москва')
-            ->setTo('antosha.1998.ru@mail.ru')
-            ->setBody('123'
-//                $this->renderView(
-//                    'Emails/freedesignproject.html.twig',
-//                    array(
-//                        'sender_name' => $name,
-//                        'email' => 'antosha.1998.ru@mail.ru',
-//                        'phone' => $phone,
-//                        'styleKitchen' => $style,
-//                        'configKitchen' => $config,
-//                        'created' => new \DateTime(),
-//                        'geoIP' => $geo_info
-//                    )
-//                ),
-//                'text/html'
-            )
-        ;
-        $mailer->send($message);
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Заявка зов.москва')
+            ->setFrom('info@xn--b1ajv.xn--80adxhks')
+            ->setTo($user->getEmail())
+            ->setBody(
+                $this->renderView(
+                    'Emails/freedesignshag.html.twig',
+                    array(
+                        'sender_name' => $name,
+                        'created' => new \DateTime(),
+                        'geoIP' => $geo_info,
+                        'phone' => $phone,
+                        'email' => $user->getEmail(),
+                    )
+                ),
+                'text/html'
+            );
+        $this->get('mailer')->send($message);
 
         $response = json_encode(array('success' => 'success'));
         return new Response($response);

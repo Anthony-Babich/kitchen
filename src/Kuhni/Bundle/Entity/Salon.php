@@ -71,13 +71,6 @@ class Salon
     private $tc;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255)
-     */
-    private $email;
-
-    /**
      * @var Salon $metroId
      *
      * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\StationMoscow")
@@ -107,30 +100,12 @@ class Salon
     private $vivodSelect = 0;
 
     /**
-     * Get id
+     * @var Salon $metroId
      *
-     * @return int
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string $email
-     */
-    public function setEmail(string $email)
-    {
-        $this->email = $email;
-    }
+    private $idUser;
 
     /**
      * @return bool
@@ -378,6 +353,22 @@ class Salon
     public function getGorod()
     {
         return $this->gorod;
+    }
+
+    /**
+     * @return Salon
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
+    }
+
+    /**
+     * @param Salon $idUser
+     */
+    public function setIdUser(Salon $idUser)
+    {
+        $this->idUser = $idUser;
     }
 
     /**

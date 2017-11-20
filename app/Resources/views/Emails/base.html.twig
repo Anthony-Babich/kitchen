@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Клиент {{ sender_name }} хочет {% block nameForm %} {% endblock %} с сайта — зов.москва;</title>
+    <title>Клиент {{ sender_name }} хочет {% block want %} {% endblock %} с сайта — зов.москва;</title>
     <style type="text/css">p{margin:15px 0}em{color:#646464;}b{color:#646464;font-weight:bold;}
         button{padding:10px;margin:10px;border-radius:10px;}
         .button-b{background:#337ab7;border-color:#2e6da4;}
@@ -35,11 +35,6 @@
                                 </p>
                                 <br><br>
                                 <p>Проставьте пожалуйста статус выполнения заявки, чтобы мы вас не тревожили!</p>
-                                <p>
-                                    <button class="button-b"><a class="b-a" href="http://'.$myrow_db['name'].'/update-order.php?status=2&hash='.$hash.'">Беру в работу</a></button>
-                                    <button class="button-g"><a class="b-a" href="http://'.$myrow_db['name'].'/update-order.php?status=3&hash='.$hash.'">Успешная продажа</a></button>
-                                    <button class="button-r"><a class="b-a" href="http://'.$myrow_db['name'].'/update-order.php?status=4&hash='.$hash.'">Клиент отказался</a></button>
-                                </p>
                                 <br/>
                                 <p>Вы получили это письмо, потому как ваш E-mail: {{ email }} подключен к сайту <b>зов.москва</b> для получения Онлайн-заявок
                                 </p>

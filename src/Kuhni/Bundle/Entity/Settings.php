@@ -31,7 +31,7 @@ class Settings
     /**
      * @var string
      *
-     * @ORM\Column(name="setting", type="string")
+     * @ORM\Column(name="setting", type="string", length=3000)
      */
     private $setting;
 

@@ -39,43 +39,6 @@ class User extends BaseUser
     }
 
     /**
-     * @ORM\ManyToMany(targetEntity="Kuhni\Bundle\Entity\Salon")
-     * @ORM\JoinTable(name="user_salon",
-     *   joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName = "id")},
-     *   inverseJoinColumns={@ORM\JoinColumn(name="salon_id", referencedColumnName="id")}
-     * )
-     */
-    protected $salons = array();
-
-    /**
-     * @return mixed
-     */
-    public function getSalons()
-    {
-        return $this->salons;
-    }
-
-    /**
-     * @param Salon $array
-     * @return User
-     */
-    public function addSalons(Salon $array)
-    {
-        $this->salons[] = $array;
-        return $this;
-    }
-
-    /**
-     * @param Salon $element
-     * @return User
-     */
-    public function removeKuhniColors(Salon $element)
-    {
-        $this->salons->removeElement($element);
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function __toString()

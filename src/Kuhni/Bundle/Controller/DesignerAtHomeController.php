@@ -26,9 +26,14 @@ class DesignerAtHomeController extends Controller
 
         $call = new DesignerAtHome();
 
-        $userManager = $this->get('fos_user.user_manager');
-        $user = $userManager->findUserBy(array('id' => $form['idSalon']));
-        $call->setIdSalon($user);
+        $salon = $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Salon')
+            ->findOneBy(array('id' => $form['idSalon']));
+        $call->setIdSalon($salon);
+
+        $user = $this->getDoctrine()->getManager()
+            ->getRepository('ApplicationSonataUserBundle:User')
+            ->findOneBy(array('id' => $salon->getIdUser()));
 
         $call->setPhone($phone);
         $call->setMessage($message);
@@ -37,6 +42,25 @@ class DesignerAtHomeController extends Controller
         $call->setGeoIP($geo_info);
         $entityManager->persist($call);
         $entityManager->flush();
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Заявка зов.москва')
+            ->setFrom('info@xn--b1ajv.xn--80adxhks')
+            ->setTo($user->getEmail())
+            ->setBody(
+                $this->renderView(
+                    'Emails/DesignerAtHome.html.twig',
+                    array(
+                        'sender_name' => $name,
+                        'created' => new \DateTime(),
+                        'geoIP' => $geo_info,
+                        'phone' => $phone,
+                        'email' => $user->getEmail(),
+                    )
+                ),
+                'text/html'
+            );
+        $this->get('mailer')->send($message);
 
         $response = json_encode(array('success' => 'success'));
         return new Response($response);
