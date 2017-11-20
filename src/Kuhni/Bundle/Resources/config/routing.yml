@@ -76,3 +76,13 @@ privacy:
     defaults: { _controller: "KuhniBundle:Promo:index" }
     requirements:
         methods:  GET|POST
+zovzakaz:
+    path:  /zovzakaz
+    defaults: { _controller: "KuhniBundle:ZovZakaz:index" }
+    requirements:
+        methods:  GET|POST
+newzovzakaz:
+    path:  /newzovzakaz
+    defaults: { _controller: "KuhniBundle:ZovZakaz:newZakaz" }
+    requirements:
+        methods:  GET|POST
