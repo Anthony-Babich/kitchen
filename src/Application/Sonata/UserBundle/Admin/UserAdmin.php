@@ -19,30 +19,18 @@ class UserAdmin extends BaseUserAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Описание', array('class' => 'col-xs-6'))
-                ->add('username', TextType::class, array(
-                    'label' => 'Имя пользователя'
-                ))
-                ->add('email', EmailType::class, array(
-                    'label' => 'e-mail'
-                ))
-                ->add('salt', TextType::class, array(
-                    'label' => 'Salt'
-                ))
-                ->add('password', TextType::class, array(
-                    'label' => 'Пароль'
-                ))
-            ->end()
-            ->with('Салоны', array('class' => 'col-xs-6'))
-                ->add('salons', 'sonata_type_model', array(
-                    'class' => 'KuhniBundle:Salon',
-                    'property' => 'title',
-                    'multiple' => true,
-                    'expanded' => true,
-                    'required' => false,
-                    'label' => false
-                ))
-            ->end()
+            ->add('username', TextType::class, array(
+                'label' => 'Имя пользователя'
+            ))
+            ->add('email', EmailType::class, array(
+                'label' => 'e-mail'
+            ))
+            ->add('salt', TextType::class, array(
+                'label' => 'Salt'
+            ))
+            ->add('password', TextType::class, array(
+                'label' => 'Пароль'
+            ))
         ;
     }
 

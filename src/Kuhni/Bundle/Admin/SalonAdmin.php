@@ -59,6 +59,11 @@ class SalonAdmin extends AbstractAdmin
                     'Выводить' => '1'
                 ],
             ))
+            ->add('idUser', EntityType::class, array(
+                'class' => 'ApplicationSonataUserBundle:User',
+                'property' => 'username',
+                'label' => 'Салон пользователя'
+            ))
         ;
     }
 
@@ -100,6 +105,9 @@ class SalonAdmin extends AbstractAdmin
             ->add('vivodSelect', null, array(
                 'label' => 'Вывод в select',
             ))
+            ->add('idUser', null, array(
+                'label' => 'Салон пользователя'
+            ))
         ;
     }
 
@@ -138,6 +146,9 @@ class SalonAdmin extends AbstractAdmin
             ))
             ->add('vivodSelect', null, array(
                 'label' => 'Вывод в select',
+            ))
+            ->add('idUser.username', null, array(
+                'label' => 'Метро'
             ))
             ->add('_action', null, array(
                 'actions' => array(
@@ -189,6 +200,9 @@ class SalonAdmin extends AbstractAdmin
             ))
             ->add('workingHours', null, array(
                 'label' => 'Время работы'
+            ))
+            ->add('idUser.username', null, array(
+                'label' => 'Метро'
             ))
         ;
     }
