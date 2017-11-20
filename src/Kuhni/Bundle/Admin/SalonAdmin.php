@@ -48,15 +48,15 @@ class SalonAdmin extends AbstractAdmin
             ->add('vivodKarta', ChoiceType::class, array(
                 'label' => 'Вывод на карту',
                 'choices' => [
-                    'Не выводить' => '0',
-                    'Выводить' => '1'
+                    '0' => 'Не выводить',
+                    '1' => 'Выводить'
                 ],
             ))
             ->add('vivodSelect', ChoiceType::class, array(
                 'label' => 'Вывод в select',
                 'choices' => [
-                    'Не выводить' => '0',
-                    'Выводить' => '1'
+                    '0' => 'Не выводить',
+                    '1' => 'Выводить'
                 ],
             ))
             ->add('idUser', EntityType::class, array(
@@ -84,21 +84,6 @@ class SalonAdmin extends AbstractAdmin
                 'property' => 'nameStation',
                 'label' => 'Метро'
             ))
-            ->add('description', null, array(
-                'label' => 'Описание'
-            ))
-            ->add('address', null, array(
-                'label' => 'Адресс'
-            ))
-            ->add('longitude', null, array(
-                'label' => 'Долгота'
-            ))
-            ->add('latitude', null, array(
-                'label' => 'Широта'
-            ))
-            ->add('workingHours', null, array(
-                'label' => 'Время работы'
-            ))
             ->add('vivodKarta', null, array(
                 'label' => 'Вывод на карту',
             ))
@@ -106,7 +91,10 @@ class SalonAdmin extends AbstractAdmin
                 'label' => 'Вывод в select',
             ))
             ->add('idUser', null, array(
-                'label' => 'Салон пользователя'
+                'label'    => 'Салон пользователя'
+            ), 'entity', array(
+                'class' => 'ApplicationSonataUserBundle:User',
+                'property' => 'username',
             ))
         ;
     }

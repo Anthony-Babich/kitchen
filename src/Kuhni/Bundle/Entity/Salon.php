@@ -2,6 +2,7 @@
 
 namespace Kuhni\Bundle\Entity;
 
+use Application\Sonata\UserBundle\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -100,7 +101,7 @@ class Salon
     private $vivodSelect = 0;
 
     /**
-     * @var Salon $metroId
+     * @var Salon id_user
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
@@ -356,7 +357,9 @@ class Salon
     }
 
     /**
-     * @return Salon
+     * Get idUser
+     *
+     * @return string
      */
     public function getIdUser()
     {
@@ -364,11 +367,16 @@ class Salon
     }
 
     /**
-     * @param Salon $idUser
+     * Set idUser
+     *
+     * @param User $idUser
+     *
+     * @return Salon
      */
-    public function setIdUser(Salon $idUser)
+    public function setIdUser(User $idUser)
     {
         $this->idUser = $idUser;
+        return $this;
     }
 
     /**
