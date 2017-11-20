@@ -289,12 +289,12 @@ class KuhniCatalogController extends Controller
                             $strResult .= 'style="width:100%;"';
                         }
                         $strResult .= "><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/>";
-                        $strResult .= '</span>';
-                        $strResult .= "<span class='first-desc'>";
                         $strResult .= '</span></div></li>';
 
-                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right last-price'>старая цена ";
-                        $strResult .= "<span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i> </span><br/></span>";
+                        $strResult .= "<li class='right'><div class='text-right right'>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i> </span><br/></span>";
+                        }
                         $strResult .= "<span class='text-right now-price'>сейчас от $newPrice <i class='fa fa-rub' aria-hidden='true'></i></span>";
                         $strResult .= "</div></li></ul></span>";
                         if ($result[$i]['discount'] != 0){
@@ -322,7 +322,9 @@ class KuhniCatalogController extends Controller
                         $strResult .= "<span class='pos-bot-l'><ul class='nav'>";
                         $strResult .= "<li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span></div></li>";
                         $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от $newPrice <i class='fa fa-rub' aria-hidden='true'></i></span><br/>";
-                        $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i></span></span>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i></span></span>";
+                        }
                         $strResult .= "</div></li></ul></span>";
 
                         if ($result[$i]['discount'] != 0){
@@ -347,7 +349,9 @@ class KuhniCatalogController extends Controller
                         $strResult .= "<span class='pos-bot-l'><ul class='nav'>";
                         $strResult .= "<li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span></div></li>";
                         $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от $newPrice <i class='fa fa-rub' aria-hidden='true'></i></span><br/>";
-                        $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i></span></span>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i></span></span>";
+                        }
                         $strResult .= "</div></li></ul></span>";
                         if ($result[$i]['discount'] != 0){
                             $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
@@ -373,7 +377,9 @@ class KuhniCatalogController extends Controller
                         $strResult .= "<span class='pos-bot-l'><ul class='nav'>";
                         $strResult .= "<li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span></div></li>";
                         $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от $newPrice <i class='fa fa-rub' aria-hidden='true'></i></span><br/>";
-                        $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i>  </span></span>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i>  </span></span>";
+                        }
                         $strResult .= "</div></li></ul></span>";
                         if ($result[$i]['discount'] != 0){
                             $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
@@ -395,9 +401,12 @@ class KuhniCatalogController extends Controller
 
                         $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
 
-                        $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span>";
-                        $strResult .= "</div></li><li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от $newPrice <i class='fa fa-rub' aria-hidden='true'></i></span><br/>";
-                        $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i></span></span>";
+                        $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span></div></li>";
+                        $strResult .= "<li class='right'><div class='text-right right'>";
+                        $strResult .= "<span class='text-right now-price'>сейчас от $newPrice <i class='fa fa-rub' aria-hidden='true'></i></span><br/>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i></span></span>";
+                        }
                         $strResult .= "</div></li></ul></span>";
 
                         if ($result[$i]['discount'] != 0){
@@ -424,9 +433,11 @@ class KuhniCatalogController extends Controller
                             $strResult .= 'style="width:100%;"';
                         }
                         $strResult .= "><ul class='nav'><li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span>";
-                        $strResult .= "<span class='first-desc'>";
-                        $strResult .= "</span></div></li><li class='right'><div class='text-right right'><span class='text-right last-price'>старая цена ";
-                        $strResult .= "<span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i></span><br/></span><span class='text-right now-price'>сейчас от $newPrice <i class='fa fa-rub' aria-hidden='true'></i></span>";
+                        $strResult .= "</div></li><li class='right'><div class='text-right right'>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i></span><br/></span>";
+                        }
+                        $strResult .= "<span class='text-right now-price'>сейчас от $newPrice <i class='fa fa-rub' aria-hidden='true'></i></span>";
                         $strResult .= "</div></li></ul></span>";
                         if ($result[$i]['discount'] != 0){
                             $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";

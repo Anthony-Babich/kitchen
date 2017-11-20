@@ -260,6 +260,7 @@ section#reviews {
     font-size: 12px;
     border-bottom: 6px solid #193153;
     color: #7f7f7f;
+    word-wrap: break-word;
     padding-bottom: 10px; }
     section#reviews p#info span.more-info {
       text-decoration: underline; }

@@ -96,12 +96,11 @@ class ReviewsController extends Controller
                 'label'         => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -118,7 +117,7 @@ class ReviewsController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "«Белорусские кухни»  ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -163,12 +162,11 @@ class ReviewsController extends Controller
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -185,7 +183,7 @@ class ReviewsController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "«Белорусские кухни»  ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -231,12 +229,11 @@ class ReviewsController extends Controller
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -306,12 +303,11 @@ class ReviewsController extends Controller
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -328,7 +324,7 @@ class ReviewsController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "«Белорусские кухни»  ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -356,29 +352,29 @@ class ReviewsController extends Controller
 
     private function getRequestCallForm()
     {
-        $requestcall = new RequestCall();
-        $formRequestCall = $this->createFormBuilder($requestcall)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'data-validation-required-message' => 'Укажите ваше Имя.',
-                'class' => 'form-control'],
+        $requestCall = new RequestCall();
+
+        $formRequestCall = $this->createFormBuilder($requestCall)
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ваш телефон для связи.',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -395,7 +391,7 @@ class ReviewsController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "«Белорусские кухни»  ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
