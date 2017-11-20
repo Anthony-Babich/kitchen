@@ -81,7 +81,7 @@ class CostProjectController extends Controller
             ->setTo($user->getEmail())
             ->setBody(
                 $this->renderView(
-                    'Emails/requestCall.html.twig',
+                    'Emails/CostProject.html.twig',
                     array(
                         'sender_name' => $name,
                         'created' => new \DateTime(),

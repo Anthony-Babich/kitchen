@@ -63,6 +63,8 @@ class DesignProjectShagController extends Controller
                         'created' => new \DateTime(),
                         'geoIP' => $geo_info,
                         'phone' => $phone,
+                        'styleKitchen' => $style,
+                        'configKitchen' => $config,
                         'email' => $user->getEmail(),
                         'ref' => $_SERVER['HTTP_REFERER'],
                     )
