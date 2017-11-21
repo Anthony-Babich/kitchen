@@ -5,6 +5,7 @@ namespace Kuhni\Bundle\Controller;
 use Doctrine\ORM\EntityRepository;
 use Kuhni\Bundle\Entity\CostProject;
 use Kuhni\Bundle\Entity\DesignerAtHome;
+use Kuhni\Bundle\Entity\DesignProjectShag;
 use Kuhni\Bundle\Entity\freeDesignProject;
 use Kuhni\Bundle\Entity\RequestCall;
 use Kuhni\Bundle\Entity\ZayavkaRazmer;
@@ -43,6 +44,18 @@ class ReviewsController extends Controller
             ->getQuery()
             ->getResult();
 
+        $completedProjects = $this->getCompletedProjects();
+        $completedProjectsImage = array();
+        foreach ($completedProjects as $item) {
+            $completedProjectsImage[] = 'upload/kuhni/kitchens/' . $item['imageName'];
+        }
+
+        $popular = $this->getPopular();
+        $popularImage = array();
+        foreach ($popular as $item) {
+            $popularImage[] = 'upload/kuhni/kitchens/' . $item['imageName'];
+        }
+
         return $this->render('reviews/index.html.twig', array(
             'catalog' => $result,
             'imageCatalog' => $image,
@@ -51,9 +64,21 @@ class ReviewsController extends Controller
 
             'maps' => $this->getMapLocate(),
 
+            'slug' => 'kuhni-zov',
+
+            'kurs' => $this->getKurs(),
+            'coef' => $this->getCoef(),
+            'nds' => $this->getNDS(),
+            
+            'populars' => $popular,
+            'popularImage' => $popularImage,
+            'completedProjects' => $completedProjects,
+            'completedProjectImage' => $completedProjectsImage,
+
             'formRequestCall' => $this->getRequestCallForm(),
             'formFreeProject' => $this->getFreeProjectForm(),
             'formZayavkaRazmer' => $this->getZayavkaRazmer(),
+            'formFreeDesignShag' => $this->getFreeDesignShagForm(),
             'formDesignerAtHome' => $this->getDesignerAtHome(),
             'formCostProject' => $this->getCostProject(),
         ));
@@ -412,6 +437,100 @@ class ReviewsController extends Controller
         return $formRequestCall;
     }
 
+    private function getPopular(){
+        $result = $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Kuhni')
+            ->createQueryBuilder('n')
+            ->select('n')
+            ->orderBy('n.likes', 'DESC')
+            ->getQuery()
+            ->setMaxResults(12)
+            ->getArrayResult();
+        return $result;
+    }
+
+    private function getFreeDesignShagForm()
+    {
+        $FreeDesignShag = new DesignProjectShag();
+
+        $formFreeDesignShag = $this->createFormBuilder($FreeDesignShag)
+            ->add('name', TextType::class, array('attr' => [
+                'placeholder' => 'ВАШЕ ИМЯ *',
+                'data-validation-required-message' => 'Укажите ваше Имя.',
+                'class' => 'form-control'],
+                'label' => false
+            ))
+            ->add('phone', NumberType::class, array(
+                'attr' => [
+                    'id' => '123',
+                    'data-validation-required-message' => 'Укажите ваш телефон для связи.',
+                    'class' => 'form-control',
+                    'type' => 'tel',
+                ],
+                'label' => false,
+            ))
+            ->add('email', EmailType::class, array(
+                'attr' => [
+                    'placeholder' => 'Ваш EMAIL *',
+                    'class' => 'form-control'
+                ],
+                'label' => false,
+            ))
+            ->add('idSalon', EntityType::class, array(
+                'class' => 'KuhniBundle:Salon',
+                'query_builder' => function (EntityRepository $er) {
+                    $qb = $er->createQueryBuilder('u');
+                    return
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
+                },
+                'attr' => [
+                    'data-validation-required-message' => 'Укажите ближайший салон.',
+                    'class' => 'form-control',
+                ],
+                'choice_label' => function ($idSalon) {
+                    $address = '';
+                    if (!empty($idSalon->getMetroId())){
+                        $address .= $idSalon->getMetroId()->getNameStation() . ' | ';
+                        $this->colorStation = $idSalon->getMetroId()->getColor();
+                    }else{
+                        $address .= $idSalon->getGorod() . ' | ';
+                    }
+                    if (!empty($idSalon->getTc())){
+                        $address .= $idSalon->getTc() . " ";
+                    }else{
+                        $address .= "«Белорусские кухни»  ";
+                    }
+                    $address .= $idSalon->getAddress();
+                    return $address;
+                },
+                'choice_attr' => function($idSalon) {
+                    if ($idSalon->getGorod() == 'Москва'){
+                        $class = 'metro';
+                    }else{
+                        $class = 'nometro';
+                    }
+                    return array('class' => $class, 'id' => $this->colorStation);
+                },
+                'label' => false,
+            ))
+            ->getForm()->createView();
+
+        return $formFreeDesignShag;
+    }
+
+    private function getCompletedProjects(){
+        $result = $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Kuhni')
+            ->createQueryBuilder('n')
+            ->select('n')
+            ->where('n.countProjects <> 0')
+            ->orderBy('n.countProjects', 'DESC')
+            ->getQuery()
+            ->setMaxResults(12)
+            ->getArrayResult();
+        return $result;
+    }
+
     private function getMapLocate()
     {
         $em = $this->getDoctrine()->getManager()
@@ -420,5 +539,23 @@ class ReviewsController extends Controller
         $locate =
             $qb->where('u.vivodKarta = 1')->orderBy('u.id', 'ASC');
         return $locate->getQuery()->getResult();
+    }
+
+    private function getKurs(){
+        return $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Settings')
+            ->findOneByName('kurs');
+    }
+
+    private function getNDS(){
+        return $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Settings')
+            ->findOneByName('nds');
+    }
+
+    private function getCoef(){
+        return $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Settings')
+            ->findOneByName('coef');
     }
 }
