@@ -42,9 +42,6 @@ class ReviewsAdmin extends AbstractAdmin
                 'label' => 'Салон',
                 'class' => 'KuhniBundle:Salon',
                 'property' => 'title',
-            ))
-            ->add('created', DateTimeType::class, array(
-                'label' => 'Время заказа'
             ));
     }
     // Fields to be shown on filter forms
