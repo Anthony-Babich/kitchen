@@ -13,6 +13,21 @@ use Doctrine\ORM\Mapping as ORM;
 class Promo
 {
     /**
+     * CallBack constructor.
+     */
+    public function __construct()
+    {
+        $this->setCreated(new \DateTime());
+    }
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime", nullable=true)
+     */
+    private $created;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -247,6 +262,30 @@ class Promo
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return CallBack
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
     }
 }
 

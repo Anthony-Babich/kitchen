@@ -73,7 +73,7 @@ promo_order:
         methods:  GET|POST
 privacy:
     path:  /privacy
-    defaults: { _controller: "KuhniBundle:Promo:index" }
+    defaults: { _controller: "KuhniBundle:Privacy:index" }
     requirements:
         methods:  GET|POST
 zovzakaz:

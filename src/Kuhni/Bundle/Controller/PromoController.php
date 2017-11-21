@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -44,8 +45,7 @@ class PromoController extends Controller
         $entityManager->persist($call);
         $entityManager->flush();
 
-        $response = json_encode(array('success' => 'success'));
-        return new Response($response);
+        return new Response(json_encode(array('success' => 'success')));
     }
 
     private function getPromoForm()

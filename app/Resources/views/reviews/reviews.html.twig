@@ -3,16 +3,11 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h3>ОТЗЫВЫ НАШИХ КЛИЕНТОВ</h3>
-                <i>
-                    <p>Узнайте мнение наших клиентов
-                        <a href="#"> посмотреть все отзывы</a>
-                    </p>
-                </i>
             </div>
         </div>
-        {% for review in reviews %}
-            <div class="row">
-                <div class="col-12 col-md-3 text-center">
+        <div class="row">
+            {% for review in reviews %}
+                <div class="col-12 text-center">
                     <ul id="name" class="nav nav-justified">
                         <li class="nav-item name text-left">{{ review.name }}</li>
                         <li class="nav-item date text-right">{{ review.created }}</li>
@@ -32,8 +27,8 @@
                         </span>
                     </p>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
         <div class="row">
             <div class="col-12 text-center">
                 <button type="submit" data-toggle="modal" data-target="#review" class="btn btn-xl">Оставить отзыв</button>
