@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DesignProjectShagController extends Controller
 {
-    public function indexAction(Request $request, \Swift_Mailer $mailer){
+    public function indexAction(Request $request){
         //geoIP
         $ip = $_SERVER['REMOTE_ADDR'];
         $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
