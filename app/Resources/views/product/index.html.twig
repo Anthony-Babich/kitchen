@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-    {{ kitchen.name }}
+    {{ kitchen.name|raw }}
 {% endblock %}
 {% block body %}
     {% block navigation %}
@@ -13,8 +13,8 @@
     {% block content %}
         {% include 'product/kroshki.html.twig' %}
         {% include 'product/products.html.twig' %}
-        {% include 'product/article.html.twig' %}
         {% include 'product/desc-fasade.html.twig' %}
+        {% include 'product/article.html.twig' %}
         {% include 'freedesignshag.html.twig' %}
         {% include 'kuhni/kuhniParameters/popular.html.twig' %}
         {% include 'kuhni/kuhniParameters/completed-projects.html.twig' %}
