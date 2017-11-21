@@ -206,14 +206,18 @@ header.masthead.all {
   #calc .row :first-child {
     border-left: none; }
 
-#article h3 {
-  font-family: 'Open+Sans Bold', Helvetica Neue, 'Arial', sans-serif;
-  color: black;
-  font-size: 30px; }
-#article p {
-  font-family: 'Open+Sans', Helvetica Neue, 'Arial', sans-serif;
-  color: black;
-  font-size: 12px; }
+#article {
+  padding-top: 0;
+  padding-bottom: 30px;
+  margin-bottom: 30px; }
+  #article h3 {
+    font-family: 'Open+Sans Bold', Helvetica Neue, 'Arial', sans-serif;
+    color: black;
+    font-size: 30px; }
+  #article p {
+    font-family: 'Open+Sans', Helvetica Neue, 'Arial', sans-serif;
+    color: black;
+    font-size: 12px; }
 
 section#reviews {
   line-height: 1em; }
