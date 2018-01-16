@@ -33,7 +33,7 @@ class ZayavkaRazmerAdmin extends AbstractAdmin
             ))
             ->add('idSalon', EntityType::class, array(
                 'label' => 'Салон',
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'property' => 'title',
             ))
             ->add('created', DateTimeType::class, array(
@@ -53,7 +53,7 @@ class ZayavkaRazmerAdmin extends AbstractAdmin
             ->add('idSalon', null, array(
                 'label'    => 'Салон'
             ), 'entity', array(
-                'class'    => 'ApplicationSonataUserBundle:User',
+                'class'    => 'KuhniBundle:Salon',
                 'property' => 'title',
             ))
             ->add('created', null, array(
@@ -70,11 +70,17 @@ class ZayavkaRazmerAdmin extends AbstractAdmin
             ->add('phone', null, array(
                 'label' => 'Телефон'
             ))
-            ->add('message', TextType::class, array(
+            ->add('message', null, array(
                 'label' => 'Сообщение'
             ))
             ->add('idSalon.title', null, array(
                 'label'    => 'Салон'
+            ))
+            ->add('url', null, array(
+                'label' => 'Откуда пришли'
+            ))
+            ->add('geoIP', null, array(
+                'label' => 'IP-адресс'
             ))
             ->add('created', null, array(
                 'label' => 'Время заказа'
@@ -101,6 +107,12 @@ class ZayavkaRazmerAdmin extends AbstractAdmin
             ))
             ->add('idSalon.title', null, array(
                 'label'    => 'Салон'
+            ))
+            ->add('url', null, array(
+                'label' => 'Откуда пришли'
+            ))
+            ->add('geoIP', null, array(
+                'label' => 'IP-адресс'
             ))
             ->add('created', null, array(
                 'label' => 'Время заказа'

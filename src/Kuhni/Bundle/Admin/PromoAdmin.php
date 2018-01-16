@@ -6,8 +6,9 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class PromoAdmin extends AbstractAdmin
 {
@@ -34,6 +35,9 @@ class PromoAdmin extends AbstractAdmin
             ))
             ->add('geoIP', TextType::class, array(
                 'label' => 'IP-адресс'
+            ))
+            ->add('created', DataTimeType::class, array(
+                'label' => 'Дата'
             ));
     }
     // Fields to be shown on filter forms
@@ -75,8 +79,8 @@ class PromoAdmin extends AbstractAdmin
             ->add('url', null, array(
                 'label' => 'Откуда пришли'
             ))
-            ->add('geoIP', null, array(
-                'label' => 'IP-адресс'
+            ->add('created', null, array(
+                'label' => 'Дата'
             ))
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -107,8 +111,8 @@ class PromoAdmin extends AbstractAdmin
             ->add('url', null, array(
                 'label' => 'Откуда пришли'
             ))
-            ->add('geoIP', null, array(
-                'label' => 'IP-адресс'
+            ->add('created', null, array(
+                'label' => 'Дата'
             ));
     }
 }

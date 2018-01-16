@@ -51,6 +51,11 @@ about:
     defaults: { _controller: "KuhniBundle:About:index" }
     requirements:
         methods:  GET|POST
+reviews:
+    path:  /reviews
+    defaults: { _controller: "KuhniBundle:Reviews:index" }
+    requirements:
+        methods:  GET|POST
 newlike:
     path:  /newlike
     defaults: { _controller: "KuhniBundle:Like:index" }
@@ -64,5 +69,20 @@ promo:
 promo_order:
     path:  /promo_order
     defaults: { _controller: "KuhniBundle:Promo:order" }
+    requirements:
+        methods:  GET|POST
+privacy:
+    path:  /privacy
+    defaults: { _controller: "KuhniBundle:Privacy:index" }
+    requirements:
+        methods:  GET|POST
+zovzakaz:
+    path:  /zovzakaz
+    defaults: { _controller: "KuhniBundle:ZovZakaz:index" }
+    requirements:
+        methods:  GET|POST
+newzovzakaz:
+    path:  /newzovzakaz
+    defaults: { _controller: "KuhniBundle:ZovZakaz:newZakaz" }
     requirements:
         methods:  GET|POST

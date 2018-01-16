@@ -1,4 +1,7 @@
 {% extends 'base.html.twig' %}
+{% block title %}
+    {{ kitchen.name|raw }}
+{% endblock %}
 {% block body %}
     {% block navigation %}
         {% include 'product/navigation.html.twig' %}
@@ -11,17 +14,24 @@
         {% include 'product/kroshki.html.twig' %}
         {% include 'product/products.html.twig' %}
         {% include 'product/desc-fasade.html.twig' %}
+        {% include 'product/article.html.twig' %}
+        {% include 'freedesignshag.html.twig' %}
         {% include 'kuhni/kuhniParameters/popular.html.twig' %}
         {% include 'kuhni/kuhniParameters/completed-projects.html.twig' %}
         {% include 'calc.html.twig' %}
         {% include 'product/more-prod.html.twig' %}
+        {% include 'homepage/section-map.html.twig' %}
         {% include 'homepage/section-contact.html.twig' %}
     {% endblock %}
-    {% block modal %}
-        {% include 'kuhni/kuhniParameters/footer-buttons.html.twig' %}
-        {% include 'kuhni/kuhniParameters/modal-config.html.twig' %}
-        {% include 'kuhni/kuhniParameters/modal-material.html.twig' %}
-        {% include 'kuhni/kuhniParameters/modal-style.html.twig' %}
-        {% include 'modal/modal.html.twig' %}
-    {% endblock %}
+{% endblock %}
+
+{% block modal %}
+    {% include 'kuhni/kuhniParameters/footer-buttons.html.twig' %}
+    {% include 'kuhni/kuhniParameters/modal-config.html.twig' %}
+    {% include 'kuhni/kuhniParameters/modal-material.html.twig' %}
+    {% include 'kuhni/kuhniParameters/modal-style.html.twig' %}
+    {% include 'modal/modal.html.twig' %}
+{% endblock %}
+{% block ajax %}
+    {% include 'kuhni/kuhniParameters/likes.html.twig' %}
 {% endblock %}

@@ -1,11 +1,3 @@
-$('.product-images').slick({
-    dots: true,
-    infinite: true,
-    speed: 500,
-    fade: true,
-    arrows: true,
-    cssEase: 'linear',
-});
 $('.featured_links_banner').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -13,7 +5,7 @@ $('.featured_links_banner').slick({
     arrows: false,
     fade: true,
     asNavFor: '.featured_links',
-    autoplaySpeed: 5000,
+    autoplaySpeed: 5000
 });
 $('.featured_links').slick({
     slidesToShow: $('.banner_col').length,
@@ -57,7 +49,7 @@ $('.testimonial_inner').slick({
     arrows: false,
     fade: true,
     dots: false,
-    asNavFor: '.slider-nav-thumbnails',
+    asNavFor: '.slider-nav-thumbnails'
 });
 $('.slider-nav-thumbnails').slick({
     slidesToShow: 5,
@@ -65,7 +57,7 @@ $('.slider-nav-thumbnails').slick({
     asNavFor: '.testimonial_inner',
     dots: false,
     arrows: false,
-    focusOnSelect: true,
+    focusOnSelect: true
 });
 $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
 $('.slider-nav-thumbnails .slick-slide').eq(0).addClass('slick-active');

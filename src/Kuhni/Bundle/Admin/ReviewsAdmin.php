@@ -2,12 +2,12 @@
 
 namespace Kuhni\Bundle\Admin;
 
-use Doctrine\DBAL\Types\IntegerType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Sonata\AdminBundle\Show\ShowMapper;
@@ -40,11 +40,8 @@ class ReviewsAdmin extends AbstractAdmin
             ))
             ->add('idSalon', EntityType::class, array(
                 'label' => 'Салон',
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'property' => 'title',
-            ))
-            ->add('created', DateTimeType::class, array(
-                'label' => 'Время заказа'
             ));
     }
     // Fields to be shown on filter forms
@@ -66,7 +63,7 @@ class ReviewsAdmin extends AbstractAdmin
             ->add('idSalon', null, array(
                 'label'    => 'Салон'
             ), 'entity', array(
-                'class'    => 'ApplicationSonataUserBundle:User',
+                'class'    => 'KuhniBundle:Salon',
                 'property' => 'title',
             ))
             ->add('created', null, array(

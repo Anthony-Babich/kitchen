@@ -17,10 +17,14 @@
                                 </li>
                                 <li class="right">
                                     <div class="text-right right">
-                                        <span class="text-right now-price">сейчас от {{ popular.price }}</span><br/>
-                                        <span class="text-right last-price">старая цена
-                                            <span class="through">{{ popular.noDiscountPrice }}</span>
-                                        </span>
+                                        {% set price = (popular.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                        {% set noDiscountPrice = (((price * popular.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                        <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }} <i class='fa fa-rub' aria-hidden='true'></i></span><br/>
+                                        {% if popular.discount != 0 %}
+                                            <span class="text-right last-price">старая цена
+                                                <span class="through">{{ noDiscountPrice }} <i class='fa fa-rub' aria-hidden='true'></i></span>
+                                            </span>
+                                        {% endif %}
                                     </div>
                                 </li>
                             </ul>

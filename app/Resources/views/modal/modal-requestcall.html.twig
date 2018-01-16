@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            {{ form_start(formRequestCallModal, { 'action': path('requestcall'), 'method': 'POST', 'attr': {'class': 'ajaxForm', 'id': 'requestCallForm'} }) }}
+            {{ form_start(formRequestCallModal, { 'action': path('requestcall'), 'method': 'POST', 'attr': {'class': 'ajaxForm', 'id': 'requestCallFormModal'} }) }}
             {{ form_errors(formRequestCallModal) }}
                 <div class="modal-body">
                     <div class="row">
@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="col-12 text-center">
                             <div class="form-group">
-                                <input type="checkbox" name="privacy-politycs" data-required="true" value="согласен с политикой конфиденциальности"> Прочитал и согласен с <a target="_blank" href="http://kitchens/web/app_dev.php/privacy.php">политикой конфиденциальности</a>
+                                <input type="checkbox" name="privacy-politycs" id="privacy-politycs" data-required="true" value="согласен с политикой конфиденциальности"> Прочитал и согласен с <a target="_blank" href="{{ path('privacy') }}">политикой конфиденциальности</a>
                             </div>
                         </div>
                     </div>

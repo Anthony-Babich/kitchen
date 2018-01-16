@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-K72JNWZ');</script>
+    <!-- End Google Tag Manager -->
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -83,22 +90,86 @@
             }
             .container{
                 font-size: 12px;
-                top: 40%;
+                top: 55%;
+            }
+        }
+        @media (max-width: 475px) {
+            .form-group {
+                margin-bottom: 0.5em;
+            }
+            .container{
+                font-size: 12px;
             }
         }
         @media (max-width: 380px) {
             .container{
-                top: 40%;
-            }
-        }
-        @media (max-width: 340px) {
-            .container{
-                top: 35%;
+                top: 55%;
             }
         }
     </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K72JNWZ"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
     {% include 'promo/section-promo.html.twig' %}
+
+    {% block javascripts %}
+        <script src="{{ asset('bundles/kuhni/js/jquery.js') }}"></script>
+        <script src="{{ asset('bundles/kuhni/js/masked_input_1.4-min.js') }}"></script>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                MaskedInput({
+                    elm: document.getElementById('form_phone'),
+                    format: '+7 ___ ___-__-__',
+                    separator: '+7 '
+                });
+            });
+        </script>
+    {% endblock %}
+    {% block ajax %}
+        <script>
+            $('body').on('submit', '.ajaxForm', function (e) {
+                e.preventDefault();
+                if ($(this).find('input[name="privacy-politycs"]').prop('checked')) {
+                    $('form button').attr("disabled", "disabled");
+                    $.ajax({
+                        type: $(this).attr('method'),
+                        url: $(this).attr('action'),
+                        data: $(this).serialize()
+                    }).done(function (data, status) {
+                        $('form').trigger('reset');
+                        $('form button[type="submit"]').after(
+                            '<div class="alert alert-success" role="alert">' +
+                            '<strong>Спасибо!</strong> В ближайшее время с вами свяжется наш региональный менеджер' +
+                            '</div>'
+                        );
+                        $('form button').removeAttr("disabled", "disabled");
+                        setTimeout(function () {
+                            $('.alert').fadeOut('fast')
+                        }, 3000);
+                    }).fail(function (jqXHR, textStatus, errorThrown) {
+                        if (typeof jqXHR.responseJSON !== 'undefined') {
+                            if (jqXHR.responseJSON.hasOwnProperty('form')) {
+                                $('#form_body').html(jqXHR.responseJSON.form);
+                            }
+                            $('.form_error').html(jqXHR.responseJSON.message);
+                        } else {
+                            alert(errorThrown);
+                        }
+                        $('form button').removeAttr("disabled", "disabled");
+                    });
+                }else{
+                    $(this).find('button[type="submit"]').after(
+                        '<div class="alert alert-info" role="alert">' +
+                        '<strong>Необходимо подтвердить политику конфиденциальности!</strong>' +
+                        '</div>'
+                    );
+                }
+            });
+        </script>
+    {% endblock%}
 </body>
 </html>

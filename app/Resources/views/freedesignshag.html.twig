@@ -28,7 +28,7 @@
                             <div class="row text-center">
                                 <div class="col-12 col-sm-6 col-lg-3">
                                     <label>
-                                        <input name="kitchen-style" type="radio" value="Классические" checked="checked">
+                                        <input name="kitchen-style" type="radio" value="Стиль: классическая" checked="checked">
                                         <span class="check-circle">
                                             <img src="{{ asset('/web/upload/kuhni/style/kitchenstyle-klassicheskie.jpg')}}">
                                         </span>
@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="col-12 col-sm-6 col-lg-3">
                                     <label>
-                                        <input name="kitchen-style" type="radio" value="kantri">
+                                        <input name="kitchen-style" type="radio" value="Стиль: кантри">
                                         <span class="check-circle">
                                             <img src="{{ asset('/web/upload/kuhni/style/kitchenstyle-kantri.jpg')}}">
                                         </span>
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="col-12 col-sm-6 col-lg-3">
                                     <label>
-                                        <input name="kitchen-style" type="radio" value="modern">
+                                        <input name="kitchen-style" type="radio" value="Стиль: модерн">
                                         <span class="check-circle">
                                             <img src="{{ asset('/web/upload/kuhni/style/kitchenstyle-modern.jpg')}}">
                                         </span>
@@ -55,9 +55,9 @@
                                 </div>
                                 <div class="col-12 col-sm-6 col-lg-3">
                                     <label>
-                                        <input name="kitchen-style" type="radio" value="ХЗ">
+                                        <input name="kitchen-style" type="radio" value="Пока не знаю">
                                         <span class="check-circle">
-                                            <img src="{{ asset('/web/upload/kuhni/style/kitchenstyle-retro.jpg')}}">
+                                            <img src="{{ asset('/web/upload/kuhni/idontknow.png')}}">
                                         </span>
                                         <p>Пока не знаю</p>
                                     </label>
@@ -79,7 +79,25 @@
                                 <div class="row text-center">
                                     <div class="col-12 col-sm-6 col-lg-3">
                                         <label>
-                                            <input name="kitchen-config" type="radio" value="kitchentype_pobraznye" checked="checked">
+                                            <input name="kitchen-config" type="radio" value="Конфигурация: прямая" checked="checked">
+                                            <span class="check-circle">
+                                                <img src="{{ asset('/web/upload/kuhni/config/kitchentype_line.svg')}}">
+                                            </span>
+                                            <p>Прямая</p>
+                                        </label>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-lg-3">
+                                        <label>
+                                            <input name="kitchen-config" type="radio" value="Конфигурация: угловая">
+                                            <span class="check-circle">
+                                                <img src="{{ asset('/web/upload/kuhni/config/kitchentype_degree.svg')}}">
+                                            </span>
+                                            <p>Угловая</p>
+                                        </label>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-lg-3">
+                                        <label>
+                                            <input name="kitchen-config" type="radio" value="Конфигурация: п-образная">
                                             <span class="check-circle">
                                                 <img src="{{ asset('/web/upload/kuhni/config/kitchentype_pobraznye.svg')}}">
                                             </span>
@@ -88,27 +106,9 @@
                                     </div>
                                     <div class="col-12 col-sm-6 col-lg-3">
                                         <label>
-                                            <input name="kitchen-config" type="radio" value="kitchentype_gostinaya">
+                                            <input name="kitchen-config" type="radio" value="Пока не знаю">
                                             <span class="check-circle">
-                                                <img src="{{ asset('/web/upload/kuhni/config/kitchentype_gostinaya.svg')}}">
-                                            </span>
-                                            <p>Гостиная</p>
-                                        </label>
-                                    </div>
-                                    <div class="col-12 col-sm-6 col-lg-3">
-                                        <label>
-                                            <input name="kitchen-config" type="radio" value="kitchentype_stolovaya">
-                                            <span class="check-circle">
-                                                <img src="{{ asset('/web/upload/kuhni/config/kitchentype_stolovaya.svg')}}">
-                                            </span>
-                                            <p>Столовая</p>
-                                        </label>
-                                    </div>
-                                    <div class="col-12 col-sm-6 col-lg-3">
-                                        <label>
-                                            <input name="kitchen-config" type="radio" value="kitchentype_small">
-                                            <span class="check-circle">
-                                                <img src="{{ asset('/web/upload/kuhni/config/kitchentype_small.svg')}}">
+                                                <img src="{{ asset('/web/upload/kuhni/idontknow.png')}}">
                                             </span>
                                             <p>Пока не знаю</p>
                                         </label>
@@ -134,24 +134,24 @@
                             <div class="step3">
                                 <h5 class="text-center">ШАГ 3 — Укажите желаемую форму кухонного гарнитура</h5>
                                 <div class="row">
-                                    <div class="col-6 form-group text-center">
+                                    <div class="col-12 col-lg-6 form-group text-center">
                                         {{ form_row(formFreeDesignShag.name) }}
                                     </div>
-                                    <div class="col-6 form-group text-center">
+                                    <div class="col-12 col-lg-6 form-group text-center">
                                         {{ form_row(formFreeDesignShag.phone) }}
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-6 form-group text-center">
+                                    <div class="col-12 col-lg-6 form-group text-center">
                                         {{ form_row(formFreeDesignShag.email) }}
                                     </div>
-                                    <div class="col-6 form-group">
+                                    <div class="col-12 col-lg-6 form-group">
                                         {{ form_row(formFreeDesignShag.idSalon) }}
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 text-center">
-                                        <input type="checkbox" name="privacy-politycs" id="privacy-politycs" data-required="true" value="согласен с политикой конфиденциальности"> Прочитал и согласен с <a target="_blank" href="http://kitchens/web/app_dev.php/privacy.php">политикой конфиденциальности</a>
+                                        <input type="checkbox" name="privacy-politycs" id="privacy-politycs" data-required="true" value="согласен с политикой конфиденциальности"> Прочитал и согласен с <a target="_blank" href="{{ path('privacy') }}">политикой конфиденциальности</a>
                                     </div>
                                 </div>
                             </div>

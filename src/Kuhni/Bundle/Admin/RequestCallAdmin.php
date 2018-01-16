@@ -30,7 +30,7 @@ class RequestCallAdmin extends AbstractAdmin
             ))
             ->add('idSalon', EntityType::class, array(
                 'label' => 'Салон',
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'property' => 'title',
             ))
             ->add('created', DateTimeType::class, array(
@@ -50,7 +50,7 @@ class RequestCallAdmin extends AbstractAdmin
             ->add('idSalon', null, array(
                 'label'    => 'Салон'
             ), 'entity', array(
-                'class'    => 'ApplicationSonataUserBundle:User',
+                'class'    => 'KuhniBundle:Salon',
                 'property' => 'title',
             ))
             ->add('created', null, array(
@@ -69,6 +69,12 @@ class RequestCallAdmin extends AbstractAdmin
             ))
             ->add('idSalon.title', null, array(
                 'label'    => 'Салон'
+            ))
+            ->add('url', null, array(
+                'label' => 'Откуда пришли'
+            ))
+            ->add('geoIP', null, array(
+                'label' => 'IP-адресс'
             ))
             ->add('created', null, array(
                 'label' => 'Время заказа'
@@ -92,6 +98,12 @@ class RequestCallAdmin extends AbstractAdmin
             ))
             ->add('idSalon.title', null, array(
                 'label'    => 'Салон'
+            ))
+            ->add('url', null, array(
+                'label' => 'Откуда пришли'
+            ))
+            ->add('geoIP', null, array(
+                'label' => 'IP-адресс'
             ))
             ->add('created', null, array(
                 'label' => 'Время заказа'

@@ -37,7 +37,7 @@ class FreeDesignProjectAdmin extends AbstractAdmin
             ))
             ->add('idSalon', EntityType::class, array(
                 'label' => 'Салон',
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'property' => 'title',
             ))
             ->add('updated', DateTimeType::class, array(
@@ -65,7 +65,7 @@ class FreeDesignProjectAdmin extends AbstractAdmin
             ->add('idSalon', null, array(
                 'label'    => 'Салон'
             ), 'entity', array(
-                'class'    => 'ApplicationSonataUserBundle:User',
+                'class'    => 'KuhniBundle:Salon',
                 'property' => 'title',
             ))
             ->add('updated', null, array(
@@ -90,6 +90,12 @@ class FreeDesignProjectAdmin extends AbstractAdmin
             ))
             ->add('idSalon.title', null, array(
                 'label'    => 'Салон'
+            ))
+            ->add('url', null, array(
+                'label' => 'Откуда пришли'
+            ))
+            ->add('geoIP', null, array(
+                'label' => 'IP-адресс'
             ))
             ->add('updated', null, array(
                 'label' => 'Время заказа'
@@ -119,6 +125,12 @@ class FreeDesignProjectAdmin extends AbstractAdmin
             ))
             ->add('idSalon.title', null, array(
                 'label'    => 'Салон'
+            ))
+            ->add('url', null, array(
+                'label' => 'Откуда пришли'
+            ))
+            ->add('geoIP', null, array(
+                'label' => 'IP-адресс'
             ))
             ->add('updated', null, array(
                 'label' => 'Время заказа'

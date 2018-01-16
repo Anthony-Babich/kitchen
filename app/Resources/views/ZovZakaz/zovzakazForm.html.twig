@@ -1,0 +1,38 @@
+{% extends 'ZovZakaz/index.html.twig' %}
+{% block form %}
+    {{ form_start(formZovZakaz, { 'action': path('newzovzakaz'), 'method': 'POST', 'attr': {'class': 'ajaxForm', 'id': 'ZovZakazForm'} }) }}
+    {{ form_errors(formZovZakaz) }}
+        <div class="row">
+            <div class="col-10 text-center">
+                <div class="form-group">
+                    {{ form_row(formZovZakaz.number) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 text-center">
+                <div class="form-group">
+                    {{ form_row(formZovZakaz.date) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 text-center">
+                <div class="form-group">
+                    {{ form_row(formZovZakaz.orderNumber) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 text-center">
+                <div class="form-group">
+                    {{ form_row(formZovZakaz.idSalon) }}
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-xl">Отправить заявку</button>
+        </div>
+    {{ form_rest(formZovZakaz) }}
+    {{ form_end(formZovZakaz) }}
+{% endblock %}

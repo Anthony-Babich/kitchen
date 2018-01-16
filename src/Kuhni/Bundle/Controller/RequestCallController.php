@@ -2,6 +2,7 @@
 
 namespace Kuhni\Bundle\Controller;
 
+use DateTime;
 use Kuhni\Bundle\Entity\RequestCall;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,10 +25,15 @@ class RequestCallController extends Controller
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
 
         $call = new RequestCall();
+        $salon = $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Salon')
+            ->findOneBy(array('id' => $form['idSalon']));
+            
+        $user = $this->getDoctrine()->getManager()
+            ->getRepository('ApplicationSonataUserBundle:User')
+            ->findOneBy(array('id' => $salon->getIdUser()));
 
-        $userManager = $this->get('fos_user.user_manager');
-        $user = $userManager->findUserBy(array('id' => $form['idSalon']));
-        $call->setIdSalon($user);
+        $call->setIdSalon($salon);
 
         $call->setUrl((string) $_SERVER['HTTP_REFERER']);
         $call->setName($name);
@@ -35,6 +41,25 @@ class RequestCallController extends Controller
         $call->setPhone($phone);
         $entityManager->persist($call);
         $entityManager->flush();
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Заявка зов.москва')
+            ->setFrom('info@xn--b1ajv.xn--80adxhks')
+            ->setTo($user->getEmail())
+            ->setBody(
+                $this->renderView(
+                    'Emails/requestCall.html.twig',
+                    array(
+                        'sender_name' => $name,
+                        'geoIP' => $geo_info,
+                        'phone' => $phone,
+                        'email' => $user->getEmail(),
+                        'ref' => $_SERVER['HTTP_REFERER'],
+                    )
+                ),
+                'text/html'
+            );
+        $this->get('mailer')->send($message);
 
         $response = json_encode(array('success' => 'success'));
         return new Response($response);

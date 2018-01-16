@@ -1,7 +1,7 @@
 {% set container1 %}
     <div class="container">
         <div class="row">
-            <div class="col-xl-6 col-md-12 big-col">
+            <div class="col-md-12 col-xl-6 big-col">
                 {% for kitchen in kitchens %}
                     {% if loop.index0 == 0 %}
                         <a href="{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : kitchen.slug}) }}">
@@ -11,21 +11,18 @@
                                     <li class="left">
                                         <div class="text-left">
                                             <span class="first-name"><b>{{ kitchen.title }}</b><br/></span>
-                                            <span class="first-desc">
-                                                {% if kitchen.fixedPrice %}
-                                                    *Цена указана за 1 метр погонный кухни
-                                                {% else %}
-                                                    *Цену и наличие уточняйте
-                                                {% endif %}
-                                            </span>
                                         </div>
                                     </li>
                                     <li class="right">
                                         <div class="text-right right">
-                                            <span class="text-right last-price">старая цена
-                                                <span class="through">{{ kitchen.noDiscountPrice }}</span><br/>
-                                            </span>
-                                            <span class="text-right now-price">сейчас от {{ kitchen.price }}</span>
+                                            {% set price = (kitchen.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                            {% set noDiscountPrice = (((price * kitchen.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                            {% if kitchen.discount != 0 %}
+                                                <span class="text-right last-price">старая цена
+                                                    <span class="through">{{ noDiscountPrice }} <i class='fa fa-rub' aria-hidden='true'></i></span><br/>
+                                                </span>
+                                            {% endif %}
+                                            <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }} <i class='fa fa-rub' aria-hidden='true'></i></span>
                                         </div>
                                     </li>
                                 </ul>
@@ -51,7 +48,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-xl-6">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6 small-col no-margin-left full-screen">
+                    <div class="col-12 col-sm-12 col-md-6 small-col no-margin-left full-screen">
                         {% for kitchen in kitchens %}
                             {% if loop.index0 <= 2 and loop.index0 > 0 %}
                                 <div class="col-12 big-col">
@@ -66,10 +63,14 @@
                                                 </li>
                                                 <li class="right">
                                                     <div class="text-right right">
-                                                        <span class="text-right now-price">сейчас от {{ kitchen.price }}</span><br/>
-                                                        <span class="text-right last-price">старая цена
-                                                            <span class="through">{{ kitchen.noDiscountPrice }}</span>
-                                                        </span>
+                                                        {% set price = (kitchen.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                                        {% set noDiscountPrice = (((price * kitchen.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                                        <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }} <i class='fa fa-rub' aria-hidden='true'></i></span><br/>
+                                                        {% if kitchen.discount != 0 %}
+                                                            <span class="text-right last-price">старая цена
+                                                                <span class="through">{{ noDiscountPrice }} <i class='fa fa-rub' aria-hidden='true'></i></span>
+                                                            </span>
+                                                        {% endif %}
                                                     </div>
                                                 </li>
                                             </ul>
@@ -94,7 +95,7 @@
                             {% endif %}
                         {% endfor %}
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-6 small-col full-screen">
+                    <div class="col-12 col-sm-12 col-md-6 small-col full-screen">
                         {% for kitchen in kitchens %}
                             {% if loop.index0 <= 4 and loop.index0 > 2 %}
                                 <div class="col-12 big-col">
@@ -109,10 +110,14 @@
                                                 </li>
                                                 <li class="right">
                                                     <div class="text-right right">
-                                                        <span class="text-right now-price">сейчас от {{ kitchen.price }}</span><br/>
-                                                        <span class="text-right last-price">старая цена
-                                                            <span class="through">{{ kitchen.noDiscountPrice }}</span>
-                                                        </span>
+                                                        {% set price = (kitchen.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                                        {% set noDiscountPrice = (((price * kitchen.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                                        <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }} <i class='fa fa-rub' aria-hidden='true'></i></span><br/>
+                                                        {% if kitchen.discount != 0 %}
+                                                            <span class="text-right last-price">старая цена
+                                                                <span class="through">{{ noDiscountPrice }} <i class='fa fa-rub' aria-hidden='true'></i></span>
+                                                            </span>
+                                                        {% endif %}
                                                     </div>
                                                 </li>
                                             </ul>
@@ -147,7 +152,7 @@
         <div class="row">
             <div class="col-md-12 col-xl-6">
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 small-col first-small-col full-screen">
+                    <div class="col-12 col-md-6 small-col first-small-col full-screen">
                         {% for kitchen in kitchens %}
                             {% if loop.index0 > 4 and loop.index0 <= 6 %}
                                 <div class="col-12 big-col">
@@ -162,10 +167,14 @@
                                                 </li>
                                                 <li class="right">
                                                     <div class="text-right right">
-                                                        <span class="text-right now-price">сейчас от {{ kitchen.price }}</span><br/>
-                                                        <span class="text-right last-price">старая цена
-                                                            <span class="through">{{ kitchen.noDiscountPrice }}</span>
-                                                        </span>
+                                                        {% set price = (kitchen.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                                        {% set noDiscountPrice = (((price * kitchen.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                                        <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }} <i class='fa fa-rub' aria-hidden='true'></i></span><br/>
+                                                        {% if kitchen.discount != 0 %}
+                                                            <span class="text-right last-price">старая цена
+                                                                <span class="through">{{ noDiscountPrice }} <i class='fa fa-rub' aria-hidden='true'></i></span>
+                                                            </span>
+                                                        {% endif %}
                                                     </div>
                                                 </li>
                                             </ul>
@@ -190,7 +199,7 @@
                             {% endif %}
                         {% endfor %}
                     </div>
-                    <div class="col-sm-12 col-md-6 small-col full-screen">
+                    <div class="col-12 col-md-6 small-col full-screen">
                         {% for kitchen in kitchens %}
                             {% if loop.index0 > 6 and loop.index0 <= 8 %}
                                 <div class="col-12 big-col">
@@ -205,10 +214,14 @@
                                                 </li>
                                                 <li class="right">
                                                     <div class="text-right right">
-                                                        <span class="text-right now-price">сейчас от {{ kitchen.price }}</span><br/>
-                                                        <span class="text-right last-price">старая цена
-                                                            <span class="through">{{ kitchen.noDiscountPrice }}</span>
-                                                        </span>
+                                                        {% set price = (kitchen.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                                        {% set noDiscountPrice = (((price * kitchen.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                                        <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }} <i class='fa fa-rub' aria-hidden='true'></i></span><br/>
+                                                        {% if kitchen.discount != 0 %}
+                                                            <span class="text-right last-price">старая цена
+                                                                <span class="through">{{ noDiscountPrice }} <i class='fa fa-rub' aria-hidden='true'></i></span>
+                                                            </span>
+                                                        {% endif %}
                                                     </div>
                                                 </li>
                                             </ul>
@@ -235,7 +248,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 col-md-12 big-col">
+            <div class="col-md-12 col-xl-6 big-col">
                 {% for kitchen in kitchens %}
                     {% if loop.index0 == 9 %}
                         <a href="{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : kitchen.slug}) }}" class="big-a-10">
@@ -245,21 +258,18 @@
                                     <li class="left">
                                         <div class="text-left">
                                             <span class="first-name"><b>{{ kitchen.title }}</b><br/></span>
-                                            <span class="first-desc">
-                                                {% if kitchen.fixedPrice %}
-                                                    *Цена указана за 1 метр погонный кухни
-                                                {% else %}
-                                                    *Цену и наличие уточняйте
-                                                {% endif %}
-                                            </span>
                                         </div>
                                     </li>
                                     <li class="right">
                                         <div class="text-right right">
-                                            <span class="text-right last-price">старая цена
-                                                <span class="through">{{ kitchen.noDiscountPrice }}</span><br/>
-                                            </span>
-                                            <span class="text-right now-price">сейчас от {{ kitchen.price }}</span>
+                                            {% set price = (kitchen.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                            {% set noDiscountPrice = (((price * kitchen.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                            {% if kitchen.discount != 0 %}
+                                                <span class="text-right last-price">старая цена
+                                                    <span class="through">{{ noDiscountPrice }} <i class='fa fa-rub' aria-hidden='true'></i></span><br/>
+                                                </span>
+                                            {% endif %}
+                                            <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }} <i class='fa fa-rub' aria-hidden='true'></i></span>
                                         </div>
                                     </li>
                                 </ul>
@@ -274,7 +284,7 @@
                         <button type="button" class="phone big-a-10 text-center" data-toggle="modal" data-target="#requestcall">
                             <i class="fa fa-phone"></i>
                         </button>
-                        <button type="button" id="like" data-id="{{ kitchen.id }}" class="like text-center">
+                        <button type="button" style="left: 20px;" id="like" data-id="{{ kitchen.id }}" class="like text-center">
                             <i class="fa fa-heart"></i>
                             <span class="countLikes">
                                 {{ kitchen.likes }}
@@ -289,6 +299,44 @@
 <section id="all-products">
     <div class="container heading">
         <h2 class="section-heading">{{ title }}</h2>
+    </div>
+    <div class="container">
+        <div class="row" id="search-tags">
+            <a href="{{ path('kuhni_parameters', {'slug' : 'kuhni-zov'}) }}"><span>Все кухни</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'sovremennye'}) }}"><span>Современные</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'provans'}) }}"><span>Прованс</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'klassicheskie'}) }}"><span>Классические</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'loft'}) }}"><span>Лофт</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'kantri'}) }}"><span>Кантри</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'haitek'}) }}"><span>Хай Тек</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'skandinavskiy'}) }}"><span>Скандинавские</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'retro'}) }}"><span>Ретро</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'minimalizm'}) }}"><span>Минимализм</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'modern'}) }}"><span>Модерн</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'massiv'}) }}"><span>Массив</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'mdf'}) }}"><span>МДФ</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'plastic'}) }}"><span>Пластик</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'glass'}) }}"><span>Стекло</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'acryl'}) }}"><span>Акрил</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'shpon'}) }}"><span>Шпон</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'dsp'}) }}"><span>ДСП</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'line'}) }}"><span>Прямые</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'degree'}) }}"><span>Угловые</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'pobraznye'}) }}"><span>П-образные</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'sostrovom'}) }}"><span>Островом</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'small'}) }}"><span>Малогабаритные</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'gostinaya'}) }}"><span>Гостиная</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'stolovaya'}) }}"><span>Столовая</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'white'}) }}"><span>Белый</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'black'}) }}"><span>Черный</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'gray'}) }}"><span>Серый</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'green'}) }}"><span>Зеленый</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'reds'}) }}"><span>Красный</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'brown'}) }}"><span>Коричневый</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'yellow'}) }}"><span>Желтый</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'orange'}) }}"><span>Оранжевый</span></a>
+            <a href="{{ path('kuhni_parameters', {'slug' : 'blue'}) }}"><span>Синий</span></a>
+        </div>
     </div>
     <div id="container-with-products">
         {{ container1 }}

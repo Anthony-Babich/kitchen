@@ -267,27 +267,43 @@ services:
     calls:
       - [ setTranslationDomain, [Kuhni\Bundle]]
     public: true
-#  Статьи
-  app.admin.articles:
-    class: Kuhni\Bundle\Admin\ArticlesAdmin
-    tags:
-      - { name: sonata.admin, manager_type: orm, group: "Статьи", label: "Статьи" }
-    arguments:
-      - ~
-      - Kuhni\Bundle\Entity\Articles
-      - ~
-    calls:
-      - [ setTranslationDomain, [Kuhni\Bundle]]
-    public: true
 #  Promo
   app.admin.promo:
     class: Kuhni\Bundle\Admin\PromoAdmin
     tags:
-      - { name: sonata.admin, manager_type: orm, group: "Промо", label: "Промо" }
+      - { name: sonata.admin, manager_type: orm, group: Настройки , label: "Промо" }
     arguments:
       - ~
       - Kuhni\Bundle\Entity\Promo
       - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+#  Settings
+  app.admin.settings:
+    class: Kuhni\Bundle\Admin\SettingsAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: Настройки , label: "Настройки" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\Settings
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+  application_sonata_user.admin.user:
+    class: Application\Sonata\UserBundle\Admin\UserAdmin
+    arguments: [~, Application\Sonata\UserBundle\Entity\User, SonataAdminBundle:CRUD]
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Пользователи!!!!!", label: "Пользователи" }
+    calls:
+      - [ setTranslationDomain, [Application\Sonata\UserBundle]]
+    public: true
+  app.admin.salon:
+    class: Kuhni\Bundle\Admin\SalonAdmin
+    arguments: [~, Kuhni\Bundle\Entity\Salon, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Пользователи!!!!!", label: "Салоны" }
     calls:
       - [ setTranslationDomain, [Kuhni\Bundle]]
     public: true

@@ -20,6 +20,7 @@ class Kuhni
     {
         $this->fasadColors = new ArrayCollection();
         $this->fasadTypes = new ArrayCollection();
+        $this->color = new ArrayCollection();
     }
 
     /**
@@ -78,7 +79,7 @@ class Kuhni
      *
      * @ORM\Column(name="fixedPrice", type="boolean")
      */
-    private $fixedPrice;
+    private $fixedPrice = false;
 
     /**
      * @var KuhniStyle
@@ -104,13 +105,6 @@ class Kuhni
      */
     private $idKuhniConfig;
 
-    /**
-     * @var KuhniColor
-     *
-     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\KuhniColor", cascade={"persist"})
-     * @ORM\JoinColumn(name="id_kuhni_color", referencedColumnName="id")
-     */
-    private $idKuhniColor;
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
@@ -152,14 +146,6 @@ class Kuhni
      * @ORM\Column(name="price", type="float")
      */
     private $price;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="noDiscountPrice", type="float")
-     */
-    private $noDiscountPrice;
-
     /**
      * @var integer
      *
@@ -184,21 +170,28 @@ class Kuhni
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=50)
      */
     private $slug;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="article", type="string", length=3000)
+     */
+    private $article = '.';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, unique=true)
      */
     private $title;
 
@@ -298,21 +291,56 @@ class Kuhni
     }
 
     /**
-     * @return float
+     * @ORM\ManyToMany(targetEntity="Kuhni\Bundle\Entity\KuhniColor")
+     * @ORM\JoinTable(name="kuhniColor_kuhni",
+     *   joinColumns={@ORM\JoinColumn(name="kuhni_id", referencedColumnName = "id")},
+     *   inverseJoinColumns={@ORM\JoinColumn(name="kuhniColors_id", referencedColumnName="id")}
+     * )
      */
-    public function getNoDiscountPrice()
+    protected $kuhniColors = array();
+
+    /**
+     * @return mixed
+     */
+    public function getKuhniColors()
     {
-        return $this->noDiscountPrice;
+        return $this->kuhniColors;
     }
 
     /**
-     * @param float $noDiscountPrice
+     * @param KuhniColor $array
      * @return Kuhni
      */
-    public function setNoDiscountPrice(float $noDiscountPrice)
+    public function addKuhniColors(KuhniColor $array)
     {
-        $this->noDiscountPrice = $noDiscountPrice;
+        $this->kuhniColors[] = $array;
         return $this;
+    }
+
+    /**
+     * @param KuhniColor $element
+     * @return Kuhni
+     */
+    public function removeKuhniColors(KuhniColor $element)
+    {
+        $this->kuhniColors->removeElement($element);
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * @param string $article
+     */
+    public function setArticle(string $article = ' ')
+    {
+        $this->article = $article;
     }
 
     /**
@@ -500,24 +528,6 @@ class Kuhni
     public function setIdKuhniConfig(KuhniConfig $idKuhniConfig)
     {
         $this->idKuhniConfig = $idKuhniConfig;
-        return $this;
-    }
-
-    /**
-     * @return KuhniColor
-     */
-    public function getIdKuhniColor()
-    {
-        return $this->idKuhniColor;
-    }
-
-    /**
-     * @param KuhniColor $idKuhniColor
-     * @return Kuhni
-     */
-    public function setIdKuhniColor(KuhniColor $idKuhniColor)
-    {
-        $this->idKuhniColor = $idKuhniColor;
         return $this;
     }
 

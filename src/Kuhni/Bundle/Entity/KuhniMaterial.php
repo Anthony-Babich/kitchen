@@ -33,6 +33,13 @@ class KuhniMaterial
     private $title;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="caption", type="string", length=255)
+     */
+    private $caption;
+
+    /**
      * @var KuhniMassive
      *
      * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\KuhniMassive", cascade={"persist"})
@@ -135,6 +142,47 @@ class KuhniMaterial
      * @var \DateTime
      */
     private $updated;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="article", type="string", length=3000)
+     */
+    private $article;
+
+    /**
+     * @return string
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * @param string $article
+     */
+    public function setArticle(string $article)
+    {
+        $this->article = $article;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCaption()
+    {
+        return $this->caption;
+    }
+
+    /**
+     * @param string $caption
+     * @return KuhniMaterial
+     */
+    public function setCaption(string $caption)
+    {
+        $this->caption = $caption;
+        return $this;
+    }
 
     /**
      * @return string

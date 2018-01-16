@@ -10,20 +10,6 @@
             <generator strategy="AUTO" />
         </id>
 
-        <field name="longitude" column="longitude" type="string" length="255" nullable="true" unique="false" />
-        <field name="latitude" column="latitude" type="string" length="255" nullable="true" unique="false" />
-        <field name="description" column="description" type="string" length="255" nullable="true" unique="false" />
-        <field name="title" column="title" type="string" length="255" nullable="true" unique="false" />
-        <field name="address" column="address" type="string" length="255" nullable="true" unique="false" />
-        <field name="workingHours" column="workingHours" type="string" length="255" nullable="true" unique="false" />
-        <field name="tc" column="tc" type="string" length="255" nullable="true" unique="false" />
-        <field name="gorod" column="gorod" type="string" length="255" nullable="true" unique="false" />
-        <field name="salon" column="salon" type="boolean" nullable="true" unique="false" />
-
-        <many-to-one field="metroId" target-entity="Kuhni\Bundle\Entity\StationMoscow">
-            <join-column name="metro_id" referenced-column-name="id" />
-        </many-to-one>
-
     </entity>
 
 </doctrine-mapping>

@@ -28,6 +28,7 @@ class AboutController extends Controller
             ->getQuery()
             ->getResult();
 
+        $image = array();
         if (!empty($result)){
             foreach ($result as $item) {
                 $image[] = 'upload/catalog/' . $item->getImageName();
@@ -37,6 +38,9 @@ class AboutController extends Controller
         return $this->render('about/index.html.twig', array(
             'catalog' => $result,
             'imageCatalog' => $image,
+
+            'maps' => $this->getMapLocate(),
+
             'formRequestCall' => $this->getRequestCallForm(),
             'formFreeProject' => $this->getFreeProjectForm(),
             'formZayavkaRazmer' => $this->getZayavkaRazmer(),
@@ -44,6 +48,7 @@ class AboutController extends Controller
             'formCostProject' => $this->getCostProject(),
         ));
     }
+
     private function getFreeProjectForm()
     {
         $freeProject = new freeDesignProject();
@@ -65,8 +70,8 @@ class AboutController extends Controller
                 'attr' => [
                     'placeholder' => 'Ваш EMAIL',
                     'class' => 'form-control',
-                    'required' => false,
                 ],
+                'required' => false,
                 'label' => false,
             ))
             ->add('message', TextType::class, array(
@@ -83,15 +88,11 @@ class AboutController extends Controller
                 'label'         => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -108,7 +109,7 @@ class AboutController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -153,15 +154,11 @@ class AboutController extends Controller
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -178,7 +175,7 @@ class AboutController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -219,20 +216,16 @@ class AboutController extends Controller
                 'attr' => [
                     'placeholder' => 'ВАШЕ СООБЩЕНИЕ *',
                     'class' => 'form-control',
-                    'required' => false,
                 ],
+                'required' => false,
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -249,7 +242,7 @@ class AboutController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -290,8 +283,8 @@ class AboutController extends Controller
                 'attr' => [
                     'placeholder' => 'Ваш EMAIL',
                     'class' => 'form-control',
-                    'required' => false,
                 ],
+                'required' => false,
                 'label' => false,
             ))
             ->add('message', TextType::class, array(
@@ -302,15 +295,11 @@ class AboutController extends Controller
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -327,7 +316,7 @@ class AboutController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -355,32 +344,29 @@ class AboutController extends Controller
 
     private function getRequestCallForm()
     {
-        $requestcall = new RequestCall();
-        $formRequestCall = $this->createFormBuilder($requestcall)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'data-validation-required-message' => 'Укажите ваше Имя.',
-                'class' => 'form-control'],
+        $requestCall = new RequestCall();
+
+        $formRequestCall = $this->createFormBuilder($requestCall)
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ваш телефон для связи.',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where(
-                            $qb->expr()->notLike('u.username', ':name')
-                        )
-                            ->orderBy('u.title', 'ASC')
-                            ->setParameter('name', 'admin');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -397,7 +383,7 @@ class AboutController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -415,5 +401,15 @@ class AboutController extends Controller
             ->getForm()->createView();
 
         return $formRequestCall;
+    }
+
+    private function getMapLocate()
+    {
+        $em = $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Salon');
+        $qb = $em->createQueryBuilder('u');
+        $locate =
+            $qb->where('u.vivodKarta = 1')->orderBy('u.id', 'ASC');
+        return $locate->getQuery()->getResult();
     }
 }

@@ -2,6 +2,15 @@ section{
 	padding-bottom: 0;
 	padding-top: 100px;
 }
+b{
+	font-weight: bold;
+}
+a, a:focus, a:hover, a:active, button:focus, button:hover, button:active{
+	outline: none;
+	color: #fff;
+	background-color: unset;
+	cursor: pointer;
+}
 #wo-breadcrumbs{
 	display: inline-flex;
 	width: 100%;
@@ -17,6 +26,7 @@ ol.breadcrumb li:not(:last-child):after {
 	content: '/';
 	color: #000000;
 	margin: 0 3px;
+	padding: 0 5px;
 }
 header.masthead.all{
 	height: 250px;
@@ -24,7 +34,6 @@ header.masthead.all{
 .slide-product-img{
 	width: 100%;
 	height: 100%;
-	max-height: 360px;
 }
 #kroshki{
 	padding-top: 10px;
@@ -258,6 +267,9 @@ header.masthead.all{
 	}
 }
 #article{
+	padding-top: 0;
+	padding-bottom: 30px;
+	margin-bottom: 30px;
 	h3{
 		font-family: 'Open+Sans Bold', Helvetica Neue, 'Arial', sans-serif;
 		color: black;
@@ -314,6 +326,7 @@ section#reviews{
 		font-family: 'Open+Sans Light', Helvetica Neue, 'Arial', sans-serif;
 		font-size: 13px;
 		color: #7f7f7f;
+		word-wrap: break-word;
 		span{
 			text-decoration: underline;
 		}
@@ -323,6 +336,7 @@ section#reviews{
 		font-size: 12px;
 		border-bottom: 6px solid #193153;
 		color: #7f7f7f;
+		word-wrap: break-word;
 		padding-bottom: 10px;
 		span.more-info{
 			text-decoration: underline;
@@ -408,7 +422,6 @@ section#reviews{
 		color: #3a3e4a;
 		-webkit-font-smoothing: antialiased;
 	}
-
 	.slick-next{
 		right: 0;
 	}
@@ -479,20 +492,24 @@ section#reviews{
 				width: 50%;
 			}
 			.first-name{
-				font-size: 14px;
+				font-size: 12px;
+				font-weight: 600;
 			}
 			.last-price{
-				font-size: 13px;
+				font-size: 12px;
+				font-weight: 600;
 			}
 			.now-price{
-				font-size: 16px;
+				font-size: 14px;
+				font-weight: 700;
 			}
 		}
 		.like{
 			background-color: rgba(255, 255, 255, 0.6);
 			width: 50px;
 			height: 30px;
-			font-size: 16px;
+			font-size: 12px;
+			font-weight: 600;
 			top: 10px;
 			padding: 7px;
 			position: absolute;
@@ -537,6 +554,78 @@ section#reviews{
 #all-products{
 	line-height: 1.15;
 	padding: 10px 0 0 0;
+	#search-tags{
+		margin-right: -10px;
+		margin-bottom: 30px;
+		background-color: unset;
+		.slick-prev:before, .slick-next:before {
+			font-family: 'FontAwesome';
+			color: #7d7e84;
+			height: 20px;
+			width: 12px;
+		}
+		.slick-prev:before{
+			content: '\f104';
+		}
+		.slick-next:before{
+			content: '\f105';
+		}
+		a{
+			background-color: #b2b4b5;
+			border-radius: 3px;
+			box-sizing: border-box;
+			height: 49px;
+			margin-right: 8px;
+			overflow: hidden;
+			text-align: center;
+			padding: 0;
+			span{
+				color: rgba(255,255,255,.8);
+				display: inline-block;
+				font-size: 14px;
+				font-weight: 300;
+				line-height: 49px;
+				text-decoration: none;
+				white-space: nowrap;
+			}
+		}
+		.slick-prev{
+			left: 0;
+			cursor: pointer;
+			height: 49px;
+			position: absolute;
+			display: block;
+			visibility: inherit;
+			width: 25px;
+			z-index: 1;
+			margin-bottom: auto;
+			margin-top: auto;
+			outline: none;
+			opacity: 0.8;
+			background-color: rgba(229, 229, 229, .8);
+			border-bottom-right-radius: 36px;
+			border-top-right-radius: 36px;
+			transition: opacity 0.5s,visibility 0.5s;
+		}
+		.slick-next{
+			right: 0;
+			cursor: pointer;
+			height: 49px;
+			position: absolute;
+			display: block;
+			visibility: inherit;
+			width: 25px;
+			z-index: 1;
+			margin-bottom: auto;
+			margin-top: auto;
+			outline: none;
+			opacity: 0.8;
+			background-color: rgba(229, 229, 229, .8);
+			border-bottom-left-radius: 36px;
+			border-top-left-radius: 36px;
+			transition: opacity 0.5s,visibility 0.5s;
+		}
+	}
 	h2.section-heading{
 		text-align: left;
 		font-size: 2em;
@@ -601,13 +690,14 @@ section#reviews{
 		.pos-bot-l {
 			width: 90%;
 			ul.nav>.left{
-				width: 60%;
+				width: 65%;
 			}
 			ul.nav>.right{
-				width: 40%;
+				width: 35%;
 			}
 			.first-name{
 				font-size: 17px;
+				font-weight: 600;
 			}
 			.first-desc{
 				color: #7f7f7f;
@@ -615,9 +705,11 @@ section#reviews{
 			}
 			.last-price{
 				font-size: 14px;
+				font-weight: 600;
 			}
 			.now-price{
-				font-size: 20px;
+				font-size: 18px;
+				font-weight: 700;
 			}
 		}
 	}
@@ -627,20 +719,22 @@ section#reviews{
 		margin-left: 10px;
 		.pos-bot-l {
 			ul.nav>.left{
-				width: 50%;
+				width: 49%;
 			}
 			ul.nav>.right{
-				width: 50%;
+				width: 51%;
 			}
 			width: 100%;
 			.first-name{
-				font-size: 14px;
+				font-size: 12px;
 			}
 			.last-price{
-				font-size: 13px;
+				font-size: 12px;
+				font-weight: 600;
 			}
 			.now-price{
-				font-size: 16px;
+				font-size: 14px;
+				font-weight: 700;
 			}
 		}
 		button.phone{
@@ -667,7 +761,8 @@ section#reviews{
 		background-color: rgba(255, 255, 255, 0.6);
 		width: 50px;
 		height: 30px;
-		font-size: 16px;
+		font-size: 12px;
+		font-weight: 600;
 		left: 10px;
 		top: 10px;
 		padding: 7px;
@@ -752,6 +847,9 @@ section#map-section{
 	}
 }
 section#freedesignshag{
+	.form-control{
+		padding: 20px;
+	}
 	h3{
 		font-family: 'Open+Sans Bold', Arial, sans-serif;
 		font-size:  30px;
@@ -772,8 +870,8 @@ section#freedesignshag{
 	background: #193153 url('/web/bundles/kuhni/img/map-image.png') no-repeat center;
 	label{
 		p{
-			margin-top: 5px;
-			margin-bottom: 5px;
+			margin-top: 10px;
+			margin-bottom: 10px;
 		}
 		text-transform: uppercase;
 		vertical-align: middle;
@@ -870,12 +968,12 @@ form{
 	.select-options li {
 		padding: 8px 5px;
 		text-indent: 0;
-		border-top: 2px solid #7f7f7f;
+		border-top: 1px solid #7f7f7f;
 		z-index: 1000;
-		width: max-content;
 	}
 	.select-options li:hover {
 		color: black;
+		background-color: #f5f5f5;
 	}
 	.select-options li[rel="hide"] {
 		display: none;
@@ -1001,10 +1099,10 @@ footer{
 			margin-left: 0;
 		}
 		.slide-product-img{
-			height: 350px;
+			height: auto;
 		}
-		.big{
-			height: 450px;
+		.slide-product-img.big{
+			height: auto;
 		}
 		.big-a-10{
 			margin-left: 0;
@@ -1071,10 +1169,11 @@ footer{
 			margin-right: -15px;
 		}
 		.slide-product-img.big{
-			height: 350px;
+			height: auto;
 		}
 		.small-col.full-screen{
 			flex: 0 0 100%;
+			padding: 0;
 			margin-left: 0;
 		}
 	}

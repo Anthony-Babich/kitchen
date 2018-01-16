@@ -68,6 +68,9 @@ class KuhniCatalogController extends Controller
             'countMaterial' => $countMaterial,
             'imageMaterial' => $imageMaterial,
 
+            'maps' => $this->getMapLocate(),
+            'titleKuhni' => $this->getTitleKuhni(),
+
             'formRequestCall' => $this->getRequestCallForm(),
             'formRequestCallModal' => $this->getRequestCallForm(),
             'formFreeProject' => $this->getFreeProjectForm(),
@@ -76,73 +79,6 @@ class KuhniCatalogController extends Controller
             'formCostProject' => $this->getCostProject(),
             'form' => $this->getCallBackForm(),
         ));
-    }
-
-    /**
-     * @param string $db
-     * @return mixed
-     */
-    private function result(string $db){
-        $db = 'KuhniBundle:'.$db;
-        $titles = $this->getDoctrine()->getManager()->getRepository($db)
-            ->createQueryBuilder('n')
-            ->select('DISTINCT n.title')
-            ->getQuery()
-            ->getResult();
-
-        foreach ($titles as $title) {
-            $result[] = $this->getDoctrine()->getManager()
-                ->getRepository($db)
-                ->findOneBy(array('title' => $title['title']));
-        }
-        if (!empty($result)){
-            return $result;
-        }
-    }
-
-    /**
-     * @param $result
-     * @param string $path
-     * @return array|string
-     */
-    private function imagePath($result, string $path){
-        if (!empty($result)){
-            return 'upload/kuhni/' . $path . '/' . $result->getImageName();
-        }else{
-            return 'bundles/kuhni/img/no_image.jpg';
-        }
-    }
-
-    /**
-     * @param $result
-     * @return array|string
-     */
-    private function arrayImagePath(array $result, $path){
-        if (!empty($result)){
-            $image = array();
-            foreach ($result as $item) {
-                $image[] = 'upload/kuhni/' . $path . '/' . $item->getImageName();
-            }
-            return $image;
-        }else{
-            return 'bundles/kuhni/img/no_image.jpg';
-        }
-    }
-
-    /**
-     * @param $result
-     * @return array
-     */
-    private function catalogImagePath(array $result){
-        $imageCatalog = array();
-        if (!empty($result)){
-            foreach ($result as $item) {
-                $imageCatalog[] = 'upload/catalog/' . $item->getImageName();
-            }
-        }else{
-            $imageCatalog[] = 'bundles/kuhni/img/no_image.jpg';
-        }
-        return $imageCatalog;
     }
 
     /**
@@ -232,7 +168,12 @@ class KuhniCatalogController extends Controller
         $breadcrumbs = $this->get('white_october_breadcrumbs');
         $breadcrumbs->addItem("Главная", $this->get("router")->generate("homepage"));
         $breadcrumbs->addItem("Кухни", $this->get("router")->generate("kuhni_list"));
-        $breadcrumbs->addItem("{$this->getNameBreadParam($slug)}", $this->get("router")->generate('kuhni_parameters', ['slug' => $slug]));
+        if ($slug == 'kuhni-zov'){
+            $breadcrumbs->addItem("Все кухни", $this->get("router")->generate('kuhni_parameters', ['slug' => 'kuhni-zov']));
+        }else{
+            $breadcrumbs->addItem("Все кухни", $this->get("router")->generate('kuhni_parameters', ['slug' => 'kuhni-zov']));
+            $breadcrumbs->addItem("{$this->getNameBreadParam($slug)}", $this->get("router")->generate('kuhni_parameters', ['slug' => $slug]));
+        }
         $breadcrumbs->addItem("{$result->getTitle()}");
 
         $popular = $this->getPopular();
@@ -264,10 +205,15 @@ class KuhniCatalogController extends Controller
             'kitchen' => $result,
             'images' => $image,
             'slug' => $slug,
+
+            'maps' => $this->getMapLocate(),
+
             'fasadesColor' => $fasadesColor,
             'imageFasadesColor' => $imageFasadesColor,
+
             'fasadesType' => $fasadesType,
             'imageFasadesType' => $imageFasadesType,
+
             'material' => $material,
             'catalog' => $resultCatalog,
             'imageCatalog' => $imageCatalog,
@@ -289,6 +235,10 @@ class KuhniCatalogController extends Controller
             'countMaterialModal' => $countMaterial,
             'imageMaterialModal' => $imageMaterial,
 
+            'kurs' => $this->getKurs(),
+            'coef' => $this->getCoef(),
+            'nds' => $this->getNDS(),
+
             'title' => $result->getTitle(),
             //FORMS
             'formRequestCall' => $this->getRequestCallForm(),
@@ -309,7 +259,7 @@ class KuhniCatalogController extends Controller
      */
     public function parametersAction(string $slug)
     {
-        if (!is_null($this->getRequest()->get('offset'))){
+        if (null !== $this->getRequest()->get('offset')){
             $offset = $this->getRequest()->get('offset');
             $limit = $offset + 10;
         }else{
@@ -318,18 +268,26 @@ class KuhniCatalogController extends Controller
         }
         if (($offset <> 0)&&($limit <> 10)){
 
-            $result = $this->searchParametr($slug, $limit, $offset);
+            $result = $this->searchParametr($slug, $offset, $limit);
 
             if (!empty($result)){
-
+                $image = array();
                 foreach ($result as $item) {
                     $image[] = 'upload/kuhni/kitchens/' . $item['imageName'];
                 }
+
+                $kurs = $this->getKurs()->getSetting();
+                $coef = $this->getCoef()->getSetting();
+                $nds = $this->getNDS()->getSetting();
 
                 $strResult = "<div class='container'><div class='row'><div class='col-xl-6 col-md-12 big-col'>";
 
                 for ($i = 0; $i < count($result); $i++){
                     if ($i == 0){
+                        $newPrice = round($result[$i]['price'] * $kurs * $nds * $coef);
+                        $newNoDiscountPrice = number_format(round(($newPrice * $result[$i]['discount'])/100 + $newPrice), 0, '', ' ');
+                        $newPrice = number_format($newPrice, 0, '', ' ');
+
                         $strResult .= "<a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
                         $strResult .= "<img class='slide-product-img big' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
                         $strResult .= '<span class="pos-bot-l"';
@@ -337,18 +295,13 @@ class KuhniCatalogController extends Controller
                             $strResult .= 'style="width:100%;"';
                         }
                         $strResult .= "><ul class='nav'><li class='left'><div class='text-left'><span class=first-name><b>{$result[$i]['title']}</b><br/>";
-                        $strResult .= '</span>';
-                        $strResult .= "<span class='first-desc'>";
-                        if ($result[$i]['fixedPrice']){
-                            $strResult .= "*Цена указана за 1 метр погонный кухни";
-                        }else{
-                            $strResult .= "*Цену и наличие уточняйте";
-                        }
                         $strResult .= '</span></div></li>';
 
-                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right last-price'>старая цена";
-                        $strResult .= "<span class='through'>{$result[$i]['noDiscountPrice']}</span><br/></span>";
-                        $strResult .= "<span class='text-right now-price'>сейчас от {$result[$i]['price']}</span>";
+                        $strResult .= "<li class='right'><div class='text-right right'>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i> </span><br/></span>";
+                        }
+                        $strResult .= "<span class='text-right now-price'>сейчас от $newPrice <i class='fa fa-rub' aria-hidden='true'></i></span>";
                         $strResult .= "</div></li></ul></span>";
                         if ($result[$i]['discount'] != 0){
                             $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
@@ -364,14 +317,20 @@ class KuhniCatalogController extends Controller
 
                 for ($i = 0; $i < count($result); $i++){
                     if (($i <= 2)&&($i > 0)){
+                        $newPrice = round($result[$i]['price'] * $kurs * $nds * $coef);
+                        $newNoDiscountPrice = number_format(round(($newPrice * $result[$i]['discount'])/100 + $newPrice), 0, '', ' ');
+                        $newPrice = number_format($newPrice, 0, '', ' ');
+
                         $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
 
                         $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
 
                         $strResult .= "<span class='pos-bot-l'><ul class='nav'>";
                         $strResult .= "<li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span></div></li>";
-                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
-                        $strResult .= "<span class='text-right last-price'>старая цена<span class='through'>{$result[$i]['noDiscountPrice']}</span></span>";
+                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от $newPrice <i class='fa fa-rub' aria-hidden='true'></i></span><br/>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i></span></span>";
+                        }
                         $strResult .= "</div></li></ul></span>";
 
                         if ($result[$i]['discount'] != 0){
@@ -386,13 +345,19 @@ class KuhniCatalogController extends Controller
 
                 for ($i = 0; $i < count($result); $i++){
                     if (($i <= 4)&&($i > 2)){
+                        $newPrice = round($result[$i]['price'] * $kurs * $nds * $coef);
+                        $newNoDiscountPrice = number_format(round(($newPrice * $result[$i]['discount'])/100 + $newPrice), 0, '', ' ');
+                        $newPrice = number_format($newPrice, 0, '', ' ');
+
                         $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
 
                         $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
                         $strResult .= "<span class='pos-bot-l'><ul class='nav'>";
                         $strResult .= "<li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span></div></li>";
-                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
-                        $strResult .= "<span class='text-right last-price'>старая цена<span class='through'>{$result[$i]['noDiscountPrice']}</span></span>";
+                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от $newPrice <i class='fa fa-rub' aria-hidden='true'></i></span><br/>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i></span></span>";
+                        }
                         $strResult .= "</div></li></ul></span>";
                         if ($result[$i]['discount'] != 0){
                             $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
@@ -409,12 +374,18 @@ class KuhniCatalogController extends Controller
 
                 for ($i = 0; $i < count($result); $i++){
                     if (($i <= 6)&&($i > 4)){
+                        $newPrice = round($result[$i]['price'] * $kurs * $nds * $coef);
+                        $newNoDiscountPrice = number_format(round(($newPrice * $result[$i]['discount'])/100 + $newPrice), 0, '', ' ');
+                        $newPrice = number_format($newPrice, 0, '', ' ');
+
                         $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
                         $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
                         $strResult .= "<span class='pos-bot-l'><ul class='nav'>";
                         $strResult .= "<li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span></div></li>";
-                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
-                        $strResult .= "<span class='text-right last-price'>старая цена<span class='through'>{$result[$i]['noDiscountPrice']}</span></span>";
+                        $strResult .= "<li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от $newPrice <i class='fa fa-rub' aria-hidden='true'></i></span><br/>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i>  </span></span>";
+                        }
                         $strResult .= "</div></li></ul></span>";
                         if ($result[$i]['discount'] != 0){
                             $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
@@ -428,13 +399,20 @@ class KuhniCatalogController extends Controller
 
                 for ($i = 0; $i < count($result); $i++){
                     if (($i <= 8)&&($i > 6)){
+                        $newPrice = round($result[$i]['price'] * $kurs * $nds * $coef);
+                        $newNoDiscountPrice = number_format(round(($newPrice * $result[$i]['discount'])/100 + $newPrice), 0, '', ' ');
+                        $newPrice = number_format($newPrice, 0, '', ' ');
+
                         $strResult .= "<div class='col-12 big-col'><a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}'>";
 
                         $strResult .= "<img class='slide-product-img' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
 
-                        $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span>";
-                        $strResult .= "</div></li><li class='right'><div class='text-right right'><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span><br/>";
-                        $strResult .= "<span class='text-right last-price'>старая цена<span class='through'>{$result[$i]['noDiscountPrice']}</span></span>";
+                        $strResult .= "<span class='pos-bot-l'><ul class='nav'><li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span></div></li>";
+                        $strResult .= "<li class='right'><div class='text-right right'>";
+                        $strResult .= "<span class='text-right now-price'>сейчас от $newPrice <i class='fa fa-rub' aria-hidden='true'></i></span><br/>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i></span></span>";
+                        }
                         $strResult .= "</div></li></ul></span>";
 
                         if ($result[$i]['discount'] != 0){
@@ -449,6 +427,10 @@ class KuhniCatalogController extends Controller
 
                 for ($i = 0; $i < count($result); $i++){
                     if ($i == 9){
+                        $newPrice = round($result[$i]['price'] * $kurs * $nds * $coef);
+                        $newNoDiscountPrice = number_format(round(($newPrice * $result[$i]['discount'])/100 + $newPrice), 0, '', ' ');
+                        $newPrice = number_format($newPrice, 0, '', ' ');
+
                         $strResult .= "<a href='{$_SERVER['REQUEST_URI']}{$result[$i]['slug']}' class='big-a-10'>";
                         $strResult .= "<img class='slide-product-img big' src='/web/{$image[$i]}' alt={$result[$i]['keywords']} title={$result[$i]['title']}>";
 
@@ -457,21 +439,18 @@ class KuhniCatalogController extends Controller
                             $strResult .= 'style="width:100%;"';
                         }
                         $strResult .= "><ul class='nav'><li class='left'><div class='text-left'><span class='first-name'><b>{$result[$i]['title']}</b><br/></span>";
-                        $strResult .= "<span class='first-desc'>";
-                        if ($result[$i]['fixedPrice']){
-                            $strResult .= "*Цена указана за 1 метр погонный кухни";
-                        }else{
-                            $strResult .= "*Цену и наличие уточняйте";
+                        $strResult .= "</div></li><li class='right'><div class='text-right right'>";
+                        if ($result[$i]['discount'] != 0){
+                            $strResult .= "<span class='text-right last-price'>старая цена <span class='through'> $newNoDiscountPrice <i class='fa fa-rub' aria-hidden='true'></i></span><br/></span>";
                         }
-                        $strResult .= "</span></div></li><li class='right'><div class='text-right right'><span class='text-right last-price'>старая цена";
-                        $strResult .= "<span class='through'>{$result[$i]['noDiscountPrice']}</span><br/></span><span class='text-right now-price'>сейчас от {$result[$i]['price']}</span>";
+                        $strResult .= "<span class='text-right now-price'>сейчас от $newPrice <i class='fa fa-rub' aria-hidden='true'></i></span>";
                         $strResult .= "</div></li></ul></span>";
                         if ($result[$i]['discount'] != 0){
                             $strResult .= "<span class='pos-bot-r desc text-center'><span class='title'><b>{$result[$i]['discount']}%</b></span><br><span>скидка</span></span>";
                         }
                         $strResult .= "</a>";
                         $strResult .= '<button type="button" class="phone big-a-10 text-center" data-toggle="modal" data-target="#requestcall"><i class="fa fa-phone"></i></button>';
-                        $strResult .= '<button type="button" id="like" data-id='.$result[$i]["id"].' class="like text-center"><i class="fa fa-heart"></i><span class="countLikes"> '.$result[$i]['likes'].'</span></button>';
+                        $strResult .= '<button type="button" style="left: 20px;" id="like" data-id='.$result[$i]["id"].' class="like text-center"><i class="fa fa-heart"></i><span class="countLikes"> '.$result[$i]['likes'].'</span></button>';
                     }
                 }
                 $strResult .= "</div></div></div>";
@@ -509,7 +488,12 @@ class KuhniCatalogController extends Controller
             $breadcrumbs = $this->get('white_october_breadcrumbs');
             $breadcrumbs->addItem("Главная", $this->get("router")->generate("homepage"));
             $breadcrumbs->addItem("Кухни", $this->get("router")->generate("kuhni_list"));
-            $breadcrumbs->addItem("{$this->getNameBreadParam($slug)}");
+            if ($slug == 'kuhni-zov'){
+                $breadcrumbs->addItem("Все кухни", $this->get("router")->generate('kuhni_parameters', ['slug' => 'kuhni-zov']));
+            }else{
+                $breadcrumbs->addItem("Все кухни", $this->get("router")->generate('kuhni_parameters', ['slug' => 'kuhni-zov']));
+                $breadcrumbs->addItem("{$this->getNameBreadParam($slug)}");
+            }
 
             //модальные окна для фиксированного футера
             $resultMaterial = $this->result('KuhniMaterial');
@@ -531,6 +515,9 @@ class KuhniCatalogController extends Controller
                 'catalog' => $resultCatalog,
                 'imageCatalog' => $imageCatalog,
 
+                'maps' => $this->getMapLocate(),
+                'article' => $this->getArticle($slug),
+
                 'populars' => $popular,
                 'popularImage' => $popularImage,
                 'completedProjects' => $completedProjects,
@@ -548,7 +535,11 @@ class KuhniCatalogController extends Controller
                 'countMaterialModal' => $countMaterial,
                 'imageMaterialModal' => $imageMaterial,
 
-                'title' => $this->getNameBreadParam($slug),
+                'kurs' => $this->getKurs(),
+                'coef' => $this->getCoef(),
+                'nds' => $this->getNDS(),
+
+                'title' => $this->getTitleOnHead($slug),
 
                 'formRequestCall' => $this->getRequestCallForm(),
                 'formRequestCallModal' => $this->getRequestCallForm(),
@@ -574,6 +565,13 @@ class KuhniCatalogController extends Controller
         return $result;
     }
 
+    private function getTitleKuhni()
+    {
+        return $this->getDoctrine()->getManager()
+            ->getRepository( 'KuhniBundle:Settings' )
+            ->findOneByName('title-kuhni')->getSetting();
+    }
+
     private function getCompletedProjects(){
         $result = $this->getDoctrine()->getManager()
             ->getRepository('KuhniBundle:Kuhni')
@@ -588,7 +586,7 @@ class KuhniCatalogController extends Controller
     }
 
     private function searchParametr(string $slug, $offset = 0, $limit = 10){
-        if ($slug == 'allproducts'){
+        if ($slug == 'kuhni-zov'){
             $result = $this->getDoctrine()->getManager()
                 ->getRepository('KuhniBundle:Kuhni')
                 ->createQueryBuilder('n')
@@ -599,6 +597,7 @@ class KuhniCatalogController extends Controller
                 ->setMaxResults($limit)
                 ->getArrayResult();
         }else{
+            $id = array();
             $entity = $this->getDoctrine()->getManager()
                 ->getRepository('KuhniBundle:KuhniStyle')
                 ->findBy(array('slug' => $slug));
@@ -613,24 +612,18 @@ class KuhniCatalogController extends Controller
                     if (empty($entity)){
                         $entity = $this->getDoctrine()->getManager()
                             ->getRepository('KuhniBundle:KuhniColor')
-                            ->findBy(array('slug' => $slug));
-                        if (is_array($entity)){
-                            foreach ($entity as $item){
-                                $id[] = $item->getId();
-                            }
-                        }else{
-                            $id[] = $entity->getId();
-                        }
+                            ->findOneBy(array('slug' => $slug));
                         $result = $this->getDoctrine()->getManager()
                             ->getRepository('KuhniBundle:Kuhni')
                             ->createQueryBuilder('n')
                             ->select('n')
-                            ->where('n.idKuhniColor = :id')
+                            ->join('n.kuhniColors', 's')
+                            ->where('s = :id')
                             ->orderBy('n.likes', 'DESC')
-                            ->setParameters(array('id' => $id))
-                            ->getQuery()
+                            ->setParameter('id', $entity)
                             ->setFirstResult($offset)
                             ->setMaxResults($limit)
+                            ->getQuery()
                             ->getArrayResult();
                     }else{
                         if (is_array($entity)){
@@ -696,6 +689,35 @@ class KuhniCatalogController extends Controller
         return $result;
     }
 
+    private function getArticle(string $slug)
+    {
+        if ($slug = 'kuhni-zov'){
+            $entity = $this->getDoctrine()->getManager()
+                ->getRepository( 'KuhniBundle:Settings' )
+                ->findOneByName('article')->getSetting();
+        }else{
+            $entity = $this->getDoctrine()->getManager()
+                ->getRepository( 'KuhniBundle:KuhniStyle' )
+                ->findOneBySlug($slug)->getArticle();
+            if (empty( $entity )) {
+                $entity = $this->getDoctrine()->getManager()
+                    ->getRepository( 'KuhniBundle:KuhniConfig' )
+                    ->findOneBySlug($slug)->getArticle();
+                if (empty( $entity )) {
+                    $entity = $this->getDoctrine()->getManager()
+                        ->getRepository( 'KuhniBundle:KuhniMaterial' )
+                        ->findOneBySlug($slug)->getArticle();
+                    if (empty( $entity )) {
+                        $entity = $this->getDoctrine()->getManager()
+                            ->getRepository( 'KuhniBundle:KuhniColor' )
+                            ->findOneBySlug($slug)->getArticle();
+                    }
+                }
+            }
+        }
+        return $entity;
+    }
+
     private function getCatalogResult(){
         return $this->getDoctrine()->getManager()->getRepository('KuhniBundle:Catalog')
             ->createQueryBuilder('n')
@@ -706,8 +728,8 @@ class KuhniCatalogController extends Controller
     }
 
     private function getNameBreadParam(string $slug){
-        if ($slug == 'allproducts'){
-            return 'Вся продукция';
+        if ($slug == 'kuhni-zov'){
+            return 'Все кухни';
         }else{
             $entity = $this->getDoctrine()->getManager()
                 ->getRepository('KuhniBundle:KuhniStyle')
@@ -731,6 +753,32 @@ class KuhniCatalogController extends Controller
         }
     }
 
+    private function getTitleOnHead(string $slug){
+        if ($slug == 'kuhni-zov'){
+            return 'Все кухни фабрики ЗОВ';
+        }else{
+            $entity = $this->getDoctrine()->getManager()
+                ->getRepository('KuhniBundle:KuhniStyle')
+                ->findOneBy(array('slug' => $slug));
+            if (empty($entity)) {
+                $entity = $this->getDoctrine()->getManager()
+                    ->getRepository('KuhniBundle:KuhniConfig')
+                    ->findOneBy(array('slug' => $slug));
+                if (empty($entity)) {
+                    $entity = $this->getDoctrine()->getManager()
+                        ->getRepository('KuhniBundle:KuhniMaterial')
+                        ->findOneBy(array('slug' => $slug));
+                    if (empty($entity)) {
+                        $entity = $this->getDoctrine()->getManager()
+                            ->getRepository('KuhniBundle:KuhniColor')
+                            ->findOneBy(array('slug' => $slug));
+                    }
+                }
+            }
+            return $entity->getCaption();
+        }
+    }
+
     private function getRequestCallForm()
     {
         $requestCall = new RequestCall();
@@ -739,24 +787,28 @@ class KuhniCatalogController extends Controller
             ->add('name', TextType::class, array(
                 'attr' => [
                     'placeholder' => 'ВАШЕ ИМЯ *',
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
                     'class' => 'form-control'
                 ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -773,7 +825,7 @@ class KuhniCatalogController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -832,12 +884,11 @@ class KuhniCatalogController extends Controller
                 'label'         => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -854,7 +905,7 @@ class KuhniCatalogController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -902,12 +953,11 @@ class KuhniCatalogController extends Controller
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -924,7 +974,7 @@ class KuhniCatalogController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни»  ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -969,12 +1019,11 @@ class KuhniCatalogController extends Controller
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -991,7 +1040,7 @@ class KuhniCatalogController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -1037,12 +1086,11 @@ class KuhniCatalogController extends Controller
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -1059,7 +1107,7 @@ class KuhniCatalogController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -1103,12 +1151,11 @@ class KuhniCatalogController extends Controller
                 ]
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -1125,7 +1172,7 @@ class KuhniCatalogController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -1178,12 +1225,11 @@ class KuhniCatalogController extends Controller
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -1200,7 +1246,7 @@ class KuhniCatalogController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -1224,5 +1270,100 @@ class KuhniCatalogController extends Controller
             ->getForm()->createView();
 
         return $formCostProject;
+    }
+
+    /**
+     * @param $result
+     * @return array
+     */
+    private function catalogImagePath(array $result){
+        $imageCatalog = array();
+        if (!empty($result)){
+            foreach ($result as $item) {
+                $imageCatalog[] = 'upload/catalog/' . $item->getImageName();
+            }
+        }else{
+            $imageCatalog[] = 'bundles/kuhni/img/no_image.jpg';
+        }
+        return $imageCatalog;
+    }
+
+    /**
+     * @param $result
+     * @param string $path
+     * @return array|string
+     */
+    private function imagePath($result, string $path){
+        if (!empty($result)){
+            return 'upload/kuhni/' . $path . '/' . $result->getImageName();
+        }else{
+            return 'bundles/kuhni/img/no_image.jpg';
+        }
+    }
+
+    /**
+     * @param $result
+     * @return array|string
+     */
+    private function arrayImagePath(array $result, $path){
+        if (!empty($result)){
+            $image = array();
+            foreach ($result as $item) {
+                $image[] = 'upload/kuhni/' . $path . '/' . $item->getImageName();
+            }
+            return $image;
+        }else{
+            return 'bundles/kuhni/img/no_image.jpg';
+        }
+    }
+
+    /**
+     * @param string $db
+     * @return mixed
+     */
+    private function result(string $db){
+        $db = 'KuhniBundle:'.$db;
+        $titles = $this->getDoctrine()->getManager()->getRepository($db)
+            ->createQueryBuilder('n')
+            ->select('DISTINCT n.title')
+            ->getQuery()
+            ->getResult();
+
+        foreach ($titles as $title) {
+            $result[] = $this->getDoctrine()->getManager()
+                ->getRepository($db)
+                ->findOneBy(array('title' => $title['title']));
+        }
+        if (!empty($result)){
+            return $result;
+        }
+    }
+
+    private function getMapLocate()
+    {
+        $em = $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Salon');
+        $qb = $em->createQueryBuilder('u');
+        $locate =
+            $qb->where('u.vivodKarta = 1')->orderBy('u.id', 'ASC');
+        return $locate->getQuery()->getResult();
+    }
+
+    private function getKurs(){
+        return $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Settings')
+            ->findOneByName('kurs');
+    }
+
+    private function getNDS(){
+        return $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Settings')
+            ->findOneByName('nds');
+    }
+
+    private function getCoef(){
+        return $this->getDoctrine()->getManager()
+            ->getRepository('KuhniBundle:Settings')
+            ->findOneByName('coef');
     }
 }

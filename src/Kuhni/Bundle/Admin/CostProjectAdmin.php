@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sonata\AdminBundle\Show\ShowMapper;
@@ -36,7 +37,7 @@ class CostProjectAdmin extends AbstractAdmin
             ))
             ->add('idSalon', EntityType::class, array(
                 'label' => 'Салон',
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'property' => 'title',
             ))
             ->add('updated', DateTimeType::class, array(
@@ -64,8 +65,14 @@ class CostProjectAdmin extends AbstractAdmin
             ->add('idSalon', null, array(
                 'label'    => 'Салон'
             ), 'entity', array(
-                'class'    => 'ApplicationSonataUserBundle:User',
+                'class'    => 'KuhniBundle:Salon',
                 'property' => 'title',
+            ))
+            ->add('url', null, array(
+                'label' => 'Откуда пришли'
+            ))
+            ->add('geoIP', null, array(
+                'label' => 'IP-адресс'
             ))
             ->add('updated', null, array(
                 'label' => 'Время заказа'
@@ -89,6 +96,12 @@ class CostProjectAdmin extends AbstractAdmin
             ))
             ->add('idSalon.title', null, array(
                 'label'    => 'Салон'
+            ))
+            ->add('url', null, array(
+                'label' => 'Откуда пришли'
+            ))
+            ->add('geoIP', null, array(
+                'label' => 'IP-адресс'
             ))
             ->add('updated', null, array(
                 'label' => 'Время заказа'

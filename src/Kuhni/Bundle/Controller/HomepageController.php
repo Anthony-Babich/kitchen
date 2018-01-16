@@ -46,7 +46,11 @@ class HomepageController extends Controller
         return $this->render('homepage/index.html.twig', array(
             'catalog' => $result,
             'image' => $image,
+
+            'article' => $this->getArticle(),
+            'titleMain' => $this->getTitleMain(),
             'maps' => $this->getMapLocate(),
+
             'formRequestCallModal' => $this->getRequestCallForm(),
             'formRequestCall' => $this->getRequestCallForm(),
             'formCostProject' => $this->getCostProject(),
@@ -60,12 +64,27 @@ class HomepageController extends Controller
         ));
     }
 
+    private function getArticle()
+    {
+        return $this->getDoctrine()->getManager()
+            ->getRepository( 'KuhniBundle:Settings' )
+            ->findOneByName('article')->getSetting();
+    }
+
+    private function getTitleMain()
+    {
+        return $this->getDoctrine()->getManager()
+            ->getRepository( 'KuhniBundle:Settings' )
+            ->findOneByName('title-main')->getSetting();
+    }
+
     private function getReviews()
     {
         $reviews = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:Reviews')
             ->createQueryBuilder('n')
             ->select('n')
-            ->orderBy('n.created', 'DESC')
+            ->orderBy('n.star', 'DESC')
+            ->addOrderBy('n.created', 'DESC')
             ->setMaxResults(4)
             ->getQuery()
             ->getResult();
@@ -117,12 +136,11 @@ class HomepageController extends Controller
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -139,7 +157,7 @@ class HomepageController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни»  ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -187,12 +205,11 @@ class HomepageController extends Controller
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -209,7 +226,7 @@ class HomepageController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни»  ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -268,12 +285,11 @@ class HomepageController extends Controller
                 'label'         => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -290,7 +306,7 @@ class HomepageController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни»  ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -316,12 +332,17 @@ class HomepageController extends Controller
         $formRequestCall = $this->createFormBuilder($requestcall)
             ->add('name', TextType::class, array('attr' => [
                 'placeholder' => 'ВАШЕ ИМЯ *',
+                'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                'title' => 'Имя на Русском',
                 'data-validation-required-message' => 'Укажите ваше Имя.',
                 'class' => 'form-control'],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'data-validation-required-message' => 'Укажите ваш телефон для связи.',
                     'class' => 'form-control',
                     'type' => 'tel',
@@ -329,12 +350,11 @@ class HomepageController extends Controller
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -351,7 +371,7 @@ class HomepageController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни»  ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -395,12 +415,11 @@ class HomepageController extends Controller
                 ]
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -417,7 +436,7 @@ class HomepageController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни»  ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -470,12 +489,11 @@ class HomepageController extends Controller
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -492,7 +510,7 @@ class HomepageController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни»  ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -543,12 +561,11 @@ class HomepageController extends Controller
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -565,7 +582,7 @@ class HomepageController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни»  ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -611,12 +628,11 @@ class HomepageController extends Controller
                 'label' => false,
             ))
             ->add('idSalon', EntityType::class, array(
-                'class' => 'ApplicationSonataUserBundle:User',
+                'class' => 'KuhniBundle:Salon',
                 'query_builder' => function (EntityRepository $er) {
                     $qb = $er->createQueryBuilder('u');
                     return
-                        $qb->where('u.salon = 1')
-                            ->orderBy('u.id', 'ASC');
+                        $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
                     'data-validation-required-message' => 'Укажите ближайший салон.',
@@ -633,7 +649,7 @@ class HomepageController extends Controller
                     if (!empty($idSalon->getTc())){
                         $address .= $idSalon->getTc() . " ";
                     }else{
-                        $address .= "Белорусские кухни ";
+                        $address .= "«Белорусские кухни» ";
                     }
                     $address .= $idSalon->getAddress();
                     return $address;
@@ -656,15 +672,10 @@ class HomepageController extends Controller
     private function getMapLocate()
     {
         $em = $this->getDoctrine()->getManager()
-            ->getRepository('ApplicationSonataUserBundle:User');
+            ->getRepository('KuhniBundle:Salon');
         $qb = $em->createQueryBuilder('u');
         $locate =
-            $qb->select()
-            ->where(
-                $qb->expr()->notLike('u.username', ':name')
-            )
-            ->orderBy('u.title', 'ASC')
-            ->setParameter('name', 'admin');
+            $qb->where('u.vivodKarta = 1')->orderBy('u.id', 'ASC');
         return $locate->getQuery()->getResult();
     }
 }

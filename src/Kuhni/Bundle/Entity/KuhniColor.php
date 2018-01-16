@@ -49,6 +49,53 @@ class KuhniColor
      */
     private $mainDescription;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="article", type="string", length=3000)
+     */
+    private $article;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="caption", type="string", length=255)
+     */
+    private $caption;
+
+    /**
+     * @return string
+     */
+    public function getCaption()
+    {
+        return $this->caption;
+    }
+
+    /**
+     * @param string $caption
+     * @return KuhniColor
+     */
+    public function setCaption(string $caption)
+    {
+        $this->caption = $caption;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * @param string $article
+     */
+    public function setArticle(string $article)
+    {
+        $this->article = $article;
+    }
 
     /**
      * @return string
