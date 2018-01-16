@@ -4,6 +4,7 @@
 User-agent: *
 Disallow: /admin/
 
+
 User-agent: Yandex
 Disallow: /admin/
 Host: https://xn--b1ajv.xn--80adxhks/
