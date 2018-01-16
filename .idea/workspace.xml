@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="15b2a447-82ed-4590-a2b7-d930ab64b95c" name="Default" comment="Небольшие фиксы после изменений">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/robots.txt" afterPath="$PROJECT_DIR$/robots.txt" />
-    </list>
+    <list default="true" id="15b2a447-82ed-4590-a2b7-d930ab64b95c" name="Default" comment="Небольшие фиксы после изменений" />
     <ignored path="$PROJECT_DIR$/vendor/behat/transliterator/" />
     <ignored path="$PROJECT_DIR$/vendor/cocur/slugify/" />
     <ignored path="$PROJECT_DIR$/vendor/composer/" />
@@ -335,7 +331,7 @@
       <workItem from="1516083802504" duration="233000" />
       <workItem from="1516084231680" duration="1469000" />
       <workItem from="1516086357420" duration="4104000" />
-      <workItem from="1516091648166" duration="369000" />
+      <workItem from="1516091648166" duration="414000" />
     </task>
     <task id="LOCAL-00001" summary="Swift mailer test">
       <created>1511162523180</created>
@@ -516,7 +512,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33819000" />
+    <option name="totallyTimeSpent" value="33864000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
