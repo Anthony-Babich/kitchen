@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="15b2a447-82ed-4590-a2b7-d930ab64b95c" name="Default" comment="Небольшие фиксы после изменений">
       <change beforePath="$PROJECT_DIR$/robots.txt" afterPath="$PROJECT_DIR$/robots.txt" />
     </list>
+=======
+    <list default="true" id="f57ef74c-d700-4214-bf92-a683e24d25ed" name="Default" comment="" />
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
     <ignored path="$PROJECT_DIR$/vendor/behat/transliterator/" />
     <ignored path="$PROJECT_DIR$/vendor/cocur/slugify/" />
     <ignored path="$PROJECT_DIR$/vendor/composer/" />
@@ -73,6 +77,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
@@ -83,6 +88,88 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
               <caret line="4" column="17" lean-forward="true" selection-start-line="4" selection-start-column="17" selection-end-line="5" selection-end-column="0" />
+=======
+  <component name="ComposerSettings" executionDataType="PHAR" phpInterpreterId="d4d320ec-fbd0-4b5e-a8e1-9bb8aad31bab" synchronizationState="DONT_SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <pharPath>$PROJECT_DIR$/composer.phar</pharPath>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="main.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/bundles/kuhni/css/main.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3077">
+              <caret line="1195" column="28" lean-forward="false" selection-start-line="1195" selection-start-column="28" selection-end-line="1195" selection-end-column="28" />
+              <folding>
+                <element signature="e#7#51#0" expanded="false" />
+                <element signature="e#67#179#0" expanded="false" />
+                <element signature="e#220#271#0" expanded="false" />
+                <element signature="e#291#310#0" expanded="false" />
+                <element signature="e#329#381#0" expanded="false" />
+                <element signature="e#390#870#0" expanded="false" />
+                <element signature="e#2594#3343#0" expanded="false" />
+                <element signature="e#3349#3714#0" expanded="false" />
+                <element signature="e#3723#3946#0" expanded="false" />
+                <element signature="e#3962#5207#0" expanded="false" />
+                <element signature="e#5218#5776#0" expanded="false" />
+                <element signature="e#5790#5824#0" expanded="false" />
+                <element signature="e#5854#8230#0" expanded="false" />
+                <element signature="e#8246#8472#0" expanded="false" />
+                <element signature="e#8486#11011#0" expanded="false" />
+                <element signature="e#8657#9316#0" expanded="false" />
+                <element signature="e#9326#9774#0" expanded="false" />
+                <element signature="e#9786#10174#0" expanded="false" />
+                <element signature="e#11023#11122#0" expanded="false" />
+                <element signature="e#11139#11559#0" expanded="false" />
+                <element signature="e#11579#11779#0" expanded="false" />
+                <element signature="e#11802#12872#0" expanded="false" />
+                <element signature="e#12893#12912#0" expanded="false" />
+                <element signature="e#12961#12979#0" expanded="false" />
+                <element signature="e#13000#13055#0" expanded="false" />
+                <element signature="e#13060#14506#0" expanded="false" />
+                <element signature="e#14515#15398#0" expanded="false" />
+                <element signature="e#15405#15552#0" expanded="false" />
+                <element signature="e#15595#15640#0" expanded="false" />
+                <element signature="e#15655#15787#0" expanded="false" />
+                <element signature="e#15824#16444#0" expanded="false" />
+                <element signature="e#15835#15910#0" expanded="false" />
+                <element signature="e#15925#16282#0" expanded="false" />
+                <element signature="e#16471#16817#0" expanded="false" />
+                <element signature="e#16486#16519#0" expanded="false" />
+                <element signature="e#16536#16563#0" expanded="false" />
+                <element signature="e#16606#16660#0" expanded="false" />
+                <element signature="e#16853#17351#0" expanded="false" />
+                <element signature="e#16876#16911#0" expanded="false" />
+                <element signature="e#16926#17083#0" expanded="false" />
+                <element signature="e#17220#17242#0" expanded="false" />
+                <element signature="e#17248#17275#0" expanded="false" />
+                <element signature="e#17326#17349#0" expanded="false" />
+                <element signature="e#17401#17473#0" expanded="false" />
+                <element signature="e#17501#17687#0" expanded="false" />
+                <element signature="e#17714#18088#0" expanded="false" />
+                <element signature="e#18242#18514#0" expanded="false" />
+                <element signature="e#18850#18923#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.scss" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Kuhni/Bundle/Resources/public/css/main.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="products.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/product/products.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="748">
+              <caret line="44" column="22" lean-forward="false" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
               <folding />
             </state>
           </provider>
@@ -92,6 +179,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+<<<<<<< HEAD
       <find>review</find>
       <find>=&quot;ar</find>
       <find>caption</find>
@@ -99,6 +187,10 @@
     <dirStrings>
       <dir>D:\OpenServer\domains\kitchens\app\Resources\views</dir>
     </dirStrings>
+=======
+      <find>desc</find>
+    </findStrings>
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -106,6 +198,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/Kuhni/Bundle/Controller/RequestCallController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/Emails/Callback.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/Emails/freedesignshag.html.twig" />
@@ -157,6 +250,22 @@
         <option value="$PROJECT_DIR$/app/Resources/views/homepage/section-images_section.html.twig" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/robots.txt" />
+=======
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
+        <option value="$PROJECT_DIR$/web/.htaccess" />
+        <option value="$PROJECT_DIR$/web/app.php" />
+        <option value="$PROJECT_DIR$/app/cache/prod/classes.php" />
+        <option value="$PROJECT_DIR$/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/.htaccess" />
+        <option value="$PROJECT_DIR$/src/Kuhni/Bundle/Controller/KuhniCatalogController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/kuhni/kuhniParameters/products.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/product/kroshki.html.twig" />
+        <option value="$PROJECT_DIR$/src/Kuhni/Bundle/Entity/Kuhni.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/product/products.html.twig" />
+        <option value="$PROJECT_DIR$/web/bundles/kuhni/css/main.scss" />
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
       </list>
     </option>
   </component>
@@ -166,6 +275,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+<<<<<<< HEAD
   <component name="JsbtTreeLayoutManager">
     <layout place="tools.popupGrunt">
       <scroll-view-position x="0" y="0" />
@@ -178,6 +288,12 @@
     </servers>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP7.1.0">
+=======
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true">
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/willdurand/negotiation" />
@@ -244,6 +360,7 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+<<<<<<< HEAD
     <option name="x" value="768" />
     <option name="y" value="28" />
     <option name="width" value="1161" />
@@ -251,6 +368,12 @@
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
+=======
+    <option name="x" value="591" />
+    <option name="y" value="90" />
+    <option name="width" value="1321" />
+    <option name="height" value="831" />
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -275,6 +398,127 @@
               <item name="test" type="b2602c69:ProjectViewProjectNode" />
               <item name="test" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+<<<<<<< HEAD
+=======
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="product" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Kuhni" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Kuhni" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Bundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Kuhni" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Bundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Kuhni" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Bundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Kuhni" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Bundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Kuhni" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Bundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="main.scss" type="620a8d5e:NestingTreeNode" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Kuhni" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Bundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="web" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="bundles" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="bundles" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="kuhni" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="bundles" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="kuhni" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
           </expand>
           <select />
         </subPane>
@@ -284,6 +528,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
@@ -297,6 +542,21 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\OpenServer\domains\kitchens" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../kitchen" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\OpenServer\domains\test\src\Kuhni\Bundle\Resources\public\css" />
+      <recent name="D:\OpenServer\domains\test\src\Kuhni\Bundle\Resources\public" />
+      <recent name="D:\OpenServer\domains\test\web\bundles\kuhni\css" />
+      <recent name="D:\OpenServer\domains\test\web\bundles\genemuform" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\OpenServer\domains\test\src\Kuhni\Bundle\Resources\public\css" />
+      <recent name="D:\OpenServer\domains\test" />
+      <recent name="D:\OpenServer\domains\test\web" />
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
     </key>
   </component>
   <component name="RunDashboard">
@@ -311,14 +571,18 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="RunManager">
     <configuration name="Unnamed" type="PhpRemoteDebugRunConfigurationType" factoryName="PHP Remote Debug" server_name="kitchens" session_id="&quot;PHPSTORM&quot;" />
     <configuration default="true" type="PhpRemoteDebugRunConfigurationType" factoryName="PHP Remote Debug" server_name="kitchens" session_id="&quot;PHPSTORM&quot;" />
   </component>
+=======
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
+<<<<<<< HEAD
     <configuration>C:\Users\optmanager12\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
@@ -515,11 +779,70 @@
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="34238000" />
+=======
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f57ef74c-d700-4214-bf92-a683e24d25ed" name="Default" comment="" />
+      <created>1510560761842</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1510560761842</updated>
+      <workItem from="1510560762928" duration="817000" />
+      <workItem from="1510561580957" duration="1969000" />
+      <workItem from="1510563572404" duration="11018000" />
+      <workItem from="1510901153752" duration="15000" />
+    </task>
+    <task id="LOCAL-00001" summary=".htaccess">
+      <created>1510561278883</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1510561278883</updated>
+    </task>
+    <task id="LOCAL-00002" summary=".htaccess">
+      <created>1510564282185</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1510564282185</updated>
+    </task>
+    <task id="LOCAL-00003" summary="кастомизация&#10;поле description разширено до 1000">
+      <created>1510573326481</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1510573326481</updated>
+    </task>
+    <task id="LOCAL-00004" summary="кастомизация&#10;поле description разширено до 1000">
+      <created>1510574739872</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1510574739872</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="13819000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15991472" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -538,6 +861,25 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20735608" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294964" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902297" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294964" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32805756" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27173913" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -547,6 +889,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+<<<<<<< HEAD
     <MESSAGE value="Swift mailer test" />
     <MESSAGE value="Swift mailer готов.&#10;Отправка на email пользователя.&#10;Шаблоны готовы.&#10;Изменение связи салон-пользователь." />
     <MESSAGE value="Изменение вывод салон и пользователей в админке." />
@@ -569,10 +912,20 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="32" />
+=======
+    <MESSAGE value=".htaccess" />
+    <MESSAGE value="кастомизация&#10;поле description разширено до 1000" />
+    <option name="LAST_COMMIT_MESSAGE" value="кастомизация&#10;поле description разширено до 1000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Kuhni/Bundle/Entity/ZovZakazStatus.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -726,10 +1079,220 @@
     <entry file="file://$PROJECT_DIR$/app/Resources/views/privacy/section-promo.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
+=======
+    <entry file="file://$PROJECT_DIR$/web/bundles/kuhni/css/main.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20315">
+          <caret line="1195" column="28" lean-forward="false" selection-start-line="1195" selection-start-column="28" selection-end-line="1195" selection-end-column="28" />
+          <folding>
+            <element signature="e#7#51#0" expanded="false" />
+            <element signature="e#67#179#0" expanded="false" />
+            <element signature="e#220#271#0" expanded="false" />
+            <element signature="e#291#310#0" expanded="false" />
+            <element signature="e#329#381#0" expanded="false" />
+            <element signature="e#390#870#0" expanded="false" />
+            <element signature="e#2594#3343#0" expanded="false" />
+            <element signature="e#3349#3714#0" expanded="false" />
+            <element signature="e#3723#3946#0" expanded="false" />
+            <element signature="e#3962#5207#0" expanded="false" />
+            <element signature="e#5218#5776#0" expanded="false" />
+            <element signature="e#5790#5824#0" expanded="false" />
+            <element signature="e#5854#8230#0" expanded="false" />
+            <element signature="e#8246#8472#0" expanded="false" />
+            <element signature="e#8486#11011#0" expanded="false" />
+            <element signature="e#8657#9316#0" expanded="false" />
+            <element signature="e#9326#9774#0" expanded="false" />
+            <element signature="e#9786#10174#0" expanded="false" />
+            <element signature="e#11023#11122#0" expanded="false" />
+            <element signature="e#11139#11559#0" expanded="false" />
+            <element signature="e#11579#11779#0" expanded="false" />
+            <element signature="e#11802#12872#0" expanded="false" />
+            <element signature="e#12893#12912#0" expanded="false" />
+            <element signature="e#12961#12979#0" expanded="false" />
+            <element signature="e#13000#13055#0" expanded="false" />
+            <element signature="e#13060#14506#0" expanded="false" />
+            <element signature="e#14515#15398#0" expanded="false" />
+            <element signature="e#15405#15552#0" expanded="false" />
+            <element signature="e#15595#15640#0" expanded="false" />
+            <element signature="e#15655#15787#0" expanded="false" />
+            <element signature="e#15824#16444#0" expanded="false" />
+            <element signature="e#15835#15910#0" expanded="false" />
+            <element signature="e#15925#16282#0" expanded="false" />
+            <element signature="e#16471#16817#0" expanded="false" />
+            <element signature="e#16486#16519#0" expanded="false" />
+            <element signature="e#16536#16563#0" expanded="false" />
+            <element signature="e#16606#16660#0" expanded="false" />
+            <element signature="e#16853#17351#0" expanded="false" />
+            <element signature="e#16876#16911#0" expanded="false" />
+            <element signature="e#16926#17083#0" expanded="false" />
+            <element signature="e#17220#17242#0" expanded="false" />
+            <element signature="e#17248#17275#0" expanded="false" />
+            <element signature="e#17326#17349#0" expanded="false" />
+            <element signature="e#17401#17473#0" expanded="false" />
+            <element signature="e#17501#17687#0" expanded="false" />
+            <element signature="e#17714#18088#0" expanded="false" />
+            <element signature="e#18242#18514#0" expanded="false" />
+            <element signature="e#18850#18923#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/product/products.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="44" column="22" lean-forward="false" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Kuhni/Bundle/Resources/public/css/main.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/autoload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="4" lean-forward="true" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+          <folding>
+            <element signature="e#7#58#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="23" lean-forward="false" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-331">
+          <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/cache/prod/appProdProjectContainer.php.meta">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/cache/prod/appProdProjectContainer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="4" lean-forward="true" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/logs/dev.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2322">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bundles/genemuform/tinymce/langs/readme.md" />
+    <entry file="file://$PROJECT_DIR$/composer.lock">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/cache/dev/classes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="2335" column="1" lean-forward="false" selection-start-line="2335" selection-start-column="1" selection-end-line="2335" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/logs/prod.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1846">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Kuhni/Bundle/Controller/CostProjectController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/cache/prod/classes.map">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/cache/prod/classes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/cache/prod/templates.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-867">
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Kuhni/Bundle/Controller/PrivacyController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -761,10 +1324,44 @@
     <entry file="file://$PROJECT_DIR$/app/Resources/views/Emails/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-267">
+=======
+    <entry file="file://$PROJECT_DIR$/web/app_dev.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="4" lean-forward="true" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="100" column="14" lean-forward="true" selection-start-line="100" selection-start-column="14" selection-end-line="100" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/kuhni/kuhniParameters/ajax-more-product.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/web/bundles/genemuform/tinymce/langs/ru.js" />
     <entry file="file://$PROJECT_DIR$/vendor/sonata-project/user-bundle/src/Admin/Model/UserAdmin.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -797,17 +1394,55 @@
     <entry file="file://$PROJECT_DIR$/app/Resources/views/header.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
+=======
+    <entry file="file://$PROJECT_DIR$/src/Kuhni/Bundle/Controller/KuhniCatalogController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="472" column="83" lean-forward="false" selection-start-line="472" selection-start-column="83" selection-end-line="472" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/kuhni/kuhniParameters/products.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="275" column="33" lean-forward="true" selection-start-line="275" selection-start-column="33" selection-end-line="281" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/product/more-prod.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Kuhni/Bundle/Entity/Kuhni.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="207" column="65" lean-forward="false" selection-start-line="207" selection-start-column="65" selection-end-line="207" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bundles/kuhni/js/ajax.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/Resources/views/kuhni/kuhniParameters/likes.html.twig">
+=======
+    <entry file="file://$PROJECT_DIR$/web/bundles/kuhni/js/device.js">
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/Resources/views/kuhni/kuhniParameters/popular.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -816,12 +1451,16 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/kroshki.html.twig">
+=======
+    <entry file="file://$PROJECT_DIR$/src/Kuhni/Bundle/Resources/public/css/main.css">
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Kuhni/Bundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1445">
@@ -861,6 +1500,98 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="17" lean-forward="true" selection-start-line="4" selection-start-column="17" selection-end-line="5" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Kuhni/Bundle/Resources/public/js/ajax.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="120" column="54" lean-forward="false" selection-start-line="120" selection-start-column="54" selection-end-line="120" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/product/kroshki.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="64" lean-forward="false" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/product/products.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="44" column="22" lean-forward="false" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bundles/kuhni/css/main.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3077">
+          <caret line="1195" column="28" lean-forward="false" selection-start-line="1195" selection-start-column="28" selection-end-line="1195" selection-end-column="28" />
+          <folding>
+            <element signature="e#7#51#0" expanded="false" />
+            <element signature="e#67#179#0" expanded="false" />
+            <element signature="e#220#271#0" expanded="false" />
+            <element signature="e#291#310#0" expanded="false" />
+            <element signature="e#329#381#0" expanded="false" />
+            <element signature="e#390#870#0" expanded="false" />
+            <element signature="e#2594#3343#0" expanded="false" />
+            <element signature="e#3349#3714#0" expanded="false" />
+            <element signature="e#3723#3946#0" expanded="false" />
+            <element signature="e#3962#5207#0" expanded="false" />
+            <element signature="e#5218#5776#0" expanded="false" />
+            <element signature="e#5790#5824#0" expanded="false" />
+            <element signature="e#5854#8230#0" expanded="false" />
+            <element signature="e#8246#8472#0" expanded="false" />
+            <element signature="e#8486#11011#0" expanded="false" />
+            <element signature="e#8657#9316#0" expanded="false" />
+            <element signature="e#9326#9774#0" expanded="false" />
+            <element signature="e#9786#10174#0" expanded="false" />
+            <element signature="e#11023#11122#0" expanded="false" />
+            <element signature="e#11139#11559#0" expanded="false" />
+            <element signature="e#11579#11779#0" expanded="false" />
+            <element signature="e#11802#12872#0" expanded="false" />
+            <element signature="e#12893#12912#0" expanded="false" />
+            <element signature="e#12961#12979#0" expanded="false" />
+            <element signature="e#13000#13055#0" expanded="false" />
+            <element signature="e#13060#14506#0" expanded="false" />
+            <element signature="e#14515#15398#0" expanded="false" />
+            <element signature="e#15405#15552#0" expanded="false" />
+            <element signature="e#15595#15640#0" expanded="false" />
+            <element signature="e#15655#15787#0" expanded="false" />
+            <element signature="e#15824#16444#0" expanded="false" />
+            <element signature="e#15835#15910#0" expanded="false" />
+            <element signature="e#15925#16282#0" expanded="false" />
+            <element signature="e#16471#16817#0" expanded="false" />
+            <element signature="e#16486#16519#0" expanded="false" />
+            <element signature="e#16536#16563#0" expanded="false" />
+            <element signature="e#16606#16660#0" expanded="false" />
+            <element signature="e#16853#17351#0" expanded="false" />
+            <element signature="e#16876#16911#0" expanded="false" />
+            <element signature="e#16926#17083#0" expanded="false" />
+            <element signature="e#17220#17242#0" expanded="false" />
+            <element signature="e#17248#17275#0" expanded="false" />
+            <element signature="e#17326#17349#0" expanded="false" />
+            <element signature="e#17401#17473#0" expanded="false" />
+            <element signature="e#17501#17687#0" expanded="false" />
+            <element signature="e#17714#18088#0" expanded="false" />
+            <element signature="e#18242#18514#0" expanded="false" />
+            <element signature="e#18850#18923#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Kuhni/Bundle/Resources/public/css/main.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> e2754b65d2cd069ecca4c46647ecc2c0ac0d78eb
           <folding />
         </state>
       </provider>
