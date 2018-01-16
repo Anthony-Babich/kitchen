@@ -28,7 +28,7 @@ class RequestCallController extends Controller
         $salon = $this->getDoctrine()->getManager()
             ->getRepository('KuhniBundle:Salon')
             ->findOneBy(array('id' => $form['idSalon']));
-
+            
         $user = $this->getDoctrine()->getManager()
             ->getRepository('ApplicationSonataUserBundle:User')
             ->findOneBy(array('id' => $salon->getIdUser()));

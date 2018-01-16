@@ -332,12 +332,17 @@ class HomepageController extends Controller
         $formRequestCall = $this->createFormBuilder($requestcall)
             ->add('name', TextType::class, array('attr' => [
                 'placeholder' => 'ВАШЕ ИМЯ *',
+                'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                'title' => 'Имя на Русском',
                 'data-validation-required-message' => 'Укажите ваше Имя.',
                 'class' => 'form-control'],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'data-validation-required-message' => 'Укажите ваш телефон для связи.',
                     'class' => 'form-control',
                     'type' => 'tel',

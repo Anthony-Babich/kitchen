@@ -25,9 +25,9 @@
                                     <font style="font-size:18px;font-weight: bold;color:#646464;">С сайта <a style="text-decoration:none;color:#43a04f;" href="{{ path('homepage') }}">зов.москва</a> поступила заявка</font><br />
                                     <font size="4" style="font-size:25px;color:#43a04f;text-transform:uppercase;">{% block nameForm %} {% endblock %}</font>
                                 </p>
-                                <p>,
+                                <p>
                                     <font style="font-size:18px;font-weight: bold;color:#646464;">Подробно о клиенте:</font><br/><em>{{ geoIP }}</em><br/><br/>
-                                    <font style="font-size:18px;font-weight: bold;color:#646464;">REFERER: </font><br/><em>{{ ref }}</em><br/><br/>
+                                    <font style="font-size:18px;font-weight: bold;color:#646464;">Страница, с которой отправлена заявка: </font><br/><em>{{ ref }}</em><br/><br/>
                                     <b>Имя:</b>	<em>{{ sender_name }}</em><br/>
                                     <b>Телефон:</b>	<em>{{ phone }}</em><br/>
                                     {% block moreInfo %}
@@ -35,7 +35,7 @@
                                     <b>Клиент согласен с политикой конфиденциальности</b><br/>
                                 </p>
                                 <br><br>
-                                <p>Проставьте пожалуйста статус выполнения заявки, чтобы мы вас не тревожили!</p>
+                                
                                 <br/>
                                 <p>Вы получили это письмо, потому как ваш E-mail: {{ email }} подключен к сайту <b>зов.москва</b> для получения Онлайн-заявок
                                 </p>

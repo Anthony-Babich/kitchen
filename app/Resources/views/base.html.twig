@@ -111,7 +111,7 @@
     {% block javascripts %}
         <script src="{{ asset('bundles/kuhni/js/device.js') }}"></script>
         <script src="{{ asset('bundles/kuhni/js/jquery.js') }}"></script>
-        <script src="{{ asset('bundles/kuhni/js/masked_input_1.4-min.js') }}"></script>
+        <!--    <script src="{{ asset('bundles/kuhni/js/masked_input_1.4-min.js') }}"></script> -->
         <script src="{{ asset('bundles/kuhni/js/popper.js') }}"></script>
         <script src="{{ asset('bundles/kuhni/js/bootstrap.js') }}"></script>
 
@@ -303,7 +303,7 @@
                     $("#"+tab_id).addClass('current');
                 });
                 var forms = $('form');
-                for (i = 0; i < forms.length; i++){
+                /*  for (i = 0; i < forms.length; i++){
                     var phone = $('#form_phone');
                     var name = 'form_phone'+i;
                     phone.attr('id', name);
@@ -312,7 +312,7 @@
                         format: '+7 ___ ___-__-__',
                         separator: '+7 '
                     });
-                }
+                }   */
                 if(!device.tablet() && !device.mobile()){
                     $('.navbar-nav').find('.nav-item').last().html('<a class="nav-link" href="#requestcall" data-toggle="modal"><i class="mutted-item">Позвонить<br></i>+7 (987) 522-55-22</a>');
                     $('#requestcall').on('show');
