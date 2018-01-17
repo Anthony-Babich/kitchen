@@ -17,6 +17,37 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class KuhniMaterial
 {
     /**
+     * @return string
+     */
+    public function materialTitle()
+    {
+        $title = '';
+        global $kernel;
+        $em = $kernel->getContainer()->get('doctrine')->getManager();
+        if (!is_null($this->getIdAcryl())) {
+            $title = $em->getRepository('KuhniBundle:KuhniAcryl')->findOneBy(array('id' => $this->getIdAcryl()->getId()));
+        }elseif (!is_null($this->getIdDSP())) {
+            $title = $em->getRepository('KuhniBundle:KuhniDSP')->findOneBy(array('id' => $this->getIdDSP()->getId()));
+        }elseif (!is_null($this->getIdShpon())) {
+            $title = $em->getRepository('KuhniBundle:KuhniShpon')->findOneBy(array('id' => $this->getIdShpon()->getId()));
+        }elseif (!is_null($this->getIdGlass())) {
+            $title = $em->getRepository('KuhniBundle:KuhniGlass')->findOneBy(array('id' => $this->getIdGlass()->getId()));
+        }elseif (!is_null($this->getIdMdf())) {
+            $title = $em->getRepository('KuhniBundle:KuhniMdf')->findOneBy(array('id' => $this->getIdMdf()->getId()));
+        }elseif (!is_null($this->getIdPlastic())) {
+            $title = $em->getRepository('KuhniBundle:KuhniPlastic')->findOneBy(array('id' => $this->getIdPlastic()->getId()));
+        }elseif (!is_null($this->getIdMassive())) {
+            $title = $em->getRepository('KuhniBundle:KuhniMassive')->findOneBy(array('id' => $this->getIdMassive()->getId()));
+        }
+
+        if (empty($title)){
+            return $this->getTitle();
+        }else{
+            return $this->getTitle() . ' (' . $title->getTitle() . ')';
+        }
+    }
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")

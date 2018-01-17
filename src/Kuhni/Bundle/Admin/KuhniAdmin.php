@@ -45,7 +45,7 @@ class KuhniAdmin extends AbstractAdmin
                     ))
                     ->add('idKuhniMaterial', EntityType::class, array(
                         'class' => 'KuhniBundle:KuhniMaterial',
-                        'property' => 'title',
+                        'property' => 'materialTitle',
                         'label' => 'Материал'
                     ))
                     ->add('idKuhniConfig', EntityType::class, array(

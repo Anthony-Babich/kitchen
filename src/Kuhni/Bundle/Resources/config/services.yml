@@ -307,3 +307,9 @@ services:
     calls:
       - [ setTranslationDomain, [Kuhni\Bundle]]
     public: true
+  kuhnibundle.sitemap.kuhni_parameters:
+      class: Kuhni\Bundle\Service\Sitemap\KuhniParametersProvider
+      arguments: [@doctrine.orm.entity_manager]
+  kuhnibundle.sitemap.kuhni_product:
+      class: Kuhni\Bundle\Service\Sitemap\KuhniProductProvider
+      arguments: [@doctrine.orm.entity_manager]

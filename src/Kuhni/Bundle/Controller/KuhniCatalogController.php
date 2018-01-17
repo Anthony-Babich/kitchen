@@ -168,25 +168,20 @@ class KuhniCatalogController extends Controller
         $breadcrumbs = $this->get('white_october_breadcrumbs');
         $breadcrumbs->addItem("Главная", $this->get("router")->generate("homepage"));
         $breadcrumbs->addItem("Кухни", $this->get("router")->generate("kuhni_list"));
-        if ($slug == 'kuhni-zov'){
-            $breadcrumbs->addItem("Все кухни", $this->get("router")->generate('kuhni_parameters', ['slug' => 'kuhni-zov']));
-        }else{
-            $breadcrumbs->addItem("Все кухни", $this->get("router")->generate('kuhni_parameters', ['slug' => 'kuhni-zov']));
+        if ($slug != 'kuhni-zov'){
             $breadcrumbs->addItem("{$this->getNameBreadParam($slug)}", $this->get("router")->generate('kuhni_parameters', ['slug' => $slug]));
         }
         $breadcrumbs->addItem("{$result->getTitle()}");
 
         $popular = $this->getPopular();
         $popularImage = array();
-        foreach ($popular as $item) {
+        foreach ($popular as $item)
             $popularImage[] = 'upload/kuhni/kitchens/' . $item['imageName'];
-        }
 
         $completedProjects = $this->getCompletedProjects();
         $completedProjectsImage = array();
-        foreach ($completedProjects as $item) {
+        foreach ($completedProjects as $item)
             $completedProjectsImage[] = 'upload/kuhni/kitchens/' . $item['imageName'];
-        }
 
         //модальные окна для фиксированного футера
         $resultMaterial = $this->result('KuhniMaterial');
@@ -488,10 +483,8 @@ class KuhniCatalogController extends Controller
             $breadcrumbs = $this->get('white_october_breadcrumbs');
             $breadcrumbs->addItem("Главная", $this->get("router")->generate("homepage"));
             $breadcrumbs->addItem("Кухни", $this->get("router")->generate("kuhni_list"));
-            if ($slug == 'kuhni-zov'){
-                $breadcrumbs->addItem("Все кухни", $this->get("router")->generate('kuhni_parameters', ['slug' => 'kuhni-zov']));
-            }else{
-                $breadcrumbs->addItem("Все кухни", $this->get("router")->generate('kuhni_parameters', ['slug' => 'kuhni-zov']));
+            $breadcrumbs->addItem("Все кухни", $this->get("router")->generate('kuhni_parameters', ['slug' => 'kuhni-zov']));
+            if ($slug != 'kuhni-zov'){
                 $breadcrumbs->addItem("{$this->getNameBreadParam($slug)}");
             }
 
@@ -691,7 +684,7 @@ class KuhniCatalogController extends Controller
 
     private function getArticle(string $slug)
     {
-        if ($slug = 'kuhni-zov'){
+        if ($slug == 'kuhni-zov'){
             $entity = $this->getDoctrine()->getManager()
                 ->getRepository( 'KuhniBundle:Settings' )
                 ->findOneByName('article')->getSetting();
@@ -811,7 +804,6 @@ class KuhniCatalogController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -850,13 +842,19 @@ class KuhniCatalogController extends Controller
         $freeProject = new freeDesignProject();
 
         $formFreeProject = $this->createFormBuilder($freeProject)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'class' => 'form-control'],
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
@@ -891,7 +889,6 @@ class KuhniCatalogController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -930,16 +927,19 @@ class KuhniCatalogController extends Controller
         $FreeDesignShag = new DesignProjectShag();
 
         $formFreeDesignShag = $this->createFormBuilder($FreeDesignShag)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'data-validation-required-message' => 'Укажите ваше Имя.',
-                'class' => 'form-control'],
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
                     'id' => '123',
-                    'data-validation-required-message' => 'Укажите ваш телефон для связи.',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
@@ -960,7 +960,6 @@ class KuhniCatalogController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -999,15 +998,22 @@ class KuhniCatalogController extends Controller
         $ZayavkaRazmer = new ZayavkaRazmer();
 
         $formZayavkaRazmer = $this->createFormBuilder($ZayavkaRazmer)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'class' => 'form-control'],
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
                     'class' => 'form-control',
                     'type' => 'tel',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                 ],
                 'label' => false,
             ))
@@ -1026,7 +1032,6 @@ class KuhniCatalogController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -1065,14 +1070,21 @@ class KuhniCatalogController extends Controller
         $DesignerAtHome = new DesignerAtHome();
 
         $formDesignerAtHome = $this->createFormBuilder($DesignerAtHome)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'class' => 'form-control'],
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
                     'class' => 'form-control',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'type' => 'tel',
                 ],
                 'label' => false,
@@ -1093,7 +1105,6 @@ class KuhniCatalogController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -1132,11 +1143,27 @@ class KuhniCatalogController extends Controller
         $callback = new CallBack();
 
         $form = $this->createFormBuilder($callback)
-            ->add('name', TextType::class, array('attr' => ['placeholder' => 'ВАШЕ ИМЯ *', 'class' => 'form-control'], 'label' => false))
-            ->add('email', EmailType::class, array('label' => false, 'attr' => ['placeholder' => 'Ваш EMAIL *', 'class' => 'form-control']))
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'class' => 'form-control'
+                ],
+                'label' => false
+            ))
+            ->add('email', EmailType::class, array(
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Ваш EMAIL *',
+                    'class' => 'form-control'
+                ]
+            ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
                     'placeholder' => 'ВАШ ТЕЛЕФОН *',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
@@ -1158,7 +1185,6 @@ class KuhniCatalogController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -1197,13 +1223,20 @@ class KuhniCatalogController extends Controller
         $costProject = new CostProject();
 
         $formCostProject = $this->createFormBuilder($costProject)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'class' => 'form-control'],
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
@@ -1232,7 +1265,6 @@ class KuhniCatalogController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -1334,9 +1366,7 @@ class KuhniCatalogController extends Controller
                 ->getRepository($db)
                 ->findOneBy(array('title' => $title['title']));
         }
-        if (!empty($result)){
-            return $result;
-        }
+        return $result;
     }
 
     private function getMapLocate()

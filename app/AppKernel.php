@@ -27,11 +27,12 @@ class AppKernel extends Kernel
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
-
+            //for breadcrumbs
             new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
-
             //for TinyMCE
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
+            //for sitemap
+            new Skuola\SitemapBundle\SkuolaSitemapBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
