@@ -4,6 +4,14 @@ DirectoryIndex app.php
     Options -MultiViews
 </IfModule>
 
+<FilesMatch ".(flv|gif|jpg|jpeg|png|ico|webp|swf|pdf)$">
+    Header set Cache-Control "max-age=3600"
+</FilesMatch>
+
+<FilesMatch ".(js|css)$">
+    Header set Cache-Control "max-age=900"
+</FilesMatch>
+
 <IfModule mod_rewrite.c>
     Options +FollowSymlinks
     RewriteEngine On
@@ -13,8 +21,6 @@ DirectoryIndex app.php
 
     RewriteRule ^bundles/(.*)$ /web/bundles/$1  [QSA,L]
     RewriteRule ^upload/(.*)$ /web/upload/$1  [QSA,L]
-
-    
     
     # Sets the HTTP_AUTHORIZATION header removed by apache
     RewriteCond %{HTTP:Authorization} .

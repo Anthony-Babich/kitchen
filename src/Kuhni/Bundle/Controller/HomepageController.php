@@ -97,13 +97,20 @@ class HomepageController extends Controller
         $newReview = new Reviews();
 
         $review = $this->createFormBuilder($newReview)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'class' => 'form-control'],
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
@@ -143,7 +150,6 @@ class HomepageController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -182,16 +188,21 @@ class HomepageController extends Controller
         $FreeDesignShag = new DesignProjectShag();
 
         $formFreeDesignShag = $this->createFormBuilder($FreeDesignShag)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'data-validation-required-message' => 'Укажите ваше Имя.',
-                'class' => 'form-control'],
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
                     'id' => '123',
-                    'data-validation-required-message' => 'Укажите ваш телефон для связи.',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
@@ -212,7 +223,6 @@ class HomepageController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -251,13 +261,20 @@ class HomepageController extends Controller
         $freeProject = new freeDesignProject();
 
         $formFreeProject = $this->createFormBuilder($freeProject)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'class' => 'form-control'],
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
@@ -292,7 +309,6 @@ class HomepageController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -330,12 +346,13 @@ class HomepageController extends Controller
     {
         $requestcall = new RequestCall();
         $formRequestCall = $this->createFormBuilder($requestcall)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'pattern' => '^[А-Яа-яЁё\s]{3,}',
-                'title' => 'Имя на Русском',
-                'data-validation-required-message' => 'Укажите ваше Имя.',
-                'class' => 'form-control'],
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
@@ -343,7 +360,6 @@ class HomepageController extends Controller
                     'placeholder' => 'ВАШ ТЕЛЕФОН *',
                     'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
                     'title' => 'Телефон в формате +71234567890',
-                    'data-validation-required-message' => 'Укажите ваш телефон для связи.',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
@@ -357,7 +373,6 @@ class HomepageController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -396,11 +411,27 @@ class HomepageController extends Controller
         $callback = new CallBack();
 
         $form = $this->createFormBuilder($callback)
-            ->add('name', TextType::class, array('attr' => ['placeholder' => 'ВАШЕ ИМЯ *', 'class' => 'form-control'], 'label' => false))
-            ->add('email', EmailType::class, array('label' => false, 'attr' => ['placeholder' => 'Ваш EMAIL *', 'class' => 'form-control']))
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'class' => 'form-control'
+                ],
+                'label' => false
+            ))
+            ->add('email', EmailType::class, array(
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Ваш EMAIL *',
+                    'class' => 'form-control'
+                ]
+            ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
                     'placeholder' => 'ВАШ ТЕЛЕФОН *',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
@@ -422,7 +453,6 @@ class HomepageController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -461,13 +491,20 @@ class HomepageController extends Controller
         $costProject = new CostProject();
 
         $formCostProject = $this->createFormBuilder($costProject)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'class' => 'form-control'],
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
@@ -496,7 +533,6 @@ class HomepageController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -541,13 +577,20 @@ class HomepageController extends Controller
         $ZayavkaRazmer = new ZayavkaRazmer();
 
         $formZayavkaRazmer = $this->createFormBuilder($ZayavkaRazmer)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'class' => 'form-control'],
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
@@ -568,7 +611,6 @@ class HomepageController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -607,13 +649,20 @@ class HomepageController extends Controller
         $DesignerAtHome = new DesignerAtHome();
 
         $formDesignerAtHome = $this->createFormBuilder($DesignerAtHome)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'class' => 'form-control'],
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
@@ -635,7 +684,6 @@ class HomepageController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {

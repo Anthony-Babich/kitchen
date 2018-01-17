@@ -88,13 +88,19 @@ class ReviewsController extends Controller
         $freeProject = new freeDesignProject();
 
         $formFreeProject = $this->createFormBuilder($freeProject)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'class' => 'form-control'],
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
@@ -168,15 +174,22 @@ class ReviewsController extends Controller
         $ZayavkaRazmer = new ZayavkaRazmer();
 
         $formZayavkaRazmer = $this->createFormBuilder($ZayavkaRazmer)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'class' => 'form-control'],
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
                     'class' => 'form-control',
                     'type' => 'tel',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                 ],
                 'label' => false,
             ))
@@ -234,14 +247,21 @@ class ReviewsController extends Controller
         $DesignerAtHome = new DesignerAtHome();
 
         $formDesignerAtHome = $this->createFormBuilder($DesignerAtHome)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'class' => 'form-control'],
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
                     'class' => 'form-control',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'type' => 'tel',
                 ],
                 'label' => false,
@@ -301,13 +321,20 @@ class ReviewsController extends Controller
         $costProject = new CostProject();
 
         $formCostProject = $this->createFormBuilder($costProject)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'class' => 'form-control'],
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
@@ -384,12 +411,17 @@ class ReviewsController extends Controller
             ->add('name', TextType::class, array(
                 'attr' => [
                     'placeholder' => 'ВАШЕ ИМЯ *',
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
                     'class' => 'form-control'
                 ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
+                    'pattern' => '[\+][7]{1}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}',
+                    'title' => 'Телефон в формате +71234567890',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],
@@ -454,16 +486,19 @@ class ReviewsController extends Controller
         $FreeDesignShag = new DesignProjectShag();
 
         $formFreeDesignShag = $this->createFormBuilder($FreeDesignShag)
-            ->add('name', TextType::class, array('attr' => [
-                'placeholder' => 'ВАШЕ ИМЯ *',
-                'data-validation-required-message' => 'Укажите ваше Имя.',
-                'class' => 'form-control'],
+            ->add('name', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'ВАШЕ ИМЯ *',
+                    'pattern' => '^[А-Яа-яЁё\s]{3,}',
+                    'title' => 'Имя на Русском',
+                    'class' => 'form-control'
+                ],
                 'label' => false
             ))
             ->add('phone', NumberType::class, array(
                 'attr' => [
+                    'placeholder' => 'ВАШ ТЕЛЕФОН *',
                     'id' => '123',
-                    'data-validation-required-message' => 'Укажите ваш телефон для связи.',
                     'class' => 'form-control',
                     'type' => 'tel',
                 ],

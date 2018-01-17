@@ -103,6 +103,43 @@ white_october_breadcrumbs: ~
 genemu_form:
     tinymce: ~
 
+skuola_sitemap:
+    scheme: http
+    host: www.xn--b1ajv.xn--80adxhks
+    db_driver: orm
+    sitemaps:
+        FirstSitemap:
+            routes:
+                homepage:
+                    changefreq: weekly
+                    priority: 0.6
+                kuhni_list:
+                    changefreq: weekly
+                    priority: 0.7
+                kuhni_parameters:
+                    provider: kuhnibundle.sitemap.kuhni_parameters
+                    changefreq: weekly
+                    priority: 0.8
+                kuhni_product:
+                    provider: kuhnibundle.sitemap.kuhni_product
+                    changefreq: weekly
+                    priority: 0.9
+                reviews:
+                    changefreq: weekly
+                    priority: 0.5
+                about:
+                    changefreq: weekly
+                    priority: 0.5
+                promo:
+                    changefreq: weekly
+                    priority: 0.5
+                privacy:
+                    changefreq: weekly
+                    priority: 0.5
+                zovzakaz:
+                    changefreq: weekly
+                    priority: 0.5
+
 vich_uploader:
     db_driver: orm
     mappings:

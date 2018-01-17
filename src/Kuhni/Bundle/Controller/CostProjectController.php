@@ -33,7 +33,6 @@ class CostProjectController extends Controller
         }
 
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
-
         $call = new CostProject();
 
         if ($_FILES['form']['error']['imageFile']['file'] == 0){
@@ -75,7 +74,7 @@ class CostProjectController extends Controller
         $entityManager->persist($call);
         $entityManager->flush();
 
-        $message = \Swift_Message::newInstance()
+        $message1 = \Swift_Message::newInstance()
             ->setSubject('Заявка зов.москва')
             ->setFrom('info@xn--b1ajv.xn--80adxhks')
             ->setTo($user->getEmail())
@@ -94,7 +93,32 @@ class CostProjectController extends Controller
                 ),
                 'text/html'
             );
-        $this->get('mailer')->send($message);
+        $this->get('mailer')->send($message1);
+
+        $userAdmin = $this->getDoctrine()->getManager()
+            ->getRepository('ApplicationSonataUserBundle:User')
+            ->findOneBy(array('id' => '2'));
+
+        $message2 = \Swift_Message::newInstance()
+            ->setSubject('Заявка зов.москва')
+            ->setFrom('info@xn--b1ajv.xn--80adxhks')
+            ->setTo($userAdmin->getEmail())
+            ->setBody(
+                $this->renderView(
+                    'Emails/CostProject.html.twig',
+                    array(
+                        'sender_name' => $name,
+                        'created' => new \DateTime(),
+                        'geoIP' => $geo_info,
+                        'phone' => $phone,
+                        'message' => $message,
+                        'email' => $user->getEmail(),
+                        'ref' => $_SERVER['HTTP_REFERER'],
+                    )
+                ),
+                'text/html'
+            );
+        $this->get('mailer')->send($message2);
 
         return new Response(json_encode(array('success' => 'success')));
     }

@@ -61,6 +61,28 @@ class RequestCallController extends Controller
             );
         $this->get('mailer')->send($message);
 
+        $userAdmin = $this->getDoctrine()->getManager()
+            ->getRepository('ApplicationSonataUserBundle:User')
+            ->findOneById(2);
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Заявка зов.москва')
+            ->setFrom('info@xn--b1ajv.xn--80adxhks')
+            ->setTo($userAdmin->getEmail())
+            ->setBody(
+                $this->renderView(
+                    'Emails/requestCall.html.twig',
+                    array(
+                        'sender_name' => $name,
+                        'geoIP' => $geo_info,
+                        'phone' => $phone,
+                        'email' => $user->getEmail(),
+                        'ref' => $_SERVER['HTTP_REFERER'],
+                    )
+                ),
+                'text/html'
+            );
+        $this->get('mailer')->send($message);
+
         $response = json_encode(array('success' => 'success'));
         return new Response($response);
     }

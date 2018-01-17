@@ -77,7 +77,7 @@ class freeDesignProjectController extends Controller
         $entityManager->persist($call);
         $entityManager->flush();
 
-        $message = \Swift_Message::newInstance()
+        $message1 = \Swift_Message::newInstance()
             ->setSubject('Заявка зов.москва')
             ->setFrom('info@xn--b1ajv.xn--80adxhks')
             ->setTo($user->getEmail())
@@ -96,7 +96,31 @@ class freeDesignProjectController extends Controller
                 ),
                 'text/html'
             );
-        $this->get('mailer')->send($message);
+        $this->get('mailer')->send($message1);
+
+        $userAdmin = $this->getDoctrine()->getManager()
+            ->getRepository('ApplicationSonataUserBundle:User')
+            ->findOneById(2);
+        $message2 = \Swift_Message::newInstance()
+            ->setSubject('Заявка зов.москва')
+            ->setFrom('info@xn--b1ajv.xn--80adxhks')
+            ->setTo($userAdmin->getEmail())
+            ->setBody(
+                $this->renderView(
+                    'Emails/freedesignproject.html.twig',
+                    array(
+                        'sender_name' => $name,
+                        'created' => new \DateTime(),
+                        'geoIP' => $geo_info,
+                        'phone' => $phone,
+                        'message' => $message,
+                        'email' => $user->getEmail(),
+                        'ref' => $_SERVER['HTTP_REFERER'],
+                    )
+                ),
+                'text/html'
+            );
+        $this->get('mailer')->send($message2);
 
         $response = json_encode(array('success' => 'success'));
         return new Response($response);

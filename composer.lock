@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "eea86a505e39edb7d12f0c8d6a8b9b96",
+    "content-hash": "02307de0ff272fbbd37e21fe034beefa",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1762,6 +1762,50 @@
             "time": "2016-10-10T12:19:37+00:00"
         },
         {
+            "name": "samdark/sitemap",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/samdark/sitemap.git",
+                "reference": "6b7eed71534b31d0c6e6dfd18d3cca5a677e0b5b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/samdark/sitemap/zipball/6b7eed71534b31d0c6e6dfd18d3cca5a677e0b5b",
+                "reference": "6b7eed71534b31d0c6e6dfd18d3cca5a677e0b5b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "samdark\\sitemap\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Makarov",
+                    "email": "sam@rmcreative.ru",
+                    "homepage": "http://rmcreative.ru/"
+                }
+            ],
+            "description": "Sitemap and sitemap index builder",
+            "homepage": "https://github.com/samdark/sitemap",
+            "keywords": [
+                "Sitemap"
+            ],
+            "time": "2017-11-24T07:24:48+00:00"
+        },
+        {
             "name": "sensio/distribution-bundle",
             "version": "v4.0.39",
             "target-dir": "Sensio/Bundle/DistributionBundle",
@@ -1934,6 +1978,69 @@
             ],
             "description": "A security checker for your composer.lock",
             "time": "2017-03-29T09:29:53+00:00"
+        },
+        {
+            "name": "skuola/sitemap-bundle",
+            "version": "v1.0.9",
+            "target-dir": "Skuola/SitemapBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/skuola/SitemapBundle.git",
+                "reference": "cfca5392028215a787a6f2a3c30368f504a3253d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/skuola/SitemapBundle/zipball/cfca5392028215a787a6f2a3c30368f504a3253d",
+                "reference": "cfca5392028215a787a6f2a3c30368f504a3253d",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/common": "~2.5",
+                "samdark/sitemap": "~2.0",
+                "symfony/console": "~2.7",
+                "symfony/framework-bundle": "~2.7",
+                "symfony/property-access": "~2.7"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "^4.7"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Skuola\\SitemapBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oreste Di Modugno",
+                    "email": "oreste.dimodugno@skuola.net"
+                },
+                {
+                    "name": "Chiarillo Massimo",
+                    "email": "chiarillo.massimo@skuola.net"
+                }
+            ],
+            "description": "Sitemap generator for Symfony 2 project",
+            "keywords": [
+                "Sitemap",
+                "bundle",
+                "generator",
+                "sitemap bundle",
+                "sitemap generator",
+                "skuola",
+                "symfony"
+            ],
+            "time": "2016-09-06T09:32:25+00:00"
         },
         {
             "name": "sonata-project/admin-bundle",
