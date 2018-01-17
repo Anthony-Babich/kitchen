@@ -33,9 +33,6 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
 
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/style.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/responsive.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/fotorama.css') }}">
-
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/main.css') }}">
 
     {% endblock %}
@@ -75,10 +72,8 @@
 </head>
 
 <body id="page-top" data-spy="scroll">
-<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K72JNWZ"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
     {% block body %}
         {% block navigation %}{% endblock %}
         {% block header %}{% endblock %}
@@ -108,7 +103,9 @@
         <script>
             $(document).ready(function() {
                 $("head").append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/slick/slick.css') }}">')
-                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/slick/slick-theme.css') }}">');
+                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/slick/slick-theme.css') }}">')
+                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/responsive.css') }}">')
+                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/fotorama.css') }}">');
             });
         </script>
 
@@ -124,9 +121,6 @@
         <script src="{{ asset('bundles/kuhni/slick/slick.js') }}" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-                //promo
-                //$('section#promo').css('height', document.documentElement.clientHeight);
-                //slick slider for popular and completed projects
                 $('#search-tags').slick({
                     dots: false,
                     autoplay: false,
@@ -199,8 +193,6 @@
                     rev.eq(i).text(rev.eq(i).text().slice(0, 198));
                 }
 
-                //Если салон находиться в Москве, то дописываем к нему что-то
-                //Преобразование select>option в div, ul>li
                 $('select').each(function(){
                     var $this = $(this), numberOfOptions = $(this).children('option').length;
 
