@@ -82,7 +82,7 @@ class HomepageController extends Controller
     {
         $reviews = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:Reviews')
             ->createQueryBuilder('n')
-            ->select('n')
+            ->where('n.approved = 1')
             ->orderBy('n.star', 'DESC')
             ->addOrderBy('n.created', 'DESC')
             ->setMaxResults(4)

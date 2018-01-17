@@ -226,7 +226,7 @@ services:
   app.admin.order.freeDesignProject:
     class: Kuhni\Bundle\Admin\FreeDesignProjectAdmin
     tags:
-      - { name: sonata.admin, manager_type: orm, group: "Заказы", label: "Бесплатный дизайн проекта" }
+      - { name: sonata.admin, manager_type: orm, group: "Заказы", label: "Бесплатный дизайн-проект" }
     arguments:
       - ~
       - Kuhni\Bundle\Entity\freeDesignProject

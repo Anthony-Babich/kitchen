@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -31,6 +32,13 @@ class ReviewsAdmin extends AbstractAdmin
             ))
             ->add('message', TextType::class, array(
                 'label' => 'Сообщение'
+            ))
+            ->add('approved', ChoiceType::class, array(
+                'label' => 'Одобрение',
+                'choices' => [
+                    true => 'Одобрено',
+                    false => 'Не одобрено'
+                ]
             ))
             ->add('url', TextType::class, array(
                 'label' => 'Откуда пришли'
@@ -60,6 +68,9 @@ class ReviewsAdmin extends AbstractAdmin
             ->add('star', null, array(
                 'label' => 'Количество звезд'
             ))
+            ->add('approved', null, array(
+                'label' => 'Одобрение',
+            ))
             ->add('idSalon', null, array(
                 'label'    => 'Салон'
             ), 'entity', array(
@@ -85,6 +96,9 @@ class ReviewsAdmin extends AbstractAdmin
             ))
             ->add('star', null, array(
                 'label' => 'Количество звезд'
+            ))
+            ->add('approved', null, array(
+                'label' => 'Одобрение',
             ))
             ->add('message', null, array(
                 'label' => 'Сообщение'
@@ -117,6 +131,9 @@ class ReviewsAdmin extends AbstractAdmin
             ))
             ->add('star', null, array(
                 'label' => 'Количество звезд'
+            ))
+            ->add('approved', null, array(
+                'label' => 'Одобрение',
             ))
             ->add('message', null, array(
                 'label' => 'Сообщение'

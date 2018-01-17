@@ -89,6 +89,12 @@ class Reviews
     private $star;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="approved", type="boolean")
+     */
+    private $approved = 0;
+    /**
      * Get id
      *
      * @return int
@@ -306,5 +312,24 @@ class Reviews
     {
         return $this->star;
     }
-}
 
+    /**
+     * @return bool
+     */
+    public function isApproved(): bool
+    {
+        return $this->approved;
+    }
+
+    /**
+     * @param bool $approved
+     *
+     * @return Reviews
+     */
+    public function setApproved(bool $approved): Reviews
+    {
+        $this->approved = $approved;
+
+        return $this;
+    }
+}
