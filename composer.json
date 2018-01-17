@@ -32,6 +32,7 @@
         "symfony/monolog-bundle": "^3.0.2",
         "symfony/swiftmailer-bundle": "~2.3,>=2.3.10",
         "symfony/symfony": "2.8.28",
+        "skuola/sitemap-bundle": "^1.0.9",
         "twig/twig": "^1.0||^2.0",
         "vich/uploader-bundle": "^1.6",
         "whiteoctober/breadcrumbs-bundle": "^1.2"

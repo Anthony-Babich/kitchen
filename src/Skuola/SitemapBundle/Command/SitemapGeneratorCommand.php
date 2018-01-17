@@ -1,11 +1,5 @@
 <?php
 
-/*
- * Skuola\SitemapBundle\Command\SitemapGeneratorCommand.php
- *
- * (c) Skuola.net <dev@skuola.net>
- */
-
 namespace Skuola\SitemapBundle\Command;
 
 use Skuola\SitemapBundle\Service\ParametersCollectionInterface;
