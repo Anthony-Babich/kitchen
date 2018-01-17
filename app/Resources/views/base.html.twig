@@ -32,9 +32,6 @@
         <link href="{{ asset('bundles/kuhni/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/slick/slick.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/slick/slick-theme.css') }}">
-
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/style.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/responsive.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/fotorama.css') }}">
@@ -107,6 +104,14 @@
     {% block javascripts %}
         <script src="{{ asset('bundles/kuhni/js/device.js') }}"></script>
         <script src="{{ asset('bundles/kuhni/js/jquery.js') }}"></script>
+
+        <script>
+            $(document).ready(function() {
+                $("head").append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/slick/slick.css') }}">')
+                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/slick/slick-theme.css') }}">');
+            });
+        </script>
+
         <script src="{{ asset('bundles/kuhni/js/popper.js') }}"></script>
         <script src="{{ asset('bundles/kuhni/js/bootstrap.js') }}"></script>
 
@@ -114,7 +119,7 @@
         <script src="{{ asset('bundles/kuhni/js/jquery.easing.js') }}"></script>
 
         <script src="{{ asset('bundles/kuhni/js/agency.js') }}"></script>
-        <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
         <script src="{{ asset('bundles/kuhni/slick/slick.js') }}" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
