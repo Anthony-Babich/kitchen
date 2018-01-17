@@ -12,6 +12,10 @@ DirectoryIndex app.php
     Header set Cache-Control "max-age=900"
 </FilesMatch>
 
+<FilesMatch ".(svg)$">
+    Header set Cache-Control "max-age=36000"
+</FilesMatch>
+
 <IfModule mod_rewrite.c>
     Options +FollowSymlinks
     RewriteEngine On
