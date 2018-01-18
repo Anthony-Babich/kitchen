@@ -33,39 +33,6 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/main.css') }}">
 
     {% endblock %}
-    {% block map %}
-        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-        <script type="text/javascript">
-            ymaps.ready(function () {
-                ymaps.modules.require(['Map', 'Placemark']).spread(
-                    function (Map) {
-                        var myMap = new Map("map", {
-                            center: [55.72, 37.64],
-                            zoom: 9
-                        });
-                        myMap.behaviors.disable('scrollZoom');
-                        {% for map in maps %}
-                            BalloonContentLayout{{ loop.index0 }} = ymaps.templateLayoutFactory.createClass(
-                                '<div style="margin: 10px;">' +
-                                '<b> {{ map.title }} </b><br />' +
-                                '</div>'
-                            );
-                            myMap.geoObjects.add(
-                                new ymaps.Placemark([{{ map.longitude }}, {{ map.latitude }}], {}, {
-                                    balloonContentLayout: BalloonContentLayout{{ loop.index0 }},
-                                    balloonPanelMaxMapArea: 0,
-                                    iconLayout: 'default#image',
-                                    iconImageHref: '/web/bundles/kuhni/img/map-marker.svg',
-                                    iconImageOffset: [-3, -42],
-                                    iconImageSize: [30, 42]
-                                })
-                            );
-                        {% endfor %}
-                    }
-                );
-            });
-        </script>
-    {% endblock %}
 </head>
 
 <body id="page-top" data-spy="scroll">
@@ -92,6 +59,40 @@
         {% include 'modal/modal-zayavkaRazmer.html.twig' %}
         {% include 'modal/modal-contact.html.twig' %}
     {% endblock%}
+
+    {% block map %}
+        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+        <script type="text/javascript">
+            ymaps.ready(function () {
+                ymaps.modules.require(['Map', 'Placemark']).spread(
+                    function (Map) {
+                        var myMap = new Map("map", {
+                            center: [55.72, 37.64],
+                            zoom: 9
+                        });
+                        myMap.behaviors.disable('scrollZoom');
+                        {% for map in maps %}
+                        BalloonContentLayout{{ loop.index0 }} = ymaps.templateLayoutFactory.createClass(
+                            '<div style="margin: 10px;">' +
+                            '<b> {{ map.title }} </b><br />' +
+                            '</div>'
+                        );
+                        myMap.geoObjects.add(
+                            new ymaps.Placemark([{{ map.longitude }}, {{ map.latitude }}], {}, {
+                                balloonContentLayout: BalloonContentLayout{{ loop.index0 }},
+                                balloonPanelMaxMapArea: 0,
+                                iconLayout: 'default#image',
+                                iconImageHref: '/web/bundles/kuhni/img/map-marker.svg',
+                                iconImageOffset: [-3, -42],
+                                iconImageSize: [30, 42]
+                            })
+                        );
+                        {% endfor %}
+                    }
+                );
+            });
+        </script>
+    {% endblock %}
 
     {% block javascripts %}
         <script src="{{ asset('bundles/kuhni/js/device.js') }}"></script>
