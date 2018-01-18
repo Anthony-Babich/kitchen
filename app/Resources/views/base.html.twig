@@ -93,17 +93,15 @@
         <script src="{{ asset('bundles/kuhni/js/jquery.js') }}"></script>
 
         <script>
-            $(document).ready(function() {
-                $("head")
-                    .append('<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic">')
-                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/font-awesome/css/font-awesome.min.css') }}">')
-                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/slick/slick.css') }}">')
-                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/slick/slick-theme.css') }}">')
-                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/responsive.css') }}">')
-                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/fotorama.css') }}">')
-                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/style.css') }}">')
-                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/main.css') }}">');
-            });
+            $("head")
+                .append('<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic">')
+                .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/font-awesome/css/font-awesome.min.css') }}">')
+                .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/slick/slick.css') }}">')
+                .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/slick/slick-theme.css') }}">')
+                .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/responsive.css') }}">')
+                .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/fotorama.css') }}">')
+                .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/style.css') }}">')
+                .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/main.css') }}">');
             $('select').each(function(){
                 var $this = $(this), numberOfOptions = $(this).children('option').length;
                 $this.addClass('select-hidden');
