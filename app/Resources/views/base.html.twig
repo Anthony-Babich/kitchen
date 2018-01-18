@@ -28,37 +28,9 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
         <link href="{{ asset('bundles/kuhni/css/bootstrap.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('bundles/kuhni/css/bootstrap-grid.css') }}" rel="stylesheet" type="text/css">
-
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/style.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/main.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/header.css') }}">
 
     {% endblock %}
-</head>
-
-<body id="page-top" data-spy="scroll">
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K72JNWZ"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    {% block body %}
-        {% block navigation %}{% endblock %}
-        {% block header %}{% endblock %}
-        {% block content %}{% endblock %}
-    {% endblock %}
-
-    {% block footer %}
-        {% include 'footer.html.twig' %}
-    {% endblock%}
-
-    {% block modal %}
-    {% endblock%}
-
-    {% block modalForAll %}
-        {% include 'modal/modal-requestcall.html.twig' %}
-        {% include 'modal/modal-costproject.html.twig' %}
-        {% include 'modal/modal-designerAtHome.html.twig' %}
-        {% include 'modal/modal-freedesign.html.twig' %}
-        {% include 'modal/modal-zayavkaRazmer.html.twig' %}
-        {% include 'modal/modal-contact.html.twig' %}
-    {% endblock%}
 
     {% block map %}
         <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
@@ -72,27 +44,49 @@
                         });
                         myMap.behaviors.disable('scrollZoom');
                         {% for map in maps %}
-                        BalloonContentLayout{{ loop.index0 }} = ymaps.templateLayoutFactory.createClass(
-                            '<div style="margin: 10px;">' +
-                            '<b> {{ map.title }} </b><br />' +
-                            '</div>'
-                        );
-                        myMap.geoObjects.add(
-                            new ymaps.Placemark([{{ map.longitude }}, {{ map.latitude }}], {}, {
-                                balloonContentLayout: BalloonContentLayout{{ loop.index0 }},
-                                balloonPanelMaxMapArea: 0,
-                                iconLayout: 'default#image',
-                                iconImageHref: '/web/bundles/kuhni/img/map-marker.svg',
-                                iconImageOffset: [-3, -42],
-                                iconImageSize: [30, 42]
-                            })
-                        );
+                            BalloonContentLayout{{ loop.index0 }} = ymaps.templateLayoutFactory.createClass(
+                                '<div style="margin: 10px;">' +
+                                '<b> {{ map.title }} </b><br />' +
+                                '</div>'
+                            );
+                            myMap.geoObjects.add(
+                                new ymaps.Placemark([{{ map.longitude }}, {{ map.latitude }}], {}, {
+                                    balloonContentLayout: BalloonContentLayout{{ loop.index0 }},
+                                    balloonPanelMaxMapArea: 0,
+                                    iconLayout: 'default#image',
+                                    iconImageHref: '/web/bundles/kuhni/img/map-marker.svg',
+                                    iconImageOffset: [-3, -42],
+                                    iconImageSize: [30, 42]
+                                })
+                            );
                         {% endfor %}
                     }
                 );
             });
         </script>
     {% endblock %}
+</head>
+
+<body id="page-top" data-spy="scroll">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K72JNWZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    {% block body %}
+        {% block navigation %}{% endblock %}
+        {% block header %}{% endblock %}
+        {% block content %}{% endblock %}
+    {% endblock %}
+
+    {% block footer %}{% include 'footer.html.twig' %}{% endblock%}
+
+    {% block modal %}{% endblock%}
+
+    {% block modalForAll %}
+        {% include 'modal/modal-requestcall.html.twig' %}
+        {% include 'modal/modal-costproject.html.twig' %}
+        {% include 'modal/modal-designerAtHome.html.twig' %}
+        {% include 'modal/modal-freedesign.html.twig' %}
+        {% include 'modal/modal-zayavkaRazmer.html.twig' %}
+        {% include 'modal/modal-contact.html.twig' %}
+    {% endblock%}
 
     {% block javascripts %}
         <script src="{{ asset('bundles/kuhni/js/device.js') }}"></script>
@@ -100,12 +94,81 @@
 
         <script>
             $(document).ready(function() {
-                $("head").append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/slick/slick.css') }}">')
+                $("head")
                     .append('<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic">')
+                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/font-awesome/css/font-awesome.min.css') }}">')
+                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/slick/slick.css') }}">')
                     .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/slick/slick-theme.css') }}">')
                     .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/responsive.css') }}">')
-                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/font-awesome/css/font-awesome.min.css') }}">')
-                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/fotorama.css') }}">');
+                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/fotorama.css') }}">')
+                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/style.css') }}">')
+                    .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/main.css') }}">');
+            });
+            $('select').each(function(){
+                var $this = $(this), numberOfOptions = $(this).children('option').length;
+                $this.addClass('select-hidden');
+                $this.wrap('<div class="select form-control"></div>');
+                $this.after('<div class="select-styled"></div>');
+                var $styledSelect = $this.next('div.select-styled');
+                var newText = $this.children('option').eq(0).text();
+                var pos = newText.indexOf('|');
+                var pos2 = newText.indexOf('»') - pos;
+                $styledSelect.text(newText.substr(pos + 1, pos2));
+                var $list = $('<ul />', {
+                    'class': 'form-control select-options'
+                }).insertAfter($styledSelect);
+                for (i = 0; i < numberOfOptions ; i++){
+                    var text = $this.children('option').eq(i).text();
+                    var pos = text.indexOf('|');
+                    var stantion = text.substr(0, pos);
+                    var pos2 = text.indexOf('»') - pos;
+                    var tc = text.substr(pos + 1, pos2);
+                    var address = text.substr(pos + pos2 + 1);
+                    if ($this.children('option').eq(i).attr('class') === 'metro'){
+                        var color = $this.children('option').eq(i).attr('id');
+                        $('<li />', {
+                            html: '<p><span class="span-metro"><img src="{{ asset("bundles/kuhni/img/metro-ico.png") }}" alt="metro"></span>'
+                            +'<span class="station" style="background-color: ' + color +';">' +
+                            stantion +
+                            '</span>' +
+                            '<span class="tc">' +
+                            tc +
+                            '</span></p>' +
+                            '<p><span class="span-address">' +
+                            address +
+                            '</span></p>',
+                            rel: $this.children('option').eq(i).val(),
+                            content: tc
+                        }).appendTo($list);
+                    }else{
+                        $('<li />', {
+                            html: '<p><span class="nometro-first-span">' + stantion + '</span>' +
+                            '<span class="tc">' + tc + '</span></p>' +
+                            '<p><span class="span-address">' + address + '</span></p>',
+                            rel: $this.children('option').eq(i).val(),
+                            content: tc
+                        }).appendTo($list);
+                    }
+                }
+                var $listItems = $list.children('li');
+                $styledSelect.click(function(e) {
+                    e.stopPropagation();
+                    $('div.select-styled.active').each(function(){
+                        $(this).removeClass('active').next('ul.select-options').hide();
+                    });
+                    $(this).toggleClass('active').next('ul.select-options').toggle();
+                });
+                $list.hide();
+                $listItems.click(function(e) {
+                    e.stopPropagation();
+                    $styledSelect.text($(this).attr('content')).removeClass('active');
+                    $this.val($(this).attr('rel'));
+                    $list.hide();
+                });
+                $(document).click(function() {
+                    $styledSelect.removeClass('active');
+                    $list.hide();
+                });
             });
         </script>
 
@@ -119,8 +182,8 @@
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
         <script src="{{ asset('bundles/kuhni/slick/slick.js') }}" type="text/javascript" charset="utf-8"></script>
-        <script src="{{ asset('bundles/kuhni/js/main.js') }}" type="text/javascript" charset="utf-8"></script>
-        <script src="{{ asset('bundles/kuhni/js/slick-slider.js') }}"></script>
+        <script src="{{ asset('bundles/kuhni/js/slick-slider.min.js') }}"></script>
+        <script src="{{ asset('bundles/kuhni/js/main.min.js') }}" type="text/javascript" charset="utf-8"></script>
         <script src="{{ asset('bundles/kuhni/js/fotorama.js') }}"></script>
         <script src="{{ asset('bundles/kuhni/js/ajax.js') }}"></script>
     {% endblock %}

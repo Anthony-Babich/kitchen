@@ -1,1 +1,97 @@
-$(document).ready(function(){$("#search-tags").slick({dots:!1,autoplay:!1,slidesToShow:8,infinite:!1,slidesToScroll:8,responsive:[{breakpoint:1200,settings:{slidesToShow:6,slidesToScroll:6}},{breakpoint:768,settings:{slidesToShow:4,slidesToScroll:4}},{breakpoint:480,settings:{slidesToShow:3,slidesToScroll:3}}]}),$(".popular-slick").slick({slidesToShow:4,slidesToScroll:2,autoplay:!1,dots:!1,responsive:[{breakpoint:1200,settings:{slidesToShow:3,slidesToScroll:3}},{breakpoint:768,settings:{slidesToShow:2,slidesToScroll:2}},{breakpoint:480,settings:{slidesToShow:1,slidesToScroll:1}}]}),(device.mobile()||device.tablet())&&($(".popular-slick .slide-col .pos-bot-l").css("width",$(".popular-slick .slide-col").width()),$(".popular-slick .slide-col .pos-bot-r").css("margin-left",$(".popular-slick .slide-col").width()-50),$(".popular-slick .slide-col .phone").css("margin-left",$(".popular-slick .slide-col").width()-50));var e=$(".review-span-text");for(i=0;i<e.length;i++)e.eq(i).text(e.eq(i).text().slice(0,198));$("select").each(function(){var e=$(this),s=$(this).children("option").length;e.addClass("select-hidden"),e.wrap('<div class="select form-control"></div>'),e.after('<div class="select-styled"></div>');var t=e.next("div.select-styled"),l=e.children("option").eq(0).text(),a=l.indexOf("|"),o=l.indexOf("»")-a;t.text(l.substr(a+1,o));var n=$("<ul />",{class:"form-control select-options"}).insertAfter(t);for(i=0;i<s;i++){var c=e.children("option").eq(i).text(),r=(a=c.indexOf("|"),c.substr(0,a)),d=(o=c.indexOf("»")-a,c.substr(a+1,o)),p=c.substr(a+o+1);if("metro"===e.children("option").eq(i).attr("class")){var h=e.children("option").eq(i).attr("id");$("<li />",{html:'<p><span class="span-metro"><img src="{{ asset("/web/bundles/kuhni/img/metro-ico.png") }}" alt="metro"></span><span class="station" style="background-color: '+h+';">'+r+'</span><span class="tc">'+d+'</span></p><p><span class="span-address">'+p+"</span></p>",rel:e.children("option").eq(i).val(),content:d}).appendTo(n)}else $("<li />",{html:'<p><span class="nometro-first-span">'+r+'</span><span class="tc">'+d+'</span></p><p><span class="span-address">'+p+"</span></p>",rel:e.children("option").eq(i).val(),content:d}).appendTo(n)}var v=n.children("li");t.click(function(e){e.stopPropagation(),$("div.select-styled.active").each(function(){$(this).removeClass("active").next("ul.select-options").hide()}),$(this).toggleClass("active").next("ul.select-options").toggle()}),n.hide(),v.click(function(s){s.stopPropagation(),t.text($(this).attr("content")).removeClass("active"),e.val($(this).attr("rel")),n.hide()}),$(document).click(function(){t.removeClass("active"),n.hide()})}),$('#freedesignshag a[data-toggle="tab"]').click(function(e){e.preventDefault(),$(this).tab("show")}),$(".next-step").click(function(){var e=$("#freedesignshag .nav-tabs li>a.active");e.parent().next().removeClass("disabled"),$(e).parent().next().find('a[data-toggle="tab"]').click()}),$(".prev-step").click(function(){var e=$("#freedesignshag .nav-tabs li>a.active");$(e).parent().prev().find('a[data-toggle="tab"]').click()}),$("ul.tabs li").click(function(){var e=$(this).attr("data-tab");$("ul.tabs li").removeClass("current"),$(".tab-content").removeClass("current"),$(this).addClass("current"),$("#"+e).addClass("current")}),device.tablet()||device.mobile()||($(".navbar-nav").find(".nav-item").last().html('<a class="nav-link" href="#requestcall" data-toggle="modal"><i class="mutted-item">Позвонить<br></i>+7 (987) 522-55-22</a>'),$("#requestcall").on("show"))});
+$(document).ready(function(){
+    $('#search-tags').slick({
+        dots: false,
+        autoplay: true,
+        slidesToShow: 8,
+        infinite: false,
+        slidesToScroll: 8,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 6,
+                    slidesToScroll: 6
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                }
+            }
+        ]
+    });
+    $('.popular-slick').slick({
+        slidesToShow: 4,
+        slidesToScroll: 2,
+        autoplay: true,
+        dots: false,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+    if (device.mobile() || device.tablet()){
+        $('.popular-slick .slide-col .pos-bot-l').css('width', $('.popular-slick .slide-col').width());
+        $('.popular-slick .slide-col .pos-bot-r').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
+        $('.popular-slick .slide-col .phone').css('margin-left', $('.popular-slick .slide-col').width() - 50 );
+    }
+    //Ограничение количества символов в отвызывах
+    var rev = $('.review-span-text');
+    for (i = 0; i < rev.length; i++){
+        rev.eq(i).text(rev.eq(i).text().slice(0, 198));
+    }
+    //Пошаговая форма
+    $('#freedesignshag a[data-toggle="tab"]').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+    $(".next-step").click(function () {
+        var $active = $('#freedesignshag .nav-tabs li>a.active');
+        $active.parent().next().removeClass('disabled');
+        $($active).parent().next().find('a[data-toggle="tab"]').click();
+    });
+    $(".prev-step").click(function () {
+        var $active = $('#freedesignshag .nav-tabs li>a.active');
+        $($active).parent().prev().find('a[data-toggle="tab"]').click();
+    });
+    // Конец пошаговой формы
+    $('ul.tabs li').click(function(){
+        var tab_id = $(this).attr('data-tab');
+        $('ul.tabs li').removeClass('current');
+        $('.tab-content').removeClass('current');
+        $(this).addClass('current');
+        $("#"+tab_id).addClass('current');
+    });
+    if(!device.tablet() && !device.mobile()){
+        $('.navbar-nav').find('.nav-item').last().html('<a class="nav-link" href="#requestcall" data-toggle="modal"><i class="mutted-item">Позвонить<br></i>+7 (987) 522-55-22</a>');
+        $('#requestcall').on('show');
+    }
+});
