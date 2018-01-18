@@ -688,27 +688,31 @@ class KuhniCatalogController extends Controller
             $entity = $this->getDoctrine()->getManager()
                 ->getRepository( 'KuhniBundle:Settings' )
                 ->findOneByName('article')->getSetting();
+            return $entity;
         }else{
             $entity = $this->getDoctrine()->getManager()
                 ->getRepository( 'KuhniBundle:KuhniStyle' )
-                ->findOneBySlug($slug)->getArticle();
-            if (empty( $entity )) {
+                ->findOneBySlug($slug);
+            if (is_null( $entity )) {
                 $entity = $this->getDoctrine()->getManager()
                     ->getRepository( 'KuhniBundle:KuhniConfig' )
-                    ->findOneBySlug($slug)->getArticle();
-                if (empty( $entity )) {
+                    ->findOneBySlug($slug);
+                if (is_null( $entity )) {
                     $entity = $this->getDoctrine()->getManager()
                         ->getRepository( 'KuhniBundle:KuhniMaterial' )
-                        ->findOneBySlug($slug)->getArticle();
-                    if (empty( $entity )) {
+                        ->findOneBySlug($slug);
+                    if (is_null( $entity )) {
                         $entity = $this->getDoctrine()->getManager()
                             ->getRepository( 'KuhniBundle:KuhniColor' )
-                            ->findOneBySlug($slug)->getArticle();
+                            ->findOneBySlug($slug);
+                        if (is_null( $entity )) {
+                            return ' ';
+                        }
                     }
                 }
             }
         }
-        return $entity;
+        return $entity->getArticle();
     }
 
     private function getCatalogResult(){
