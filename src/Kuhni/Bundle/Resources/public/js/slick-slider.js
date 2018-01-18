@@ -3,6 +3,7 @@ $('.featured_links_banner').slick({
     slidesToScroll: 1,
     autoplay: true,
     arrows: true,
+    lazyLoad: 'ondemand',
     fade: true,
     asNavFor: '.featured_links',
     autoplaySpeed: 3000
@@ -11,6 +12,7 @@ $('.featured_links').slick({
     slidesToShow: $(".banner_col").length,
     autoplay: true,
     centerMode: false,
+    lazyLoad: 'ondemand',
     focusOnSelect: true,
     asNavFor: '.featured_links_banner',
     autoplaySpeed: 3000,
