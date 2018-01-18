@@ -260,9 +260,6 @@ select.form-control {
 select.form-control:not([size]):not([multiple]) {
   height: 62px; }
 
-#ordercall form .select-styled, #contact form .select-styled {
-  padding: 20px; }
-
 form {
   color: black; }
   form p {

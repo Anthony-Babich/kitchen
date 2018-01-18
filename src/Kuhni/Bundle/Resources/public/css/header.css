@@ -240,6 +240,9 @@ header.masthead.all {
   width: 100%;
   height: 100%; }
 
+#ordercall form .select-styled, #contact form .select-styled {
+  padding: 20px; }
+
 #product {
   color: #7f7f7f;
   padding-top: 0;
