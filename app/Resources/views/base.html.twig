@@ -25,9 +25,7 @@
 
     {% block stylesheets %}
 
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
-        <link href="{{ asset('bundles/kuhni/css/bootstrap.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ asset('bundles/kuhni/css/bootstrap-grid.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('bundles/kuhni/css/jquery-ui.min.css') }}" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/header.css') }}">
 
     {% endblock %}
@@ -92,10 +90,12 @@
         <script src="{{ asset('bundles/kuhni/js/device.js') }}"></script>
         <script src="{{ asset('bundles/kuhni/js/jquery.js') }}"></script>
 
-        <script>
+        <script async defer>
             $("head")
                 .append('<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic">')
                 .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/font-awesome/css/font-awesome.min.css') }}">')
+                .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/bootstrap.css') }}">')
+                .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/bootstrap-grid.css') }}">')
                 .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/slick/slick.css') }}">')
                 .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/slick/slick-theme.css') }}">')
                 .append('<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kuhni/css/responsive.css') }}">')
