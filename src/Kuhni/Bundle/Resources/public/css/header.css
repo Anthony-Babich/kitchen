@@ -577,4 +577,11 @@ header.masthead.all {
       top: 60px;
       border: none; }
 
+@media (max-width: 600px) {
+  .featured_links_banner img {
+    display: none; }
+
+  .featured_links_banner img.mob_banner {
+    display: block; } }
+
 /*# sourceMappingURL=header.css.map */

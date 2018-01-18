@@ -645,3 +645,12 @@ header.masthead.all{
 		}
 	}
 }
+//catalog-home homepage
+@media (max-width: 600px){
+	.featured_links_banner img {
+		display: none;
+	}
+	.featured_links_banner img.mob_banner {
+		display: block;
+	}
+}
