@@ -60,25 +60,25 @@ class HomeSliderImagesAdmin extends AbstractAdmin
             ->end()
             ->with('Характеристики', array('class' => 'col-xs-12 col-md-6'))
                 ->add('imageFileIconNoHover', VichImageType::class, array(
-                    'required'      => true,
+                    'required'      => false,
                     'allow_delete'  => true,
                     'download_link' => false,
                     'label'         => 'Иконка без наведения (black)',
                 ))
                 ->add('imageFileIconOnHover', VichImageType::class, array(
-                    'required'      => true,
+                    'required'      => false,
                     'allow_delete'  => true,
                     'download_link' => false,
                     'label'         => 'Иконка с наведением (white)',
                 ))
                 ->add('imageFileBannerPC', VichImageType::class, array(
-                    'required'      => true,
+                    'required'      => false,
                     'allow_delete'  => true,
                     'download_link' => false,
                     'label'         => 'Баннер для полной версии сайта',
                 ))
                 ->add('imageFileBannerMobile', VichImageType::class, array(
-                    'required'      => true,
+                    'required'      => false,
                     'allow_delete'  => true,
                     'download_link' => false,
                     'label'         => 'Баннер для мобильной версии сайта',

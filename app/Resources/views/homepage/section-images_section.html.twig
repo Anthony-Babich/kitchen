@@ -25,7 +25,7 @@
             <div class="banner_col">
                 <a
                         {% if slider.modal %}
-                            data-toggle="modal" data-target="#{{ slider.link }}"
+                            data-toggle="modal" data-target="{{ slider.link }}"
                         {% else %}
                            href="{{ slider.link }}"
                        {% endif %}>
