@@ -89,3 +89,13 @@ newzovzakaz:
     defaults: { _controller: "KuhniBundle:ZovZakaz:newZakaz" }
     requirements:
         methods:  GET|POST
+track:
+    path:  /track
+    defaults: { _controller: "KuhniBundle:ZovZakaz:track" }
+    requirements:
+        methods:  GET|POST
+trackCheck:
+    path:  /trackCheck
+    defaults: { _controller: "KuhniBundle:ZovZakaz:trackCheck" }
+    requirements:
+        methods:  GET|POST

@@ -26,11 +26,18 @@
         <div class="row">
             <div class="col-10 text-center">
                 <div class="form-group">
+                    {{ form_row(formZovZakaz.idStatus) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 text-center">
+                <div class="form-group">
                     {{ form_row(formZovZakaz.idSalon) }}
                 </div>
             </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer" style="justify-content: center;">
             <button type="submit" class="btn btn-xl">Отправить заявку</button>
         </div>
     {{ form_rest(formZovZakaz) }}

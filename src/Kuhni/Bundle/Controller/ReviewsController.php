@@ -230,7 +230,6 @@ class ReviewsController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -303,7 +302,6 @@ class ReviewsController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -377,7 +375,6 @@ class ReviewsController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -458,7 +455,6 @@ class ReviewsController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -530,7 +526,6 @@ class ReviewsController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {
@@ -602,7 +597,6 @@ class ReviewsController extends Controller
                         $qb->where('u.vivodSelect = 1')->orderBy('u.id', 'ASC');
                 },
                 'attr' => [
-                    'data-validation-required-message' => 'Укажите ближайший салон.',
                     'class' => 'form-control',
                 ],
                 'choice_label' => function ($idSalon) {

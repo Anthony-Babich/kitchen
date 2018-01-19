@@ -38,7 +38,7 @@ class ZovZakaz
     /**
      * @var string
      *
-     * @ORM\Column(name="orderNumber", type="string", length=255)
+     * @ORM\Column(name="orderNumber", type="string", length=255, unique=true)
      */
     private $orderNumber;
 
@@ -47,6 +47,12 @@ class ZovZakaz
      * @ORM\JoinColumn(name="id_salon", referencedColumnName="id")
      */
     private $idSalon;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\ZovZakazStatus", cascade={"persist"})
+     * @ORM\JoinColumn(name="id_status", referencedColumnName="id")
+     */
+    private $idStatus;
 
     /**
      * Get id
@@ -145,6 +151,24 @@ class ZovZakaz
     public function setIdSalon(Salon $idSalon)
     {
         $this->idSalon = $idSalon;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdStatus()
+    {
+        return $this->idStatus;
+    }
+
+    /**
+     * @param ZovZakazStatus $idSalon
+     * @return ZovZakaz
+     */
+    public function setIdStatus(ZovZakazStatus $idStatus)
+    {
+        $this->idStatus = $idStatus;
         return $this;
     }
 
