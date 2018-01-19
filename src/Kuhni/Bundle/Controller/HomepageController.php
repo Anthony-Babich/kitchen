@@ -43,9 +43,20 @@ class HomepageController extends Controller
             $image[] = 'upload/catalog/no_image.jpg';
         }
 
+        $sliders = $this->getDoctrine()->getManager()->getRepository('KuhniBundle:HomeSliderImages')
+            ->createQueryBuilder('n')
+            ->select('n')
+            ->where('n.output = 1')
+            ->orderBy('n.priority', 'DESC')
+            ->distinct()
+            ->getQuery()
+            ->getResult();
+
         return $this->render('homepage/index.html.twig', array(
             'catalog' => $result,
             'image' => $image,
+
+            'sliders' => $sliders,
 
             'article' => $this->getArticle(),
             'titleMain' => $this->getTitleMain(),

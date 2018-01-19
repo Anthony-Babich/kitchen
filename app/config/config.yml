@@ -193,3 +193,10 @@ vich_uploader:
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
+
+        kuhni_slider_home:
+            uri_prefix:         /web/upload/sliderHome
+            upload_destination: %kernel.root_dir%/../web/upload/sliderHome
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
