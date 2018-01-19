@@ -52,8 +52,8 @@ class HomeSliderImagesAdmin extends AbstractAdmin
                 ->add('modal', ChoiceType::class, array(
                     'label' => 'Переход на модальное окно',
                     'choices' => [
-                        0 => 'Да',
-                        1 => 'Нет',
+                        0 => 'Нет',
+                        1 => 'Да',
                     ],
                     'required' => true,
                 ))
