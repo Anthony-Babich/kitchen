@@ -155,17 +155,6 @@ services:
     calls:
       - [ setTranslationDomain, [Kuhni\Bundle]]
     public: true
-  app.admin.slider.home:
-    class: Kuhni\Bundle\Admin\HomeSliderImagesAdmin
-    tags:
-      - { name: sonata.admin, manager_type: orm, group: "Кухни", label: "Картинки для слайдера" }
-    arguments:
-      - ~
-      - Kuhni\Bundle\Entity\HomeSliderImages
-      - ~
-    calls:
-      - [ setTranslationDomain, [Kuhni\Bundle]]
-    public: true
 #         Фасады
   app.admin.fasades.type:
     class: Kuhni\Bundle\Admin\FasadTypeAdmin
@@ -274,6 +263,18 @@ services:
     arguments:
       - ~
       - Kuhni\Bundle\Entity\Reviews
+      - ~
+    calls:
+      - [ setTranslationDomain, [Kuhni\Bundle]]
+    public: true
+#slider homepage
+  app.admin.slider.home:
+    class: Kuhni\Bundle\Admin\HomeSliderImagesAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Настройки", label: "Картинки для слайдера" }
+    arguments:
+      - ~
+      - Kuhni\Bundle\Entity\HomeSliderImages
       - ~
     calls:
       - [ setTranslationDomain, [Kuhni\Bundle]]

@@ -11,6 +11,11 @@ a, a:focus, a:hover, a:active, button:focus, button:hover, button:active{
 	background-color: unset;
 	cursor: pointer;
 }
+.modal-content{
+	a{
+		color: #bababa;
+	}
+}
 header.masthead.all{
 	height: 250px;
 }
