@@ -109,6 +109,14 @@ class Salon
     private $idUser;
 
     /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * @return bool
      */
     public function isVivodKarta(): bool
@@ -387,4 +395,3 @@ class Salon
         return strval($this->id);
     }
 }
-

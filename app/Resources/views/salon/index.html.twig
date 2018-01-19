@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+
+{% endblock %}
+{% block body %}
+    {% block navigation %}
+        {% include 'kuhni/navigation.html.twig' %}
+    {% endblock %}
+    {% block header %}
+        {% include 'header.html.twig' %}
+        {% include 'homepage/section-ordercall.html.twig' %}
+    {% endblock %}
+    {% block content %}
+        {% include 'homepage/section-map.html.twig' %}
+        {% include 'homepage/section-contact.html.twig' %}
+    {% endblock %}
+{% endblock %}
+{% block ajax %}
+
+{% endblock %}

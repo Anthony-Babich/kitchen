@@ -6,6 +6,9 @@ get:
     type:     annotation
     requirements:
         methods:  GET|POST
+salon:
+    path:     /salon/{slug}
+    defaults: { _controller: KuhniBundle:Salon:index }
 callback:
     path:  /callback
     defaults: { _controller: "KuhniBundle:CallBack:index" }
