@@ -2,7 +2,6 @@
 
 namespace Kuhni\Bundle\Controller;
 
-use Kuhni\Bundle\Entity\freeDesignProject;
 use Kuhni\Bundle\Entity\ZayavkaRazmer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;

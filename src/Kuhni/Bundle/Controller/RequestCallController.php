@@ -2,7 +2,6 @@
 
 namespace Kuhni\Bundle\Controller;
 
-use DateTime;
 use Kuhni\Bundle\Entity\RequestCall;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;

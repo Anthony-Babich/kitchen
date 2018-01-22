@@ -39,23 +39,24 @@
             data: $(this).serialize()
         }).done(function (data, status) {
             $('form').trigger('reset');
-            if ((data['success'] = 'success') && ((status = 'success'))) {
-                $('form button[type="submit"]').after(
+            data = $.parseJSON(data);
+            if ((data['success'] = 'success') && (status = 'success')) {
+                $('form').prepend(
                     '<div class="alert alert-success" role="alert">' +
-                    '<strong>Спасибо!</strong> Ваше сообщение отправлено.' +
+                    '<strong>' + data['result'] + '</strong>' +
                     '</div>'
                 );
             } else {
-                $('form button[type="submit"]').after(
+                $('form').prepend(
                     '<div class="alert alert-error" role="alert">' +
-                    '<strong>Что-то пошло не так!</strong>' +
+                    '<strong>Ваш заказ не найден, обратитесь к менеджеру.</strong>' +
                     '</div>'
                 );
             }
             $('form button').removeAttr("disabled", "disabled");
             setTimeout(function () {
                 $('.alert').fadeOut('fast')
-            }, 3000);
+            }, 10000);
         }).fail(function (jqXHR, textStatus, errorThrown) {
             if (typeof jqXHR.responseJSON !== 'undefined') {
                 if (jqXHR.responseJSON.hasOwnProperty('form')) {

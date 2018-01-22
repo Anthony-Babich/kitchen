@@ -84,8 +84,12 @@ class ZovZakazController extends Controller
             ->getQuery()
             ->getResult();
 
-        dump($res[0]['status']);
-        die;
+        if (!empty($res)){
+            return new Response(json_encode(array('success' => 'success', 'result' => $res[0]['status'])));
+        }else{
+            return new Response(json_encode(array('success' => 'noSuccess')));
+        }
+
     }
 
     private function getZovZakazForm()
