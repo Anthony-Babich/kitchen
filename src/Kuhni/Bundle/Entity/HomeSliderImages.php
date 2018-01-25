@@ -15,46 +15,34 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class HomeSliderImages
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+    use TraitId;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="link", type="string", nullable=true)
      */
     private $link = '';
 
     /**
      * @var string
-     *
      * @ORM\Column(name="title", type="string", nullable=true)
      */
     private $title = '';
 
     /**
      * @var integer
-     *
      * @ORM\Column(name="priority", type="integer")
      */
     private $priority = 0;
 
     /**
      * @var boolean
-     *
      * @ORM\Column(name="output", type="boolean")
      */
     private $output = 0;
 
     /**
      * @var boolean
-     *
      * @ORM\Column(name="modal", type="boolean")
      */
     private $modal = 0;
@@ -115,7 +103,6 @@ class HomeSliderImages
 
     /**
      * Get id
-     *
      * @return int
      */
     public function getId()
@@ -179,155 +166,126 @@ class HomeSliderImages
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     *
      * @Vich\UploadableField(mapping="kuhni_slider_home", fileNameProperty="imageNameIconNoHover", size="imageSizeIconNoHover")
-     *
      * @var File
      */
     private $imageFileIconNoHover;
     /**
      * @ORM\Column(type="string", length=255)
-     *
      * @var string
      */
     private $imageNameIconNoHover;
     /**
      * @ORM\Column(type="integer")
-     *
      * @var integer
      */
     private $imageSizeIconNoHover;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     *
      * @Vich\UploadableField(mapping="kuhni_slider_home", fileNameProperty="imageNameIconOnHover", size="imageSizeIconOnHover")
-     *
      * @var File
      */
     private $imageFileIconOnHover;
     /**
      * @ORM\Column(type="string", length=255)
-     *
      * @var string
      */
     private $imageNameIconOnHover;
     /**
      * @ORM\Column(type="integer")
-     *
      * @var integer
      */
     private $imageSizeIconOnHover;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     *
      * @Vich\UploadableField(mapping="kuhni_slider_home", fileNameProperty="imageNameBannerPC", size="imageSizeBannerPC")
-     *
      * @var File
      */
     private $imageFileBannerPC;
     /**
      * @ORM\Column(type="string", length=255)
-     *
      * @var string
      */
     private $imageNameBannerPC;
     /**
      * @ORM\Column(type="integer")
-     *
      * @var integer
      */
     private $imageSizeBannerPC;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     *
      * @Vich\UploadableField(mapping="kuhni_slider_home", fileNameProperty="imageNameBannerMobile", size="imageSizeBannerMobile")
-     *
      * @var File
      */
     private $imageFileBannerMobile;
     /**
      * @ORM\Column(type="string", length=255)
-     *
      * @var string
      */
     private $imageNameBannerMobile;
     /**
      * @ORM\Column(type="integer")
-     *
      * @var integer
      */
     private $imageSizeBannerMobile;
     /**
      * @ORM\Column(type="datetime")
-     *
      * @var \DateTime
      */
     private $updated;
 
     /**
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-     *
      * @return HomeSliderImages
      */
     public function setImageFileIconNoHover(File $image = null)
     {
         $this->imageFileIconNoHover = $image;
-
         if ($image) {
             $this->updated = new \DateTimeImmutable();
         }
-
         return $this;
     }
 
     /**
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-     *
      * @return HomeSliderImages
      */
     public function setImageFileIconOnHover(File $image = null)
     {
         $this->imageFileIconOnHover = $image;
-
         if ($image) {
             $this->updated = new \DateTimeImmutable();
         }
-
         return $this;
     }
 
     /**
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-     *
      * @return HomeSliderImages
      */
     public function setImageFileBannerPC(File $image = null)
     {
         $this->imageFileBannerPC = $image;
-
         if ($image) {
             $this->updated = new \DateTimeImmutable();
         }
-
         return $this;
     }
 
     /**
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-     *
      * @return HomeSliderImages
      */
     public function setImageFileBannerMobile(File $image = null)
     {
         $this->imageFileBannerMobile = $image;
-
         if ($image) {
             $this->updated = new \DateTimeImmutable();
         }
-
         return $this;
     }
 
@@ -365,49 +323,41 @@ class HomeSliderImages
 
     /**
      * @param string $imageNameIconNoHover
-     *
      * @return HomeSliderImages
      */
     public function setImageNameIconNoHover($imageNameIconNoHover)
     {
         $this->imageNameIconNoHover = $imageNameIconNoHover;
-
         return $this;
     }
 
     /**
      * @param string $imageNameIconOnHover
-     *
      * @return HomeSliderImages
      */
     public function setImageNameIconOnHover($imageNameIconOnHover)
     {
         $this->imageNameIconOnHover = $imageNameIconOnHover;
-
         return $this;
     }
 
     /**
      * @param string $imageNameBannerPC
-     *
      * @return HomeSliderImages
      */
     public function setImageNameBannerPC($imageNameBannerPC)
     {
         $this->imageNameBannerPC = $imageNameBannerPC;
-
         return $this;
     }
 
     /**
      * @param string $imageNameBannerMobile
-     *
      * @return HomeSliderImages
      */
     public function setImageNameBannerMobile($imageNameBannerMobile)
     {
         $this->imageNameBannerMobile = $imageNameBannerMobile;
-
         return $this;
     }
 
@@ -445,49 +395,41 @@ class HomeSliderImages
 
     /**
      * @param integer $imageSizeIconNoHover
-     *
      * @return HomeSliderImages
      */
     public function setImageSizeIconNoHover($imageSizeIconNoHover)
     {
         $this->imageSizeIconNoHover = $imageSizeIconNoHover;
-
         return $this;
     }
 
     /**
      * @param integer $imageSizeIconOnHover
-     *
      * @return HomeSliderImages
      */
     public function setImageSizeIconOnHover($imageSizeIconOnHover)
     {
         $this->imageSizeIconOnHover = $imageSizeIconOnHover;
-
         return $this;
     }
 
     /**
      * @param integer $imageSizeBannerPC
-     *
      * @return HomeSliderImages
      */
     public function setImageSizeBannerPC($imageSizeBannerPC)
     {
         $this->imageSizeBannerPC = $imageSizeBannerPC;
-
         return $this;
     }
 
     /**
      * @param integer $imageSizeBannerMobile
-     *
      * @return HomeSliderImages
      */
     public function setImageSizeBannerMobile($imageSizeBannerMobile)
     {
         $this->imageSizeBannerMobile = $imageSizeBannerMobile;
-
         return $this;
     }
 
@@ -521,13 +463,5 @@ class HomeSliderImages
     public function getImageSizeBannerMobile()
     {
         return $this->imageSizeIconNoHover;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return strval($this->id);
     }
 }

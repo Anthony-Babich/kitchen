@@ -12,14 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class StationMoscow
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+    use TraitId;
 
     /**
      * @var string
@@ -41,16 +34,6 @@ class StationMoscow
      * @ORM\Column(name="color", type="string", length=255)
      */
     private $color;
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * @return string
@@ -104,13 +87,5 @@ class StationMoscow
     {
         $this->color = $color;
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return strval($this->id);
     }
 }

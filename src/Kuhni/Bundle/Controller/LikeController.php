@@ -10,7 +10,7 @@ class LikeController extends Controller
     public function indexAction(){
         $session = $this->get('session');
         $em = $this->get('doctrine.orm.default_entity_manager');
-        $kitchen = $em->getRepository('KuhniBundle:Kuhni')->findOneById(htmlspecialchars($_POST['id']));
+        $kitchen = $em->getRepository('KuhniBundle:Kuhni')->findOneBy(array('id' => htmlspecialchars($_POST['id'])));
         if (!empty($kitchen)){
             if (!empty($session->get($_POST['id']))){
                 if ($session->get($_POST['id']) == 0){

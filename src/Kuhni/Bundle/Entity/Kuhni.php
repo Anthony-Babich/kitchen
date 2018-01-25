@@ -16,121 +16,51 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class Kuhni
 {
+    use TraitId;
+
     public function __construct()
     {
         $this->fasadColors = new ArrayCollection();
         $this->fasadTypes = new ArrayCollection();
-        $this->color = new ArrayCollection();
+        $this->kuhniKeys = new ArrayCollection();
     }
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\ManyToMany(targetEntity="Kuhni\Bundle\Entity\KuhniKeys")
+     * @ORM\JoinTable(name="keys_kuhni",
+     *   joinColumns={@ORM\JoinColumn(name="kuhni_id", referencedColumnName = "id")},
+     *   inverseJoinColumns={@ORM\JoinColumn(name="key_id", referencedColumnName="id")}
+     * )
      */
-    private $id;
+    protected $kuhniKeys = array();
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="razmer", type="string")
+     * @return mixed
      */
-    private $razmer;
+    public function getKuhniKeys()
+    {
+        return $this->kuhniKeys;
+    }
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nameFasad", type="string")
+     * @param KuhniKeys $array
+     * @return Kuhni
      */
-    private $nameFasad;
+    public function addKuhniKeys(KuhniKeys $array)
+    {
+        $this->kuhniKeys[] = $array;
+        return $this;
+    }
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="matFasad", type="string")
+     * @param KuhniKeys $element
+     * @return Kuhni
      */
-    private $matFasad;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="stoleshnica", type="string")
-     */
-    private $stoleshnica;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="korpus", type="string")
-     */
-    private $korpus;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="furnitura", type="string")
-     */
-    private $furnitura;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="fixedPrice", type="boolean")
-     */
-    private $fixedPrice = false;
-
-    /**
-     * @var KuhniStyle
-     *
-     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\KuhniStyle", cascade={"persist"})
-     * @ORM\JoinColumn(name="id_kuhni_style", referencedColumnName="id")
-     */
-    private $idKuhniStyle;
-
-    /**
-     * @var KuhniMaterial
-     *
-     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\KuhniMaterial", cascade={"persist"})
-     * @ORM\JoinColumn(name="id_kuhni_material", referencedColumnName="id")
-     */
-    private $idKuhniMaterial;
-
-    /**
-     * @var KuhniConfig
-     *
-     * @ORM\ManyToOne(targetEntity="Kuhni\Bundle\Entity\KuhniConfig", cascade={"persist"})
-     * @ORM\JoinColumn(name="id_kuhni_config", referencedColumnName="id")
-     */
-    private $idKuhniConfig;
-
-    /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     *
-     * @Vich\UploadableField(mapping="kuhni", fileNameProperty="imageName", size="imageSize")
-     *
-     * @var File
-     */
-    private $imageFile;
-    /**
-     * @ORM\Column(type="string", length=255)
-     *
-     * @var string
-     */
-    private $imageName;
-    /**
-     * @ORM\Column(type="integer")
-     *
-     * @var integer
-     */
-    private $imageSize;
-    /**
-     * @ORM\Column(type="datetime")
-     *
-     * @var \DateTime
-     */
-    private $updated;
+    public function removeKuhniKeys(KuhniKeys $element)
+    {
+        $this->kuhniKeys->removeElement($element);
+        return $this;
+    }
 
     /**
      * @var Catalog
@@ -173,6 +103,13 @@ class Kuhni
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="fixedPrice", type="boolean")
+     */
+    private $fixedPrice = false;
 
     /**
      * @var string
@@ -291,43 +228,6 @@ class Kuhni
     }
 
     /**
-     * @ORM\ManyToMany(targetEntity="Kuhni\Bundle\Entity\KuhniColor")
-     * @ORM\JoinTable(name="kuhniColor_kuhni",
-     *   joinColumns={@ORM\JoinColumn(name="kuhni_id", referencedColumnName = "id")},
-     *   inverseJoinColumns={@ORM\JoinColumn(name="kuhniColors_id", referencedColumnName="id")}
-     * )
-     */
-    protected $kuhniColors = array();
-
-    /**
-     * @return mixed
-     */
-    public function getKuhniColors()
-    {
-        return $this->kuhniColors;
-    }
-
-    /**
-     * @param KuhniColor $array
-     * @return Kuhni
-     */
-    public function addKuhniColors(KuhniColor $array)
-    {
-        $this->kuhniColors[] = $array;
-        return $this;
-    }
-
-    /**
-     * @param KuhniColor $element
-     * @return Kuhni
-     */
-    public function removeKuhniColors(KuhniColor $element)
-    {
-        $this->kuhniColors->removeElement($element);
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getArticle()
@@ -394,6 +294,33 @@ class Kuhni
     }
 
     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="kuhni", fileNameProperty="imageName", size="imageSize")
+     *
+     * @var File
+     */
+    private $imageFile;
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName;
+    /**
+     * @ORM\Column(type="integer")
+     *
+     * @var integer
+     */
+    private $imageSize;
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updated;
+
+    /**
      * @return \DateTime
      */
     public function getUpdated(): \DateTime
@@ -413,19 +340,16 @@ class Kuhni
 
     /**
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-     *
      * @return Kuhni
      */
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
-
         if ($image) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
             $this->updated = new \DateTimeImmutable();
         }
-
         return $this;
     }
 
@@ -439,13 +363,11 @@ class Kuhni
 
     /**
      * @param string $imageName
-     *
      * @return Kuhni
      */
     public function setImageName($imageName)
     {
         $this->imageName = $imageName;
-
         return $this;
     }
 
@@ -459,13 +381,11 @@ class Kuhni
 
     /**
      * @param integer $imageSize
-     *
      * @return Kuhni
      */
     public function setImageSize($imageSize)
     {
         $this->imageSize = $imageSize;
-
         return $this;
     }
 
@@ -475,60 +395,6 @@ class Kuhni
     public function getImageSize()
     {
         return $this->imageSize;
-    }
-
-    /**
-     * @return KuhniStyle
-     */
-    public function getIdKuhniStyle()
-    {
-        return $this->idKuhniStyle;
-    }
-
-    /**
-     * @param KuhniStyle $idKuhniStyle
-     * @return Kuhni
-     */
-    public function setIdKuhniStyle(KuhniStyle $idKuhniStyle)
-    {
-        $this->idKuhniStyle = $idKuhniStyle;
-        return $this;
-    }
-
-    /**
-     * @return KuhniMaterial
-     */
-    public function getIdKuhniMaterial()
-    {
-        return $this->idKuhniMaterial;
-    }
-
-    /**
-     * @param KuhniMaterial $idKuhniMaterial
-     * @return Kuhni
-     */
-    public function setIdKuhniMaterial(KuhniMaterial $idKuhniMaterial)
-    {
-        $this->idKuhniMaterial = $idKuhniMaterial;
-        return $this;
-    }
-
-    /**
-     * @return KuhniConfig
-     */
-    public function getIdKuhniConfig()
-    {
-        return $this->idKuhniConfig;
-    }
-
-    /**
-     * @param KuhniConfig $idKuhniConfig
-     * @return Kuhni
-     */
-    public function setIdKuhniConfig(KuhniConfig $idKuhniConfig)
-    {
-        $this->idKuhniConfig = $idKuhniConfig;
-        return $this;
     }
 
     /**
@@ -546,7 +412,6 @@ class Kuhni
     public function setIdCatalog(Catalog $idCatalog)
     {
         $this->idCatalog = $idCatalog;
-
         return $this;
     }
 
@@ -605,32 +470,18 @@ class Kuhni
     }
 
     /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * Set name
-     *
      * @param string $name
-     *
      * @return Kuhni
      */
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 
     /**
      * Get name
-     *
      * @return string
      */
     public function getName()
@@ -640,21 +491,17 @@ class Kuhni
 
     /**
      * Set title
-     *
      * @param string $title
-     *
      * @return Kuhni
      */
     public function setTitle($title)
     {
         $this->title = $title;
-
         return $this;
     }
 
     /**
      * Get title
-     *
      * @return string
      */
     public function getTitle()
@@ -664,21 +511,17 @@ class Kuhni
 
     /**
      * Set description
-     *
      * @param string $description
-     *
      * @return Kuhni
      */
     public function setDescription($description)
     {
         $this->description = $description;
-
         return $this;
     }
 
     /**
      * Get description
-     *
      * @return string
      */
     public function getDescription()
@@ -688,21 +531,17 @@ class Kuhni
 
     /**
      * Set keywords
-     *
      * @param string $keywords
-     *
      * @return Kuhni
      */
     public function setKeywords($keywords)
     {
         $this->keywords = $keywords;
-
         return $this;
     }
 
     /**
      * Get keywords
-     *
      * @return string
      */
     public function getKeywords()
@@ -712,21 +551,17 @@ class Kuhni
 
     /**
      * Set mainDescription
-     *
      * @param string $mainDescription
-     *
      * @return Kuhni
      */
     public function setMainDescription($mainDescription)
     {
         $this->mainDescription = $mainDescription;
-
         return $this;
     }
 
     /**
      * Get mainDescription
-     *
      * @return string
      */
     public function getMainDescription()
@@ -843,10 +678,38 @@ class Kuhni
     }
 
     /**
-     * @return string
+     * @var string
+     * @ORM\Column(name="razmer", type="string")
      */
-    public function __toString()
-    {
-        return strval($this->id);
-    }
+    private $razmer;
+
+    /**
+     * @var string
+     * @ORM\Column(name="nameFasad", type="string")
+     */
+    private $nameFasad;
+
+    /**
+     * @var string
+     * @ORM\Column(name="matFasad", type="string")
+     */
+    private $matFasad;
+
+    /**
+     * @var string
+     * @ORM\Column(name="stoleshnica", type="string")
+     */
+    private $stoleshnica;
+
+    /**
+     * @var string
+     * @ORM\Column(name="korpus", type="string")
+     */
+    private $korpus;
+
+    /**
+     * @var string
+     * @ORM\Column(name="furnitura", type="string")
+     */
+    private $furnitura;
 }

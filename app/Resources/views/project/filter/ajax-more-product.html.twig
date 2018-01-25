@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        /* Переменная-флаг для отслеживания того, происходит ли в данный момент ajax-запрос.
+        В самом начале даем ей значение false, т.е. запрос не в процессе выполнения */
+        var inProgress = false;
+        /* С какой статьи надо делать выборку из базы при ajax-запросе */
+        var startFrom = 10;
+        var slug = '{{ slug }}';
+        var noMore = false;
+        $(window).scroll(function() {
+            var contact = $('#article').offset().top - 1200;
+            if ( ( $(window).scrollTop() >= contact && !inProgress ) && !noMore) {
+                $.ajax({
+                    /* адрес файла-обработчика запроса */
+                    url: "{{ path('projects-filter', {'filter' : slug}) }}",
+                    /* метод отправки данных */
+                    method: 'POST',
+                    /* данные, которые мы передаем в файл-обработчик */
+                    data: {"offset" : startFrom, "slug" : slug},
+                    /* что нужно сделать до отправки запрса */
+                    beforeSend: function() {
+                        /* меняем значение флага на true, т.е. запрос сейчас в процессе выполнения */
+                        inProgress = true;}
+                    /* что нужно сделать по факту выполнения запроса */
+                }).done(function(result){
+                    if (result.length > 0){
+                        if (result === 'noMoreProduct'){
+                            noMore = true;
+                        }else{
+                            $("#container-with-products").append(
+                                result
+                            );
+                        }
+                        inProgress = false;
+                        startFrom += 10;
+                    }
+                });
+            }
+        });
+    });
+</script>

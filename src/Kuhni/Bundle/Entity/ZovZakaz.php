@@ -12,32 +12,22 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ZovZakaz
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+    use TraitId;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="number", type="string", length=255)
      */
     private $number;
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="date", type="date")
      */
     private $date;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="orderNumber", type="string", length=255, unique=true)
      */
     private $orderNumber;
@@ -55,32 +45,18 @@ class ZovZakaz
     private $idStatus;
 
     /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * Set number
-     *
      * @param string $number
-     *
      * @return ZovZakaz
      */
     public function setNumber($number)
     {
         $this->number = $number;
-
         return $this;
     }
 
     /**
      * Get number
-     *
      * @return string
      */
     public function getNumber()
@@ -90,15 +66,12 @@ class ZovZakaz
 
     /**
      * Set date
-     *
      * @param \DateTime $date
-     *
      * @return ZovZakaz
      */
     public function setDate($date)
     {
         $this->date = $date;
-
         return $this;
     }
 
@@ -114,21 +87,17 @@ class ZovZakaz
 
     /**
      * Set orderNumber
-     *
      * @param string $orderNumber
-     *
      * @return ZovZakaz
      */
     public function setOrderNumber($orderNumber)
     {
         $this->orderNumber = $orderNumber;
-
         return $this;
     }
 
     /**
      * Get orderNumber
-     *
      * @return string
      */
     public function getOrderNumber()
@@ -170,13 +139,5 @@ class ZovZakaz
     {
         $this->idStatus = $idStatus;
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return strval($this->id);
     }
 }

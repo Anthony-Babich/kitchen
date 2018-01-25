@@ -12,30 +12,21 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Reviews
 {
+    use TraitId;
+
     public function __construct()
     {
         $this->setCreated(new \DateTime());
     }
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
      * @var string
-     *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
@@ -49,28 +40,24 @@ class Reviews
 
     /**
      * @var string
-     *
      * @ORM\Column(name="geoIP", type="string", length=255)
      */
     private $geoIP;
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="created", type="datetime")
      */
     private $created;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="url", type="string", length=255)
      */
     private $url;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="message", type="string", length=1000)
      */
     private $message;
@@ -83,44 +70,29 @@ class Reviews
 
     /**
      * @var int
-     *
      * @ORM\Column(name="star", type="integer")
      */
     private $star;
 
     /**
      * @var boolean
-     *
      * @ORM\Column(name="approved", type="boolean")
      */
     private $approved = 0;
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set name
-     *
      * @param string $name
-     *
      * @return Reviews
      */
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 
     /**
      * Get name
-     *
      * @return string
      */
     public function getName()
@@ -130,21 +102,17 @@ class Reviews
 
     /**
      * Set email
-     *
      * @param string $email
-     *
      * @return Reviews
      */
     public function setEmail($email)
     {
         $this->email = $email;
-
         return $this;
     }
 
     /**
      * Get email
-     *
      * @return string
      */
     public function getEmail()
@@ -154,21 +122,17 @@ class Reviews
 
     /**
      * Set phone
-     *
      * @param string $phone
-     *
      * @return Reviews
      */
     public function setPhone($phone)
     {
         $this->phone = $phone;
-
         return $this;
     }
 
     /**
      * Get phone
-     *
      * @return string
      */
     public function getPhone()
@@ -178,21 +142,17 @@ class Reviews
 
     /**
      * Set geoIP
-     *
      * @param string $geoIP
-     *
      * @return Reviews
      */
     public function setGeoIP($geoIP)
     {
         $this->geoIP = $geoIP;
-
         return $this;
     }
 
     /**
      * Get geoIP
-     *
      * @return string
      */
     public function getGeoIP()
@@ -202,21 +162,17 @@ class Reviews
 
     /**
      * Set created
-     *
      * @param \DateTime $created
-     *
      * @return Reviews
      */
     public function setCreated($created)
     {
         $this->created = $created;
-
         return $this;
     }
 
     /**
      * Get created
-     *
      * @return \DateTime
      */
     public function getCreated()
@@ -226,21 +182,17 @@ class Reviews
 
     /**
      * Set url
-     *
      * @param string $url
-     *
      * @return Reviews
      */
     public function setUrl($url)
     {
         $this->url = $url;
-
         return $this;
     }
 
     /**
      * Get url
-     *
      * @return string
      */
     public function getUrl()
@@ -250,28 +202,23 @@ class Reviews
 
     /**
      * Set message
-     *
      * @param string $message
-     *
      * @return Reviews
      */
     public function setMessage($message)
     {
         $this->message = $message;
-
         return $this;
     }
 
     /**
      * Get message
-     *
      * @return string
      */
     public function getMessage()
     {
         return $this->message;
     }
-
 
     /**
      * @return mixed
@@ -291,21 +238,17 @@ class Reviews
 
     /**
      * Set star
-     *
      * @param integer $star
-     *
      * @return Reviews
      */
     public function setStar($star)
     {
         $this->star = $star;
-
         return $this;
     }
 
     /**
      * Get star
-     *
      * @return int
      */
     public function getStar()
@@ -323,13 +266,11 @@ class Reviews
 
     /**
      * @param bool $approved
-     *
      * @return Reviews
      */
     public function setApproved(bool $approved): Reviews
     {
         $this->approved = $approved;
-
         return $this;
     }
 }

@@ -38,21 +38,6 @@ class KuhniAdmin extends AbstractAdmin
                         'property' => 'title',
                         'label' => 'Каталог'
                     ))
-                    ->add('idKuhniStyle', EntityType::class, array(
-                        'class' => 'KuhniBundle:KuhniStyle',
-                        'property' => 'title',
-                        'label' => 'Стиль'
-                    ))
-                    ->add('idKuhniMaterial', EntityType::class, array(
-                        'class' => 'KuhniBundle:KuhniMaterial',
-                        'property' => 'materialTitle',
-                        'label' => 'Материал'
-                    ))
-                    ->add('idKuhniConfig', EntityType::class, array(
-                        'class' => 'KuhniBundle:KuhniConfig',
-                        'property' => 'title',
-                        'label' => 'Конфигурация'
-                    ))
                     ->add('discount', MoneyType::class, array(
                         'label' => 'Скидка'
                     ))
@@ -125,7 +110,7 @@ class KuhniAdmin extends AbstractAdmin
                     ))
                 ->end()
             ->end()
-            ->tab('Фасады и цвета')
+            ->tab('Фасады, цвета, ключевые слова')
                 ->with('Цвета фасадов', array('class' => 'col-12 col-md-4'))
                     ->add('fasadColors', 'sonata_type_model', array(
                         'class' => 'KuhniBundle:FasadColor',
@@ -146,14 +131,14 @@ class KuhniAdmin extends AbstractAdmin
                         'label' => false
                     ))
                 ->end()
-                ->with('Цвета', array('class' => 'col-12 col-md-2'))
-                    ->add('kuhniColors', 'sonata_type_model', array(
-                        'class' => 'KuhniBundle:KuhniColor',
+                ->with('Ключевые слова', array('class' => 'col-12 col-md-4'))
+                    ->add('kuhniKeys', 'sonata_type_model', array(
+                        'class' => 'KuhniBundle:KuhniKeys',
                         'property' => 'title',
                         'multiple' => true,
                         'expanded' => true,
                         'required' => false,
-                        'label' => 'Выберите салон(ы)'
+                        'label' => false
                     ))
                 ->end()
             ->end()
@@ -168,24 +153,6 @@ class KuhniAdmin extends AbstractAdmin
             ))
             ->add('price', null, array(
                 'label' => 'Цена'
-            ))
-            ->add('idKuhniStyle', null, array(
-                'label'    => 'Стиль'
-            ), 'entity', array(
-                'class' => 'KuhniBundle:KuhniStyle',
-                'property' => 'title',
-            ))
-            ->add('idKuhniMaterial', null, array(
-                'label'    => 'Материал'
-            ), 'entity', array(
-                'class' => 'KuhniBundle:KuhniMaterial',
-                'property' => 'title',
-            ))
-            ->add('idKuhniConfig', null, array(
-                'label'    => 'Конфигурация'
-            ), 'entity', array(
-                'class' => 'KuhniBundle:KuhniConfig',
-                'property' => 'title',
             ))
             ->add('likes', null, array(
                 'label' => 'Лайки'
@@ -206,15 +173,6 @@ class KuhniAdmin extends AbstractAdmin
             ))
             ->add('price', null, array(
                 'label' => 'Цена'
-            ))
-            ->add('idKuhniStyle.title', null, array(
-             'label'    => 'Стиль',
-            ))
-            ->add('idKuhniMaterial.title', null, array(
-             'label'    => 'Материал'
-            ))
-            ->add('idKuhniConfig.title', null, array(
-             'label'    => 'Конфигурация'
             ))
             ->add('likes', null, array(
              'label' => 'Лайки'
@@ -250,15 +208,6 @@ class KuhniAdmin extends AbstractAdmin
             ))
             ->add('price', null, array(
                 'label' => 'Цена'
-            ))
-            ->add('idKuhniStyle.title', null, array(
-                'label' => 'Стиль'
-            ))
-            ->add('idKuhniMaterial.title', null, array(
-                'label' => 'Материал'
-            ))
-            ->add('idKuhniConfig.title', null, array(
-                'label' => 'Конфигурация'
             ))
             ->add('discount', null, array(
                 'label' => 'Скидка'

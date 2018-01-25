@@ -12,39 +12,19 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Settings
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+    use TraitId;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="name", type="string")
      */
     private $name;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="setting", type="string", length=3000)
      */
     private $setting;
-
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set name
@@ -94,4 +74,3 @@ class Settings
         return $this->setting;
     }
 }
-

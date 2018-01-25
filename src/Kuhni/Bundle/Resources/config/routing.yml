@@ -6,9 +6,6 @@ get:
     type:     annotation
     requirements:
         methods:  GET|POST
-salon:
-    path:     /salon/{slug}
-    defaults: { _controller: KuhniBundle:Salon:index }
 callback:
     path:  /callback
     defaults: { _controller: "KuhniBundle:CallBack:index" }
@@ -59,11 +56,6 @@ about:
     defaults: { _controller: "KuhniBundle:About:index" }
     requirements:
         methods:  GET|POST
-newlike:
-    path:  /newlike
-    defaults: { _controller: "KuhniBundle:Like:index" }
-    requirements:
-        methods:  GET|POST
 promo:
     path:  /promo
     defaults: { _controller: "KuhniBundle:Promo:index" }
@@ -97,5 +89,45 @@ track:
 trackCheck:
     path:  /trackCheck
     defaults: { _controller: "KuhniBundle:ZovZakaz:trackCheck" }
+    requirements:
+        methods:  GET|POST
+salon-all:
+    path:  /salon
+    defaults: { _controller: "KuhniBundle:Profiler:index" }
+    requirements:
+        methods:  GET|POST
+salon-address:
+    path:  /salon/{slugAddress}
+    defaults: { _controller: "KuhniBundle:Profiler:searchAddress" }
+    requirements:
+        methods:  GET|POST
+salon-profile:
+    path:  /salon/{slugAddress}/{slug}/
+    defaults: { _controller: "KuhniBundle:Profiler:show" }
+    requirements:
+        methods:  GET|POST
+newlike:
+    path:  /newlike
+    defaults: { _controller: "KuhniBundle:Like:index" }
+    requirements:
+        methods:  GET|POST
+newlikeproject:
+    path:  /newlikeproject
+    defaults: { _controller: "KuhniBundle:Profiler:like" }
+    requirements:
+        methods:  GET|POST
+all-projects:
+    path:  /projects/
+    defaults: { _controller: "KuhniBundle:Project:allProjects" }
+    requirements:
+        methods:  GET|POST
+projects-filter:
+    path:  /projects/{filter}/
+    defaults: { _controller: "KuhniBundle:Project:projectsFilter" }
+    requirements:
+        methods:  GET|POST
+project:
+    path:  /projects/{filter}/{nameproject}
+    defaults: { _controller: "KuhniBundle:Project:project" }
     requirements:
         methods:  GET|POST

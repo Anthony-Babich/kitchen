@@ -15,73 +15,56 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class Catalog
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+    use TraitId;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="keywords", type="string", length=255)
      */
     private $keywords;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="alt", type="string", length=255)
      */
     private $alt;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     *
      * @Vich\UploadableField(mapping="catalog_image", fileNameProperty="imageName", size="imageSize")
-     *
      * @var File
      */
     private $imageFile;
     /**
      * @ORM\Column(type="string", length=255)
-     *
      * @var string
      */
     private $imageName;
     /**
      * @ORM\Column(type="integer")
-     *
      * @var integer
      */
     private $imageSize;
     /**
      * @ORM\Column(type="datetime")
-     *
      * @var \DateTime
      */
     private $updated;
@@ -130,13 +113,11 @@ class Catalog
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
-
         if ($image) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
             $this->updated = new \DateTimeImmutable();
         }
-
         return $this;
     }
 
@@ -150,13 +131,11 @@ class Catalog
 
     /**
      * @param string $imageName
-     *
      * @return Catalog
      */
     public function setImageName($imageName)
     {
         $this->imageName = $imageName;
-
         return $this;
     }
 
@@ -170,13 +149,11 @@ class Catalog
 
     /**
      * @param integer $imageSize
-     *
      * @return Catalog
      */
     public function setImageSize($imageSize)
     {
         $this->imageSize = $imageSize;
-
         return $this;
     }
 
@@ -191,7 +168,6 @@ class Catalog
     /**
      * Get id
      *
-     * @return int
      */
     public function getId()
     {
@@ -200,21 +176,17 @@ class Catalog
 
     /**
      * Set name
-     *
      * @param string $name
-     *
      * @return Catalog
      */
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 
     /**
      * Get name
-     *
      * @return string
      */
     public function getName()
@@ -224,21 +196,17 @@ class Catalog
 
     /**
      * Set title
-     *
      * @param string $title
-     *
      * @return Catalog
      */
     public function setTitle($title)
     {
         $this->title = $title;
-
         return $this;
     }
 
     /**
      * Get title
-     *
      * @return string
      */
     public function getTitle()
@@ -248,21 +216,17 @@ class Catalog
 
     /**
      * Set description
-     *
      * @param string $description
-     *
      * @return Catalog
      */
     public function setDescription($description)
     {
         $this->description = $description;
-
         return $this;
     }
 
     /**
      * Get description
-     *
      * @return string
      */
     public function getDescription()
@@ -272,9 +236,7 @@ class Catalog
 
     /**
      * Set keywords
-     *
      * @param string $keywords
-     *
      * @return Catalog
      */
     public function setKeywords($keywords)
@@ -286,19 +248,10 @@ class Catalog
 
     /**
      * Get keywords
-     *
      * @return string
      */
     public function getKeywords()
     {
         return $this->keywords;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return strval($this->id);
     }
 }

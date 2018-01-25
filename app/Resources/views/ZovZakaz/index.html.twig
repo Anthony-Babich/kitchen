@@ -27,6 +27,11 @@
 <script src="{{ asset('bundles/kuhni/js/jquery.js') }}"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
 <script>
+    $("head").append(
+        '<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">'
+    );
+</script>
+<script>
     jQuery(document).ready(function() {
         $('.js-datepicker').datepicker();
     });

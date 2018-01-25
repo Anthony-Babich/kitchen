@@ -1,0 +1,52 @@
+<section id="completed-projects">
+    <div class="container heading">
+        <h2 class="section-heading">Выполненые проекты кухонь</h2>
+    </div>
+    <div class="container">
+        <div class="popular-slick">
+            {% for completedProject in completedProjects %}
+                <div class="slide-col">
+                    <a href="{{ path('project', {'filter' : slug, 'nameproject' : completedProject.slug}) }}" >
+                        <img class="slide-product-img" src="{{ asset( completedProjectImage[loop.index0] ) }}" alt="{{ completedProject.keywords }}" title="{{ completedProject.title }}">
+                        <span class="pos-bot-l">
+                            <ul class="nav">
+                                <li class="left">
+                                    <div class="text-left">
+                                        <span class="first-name"><b>{{ completedProject.title }}</b></span>
+                                    </div>
+                                </li>
+                                <li class="right">
+                                    <div class="text-right right">
+                                        {% set price = (completedProject.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                        {% set noDiscountPrice = (((price * completedProject.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                        <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }} <i class='fa fa-rub' aria-hidden='true'></i></span><br/>
+                                        {% if completedProject.discount != 0 %}
+                                            <span class="text-right last-price">старая цена
+                                                <span class="through">{{ noDiscountPrice }} <i class='fa fa-rub' aria-hidden='true'></i></span>
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                </li>
+                            </ul>
+                        </span>
+                        {% if completedProject.discount != 0 %}
+                            <span class="pos-bot-r desc text-center">
+                                <span class="title"><b>{{ completedProject.discount }}%</b></span>
+                                <span>скидка</span>
+                            </span>
+                        {% endif %}
+                    </a>
+                    <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
+                        <i class="fa fa-phone"></i>
+                    </button>
+                    <button type="button" id="like" data-id="{{ completedProject.id }}" class="like text-center">
+                        <i class="fa fa-heart"></i>
+                        <span class="countLikes">
+                            {{ completedProject.likes }}
+                        </span>
+                    </button>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

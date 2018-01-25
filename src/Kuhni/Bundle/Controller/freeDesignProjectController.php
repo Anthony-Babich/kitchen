@@ -2,7 +2,7 @@
 
 namespace Kuhni\Bundle\Controller;
 
-use Kuhni\Bundle\Entity\freeDesignProject;
+use Kuhni\Bundle\Entity\formFreeDesignProject;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,7 +36,7 @@ class freeDesignProjectController extends Controller
         }
 
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
-        $call = new freeDesignProject();
+        $call = new formFreeDesignProject();
 
         if ($_FILES['form']['error']['imageFile']['file'] == 0){
             $formFile = $_FILES['form'];

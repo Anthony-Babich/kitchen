@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+{% block map %}
+    <script type="text/javascript">
+        ymaps.ready(function () {
+            ymaps.modules.require(['Map', 'Placemark']).spread(
+                function (Map) {
+                    var myMap = new Map("map", {
+                        center: [ {{ salon.longitude }}, {{ salon.latitude }} ],
+                        zoom: 11
+                    });
+                    myMap.behaviors.disable('scrollZoom');
+                    BalloonContentLayout = ymaps.templateLayoutFactory.createClass(
+                        '<div><img src="{{ asset('upload/salon/' ~ salon.imageName) }}" style="width:100%; height:auto;" alt="{{ salon.description }}"></div>' +
+                        '<div style="margin: 10px;">' +
+                        'Адрес: {{ salon.address }}<br />' +
+                        '</div>' +
+                        '<div style="margin: 10px;">' +
+                        'Телефон: {{ salon.phone }}<br />' +
+                        '</div>' +
+                        '<div style="margin: 10px;">' +
+                        '<a style="color: #193153;" href="{{ path('salon-profile', { 'slugAddress': salon.slugAddress, 'slug': salon.slug }) }}"><b>Наши работы</b></a><br />' +
+                        '</div>'
+                    );
+                    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                        myMap.behaviors.disable('drag');
+                    }
+                    myMap.geoObjects.add(
+                        new ymaps.Placemark([{{ salon.longitude }}, {{ salon.latitude }}], {}, {
+                            balloonContentLayout: BalloonContentLayout,
+                            balloonPanelMaxMapArea: 0,
+                            iconLayout: 'default#image',
+                            iconImageHref: '/web/bundles/kuhni/img/map-marker.svg',
+                            iconImageOffset: [-3, -42],
+                            iconImageSize: [30, 42]
+                        })
+                    );
+                }
+            );
+        });
+    </script>
+{% endblock %}
+{% block body %}
+
+    {% block navigation %}
+        {% include 'profiler/navigation.html.twig' %}
+    {% endblock %}
+
+    {% block header %}
+        <header class="masthead all" style="background: url({{ asset( headerImage )}} ) no-repeat scroll center center"></header>
+    {% endblock %}
+
+    {% block content %}
+        {% include 'kroshki.html.twig' %}
+        {% include 'profiler/salon-top.html.twig' %}
+        {% include 'profiler/project-review.html.twig' %}
+        {% include 'homepage/section-contact.html.twig' %}
+    {% endblock %}
+    {% include 'modal/modal.html.twig' %}
+
+{% endblock %}
+
+{% block modalForAll %}
+    {% include 'modal/modal-costproject.html.twig' %}
+    {% include 'modal/modal-designerAtHome.html.twig' %}
+    {% include 'modal/modal-freedesign.html.twig' %}
+    {% include 'modal/modal-zayavkaRazmer.html.twig' %}
+{% endblock%}
+{% block ajax %}
+    {% include 'profiler/ajax-more-product.html.twig' %}
+    {% include 'profiler/likes.html.twig' %}
+{% endblock %}

@@ -30,8 +30,8 @@
 
     {% endblock %}
 
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     {% block map %}
-        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
         <script type="text/javascript">
             ymaps.ready(function () {
                 ymaps.modules.require(['Map', 'Placemark']).spread(
@@ -40,16 +40,23 @@
                             center: [55.72, 37.64],
                             zoom: 9
                         });
+                        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                            myMap.behaviors.disable('drag');
+                        }
                         myMap.behaviors.disable('scrollZoom');
                         {% for map in maps %}
                             BalloonContentLayout{{ loop.index0 }} = ymaps.templateLayoutFactory.createClass(
+                                '<div><img src="{{ asset('upload/salon/' ~ map.imageName) }}" style="width:100%; height:auto;" alt="{{ map.description }}"></div>' +
                                 '<div style="margin: 10px;">' +
-                                '<a style="color: #193153;" href="{{ path('salon', {'slug': map.description}) }}"><b> {{ map.title }} </b></a><br />' +
+                                    'Адрес: {{ map.address }}<br />' +
+                                '</div>' +
+                                '<div style="margin: 10px;">' +
+                                    'Телефон: {{ map.phone }}<br />' +
+                                '</div>' +
+                                '<div style="margin: 10px;">' +
+                                    '<a style="color: #193153;" href="{{ path('salon-profile', { 'slugAddress': map.slugAddress, 'slug': map.slug }) }}"><b>Наши работы</b></a><br />' +
                                 '</div>'
                             );
-                            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-                                myMap.behaviors.disable('drag');
-                            }
                             myMap.geoObjects.add(
                                 new ymaps.Placemark([{{ map.longitude }}, {{ map.latitude }}], {}, {
                                     balloonContentLayout: BalloonContentLayout{{ loop.index0 }},

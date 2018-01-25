@@ -24,11 +24,11 @@
         {% for slider in sliders %}
             <div class="banner_col">
                 <a
-                        {% if slider.modal %}
-                            data-toggle="modal" data-target="#{{ slider.link }}"
-                        {% else %}
-                           href="{{ slider.link }}"
-                       {% endif %}>
+                    {% if slider.modal %}
+                        data-toggle="modal" data-target="#{{ slider.link }}"
+                    {% else %}
+                       href="{{ slider.link }}"
+                   {% endif %}>
                     <img data-lazy="{{ asset('upload/sliderHome/' ~ slider.imageNameBannerPC) }}" alt="featured_links_banner"/>
                     <img data-lazy="{{ asset('upload/sliderHome/' ~ slider.imageNameBannerMobile) }}" alt="featured_links_banner" class="mob_banner"/>
                 </a>

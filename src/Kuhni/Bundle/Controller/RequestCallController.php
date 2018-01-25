@@ -2,7 +2,7 @@
 
 namespace Kuhni\Bundle\Controller;
 
-use Kuhni\Bundle\Entity\RequestCall;
+use Kuhni\Bundle\Entity\FormRequestCall;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +23,7 @@ class RequestCallController extends Controller
 
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
 
-        $call = new RequestCall();
+        $call = new FormRequestCall();
         $salon = $this->getDoctrine()->getManager()
             ->getRepository('KuhniBundle:Salon')
             ->findOneBy(array('id' => $form['idSalon']));

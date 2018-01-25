@@ -1,0 +1,304 @@
+{% set container1 %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xl-6 big-col">
+                {% for project in projects %}
+                    {% if loop.index0 == 0 %}
+                        <a href="#{#{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : project.slug}) }}#}">
+                            <img class="slide-product-img big" src="{{ asset( imageProject[loop.index0] ) }}" alt="{{ project.keywords }}" title="{{ project.title }}">
+                            <span class="pos-bot-l" {% if project.discount == 0 %}style="width: 100%;" {% endif %}>
+                                <ul class="nav">
+                                    <li class="left">
+                                        <div class="text-left">
+                                            <span class="first-name"><b>{{ project.title }}</b><br/></span>
+                                        </div>
+                                    </li>
+                                    <li class="right">
+                                        <div class="text-right right">
+                                            {% set price = (project.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                            {% set noDiscountPrice = (((price * project.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                            {% if project.discount != 0 %}
+                                                <span class="text-right last-price">старая цена
+                                                    <span class="through">{{ noDiscountPrice }} <i class='fa fa-rub' aria-hidden='true'></i></span><br/>
+                                                </span>
+                                            {% endif %}
+                                            <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }} <i class='fa fa-rub' aria-hidden='true'></i></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </span>
+                            {% if project.discount != 0 %}
+                                <span class="pos-bot-r desc text-center">
+                                    <span class="title"><b>{{ project.discount }}%</b></span>
+                                    <span>скидка</span>
+                                </span>
+                            {% endif %}
+                        </a>
+                        <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
+                            <i class="fa fa-phone"></i>
+                        </button>
+                        <button type="button" id="like" data-id="{{ project.id }}" class="like text-center">
+                            <i class="fa fa-heart"></i>
+                            <span class="countLikes">
+                                {{ project.likes }}
+                            </span>
+                        </button>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-xl-6">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-6 small-col no-margin-left full-screen">
+                        {% for project in projects %}
+                            {% if loop.index0 <= 2 and loop.index0 > 0 %}
+                                <div class="col-12 big-col">
+                                    <a href="#{#{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : project.slug}) }}#}">
+                                        <img class="slide-product-img" src="{{ asset( imageProject[loop.index0] ) }}" alt="{{ project.keywords }}" title="{{ project.title }}">
+                                        <span class="pos-bot-l">
+                                            <ul class="nav">
+                                                <li class="left">
+                                                    <div class="text-left">
+                                                        <span class="first-name"><b>{{ project.title }}</b></span>
+                                                    </div>
+                                                </li>
+                                                <li class="right">
+                                                    <div class="text-right right">
+                                                        {% set price = (project.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                                        {% set noDiscountPrice = (((price * project.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                                        <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }} <i class='fa fa-rub' aria-hidden='true'></i></span><br/>
+                                                        {% if project.discount != 0 %}
+                                                            <span class="text-right last-price">старая цена
+                                                                <span class="through">{{ noDiscountPrice }} <i class='fa fa-rub' aria-hidden='true'></i></span>
+                                                            </span>
+                                                        {% endif %}
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </span>
+                                        {% if project.discount != 0 %}
+                                            <span class="pos-bot-r desc text-center">
+                                                <span class="title"><b>{{ project.discount }}%</b></span>
+                                                <span>скидка</span>
+                                            </span>
+                                        {% endif %}
+                                    </a>
+                                    <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
+                                        <i class="fa fa-phone"></i>
+                                    </button>
+                                    <button type="button" id="like" data-id="{{ project.id }}" class="like text-center">
+                                        <i class="fa fa-heart"></i>
+                                        <span class="countLikes">
+                                            {{ project.likes }}
+                                        </span>
+                                    </button>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 small-col full-screen">
+                        {% for project in projects %}
+                            {% if loop.index0 <= 4 and loop.index0 > 2 %}
+                                <div class="col-12 big-col">
+                                    <a href="#{#{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : project.slug}) }}#}">
+                                        <img class="slide-product-img" src="{{ asset( imageProject[loop.index0] ) }}" alt="{{ project.keywords }}" title="{{ project.title }}">
+                                        <span class="pos-bot-l">
+                                            <ul class="nav">
+                                                <li class="left">
+                                                    <div class="text-left">
+                                                        <span class="first-name"><b>{{ project.title }}</b></span>
+                                                    </div>
+                                                </li>
+                                                <li class="right">
+                                                    <div class="text-right right">
+                                                        {% set price = (project.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                                        {% set noDiscountPrice = (((price * project.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                                        <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }} <i class='fa fa-rub' aria-hidden='true'></i></span><br/>
+                                                        {% if project.discount != 0 %}
+                                                            <span class="text-right last-price">старая цена
+                                                                <span class="through">{{ noDiscountPrice }} <i class='fa fa-rub' aria-hidden='true'></i></span>
+                                                            </span>
+                                                        {% endif %}
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </span>
+                                        {% if project.discount != 0 %}
+                                            <span class="pos-bot-r desc text-center">
+                                                <span class="title"><b>{{ project.discount }}%</b></span>
+                                                <span>скидка</span>
+                                            </span>
+                                        {% endif %}
+                                    </a>
+                                    <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
+                                        <i class="fa fa-phone"></i>
+                                    </button>
+                                    <button type="button" id="like" data-id="{{ project.id }}" class="like text-center">
+                                        <i class="fa fa-heart"></i>
+                                        <span class="countLikes">
+                                            {{ project.likes }}
+                                        </span>
+                                    </button>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endset %}
+{% set container2 %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xl-6">
+                <div class="row">
+                    <div class="col-12 col-md-6 small-col first-small-col full-screen">
+                        {% for project in projects %}
+                            {% if loop.index0 > 4 and loop.index0 <= 6 %}
+                                <div class="col-12 big-col">
+                                    <a href="#{#{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : project.slug}) }}#}">
+                                        <img class="slide-product-img" src="{{ asset( imageProject[loop.index0] ) }}" alt="{{ project.keywords }}" title="{{ project.title }}">
+                                        <span class="pos-bot-l">
+                                            <ul class="nav">
+                                                <li class="left">
+                                                    <div class="text-left">
+                                                        <span class="first-name"><b>{{ project.title }}</b></span>
+                                                    </div>
+                                                </li>
+                                                <li class="right">
+                                                    <div class="text-right right">
+                                                        {% set price = (project.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                                        {% set noDiscountPrice = (((price * project.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                                        <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }} <i class='fa fa-rub' aria-hidden='true'></i></span><br/>
+                                                        {% if project.discount != 0 %}
+                                                            <span class="text-right last-price">старая цена
+                                                                <span class="through">{{ noDiscountPrice }} <i class='fa fa-rub' aria-hidden='true'></i></span>
+                                                            </span>
+                                                        {% endif %}
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </span>
+                                        {% if project.discount != 0 %}
+                                            <span class="pos-bot-r desc text-center">
+                                                <span class="title"><b>{{ project.discount }}%</b></span>
+                                                <span>скидка</span>
+                                            </span>
+                                        {% endif %}
+                                    </a>
+                                    <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
+                                        <i class="fa fa-phone"></i>
+                                    </button>
+                                    <button type="button" id="like" data-id="{{ project.id }}" class="like text-center">
+                                        <i class="fa fa-heart"></i>
+                                        <span class="countLikes">
+                                            {{ project.likes }}
+                                        </span>
+                                    </button>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="col-12 col-md-6 small-col full-screen">
+                        {% for project in projects %}
+                            {% if loop.index0 > 6 and loop.index0 <= 8 %}
+                                <div class="col-12 big-col">
+                                    <a href="#{#{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : project.slug}) }}#}">
+                                        <img class="slide-product-img" src="{{ asset( imageProject[loop.index0] ) }}" alt="{{ project.keywords }}" title="{{ project.title }}">
+                                        <span class="pos-bot-l">
+                                            <ul class="nav">
+                                                <li class="left">
+                                                    <div class="text-left">
+                                                        <span class="first-name"><b>{{ project.title }}</b><br/></span>
+                                                    </div>
+                                                </li>
+                                                <li class="right">
+                                                    <div class="text-right right">
+                                                        {% set price = (project.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                                        {% set noDiscountPrice = (((price * project.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                                        <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }} <i class='fa fa-rub' aria-hidden='true'></i></span><br/>
+                                                        {% if project.discount != 0 %}
+                                                            <span class="text-right last-price">старая цена
+                                                                <span class="through">{{ noDiscountPrice }} <i class='fa fa-rub' aria-hidden='true'></i></span>
+                                                            </span>
+                                                        {% endif %}
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </span>
+                                        {% if project.discount != 0 %}
+                                            <span class="pos-bot-r desc text-center">
+                                                <span class="title"><b>{{ project.discount }}%</b></span>
+                                                <span>скидка</span>
+                                            </span>
+                                        {% endif %}
+                                    </a>
+                                    <button type="button" class="phone text-center" data-toggle="modal" data-target="#requestcall">
+                                        <i class="fa fa-phone"></i>
+                                    </button>
+                                    <button type="button" id="like" data-id="{{ project.id }}" class="like text-center">
+                                        <i class="fa fa-heart"></i>
+                                        <span class="countLikes">
+                                            {{ project.likes }}
+                                        </span>
+                                    </button>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-xl-6 big-col">
+                {% for project in projects %}
+                    {% if loop.index0 == 9 %}
+                        <a href="#{#{{ path('kuhni_product', {'slug' : slug, 'nameproduct' : project.slug}) }}#}" class="big-a-10">
+                            <img class="slide-product-img big" src="{{ asset( imageProject[loop.index0] ) }}" alt="{{ project.keywords }}" title="{{ project.title }}">
+                            <span class="pos-bot-l" {% if project.discount == 0 %}style="width: 100%;" {% endif %}>
+                                <ul class="nav">
+                                    <li class="left">
+                                        <div class="text-left">
+                                            <span class="first-name"><b>{{ project.title }}</b><br/></span>
+                                        </div>
+                                    </li>
+                                    <li class="right">
+                                        <div class="text-right right">
+                                            {% set price = (project.price * kurs.setting * nds.setting * coef.setting)|round %}
+                                            {% set noDiscountPrice = (((price * project.discount)/100 + price)|round)|number_format(0, ' ', ' ') %}
+                                            {% if project.discount != 0 %}
+                                                <span class="text-right last-price">старая цена
+                                                    <span class="through">{{ noDiscountPrice }} <i class='fa fa-rub' aria-hidden='true'></i></span><br/>
+                                                </span>
+                                            {% endif %}
+                                            <span class="text-right now-price">сейчас от {{ price|number_format(0, ' ', ' ') }} <i class='fa fa-rub' aria-hidden='true'></i></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </span>
+                            {% if project.discount != 0 %}
+                                <span class="pos-bot-r desc text-center">
+                                    <span class="title"><b>{{ project.discount }}%</b></span>
+                                    <span>скидка</span>
+                                </span>
+                            {% endif %}
+                        </a>
+                        <button type="button" class="phone big-a-10 text-center" data-toggle="modal" data-target="#requestcall">
+                            <i class="fa fa-phone"></i>
+                        </button>
+                        <button type="button" style="left: 20px;" id="like" data-id="{{ project.id }}" class="like text-center">
+                            <i class="fa fa-heart"></i>
+                            <span class="countLikes">
+                                {{ project.likes }}
+                            </span>
+                        </button>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endset %}
+<section id="all-products">
+    <div id="container-with-products">
+        {{ container1 }}
+        {{ container2 }}
+    </div>
+</section>

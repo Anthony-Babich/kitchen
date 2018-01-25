@@ -2,7 +2,7 @@
 
 namespace Kuhni\Bundle\Controller;
 
-use Kuhni\Bundle\Entity\CallBack;
+use Kuhni\Bundle\Entity\FormCallBack;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +24,7 @@ class CallBackController extends Controller
         $message = htmlspecialchars($form['message']);
 
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
-        $call = new CallBack();
+        $call = new FormCallBack();
 
         $salon = $this->getDoctrine()->getManager()
             ->getRepository('KuhniBundle:Salon')

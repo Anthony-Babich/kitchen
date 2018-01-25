@@ -2,7 +2,7 @@
 
 namespace Kuhni\Bundle\Controller;
 
-use Kuhni\Bundle\Entity\DesignProjectShag;
+use Kuhni\Bundle\Entity\FormDesignProjectShag;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,7 +39,7 @@ class DesignProjectShagController extends Controller
             ->getRepository('ApplicationSonataUserBundle:User')
             ->findOneBy(array('id' => $salon->getIdUser()));
 
-        $call = new DesignProjectShag();
+        $call = new FormDesignProjectShag();
         $call->setIdSalon($salon);
         $call->setPhone($phone);
         $call->setEmail($email);

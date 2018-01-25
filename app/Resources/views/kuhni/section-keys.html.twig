@@ -1,0 +1,54 @@
+<div id="podbor-style"></div>
+<section class="bg-light" id="portfolio">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Кухни</h2>
+                <h3 class="section-subheading text-muted">Посмотрите кухни</h3>
+            </div>
+        </div>
+        <div class="row">
+            {% for key in keys %}
+                {% if loop.index0 < 4 %}
+                    <div class="col-md-3 col-sm-6 portfolio-item">
+                        <div class="portfolio-link">
+                            <a href="{{ path('kuhni_parameters', {'slug' : key.slug}) }}">
+                                <img class="img-fluid" src="{{ asset( imageKey[loop.index0] ) }}" alt="{{ key.keywords }}" title="{{ key.title }}">
+                            </a>
+                        </div>
+                        <div class="portfolio-caption">
+                            <h4>{{ key.title }}</h4>
+                            <p class="text-muted">{{ key.caption|raw }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div id="collapse-kitchenstyle" class="collapse">
+            <div class="row">
+                {% for key in keys %}
+                    {% if loop.index0 >= 4 %}
+                        <div class="col-md-3 col-sm-6 portfolio-item">
+                            <div class="portfolio-link">
+                                <a href="{{  path('kuhni_parameters', {'slug' : key.slug}) }}">
+                                    <img class="img-fluid" src="{{ asset( imageKey[loop.index0] ) }}" alt="{{ key.keywords }}" title="{{ key.title }}">
+                                </a>
+                            </div>
+                            <div class="portfolio-caption">
+                                <h4>{{ key.title }}</h4>
+                                <p class="text-muted">{{ key.caption|raw }}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if countKey > 0 %}
+            <div class="text-center">
+                <a data-toggle="collapse" data-target="#collapse-kitchenstyle">Показать/скрыть еще ({{ countKey }}) стилей</a>
+            </div>
+        {% endif %}
+
+    </div>
+</section>

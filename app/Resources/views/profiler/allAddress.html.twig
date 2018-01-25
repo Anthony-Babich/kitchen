@@ -1,0 +1,27 @@
+<section id="reviews">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h3>Адреса наших салонов</h3>
+            </div>
+        </div>
+        <div class="row">
+            {% for salon in salons %}
+                <div class="col-12 text-center">
+                    <ul id="name" class="nav nav-justified">
+                        <li class="nav-item name text-left">
+                            <a style="color: #333;" href="{{ path('salon-address', { 'slugAddress' : salon.slugAddress }) }}">
+                                {{ salon.title }}
+                            </a>
+                        </li>
+                    </ul>
+                    <p id="info" class="text-left">
+                        <span>
+                            {{ salon.description }}
+                        </span>
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

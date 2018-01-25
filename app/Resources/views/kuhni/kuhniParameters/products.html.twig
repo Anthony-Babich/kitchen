@@ -302,40 +302,9 @@
     </div>
     <div class="container">
         <div class="row" id="search-tags">
-            <a href="{{ path('kuhni_parameters', {'slug' : 'kuhni-zov'}) }}"><span>Все кухни</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'sovremennye'}) }}"><span>Современные</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'provans'}) }}"><span>Прованс</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'klassicheskie'}) }}"><span>Классические</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'loft'}) }}"><span>Лофт</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'kantri'}) }}"><span>Кантри</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'haitek'}) }}"><span>Хай Тек</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'skandinavskiy'}) }}"><span>Скандинавские</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'retro'}) }}"><span>Ретро</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'minimalizm'}) }}"><span>Минимализм</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'modern'}) }}"><span>Модерн</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'massiv'}) }}"><span>Массив</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'mdf'}) }}"><span>МДФ</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'plastic'}) }}"><span>Пластик</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'glass'}) }}"><span>Стекло</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'acryl'}) }}"><span>Акрил</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'shpon'}) }}"><span>Шпон</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'dsp'}) }}"><span>ДСП</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'line'}) }}"><span>Прямые</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'degree'}) }}"><span>Угловые</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'pobraznye'}) }}"><span>П-образные</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'sostrovom'}) }}"><span>Островом</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'small'}) }}"><span>Малогабаритные</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'gostinaya'}) }}"><span>Гостиная</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'stolovaya'}) }}"><span>Столовая</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'white'}) }}"><span>Белый</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'black'}) }}"><span>Черный</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'gray'}) }}"><span>Серый</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'green'}) }}"><span>Зеленый</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'reds'}) }}"><span>Красный</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'brown'}) }}"><span>Коричневый</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'yellow'}) }}"><span>Желтый</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'orange'}) }}"><span>Оранжевый</span></a>
-            <a href="{{ path('kuhni_parameters', {'slug' : 'blue'}) }}"><span>Синий</span></a>
+            {% for tag in tags %}
+                <a href="{{ path('kuhni_parameters', {'slug' : tag.slug}) }}"><span>{{ tag.title }}</span></a>
+            {% endfor %}
         </div>
     </div>
     <div id="container-with-products">

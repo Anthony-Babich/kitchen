@@ -2,7 +2,7 @@
 
 namespace Kuhni\Bundle\Controller;
 
-use Kuhni\Bundle\Entity\Promo;
+use Kuhni\Bundle\Entity\FormPromo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -32,7 +32,7 @@ class PromoController extends Controller
         $gorod = htmlspecialchars($form['gorod']);
 
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
-        $call = new Promo();
+        $call = new FormPromo();
 
         $call->setGeoIP($geo_info);
         $call->setUrl((string) $_SERVER['HTTP_REFERER']);
@@ -49,7 +49,7 @@ class PromoController extends Controller
 
     private function getPromoForm()
     {
-        $promo = new Promo();
+        $promo = new FormPromo();
 
         $formPromo = $this->createFormBuilder($promo)
             ->add('name', TextType::class, array(

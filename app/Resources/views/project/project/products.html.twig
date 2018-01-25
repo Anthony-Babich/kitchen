@@ -1,0 +1,79 @@
+<section id="product">
+    <div class="container">
+        {% set price = (kitchen.price * kurs.setting * nds.setting * coef.setting)|round %}
+        {% set noDiscountPrice = ((price * kitchen.discount)/100 + price)|round %}
+        <div class="row">
+            <div class="col-12 col-xl-7 text-center">
+                <div class="fotorama" data-width="100%" data-nav-inside="true">
+                    {% for image in images %}
+                        <img src="{{ asset(image) }}">
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-12 col-xl-5" id="description">
+                <div class="row title">
+                    <div class="col-12">
+                        <h3 class="text-left">{{ kitchen.title }}</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p class="now-price">
+                            От {{ price|number_format(0, ' ', ' ') }} <i class='fa fa-rub' aria-hidden='true'></i>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-left">
+                        <div class="static-description">
+                            <p>
+                                {% if kitchen.fixedPrice %}
+                                    *Цену и наличие уточняйте
+                                {% else %}
+                                    *Цена указана за 1 метр погонный кухни в стандартной комплектации
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% if kitchen.discount != 0 %}
+                    <div class="row text-center" id="price">
+                        <div class="col-4">
+                            <span class="cost-price"><b>Цена</b><del>{{ (noDiscountPrice)|number_format(0, ' ', ' ') }} <i class='fa fa-rub' aria-hidden='true'></i></del></span>
+                        </div>
+                        <div class="col-4">
+                            <span class="discount"><b>Скидка</b><em>{{ kitchen.discount }}%</em></span>
+                        </div>
+                        <div class="col-4">
+                            <span class="save-price"><b>Экономия</b><em>{{ (noDiscountPrice - price)|number_format(0, ' ', ' ') }} <i class='fa fa-rub' aria-hidden='true'></i></em></span>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="row description">
+                    <div class="col-12">
+                        <p>{{ kitchen.description }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button class="btn btn-xl" data-toggle="modal" data-target="#freedesignproject">Бесплатный дизайн-проект кухни</button>
+                    </div>
+                </div>
+                <div class="row text-center static-icons">
+                    <div class="col-4">
+                        <p><img src="{{ asset('bundles/kuhni/img/productiontime.png') }}" alt="Срок изготовления"></p>
+                        <p class="desc">Срок изготовления от 15 дней</p>
+                    </div>
+                    <div class="col-4">
+                        <p><img src="{{ asset('bundles/kuhni/img/guarantee.png') }}" alt="Гарантии"></p>
+                        <p class="desc">2 года гарантии на кухню</p>
+                    </div>
+                    <div class="col-4">
+                        <p><img src="{{ asset('bundles/kuhni/img/delivery.png') }}" alt="Бесплатная доставка"></p>
+                        <p class="desc">Бесплатная доставка по Москве и Московской области</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

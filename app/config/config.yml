@@ -149,21 +149,9 @@ vich_uploader:
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
-        kuhni_style:
-            uri_prefix:         /web/upload/kuhni/style
-            upload_destination: %kernel.root_dir%/../web/upload/kuhni/style
-            inject_on_load:     false
-            delete_on_update:   true
-            delete_on_remove:   true
-        kuhni_material:
-            uri_prefix:         /web/upload/kuhni/material
-            upload_destination: %kernel.root_dir%/../web/upload/kuhni/material
-            inject_on_load:     false
-            delete_on_update:   true
-            delete_on_remove:   true
-        kuhni_config:
-            uri_prefix:         /web/upload/kuhni/config
-            upload_destination: %kernel.root_dir%/../web/upload/kuhni/config
+        kuhni_keys:
+            uri_prefix:         /web/upload/kuhni/keys
+            upload_destination: %kernel.root_dir%/../web/upload/kuhni/keys
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
@@ -197,6 +185,19 @@ vich_uploader:
         kuhni_slider_home:
             uri_prefix:         /web/upload/sliderHome
             upload_destination: %kernel.root_dir%/../web/upload/sliderHome
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        salon:
+            uri_prefix:         /web/upload/salon
+            upload_destination: %kernel.root_dir%/../web/upload/salon
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+        salon_all_images:
+            uri_prefix:         /web/upload/salon_all_images
+            upload_destination: %kernel.root_dir%/../web/upload/salon_all_images
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true

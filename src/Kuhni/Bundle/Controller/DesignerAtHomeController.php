@@ -2,7 +2,7 @@
 
 namespace Kuhni\Bundle\Controller;
 
-use Kuhni\Bundle\Entity\DesignerAtHome;
+use Kuhni\Bundle\Entity\FormDesignerAtHome;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +24,7 @@ class DesignerAtHomeController extends Controller
 
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
 
-        $call = new DesignerAtHome();
+        $call = new FormDesignerAtHome();
 
         $salon = $this->getDoctrine()->getManager()
             ->getRepository('KuhniBundle:Salon')

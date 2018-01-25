@@ -15,14 +15,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class KuhniImages
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+    use TraitId;
 
     /**
      * @var Kuhni
@@ -34,39 +27,23 @@ class KuhniImages
 
     /**
      * @var string
-     *
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
 
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
     /**
      * Set kuhniId
-     *
      * @param integer $kuhniId
-     *
      * @return KuhniImages
      */
     public function setKuhniId($kuhniId)
     {
         $this->kuhniId = $kuhniId;
-
         return $this;
     }
 
     /**
      * Get kuhniId
-     *
      * @return Kuhni
      */
     public function getKuhniId()
@@ -76,15 +53,12 @@ class KuhniImages
 
     /**
      * Set title
-     *
      * @param string $title
-     *
      * @return KuhniImages
      */
     public function setTitle($title)
     {
         $this->title = $title;
-
         return $this;
     }
 
@@ -108,46 +82,38 @@ class KuhniImages
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     *
      * @Vich\UploadableField(mapping="kuhni", fileNameProperty="imageName", size="imageSize")
-     *
      * @var File
      */
     private $imageFile;
     /**
      * @ORM\Column(type="string", length=255)
-     *
      * @var string
      */
     private $imageName;
     /**
      * @ORM\Column(type="integer")
-     *
      * @var integer
      */
     private $imageSize;
     /**
      * @ORM\Column(type="datetime")
-     *
      * @var \DateTime
      */
     private $updated;
 
     /**
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-     *
      * @return KuhniImages
      */
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
-
         if ($image) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
             $this->updated = new \DateTimeImmutable();
         }
-
         return $this;
     }
 
@@ -161,13 +127,11 @@ class KuhniImages
 
     /**
      * @param string $imageName
-     *
      * @return KuhniImages
      */
     public function setImageName($imageName)
     {
         $this->imageName = $imageName;
-
         return $this;
     }
 
@@ -181,13 +145,11 @@ class KuhniImages
 
     /**
      * @param integer $imageSize
-     *
      * @return KuhniImages
      */
     public function setImageSize($imageSize)
     {
         $this->imageSize = $imageSize;
-
         return $this;
     }
 
@@ -201,19 +163,10 @@ class KuhniImages
 
     /**
      * Get title
-     *
      * @return string
      */
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return strval($this->id);
     }
 }

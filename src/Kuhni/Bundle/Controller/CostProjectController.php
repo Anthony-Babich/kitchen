@@ -2,7 +2,7 @@
 
 namespace Kuhni\Bundle\Controller;
 
-use Kuhni\Bundle\Entity\CostProject;
+use Kuhni\Bundle\Entity\FormCostProject;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,7 +33,7 @@ class CostProjectController extends Controller
         }
 
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
-        $call = new CostProject();
+        $call = new FormCostProject();
 
         if ($_FILES['form']['error']['imageFile']['file'] == 0){
             $formFile = $_FILES['form'];

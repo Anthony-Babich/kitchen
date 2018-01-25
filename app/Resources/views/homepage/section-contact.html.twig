@@ -29,7 +29,7 @@
             <div class="col-12 col-md-3 col-lg-2 text-left">
                 <h6>Услуги и сервис</h6>
 
-                <p class="zakaz"><a href="#">Отследить заказ</a></p>
+                <p class="zakaz"><a href="{{ path('track') }}">Отследить заказ</a></p>
                 <p class="clear"></p>
                 <p><a data-target="#freedesignproject" data-toggle="modal">Бесплатный проект</a></p>
                 <p><a data-target="#zayavkaRazmer" data-toggle="modal">Заказать замер</a></p>
@@ -46,6 +46,9 @@
 
                 <p>Дизайнерам</p>
                 <p>Дилерам</p>
+                <p class="clear"></p>
+                <p><a href="{{ path('salon-all') }}">Салоны</a></p>
+                <p><a href="{{ path('all-projects') }}">Проекты</a></p>
             </div>
             <div class="col-12 col-md-3 col-lg-3 text-right">
                 <h6>Контактная информация</h6>

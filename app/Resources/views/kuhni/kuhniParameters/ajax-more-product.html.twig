@@ -8,7 +8,7 @@
         var slug = '{{ slug }}';
         var noMore = false;
         $(window).scroll(function() {
-            var contact = $('#article').offset().top - 600;
+            var contact = $('#article').offset().top - 1200;
             if ( ( $(window).scrollTop() >= contact && !inProgress ) && !noMore) {
                 $.ajax({
                     /* адрес файла-обработчика запроса */

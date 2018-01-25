@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ title|raw }}
+{% endblock %}
+{% block body %}
+    {% block navigation %}
+        {% include 'product/navigation.html.twig' %}
+    {% endblock %}
+    {% block header %}
+        {% include 'header.html.twig' %}
+        {% include 'homepage/section-ordercall.html.twig' %}
+    {% endblock %}
+    {% block content %}
+        {% include 'kroshki.html.twig' %}
+        {% include 'project/filter/products.html.twig' %}
+        {% include 'project/filter/article.html.twig' %}
+        {% include 'freedesignshag.html.twig' %}
+        {% include 'project/filter/popular.html.twig' %}
+        {% include 'project/filter/completed-projects.html.twig' %}
+        {% include 'calc.html.twig' %}
+        {% include 'product/more-prod.html.twig' %}
+        {% include 'homepage/section-map.html.twig' %}
+        {% include 'homepage/section-contact.html.twig' %}
+    {% endblock %}
+{% endblock %}
+{% block modal %}
+    {% include 'project/filter/footer-buttons.html.twig' %}
+    {% include 'modal/modal.html.twig' %}
+{% endblock %}
+{% block ajax %}
+    {% include 'project/filter/ajax-more-product.html.twig' %}
+    {% include 'project/filter/likes.html.twig' %}
+{% endblock %}

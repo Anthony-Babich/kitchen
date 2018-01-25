@@ -2,7 +2,7 @@
 
 namespace Kuhni\Bundle\Controller;
 
-use Kuhni\Bundle\Entity\ZayavkaRazmer;
+use Kuhni\Bundle\Entity\FormZayavkaRazmer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,7 +28,7 @@ class zayavkaRazmerController extends Controller
 
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
 
-        $call = new ZayavkaRazmer();
+        $call = new FormZayavkaRazmer();
 
         $salon = $this->getDoctrine()->getManager()
             ->getRepository('KuhniBundle:Salon')

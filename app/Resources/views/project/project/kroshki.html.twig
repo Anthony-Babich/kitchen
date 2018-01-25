@@ -1,0 +1,21 @@
+<section id="kroshki">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-left">
+                {{ wo_render_breadcrumbs({separator: ''}) }}
+            </div>
+        </div>
+        <div class="row under">
+            <div class="col-12">
+                <button type="button" id="like" data-id="{{ kitchen.id }}" class="like text-center">
+                    <i class="fa fa-heart"></i>
+                    Нравится
+                    <span class="countLikes">{{ kitchen.likes }}</span>
+                </button>
+                Выполнено проектов
+                <span class="count-projects active">({{ kitchen.countProjects }})</span>
+                Поделиться с друзьями <i class="fa fa-share" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+</section>
