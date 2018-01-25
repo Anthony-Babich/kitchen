@@ -14,7 +14,7 @@ trait TraitFreeProjectForm
 {
     private function getFreeProjectForm()
     {
-        $freeProject = new formFreeDesignProject();
+        $freeProject = new FormFreeDesignProject();
 
         $formFreeProject = $this->createFormBuilder($freeProject)
             ->add('name', TextType::class, array(
