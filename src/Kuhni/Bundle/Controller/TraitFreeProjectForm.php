@@ -3,7 +3,7 @@
 namespace Kuhni\Bundle\Controller;
 
 use Doctrine\ORM\EntityRepository;
-use Kuhni\Bundle\Entity\formFreeDesignProject;
+use Kuhni\Bundle\Entity\FormFreeDesignProject;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
